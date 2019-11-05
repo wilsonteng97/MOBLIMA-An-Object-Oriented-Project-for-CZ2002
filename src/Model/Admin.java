@@ -10,22 +10,22 @@ package Model;
 
 import java.io.Serializable;
 
-public class Staff implements Serializable {
-	private Integer staffID;
+public class Admin implements Serializable {
+	private Integer adminID;
 	private String username;
 	private String password;
 	
-	public Staff(String username, String password) {
-		this.staffID = -1;
+	public Admin(String username, String password) {
+		this.adminID = -1;
 		this.username = username;
 		this.password = password;
 	}
 	
-	public void setStaffID(int staffID) {
-		this.staffID = staffID;
+	public void setAdminID(int adminID) {
+		this.staffID = adminID;
 	}
 	
-	public int getStaffID() {
+	public int getAdminID() {
 		return staffID;
 	}
 	
