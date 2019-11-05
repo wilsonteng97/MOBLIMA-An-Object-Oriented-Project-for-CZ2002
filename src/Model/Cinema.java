@@ -6,89 +6,129 @@ package Model;
  * @author wilso
  *
  */
-public class Cinema {
-	private final int cinemaid;
-	private final int row;
-	private final int col;
-	private final double baseprice;
-	private final boolean isPlatinum;
-	private final boolean is3D;
 
-	private final int numofseats;
-	private int numemptyseats;
-	private final Seat[] seats;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-	public Cinema(int cinemaid, int row, int col,  double baseprice, boolean isPlatinum, boolean is3D) {
-		this.cinemaid = cinemaid;
-		this.row = row;
-		this.col = col;
-		this.baseprice = baseprice;
-		this.isPlatinum = isPlatinum;
-		this.is3D = is3D;
+import Model.Enums.*;
+
+public class Cinema implements Serializable {
+	private Integer cinemaID;
+	private String cinemaName; // This is for display.
+	private CinemaOperator operator;
+	private CinemaClass cinemaClass;
+	private List<ShowTime> showTimes;
+	private List<Seat> seats;
+	private Integer no_of_rows;
+	private Integer no_of_columns;
+	
+	public Cinema(Integer cinemaID, String cinemaName, CinemaOperator operator, CinemaClass cinemaClass) {
+		this.cinemaID = cinemaID;
+		this.cinemaName = cinemaName;
+		this.setOperator(operator);
+		this.cinemaClass = cinemaClass;
+
+		this.showTimes = new ArrayList<ShowTime>();
+		this.seats = new ArrayList<Seat>();
+		this.no_of_rows = 0;
+		this.no_of_columns = 0;
+	}
+	
+	// cinemaID
+	public Integer getCinemaID() {
+		return cinemaID;
+	}
+	public void setCinemaID(Integer cinemaID) {
+		this.cinemaID = cinemaID;
+	}
+	
+	// cinemaName
+	public String getCinemaName() {
+		return cinemaName;
+	}
+	public void setCinemaName(String cinemaName) {
+		this.cinemaName = cinemaName;
+	}
+
+	// operator
+	public CinemaOperator getOperator() {
+		return operator;
+	}
+	public void setOperator(CinemaOperator operator) {
+		this.operator = operator;
+	}
+	
+	// cinemaClass
+	public CinemaClass getCinemaClass() {
+		return cinemaClass;
+	}
+	public void setCinemaClass(CinemaClass cinemaClass) {
+		this.cinemaClass = cinemaClass;
+	}
+	
+	// showTime
+	public void addShowTime(ShowTime showTime) {
+		showTimes.add(showTime);
+	}
+	public void removeShowTime(ShowTime showTime) {
+		showTimes.remove(showTime);
+	}
+	public void setShowTimes(List<ShowTime> showTimes) {
+		this.showTimes = showTimes;
+	}
+	public List<ShowTime> getShowTimes() {
+		return showTimes;
+	}
+	// Get ShowTimes By Movie
+	public List<ShowTime> getShowTimes(Movie input_movie) {
+		List<ShowTime> showtime_for_specific_input_movie = new ArrayList<ShowTime>();
 		
-		this.numofseats = row * col;
-		this.seats = new Seat[numofseats];
-		for (int i=0; i<this.numofseats; i++) {
-			this.seats[i] = new Seat(i+1);
+		for(ShowTime st: showTimes) {
+			if(st.getMovie().getMovieID() == input_movie.getMovieID()) {
+				showtime_for_specific_input_movie.add(st);
+			}
 		}
-		this.setNumemptyseats(numofseats);
-	}
-
-	/**
-	 * @return the cinemaid
-	 */
-	public int getCinemaid() {
-		return cinemaid;
-	}
-
-	/**
-	 * @return the row
-	 */
-	public int getRow() {
-		return row;
-	}
-
-	/**
-	 * @return the col
-	 */
-	public int getCol() {
-		return col;
-	}
-
-	/**
-	 * @return the baseprice
-	 */
-	public double getBaseprice() {
-		return baseprice;
-	}
-
-	/**
-	 * @return the isPlatinum
-	 */
-	public boolean isPlatinum() {
-		return isPlatinum;
-	}
-
-	/**
-	 * @return the is3D
-	 */
-	public boolean isIs3D() {
-		return is3D;
-	}
-
-	/**
-	 * @return the numemptyseats
-	 */
-	public int getNumemptyseats() {
-		return numemptyseats;
-	}
-
-	/**
-	 * @param numemptyseats the numemptyseats to set
-	 */
-	public void setNumemptyseats(int numemptyseats) {
-		this.numemptyseats = numemptyseats;
+		return showtime_for_specific_input_movie;
 	}
 	
+	// seats
+	public void addSeat(Seat seat) {
+		seats.add(seat);
+	}
+	public void removeSeat(Seat seat) {
+		seats.remove(seat);
+	}
+	public List<Seat> getSeatList() {
+		return seats;
+	}
+	public void setSeatList(List<Seat> seats) {
+		this.seats = seats;
+	}
 	
+	// seat
+	public Seat getSpecificSeat(String seatRow, Integer seatNo) {
+		for(Seat seat: seats) {
+			if(seat.getSeatRow().equals(seatRow) && seat.getSeatNo()==seatNo) {
+				return seat;
+			}
+		}
+		return null;
+	}
+	
+	// no_of_rows
+	public void setNoOfSeatRow(int no_of_rows) {
+		this.no_of_rows = no_of_rows;
+	}
+	public int getNoOfSeatRow() {
+		return no_of_rows;
+	}
+	
+	// no_of_columns
+	public void setNoOfSeatColumn(int no_of_columns) {
+		this.no_of_columns = no_of_columns;
+	}
+	public int getNoOfSeatColumn() {
+		return no_of_columns;
+	}
 }

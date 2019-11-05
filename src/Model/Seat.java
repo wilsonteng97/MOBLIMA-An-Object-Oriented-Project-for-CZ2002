@@ -2,38 +2,70 @@
  * 
  */
 package Model;
-import java.util.Date;
+
 /**
  * @author wilso
  *
  */
-public class Seat {
-	private final int seatid;
-	private boolean booked;
+import java.io.Serializable;
+import java.util.Hashtable;
+
+public class Seat implements Serializable {
 	
-	public Seat(int seatid) {
-		this.seatid = seatid;
-		this.setBooked(false);
+	private Integer seatID;
+	private Integer seatNo;
+	private String seatRow;
+	private Cinema cinema;
+	private Hashtable<ShowTime, Boolean> occupied;
+	
+	public Seat(int seatNo, String seatRow, Cinema cinema) {
+		this.seatID = -1;
+		this.seatNo = seatNo;
+		this.seatRow = seatRow;
+		this.cinema = cinema;
+		
+		this.occupied = new Hashtable<ShowTime, Boolean>();
 	}
-
-	/**
-	 * @return the seatid
-	 */
-	public int getSeatid() {
-		return seatid;
+	
+	// seatID
+	public int getSeatID() {
+		return seatID;
 	}
-
-	/**
-	 * @return the booked
-	 */
-	public boolean isBooked() {
-		return booked;
+	public void setSeatID(int seatID) {
+		this.seatID = seatID;
 	}
-
-	/**
-	 * @param booked the booked to set
-	 */
-	public void setBooked(boolean booked) {
-		this.booked = booked;
+	
+	// seatNo
+	public int getSeatNo() {
+		return seatNo;
+	}
+	public void setSeatNo(int seatNo) {
+		this.seatNo = seatNo;
+	}
+	
+	// seatRow
+	public String getSeatRow() {
+		return seatRow;
+	}
+	public void setSeatRow(String seatRow) {
+		this.seatRow = seatRow;
+	}
+	
+	// cinema
+	public Cinema getCinema() {
+		return cinema;
+	}
+	public void setCinema(Cinema cinema) {
+		this.cinema = cinema;
+	}
+	
+	// occupied
+	// return boolean of whether seat is occupied at input showTime
+	public boolean isOccupiedAt(ShowTime showTime) {
+		return occupied.get(showTime);
+	}
+	public void setOccupiedAt(ShowTime showTime, boolean value) {
+		occupied.put(showTime, value);
 	}
 }
+

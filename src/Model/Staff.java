@@ -7,54 +7,41 @@ package Model;
  * @author wilso
  *
  */
-public class Staff {
-	private final int staffid;
-	private final String name;
-	private final String mobile;
-	private final String email;
-	private final String passwordhash;
 
-    public Staff(int staffid, String name, String mobile, String email, String passwordhash) {
-        this.staffid = staffid;
-    	this.email = email;
-        this.name = name;
-        this.mobile = mobile;
-        this.passwordhash = passwordhash;
-    }
+import java.io.Serializable;
 
-	/**
-	 * @return the staffid
-	 */
-	public int getStaffid() {
-		return staffid;
+public class Staff implements Serializable {
+	private Integer staffID;
+	private String username;
+	private String password;
+	
+	public Staff(String username, String password) {
+		this.staffID = -1;
+		this.username = username;
+		this.password = password;
 	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
+	
+	public void setStaffID(int staffID) {
+		this.staffID = staffID;
 	}
-
-	/**
-	 * @return the mobile
-	 */
-	public String getMobile() {
-		return mobile;
+	
+	public int getStaffID() {
+		return staffID;
 	}
-
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
+	
+	public void setUsername(String username) {
+		this.username = username;
 	}
-
-	/**
-	 * @return the passwordhash
-	 */
-	public String getPasswordhash() {
-		return passwordhash;
+	
+	public String getUsername() {
+		return username;
 	}
-    
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
 }

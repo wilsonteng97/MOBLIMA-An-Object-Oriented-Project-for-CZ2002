@@ -3,100 +3,112 @@
  */
 package Model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import Model.Booking;
+
 /**
  * @author wilso
  *
  */
-public class Customer {
-	private final int customerid;
-	private final String passwordhash;
-	private final String name;
-	private final String email;
-	private final String mobile;
-	private final String creditcardno;
-	private int age;
-	
-	private boolean ismember;
-//	private BookingHistory bookinghist;
-	
-	public Customer(int customerid, String passwordhash, String name, String email, String mobile, String creditcardno, int age) {
-        this.customerid = customerid;
-        this.passwordhash = passwordhash;
+public class Customer implements Serializable{
+	private Integer customerID;
+	private String name;
+	private String mobile; // Mobile Number
+	private String email;
+	private Date DOB; // Date of Birth
+	private Integer age;	
+//	private boolean ismember;
+	List<Booking> bookings;
+
+	public Customer(String customerID, String name, String mobile, String email, Date DOB) {
+        this.customerID = -1;
 		this.name = name;
-		this.email = email;
         this.mobile = mobile;
-        this.creditcardno = creditcardno;
-        this.age = age;
+		this.email = email;
+		this.DOB = DOB;
+        bookings = new ArrayList<Booking>();
         
-        this.setMember(false);
-//        this.bookinghist = BookingHistory();
+//        this.setMember(false);
 	}
 	
-	public boolean isChild() {
-		return (age<=16);
+	// customerID
+	public int getCustomerID() {
+		return customerID;
+	}
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
 	}
 	
-	public boolean isAdult() {
-		return (age>16 && age<60);
-	}
-	
-	public boolean isSeniorCitizen() {
-		return (age>=60);
-	}
-
-	/**
-	 * @return the customerid
-	 */
-	public int getCustomerid() {
-		return customerid;
-	}
-
-	/**
-	 * @return the passwordhash
-	 */
-	public String getPasswordhash() {
-		return passwordhash;
-	}
-
-	/**
-	 * @return the name
-	 */
+	// name
 	public String getName() {
 		return name;
 	}
-
-	/**
-	 * @return the email
-	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	// mobileNo
+	public String getMobileNo() {
+		return mobile;
+	}
+	public void setMobileNo(String mobile) {
+		this.mobile = mobile;
+	}
+	
+	// email
 	public String getEmail() {
 		return email;
 	}
-
-	/**
-	 * @return the mobile
-	 */
-	public String getMobile() {
-		return mobile;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-
-	/**
-	 * @return the creditcardno
-	 */
-	public String getCreditCardNo() {
-		return creditcardno;
+	
+	// DOB
+	public void setDOB(Date DOB) {
+		this.DOB = DOB;
 	}
-
-	/**
-	 * @return the ismember
-	 */
-	public boolean isMember() {
-		return ismember;
+	public Date getDOB() {
+		return DOB;
 	}
-
-	/**
-	 * @param ismember the ismember to set
-	 */
-	public void setMember(boolean ismember) {
-		this.ismember = ismember;
+	
+	// private method to compute Age
+	private void computeAge() {
+		Calendar dob = Calendar.getInstance();  
+		dob.setTime(DOB);  
+		Calendar today = Calendar.getInstance();  
+		int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);  
+		
+		if (today.get(Calendar.MONTH)<dob.get(Calendar.MONTH)) {
+		  age--;
+		  this.age = age;
+		}
+		if (today.get(Calendar.MONTH)==dob.get(Calendar.MONTH) && today.get(Calendar.DAY_OF_MONTH)<dob.get(Calendar.DAY_OF_MONTH)) {
+		  age--;
+		  this.age = age;
+		}
+		
+		this.age = age;
+	}
+	
+	// age
+	public int getAge() {
+		computeAge();
+		return this.age;
+	}
+	
+	// bookings
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+	public void addBooking(Booking booking) {
+		bookings.add(booking);
+	}
+	public void removeBooking(Booking booking) {
+		bookings.remove(booking);
 	}
 }
