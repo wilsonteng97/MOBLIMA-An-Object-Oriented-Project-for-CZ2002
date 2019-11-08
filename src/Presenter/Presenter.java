@@ -1,6 +1,7 @@
+package Presenter;
+
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
-package Presenter;
 
 public class Presenter
 {
