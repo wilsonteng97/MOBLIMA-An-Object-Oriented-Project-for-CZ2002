@@ -2,11 +2,18 @@ package View;
 import java.util.Scanner;
 
 public class AdminView implements View{
-	private boolean loggedIn;
+	private boolean loggedIn = false;
 	private String adminName;
 	private String password;
 	public StaffView() {
-		loggedIn = false;
+		if(loggedIn == false)
+		{
+			adminlogin();
+		}
+		else
+		{
+			displayMenu();
+		}
 	}
 	
 	private void adminLogin() {
