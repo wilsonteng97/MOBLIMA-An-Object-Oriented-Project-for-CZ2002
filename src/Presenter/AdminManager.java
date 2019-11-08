@@ -252,7 +252,21 @@ public class AdminManager extends DataManager
         return top5rating;
     }
 
-
+    public boolean verifyAdmin(String username, String password)
+    {
+        if(adminAccountList.get(username) == null)
+        {
+            return false;
+        }
+        else if(adminAccountList.get(username).equals(password))
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
 
     public int getMovieSales(Movie movie)
     {
