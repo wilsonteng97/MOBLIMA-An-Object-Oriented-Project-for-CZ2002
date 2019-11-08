@@ -2,12 +2,18 @@ package View;
 
 public class StarterView implements View{
 	public StarterView() {
-		System.out.println("Welcome!");
+		System.out.println("============================\n"
+				+ "|          MOBLIMA         |\n"
+				+ "|   BY CZ2002 SS8 Group5   |\n"
+				+ "============================");
 	} 
 	private void displayMenu() {
-		System.out.println("(1) Staff\n"
+		System.out.println("Menu\n"
+				+ "----\n"
+				+ "(1) Staff\n"
 				+ "(2) MovieGoer\n"
 				+ "(3) Showtime\n"
-				+ "(4) CinemaList");
+				+ "(4) CinemaList\n"
+				+ "Please enter choice");
 	}
 }
