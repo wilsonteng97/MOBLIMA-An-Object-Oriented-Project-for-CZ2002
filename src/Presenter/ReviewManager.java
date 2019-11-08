@@ -5,22 +5,24 @@ public class ReviewManager {
     String review;
     Scannner sc = new Scanner(System.in);
 
+    // Customer CustReview = new Customer();
+    // int userID = CustReview.getEmail();
+
     public ReviewManager()  {
-        this.giveRating(userID);
-        this.addReview(userID);
+        
     }
 
-    public String addReview(int userID){
+    public String addReview(){
         System.out.println("Please provide your review.");
         review = sc.next();
         return review;
     }
 
-    public int giveRating (int userID){
+    public int giveRating (){
         do {
             System.out.println("Please provide your rating (1-5).");
             rating = sc.nextInt();
-        } while ((rating>0) && (rating<6));
+        } while (!((rating>0) && (rating<6)));
         
         return rating;
     }
