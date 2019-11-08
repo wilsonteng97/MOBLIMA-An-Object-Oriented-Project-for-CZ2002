@@ -1,25 +1,28 @@
 package View;
-
+    
 public abstract class View {
     
-    public View prevView;  
+    public View previousView;  
 
     protected void destroy() {
-        if (prevView == null) 
-        	System.exit(1);  
-        else prevView.start();
+        if (previousView == null)
+        {
+            System.exit(1);  
+        } 
+        else 
+            previousView();
     }
 
-    protected void intent(View v, View u) {
-        u.prevView = v;
-        u.start();
+    protected void intent(View currentView, View newView) {
+        newView.previousView = currentView;
+        newview();
     }
 
     /**
      * This method is to get the last {@code View} before this.
      * @return the last {@code View}
      */
-    protected View getPrevView() {
-        return prevView;
+    protected View getPreviousView() {
+        return previousView;
     }
 }
