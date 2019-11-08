@@ -5,7 +5,7 @@ public class AdminView implements View{
 	private boolean loggedIn = false;
 	private String adminName;
 	private String password;
-	public StaffView() {
+	public AdminView() {
 		if(loggedIn == false)
 		{
 			adminlogin();
