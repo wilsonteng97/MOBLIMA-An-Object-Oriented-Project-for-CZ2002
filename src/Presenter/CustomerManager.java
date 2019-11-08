@@ -1,5 +1,9 @@
 package Presenter;
 
+import Model.Customer;
+import Model.Movie;
+import Model.Cinema;
+
 public class CustomerManager {
     String [] cinemaList = new String();
     String [] top5 = new String();
@@ -15,8 +19,9 @@ public class CustomerManager {
         return cinemaList;
     }
 
-    public String getCinemaByID(int cinemaID) {
-        return cinema;
+    public String getCinemaByID() {
+        Cinema CustCheckID = new Cinema();
+        return CustCheckID.getCinemaID();
     }
 
     public String [] getTop5RankingRating (){
