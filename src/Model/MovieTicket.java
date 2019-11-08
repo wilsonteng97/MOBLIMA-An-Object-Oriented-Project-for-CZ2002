@@ -11,9 +11,9 @@ public class MovieTicket implements Serializable {
 	private ShowTime showTime;
 	private Booking booking;
 	private String seatNo;
-	private Float price;
+	private Double price;
 	
-	public MovieTicket(TicketType ticketType, ShowTime showTime, String seatNo, float price) {
+	public MovieTicket(TicketType ticketType, ShowTime showTime, String seatNo, Double price) {
 		this.movieTicketID = -1;
 		this.ticketType = ticketType;
 		this.showTime = showTime;
@@ -63,10 +63,10 @@ public class MovieTicket implements Serializable {
 	}
 	
 	// price
-	public float getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 }

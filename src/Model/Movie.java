@@ -3,6 +3,7 @@ package Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.StringBuilder;
 
 import Model.Movie;
 import Model.ShowTime;
@@ -175,7 +176,22 @@ public class Movie implements Serializable{
 	
 	// Other Methods
 	public String toString() {
-		return title;
+		StringBuilder result = new StringBuilder();
+		result.append("(1)"); result.append(this.getMovieID()); result.append("\n");
+		result.append("(2)"); result.append(this.getTitle()); result.append("\n");
+		result.append("(3)"); result.append(this.getAgeRestriction()); result.append("\n");
+		result.append("(4)"); result.append(this.getType()); result.append("\n");
+		result.append("(5)"); result.append(this.getStatus()); result.append("\n");
+		result.append("(6)"); result.append(this.getOpening()); result.append("\n");
+		result.append("(7)"); result.append(this.getRunTime()); result.append("\n");
+		result.append("(8)"); result.append(this.getSynopsis()); result.append("\n");
+		result.append("(9)"); result.append(this.isBlockBuster()); result.append("\n");
+		result.append("(10)"); result.append(this.getTotalSales()); result.append("\n");
+		result.append("(11)"); result.append(this.getLanguageList()); result.append("\n");
+		result.append("(12)"); result.append(this.getDirectorList()); result.append("\n");
+		result.append("(13)"); result.append(this.getCastList()); result.append("\n");
+		result.append("(14)"); result.append(this.getShowTimes());
+		return result.toString();
 	}
 	public boolean equals(Object o) {
 		Movie movie = (Movie)o;

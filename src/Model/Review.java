@@ -3,36 +3,20 @@ package Model;
 import java.util.Date;
 
 public class Review {
-	private int rating;
+	private Integer rating;
 	private String synopsis;
 	private Date date;
 	private Customer customer;
 	
-	public Review (int rating, String synopsis, Date date, Customer customer) {
+	public Review (Integer rating, String synopsis, Date date, Customer customer) {
 		this.rating = rating;
 		this.synopsis = synopsis;
 		this.date = date;
 		this.customer = customer;
 	}
 	
-//	public class int rating {
-//		this.rating = rating;
-//	}
-//	
-//	public class String synopsis {
-//		this.synopsis = synopsis;
-//	}
-//	
-//	public class Date date {
-//		this.date = date;
-//	}
-//	
-//	public class setCustomer(Customer customer) {
-//		this.customer = customer;
-//	}
-	
 	//Get Methods
-	public int getRating() {
+	public Integer getRating() {
 		return this.rating;
 	}
 	
