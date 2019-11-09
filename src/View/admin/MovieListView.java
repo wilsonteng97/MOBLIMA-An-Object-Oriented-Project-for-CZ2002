@@ -1,6 +1,7 @@
 package View.admin;
 import Presenter.CinemaOperator;
 import Presenter.Presenter;
+import Presenter.AdminManager;
 import java.util.Scanner;
 
 public class MovieListView extends View{
@@ -19,7 +20,7 @@ public class MovieListView extends View{
 		while (passChoiceNumber(choice, 1, 5)) { 
 			switch (choice) {
 		        case 1:
-		            displayMovie(); //[presenter: displayMovie()]
+					getMovieList(); //[presenter: displayMovie()] actual method is getMovieList instead of displayMovie, done by KJ
 		            break;
 		        case 2:
 		            CinemaOperator.addMovie();
@@ -36,6 +37,3 @@ public class MovieListView extends View{
 		}
 	}
 }
-
-
-

@@ -13,23 +13,32 @@ public class LoginManager {
     int userID;
     String password;
 
-    private final static String userAccountListFile = "datafiles/adminAccountListFile.txt";
+    private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt"; //file that stores the login data belonging to staff
+    private final static String userAccountListFile = "datafiles/adminAccountListFile.txt"; //file that stores the login data belonging to customer
     
     public LoginManager()  {
         
     }
 
-    public void verifyUser() {
+    public boolean verifyStaff(String username, String password) {
+        Path path = Paths.get(adminAccountListFile);
+        List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+
+        for (String login_username : lines) {
+            if ((login_username == userID) && (login_username == password))
+                return true;
+            else return false;
+        }
+    }
+
+    public boolean verifyCustomer(String username, String password) {
         Path path = Paths.get(userAccountListFile);
         List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-        for (String username : lines) {
-            if ((username == userID) && (username == password)){
 
-            }
-            else{
-                System.out.println("Your username or password could be incorrect. Please try again.");
-            }
+        for (String login_username : lines) {
+            if ((login_username == userID) && (login_username == password))
+                return true;
+            else return false;
         }
-
     }
 }

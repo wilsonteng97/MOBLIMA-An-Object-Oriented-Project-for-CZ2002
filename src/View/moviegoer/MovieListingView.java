@@ -1,6 +1,7 @@
 package View.moviegoer;
 import Presenter.Presenter;
 import Presenter.AdminManager;
+import Presenter.Query;
 import java.util.Scanner;
 
 public class MovieListingView extends View{
@@ -20,7 +21,7 @@ public class MovieListingView extends View{
 		while (passChoiceNumber(choice, 1, 5)) {
 			switch (choice) {
             case 1:
-            	displayMovie(); //[presenter: displayMovie()]
+				updateMovieListing(); //[presenter: displayMovie()] correct method is updateMovieListing, done by KJ
                 break;
             case 2:
                 AdminManager.getTop5RankingSales();
@@ -29,7 +30,7 @@ public class MovieListingView extends View{
                 AdminManager.getTop5RankingRating();
                 break;
             case 4:
-                searchMovie(); //[presenter: searchMovie()]
+				passStringMovie(); //[presenter: searchMovie()] correct method is passStringMovie, done by KJ
                 break;
             case 5:
                 break;

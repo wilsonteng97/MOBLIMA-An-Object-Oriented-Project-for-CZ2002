@@ -1,5 +1,6 @@
 package View.admin;
 import Presenter.AdminManager;
+import Presenter.CinemaOperatorManager;
 import Presenter.Presenter;
 import java.util.Scanner;
 
@@ -18,13 +19,13 @@ public class SystemSettingView extends View{
 		
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (passChoiceNumber(choice, 1, 6)) { //[presenter: change passChoiceNumber() to boolean]
+		while (verifyChoiceNumber(choice, 1, 6)) { //[presenter: change passChoiceNumber() to boolean] done by KJ
 			switch (choice) {
 		        case 1:
-		            setPrice(); //[presenter: setPrice()]
+		            setMoviePrice(); //[presenter: setPrice()] done by KJ
 		            break;
 		        case 2:
-		            setHoliday(); //[presenter: setHoliday()] [model: Holiday class]
+		            setHoliday(); //[presenter: setHoliday()] [model: Holiday class] presenter portion in AdminManager done by KJ
 		            break;
 		        case 3:
 		        	AdminManager.updateAdminAccount();

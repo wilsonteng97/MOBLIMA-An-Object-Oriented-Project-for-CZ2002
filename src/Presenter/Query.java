@@ -1,13 +1,15 @@
 package Presenter;
 
 import java.text.ParseException;
-
 import javax.lang.model.util.ElementScanner6;
-
 import Model.Enums.ShowingStatus;
+import Model.Movie;
 
-public class Query
-{
+public class Query {
+    private final static String movieListFile = "datafiles/movieListFile.txt";
+    Path path_Movie = Paths.get(movieListFile);
+    List<String> movieList = Files.readAllLines(path_Movie, StandardCharsets.UTF_8);
+
     public String passSearchMovieTime(String string)
     {
         SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd hh:mm");
@@ -23,6 +25,14 @@ public class Query
             return passSearchMovieTime(string);
         }
     }
+
+    public Movie passStringMovie(String name_of_movie){
+        for (String movie : movieList){
+            if (movie == name_of_movie) return movie;
+        }
+        System.out.println("Sorry, the name of movie that you are looking for does not exist.");
+    }
+
     public static ShowingStatus passShowingStatus(String status)
     {
         status = status.toUpperCase();
