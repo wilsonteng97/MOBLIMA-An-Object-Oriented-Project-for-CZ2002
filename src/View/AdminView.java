@@ -1,4 +1,5 @@
 package View;
+import Presenter.Presenter;
 import java.util.Scanner;
 
 public class AdminView implements View{
@@ -32,24 +33,35 @@ public class AdminView implements View{
 		
 	}
 	private void displayMenu() {
-			System.out.println("Welcome, please make a selection:\n"
+		Scanner sc = new Scanner(System.in);	
+		System.out.println("Welcome, please make a selection:\n"
 					+ "(1) Modify movie listing\n"
-				+ "(2) Configure system settings\n"
-				+ "(3) Logout"
-				+ "Please enter choice");
+					+ "(2) Modify cinema listing\n"
+					+ "(3) Modify movie showtime\n"
+					+ "(4) Configure system settings\n"
+					+ "(5) Logout"
+					+ "Please enter choice");
 			int choice = sc.nextInt();
-			switch (choice) {
-            case 1:
-                intent(this, new MovieListView());
-                break;
-            case 2:
-                intent(this, new SystemSettingView());
-                break;
-            case 3:
-                loggedIn = false;
-                System.out.println("You have logged out.");
-                
-                break;
-        }
+			while (passChoiceNumber(choice, 1, 5)) { 
+				switch (choice) {
+	            case 1:
+	                intent(this, new MovieListView());
+	                break;
+	            case 2:
+	                intent(this, new CinemaListView());
+	                break;
+	            case 3:
+	                intent(this, new AdminShowtimeView());
+	                break;
+	            case 4:
+	                intent(this, new SystemSettingView());
+	                break;
+	            case 5:
+	                loggedIn = false;
+	                System.out.println("You have logged out.");
+	                
+	                break;
+				}
+			}
 	}
 }

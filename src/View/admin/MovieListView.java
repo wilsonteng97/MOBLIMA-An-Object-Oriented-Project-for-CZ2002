@@ -1,5 +1,6 @@
 package View.admin;
 import Presenter.CinemaOperator;
+import Presenter.Presenter;
 import java.util.Scanner;
 
 public class MovieListView extends View{
@@ -14,7 +15,7 @@ public class MovieListView extends View{
 				+ "(4) Remove Movie\n"
 				+ "(5) Return\n");
 		System.out.println("Enter the number of your choice: ");
-		choice = sc.nextInt();
+		int choice = sc.nextInt();
 		while (passChoiceNumber(choice, 1, 5)) { 
 			switch (choice) {
 		        case 1:

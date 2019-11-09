@@ -1,5 +1,6 @@
 package View.admin;
 import Presenter.AdminManager;
+import Presenter.Presenter;
 import java.util.Scanner;
 
 public class SystemSettingView extends View{
@@ -16,7 +17,7 @@ public class SystemSettingView extends View{
 				+ "(6) Return\n");
 		
 		System.out.println("Enter the number of your choice: ");
-		choice = sc.nextInt();
+		int choice = sc.nextInt();
 		while (passChoiceNumber(choice, 1, 6)) { //[presenter: change passChoiceNumber() to boolean]
 			switch (choice) {
 		        case 1:
