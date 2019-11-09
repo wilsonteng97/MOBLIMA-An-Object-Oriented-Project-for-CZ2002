@@ -5,19 +5,20 @@ import java.util.Scanner;
 
 public class Presenter
 {
-    public static int passChoiceNumber(int min, int max)
+    public static boolean verifyChoiceNumber(int choice, int min, int max)
     {
         Scanner sc = new Scanner(System.in);
-        int choice;
         choice = sc.nextInt();
+        sc.close();
         if(choice < min || choice > max)
         {
             System.out.println("Incorrect input, please try again");
-            return passChoice(min, max);
+            //verifyChoiceNumber(choice, min, max);
+            return false;
         }
         else
         {
-            return choice;
+            return true;
         }
     }
     public static String passChoiceString(String... string)
@@ -28,6 +29,7 @@ public class Presenter
         }
         Scanner sc = new Scanner(System.in);
         String choice = sc.nextLine();
+        sc.close();
         return choice;
     }
 
