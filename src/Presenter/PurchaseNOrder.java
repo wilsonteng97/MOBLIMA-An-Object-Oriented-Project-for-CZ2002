@@ -3,30 +3,28 @@ package Presenter;
 public class PurchaseNOrder {
 	boolean confirm = true;
 	int seatNum;
-	
-    public PurchaseNOrder(){
-
+  public PurchaseNOrder(){
     }
+  
+  public void passAge(int userID){
 
-    public void passAge(int userID){
+  }
 
-    }
-
-    public int readSeat(){
+  public int readSeat(){
         
 		return seatNum;
-    }
+  }
 
-    public void readTheatre(){
+  public void readTheatre(){
 
-    }
-
-    public boolean confirmOrder(){
+  }
+  
+  public boolean confirmOrder(){
         
 		return confirm ;
-    }
+  }
 
-    public void passTID(){
+  public void passTID(){
         
-    }
+  }
 }

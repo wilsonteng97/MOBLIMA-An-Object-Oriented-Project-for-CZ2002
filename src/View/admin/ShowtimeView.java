@@ -1,5 +1,7 @@
 package View.admin;
-import Presenter.CinemaOperato;
+
+import Presenter.CinemaOperator;
+import Presenter.Presenter;
 import java.util.Scanner;
 
 public class ShowtimeView extends View{
@@ -17,7 +19,8 @@ public class ShowtimeView extends View{
 				+ "(5) Return\n");
 		System.out.println("Enter the number of your choice: ");
 		choice = sc.nextInt();
-		while (passChoiceNumber(choice, 1, 5)) { //[presenter: change passChoiceNumber() to boolean]
+
+		while (verifyChoiceNumber(choice, 1, 5)) { //[presenter: change passChoiceNumber() to boolean] Done by KJ
 			switch (choice) {
 		        case 1:
 		            displayShowtime(); //[presenter: displayShowtime()]
@@ -37,6 +40,3 @@ public class ShowtimeView extends View{
 		}
 	}
 }
-
-
-

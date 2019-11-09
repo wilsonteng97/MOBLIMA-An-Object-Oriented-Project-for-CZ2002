@@ -1,8 +1,9 @@
 package View.moviegoer;
 import Model.Customer;
 import Model.Cinema;
-import Model.Seat
-import Presenter. Presenter; 
+import Model.Seat;
+import Presenter.Presenter;
+import Presenter.Query;
 import java.util.Scanner;
 
 public class BookingView extends View{
@@ -30,8 +31,9 @@ public class BookingView extends View{
     			+ "(9) Print Booking Details"
         		+ "(10) Return\n");
     	System.out.println("Enter the number of your choice: ");
-		choice = sc.nextInt();
-		while (passChoiceNumber(choice, 1, 10)) { //[presenter: change passChoiceNumber() to boolean]
+		  choice = sc.nextInt();
+
+		while (verifyChoiceNumber(choice, 1, 10)) { //[presenter: change passChoiceNumber() to boolean] Done by KJ
 			switch(choice) {
 			case 1:
 				String cinemaIn = sc.next();
@@ -54,22 +56,23 @@ public class BookingView extends View{
 				seat.setSeatNo(seatNoIn);
 				break;
 			case 6:
-				String nameIn = sc.next()
+				String nameIn = sc.next();
 				customer.setName(nameIn);
 				break;
 			case 7:
-				String mobileIn = sc.next()
+				String mobileIn = sc.next();
 				customer.setMobileNo(mobileIn);
 				break;
 			case 8:
-				String emailIn = sc.next()
+				String emailIn = sc.next();
 				customer.setEmail(emailIn);
 				break;
 			case 9:
 				printBookingDetail();
 			case 10:
 				break;
-		}
+			  }
+		  }
     }
 	//[model/presenter: save customer to database?]
 	
@@ -94,6 +97,3 @@ public class BookingView extends View{
         System.out.println("Ticket price: " + computePrice(price) + " SGD (Excl. GST)");
     }
 }
-
-
-
