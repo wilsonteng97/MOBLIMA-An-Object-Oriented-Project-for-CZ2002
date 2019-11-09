@@ -1,5 +1,14 @@
 package View;
+    
+public abstract class View {
+    
+    public View previousView;  
 
-public interface View {
-	public void displayMenu();
+
+
+    protected void intent(View currentView, View newView) {
+        newView.previousView = currentView;
+        newview();
+    }
+
 }

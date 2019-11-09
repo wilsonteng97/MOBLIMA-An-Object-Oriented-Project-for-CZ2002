@@ -1,13 +1,28 @@
 package View;
+import java.util.Scanner;
 
-public class StarterView implements View{
+public class StarterView extends View{
 	public StarterView() {
-		System.out.println("Welcome!");
+		System.out.println("============================\n"
+				+ "|          MOBLIMA         |\n"
+				+ "|   BY CZ2002 SS8 Group5   |\n"
+				+ "============================");
+		displayMenu();
 	} 
 	private void displayMenu() {
-		System.out.println("(1) Staff\n"
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Menu\n"
+				+ "----\n"
+				+ "(1) Staff\n"
 				+ "(2) MovieGoer\n"
-				+ "(3) Showtime\n"
-				+ "(4) CinemaList");
+				+ "Please enter choice");
+		int choice = sc.nextInt();
+		switch (choice) {
+        case 1:
+            intent(this, new AdminView());
+            break;
+        case 2:
+            intent(this, new MovieGoerView());
+            break;
 	}
 }

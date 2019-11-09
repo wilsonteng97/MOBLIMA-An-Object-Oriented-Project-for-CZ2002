@@ -31,7 +31,8 @@ public class BookingView extends View{
     			+ "(9) Print Booking Details"
         		+ "(10) Return\n");
     	System.out.println("Enter the number of your choice: ");
-		choice = sc.nextInt();
+		  choice = sc.nextInt();
+
 		while (verifyChoiceNumber(choice, 1, 10)) { //[presenter: change passChoiceNumber() to boolean] Done by KJ
 			switch(choice) {
 			case 1:
@@ -70,8 +71,8 @@ public class BookingView extends View{
 				printBookingDetail();
 			case 10:
 				break;
-			}
-		}
+			  }
+		  }
     }
 	//[model/presenter: save customer to database?]
 	
