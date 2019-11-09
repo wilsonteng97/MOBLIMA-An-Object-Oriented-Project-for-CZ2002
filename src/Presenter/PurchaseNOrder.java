@@ -1,6 +1,9 @@
 package Presenter;
 
 public class PurchaseNOrder {
+	boolean confirm = true;
+	int seatNum;
+	
     public PurchaseNOrder(){
 
     }
@@ -10,7 +13,8 @@ public class PurchaseNOrder {
     }
 
     public int readSeat(){
-        return seatNum;
+        
+		return seatNum;
     }
 
     public void readTheatre(){
@@ -18,7 +22,8 @@ public class PurchaseNOrder {
     }
 
     public boolean confirmOrder(){
-        return confirm;
+        
+		return confirm ;
     }
 
     public void passTID(){
