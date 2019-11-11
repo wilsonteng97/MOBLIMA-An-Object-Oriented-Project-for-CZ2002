@@ -38,15 +38,15 @@ public class BookingView extends View{
 			switch(choice) {
 			case 1:
 				String cinemaIn = sc.next();
-				this.cinema = passStringCinema(cinemaIn); //[presenter: change input from string to Cinema]
+				this.cinema = passStringCinema(cinemaIn); //[presenter: change input from string to Cinema] done by KJ
 				break;
 			case 2:
 				String movieIn = sc.next();
 				this.movie = passStringMovie(movieIn); //[presenter: change input from string to Movie] done by KJ
 				break;
 			case 3:
-				double showtimeIn = sc.next();
-				this.showtime = passDoubleShowtime(showtimeIn); //[presenter: change input from double to Showtime]
+				double showtimeIn = sc.nextDouble();
+				this.showtime = passDoubleShowtime(showtimeIn); //[presenter: change input from double to Showtime] done by KJ
 				break;
 			case 4:
 				Seat seatIn = selectSeat(); //[presenter: selectSeat(), return Seat seat]

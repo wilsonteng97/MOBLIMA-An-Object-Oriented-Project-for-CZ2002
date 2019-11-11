@@ -10,6 +10,14 @@ public class Query {
     Path path_Movie = Paths.get(movieListFile);
     List<String> movieList = Files.readAllLines(path_Movie, StandardCharsets.UTF_8);
 
+    private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
+    Path path_Cinema = Paths.get(cinemaListFile);
+    List<String> cinemaList = Files.readAllLines(path_Cinema, StandardCharsets.UTF_8);
+
+    private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
+    Path path_Showtime = Paths.get(showtimeListFile);
+    List<String> showtimeList = Files.readAllLines(path_Showtime, StandardCharsets.UTF_8);
+
     public String passSearchMovieTime(String string)
     {
         SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd hh:mm");
@@ -31,6 +39,20 @@ public class Query {
             if (movie == name_of_movie) return movie;
         }
         System.out.println("Sorry, the name of movie that you are looking for does not exist.");
+    }
+
+    public Cinema passStringCinema(String cinema_ID){
+        for (String cinema : cinemaList){
+            if (cinema == cinema_ID) return cinema;
+        }
+        System.out.println("Sorry, the cinema that you are looking for does not exist.");
+    }
+
+    public Showtime passDoubleShowtime(double showtimeIn){
+        for (String showtime : showtimeList){
+            if (showtime == showtimeIn) return showtime;
+        }
+        System.out.println("Sorry, the Showtime that you are looking for does not exist.");
     }
 
     public static ShowingStatus passShowingStatus(String status)
