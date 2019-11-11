@@ -1,5 +1,7 @@
 package Presenter;
 
+import Model.Review;
+
 public class ReviewManager {
     int rating;
     String review;
@@ -13,7 +15,7 @@ public class ReviewManager {
         
     }
 
-    public void addReview(Movie movie){
+    public Review addReview(Movie movie){
         System.out.println("Please provide your review.");
         review = sc.next();
         reviewList.get(movie).add(review);
@@ -37,5 +39,9 @@ public class ReviewManager {
 
     public double getMovieRating(Movie movie){
         return movie.getMovieRating();
+    }
+
+    public Review[] displayReview(Movie movie){
+        return all_reviews;
     }
 }

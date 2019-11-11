@@ -24,7 +24,7 @@ public class CinemaListView extends View{
 		        case 2:
 		        	System.out.println("Enter the cinema you want to add: ");
 		        	String cinemaIn = sc.next();
-		        	CinemaOperator.addCinema(passStringCinema(cinemaIn)); //[presenter: change input from string to Cinema]
+		        	CinemaOperator.addCinema(passStringCinema(cinemaIn)); //[presenter: change input from string to Cinema] done by KJ
 		            break;
 		        case 3:
 		        	System.out.println("Enter the cinema you want to remove: ");

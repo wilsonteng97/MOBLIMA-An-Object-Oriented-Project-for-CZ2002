@@ -55,6 +55,13 @@ public class Query {
         System.out.println("Sorry, the Showtime that you are looking for does not exist.");
     }
 
+    public Showtime displayShowtime(Movie movie_name){
+        for (String showtime : showtimeList){
+            if (movie == movie_name) return showtime;
+        }
+        System.out.println("Sorry, the Showtime that you are looking for does not exist.");
+    }
+
     public static ShowingStatus passShowingStatus(String status)
     {
         status = status.toUpperCase();

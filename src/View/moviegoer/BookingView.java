@@ -4,6 +4,7 @@ import Model.Cinema;
 import Model.Seat;
 import Presenter.Presenter;
 import Presenter.Query;
+import Presenter.PurchaseNOrder;
 import java.util.Scanner;
 
 public class BookingView extends View{
@@ -49,7 +50,7 @@ public class BookingView extends View{
 				this.showtime = passDoubleShowtime(showtimeIn); //[presenter: change input from double to Showtime] done by KJ
 				break;
 			case 4:
-				Seat seatIn = selectSeat(); //[presenter: selectSeat(), return Seat seat]
+				Seat seatIn = selectSeat(); //[presenter: selectSeat(), return Seat seat] done by KJ
 				if (seatAvailable(seatIn)) //[presenter: seatAvailable(Seat seat)check whether the seat is available]
 					this.seat=seatIn;
 				else

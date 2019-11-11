@@ -1,18 +1,28 @@
 package Presenter;
 
+import Model.Seat;
+import Model.Cinema;
+
 public class PurchaseNOrder {
 	boolean confirm = true;
-	int seatNum;
+  String seatNum;
+  Seat seat = new Seat();
+
   public PurchaseNOrder(){
-    }
+  }
   
   public void passAge(int userID){
 
   }
 
-  public int readSeat(){
-        
+  public String readSeat(Seat seat){
+    
 		return seatNum;
+  }
+
+  public void selectSeat(Cinema cinema){
+    
+    return seat;
   }
 
   public void readTheatre(){

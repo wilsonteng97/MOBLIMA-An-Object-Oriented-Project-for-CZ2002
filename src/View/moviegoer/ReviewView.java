@@ -24,16 +24,16 @@ public class ReviewView extends View{
 		while (verifyChoiceNumber(choice, 1, 5)) { //[presenter: change passChoiceNumber() to boolean] done by KJ
 			switch(choice) {
 			case 1:
-				ReviewManager.addReview(movie); //[presenter: change ReviewManager.addReview() to static, add in parameter]
+				ReviewManager.addReview(movie); //[presenter: change ReviewManager.addReview() to static, add in parameter] done by KJ
 				break;
 			case 2:
-				ReviewManager.displayReview(movie); //[presenter: add method ReviewManager.displayReview(Movie movie)]
+				ReviewManager.displayReview(movie); //[presenter: add method ReviewManager.displayReview(Movie movie)] done by KJ
 				break;
 			case 3:
-				ReviewManager.giveRating(movie); //[presenter: same]
+				ReviewManager.giveRating(movie); //[presenter: same] done by KJ
 				break;
 			case 4:
-				ReviewManager.displayRating(movie); //[presenter: same]
+				ReviewManager.getMovieRating(movie); //[presenter: same] Correct method is getMovieRating. done by KJ
 				break;
 			case 5:
 				break;
