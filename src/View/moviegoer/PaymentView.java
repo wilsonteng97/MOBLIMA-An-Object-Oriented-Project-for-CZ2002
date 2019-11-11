@@ -25,7 +25,7 @@ public class PaymentView extends View{
     	System.out.println("(1) Confirm Payment\n"
     			+ "(2) Cancel Payment");
 		int choice = sc.nextInt();
-		while (passChoiceNumber(choice, 1, 2)) { 
+		while (verifyChoiceNumber(choice, 1, 2)) { 
 			switch(choice) {
 			case 1:
 				saveBooking(); //[presenter: save the booking to booking history]

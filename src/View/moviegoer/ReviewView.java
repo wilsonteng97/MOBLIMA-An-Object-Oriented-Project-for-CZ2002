@@ -21,7 +21,7 @@ public class ReviewView extends View{
     			+ "(5) Return\n");
     	System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (passChoiceNumber(choice, 1, 5)) { //[presenter: change passChoiceNumber() to boolean]
+		while (verifyChoiceNumber(choice, 1, 5)) { //[presenter: change passChoiceNumber() to boolean] done by KJ
 			switch(choice) {
 			case 1:
 				ReviewManager.addReview(movie); //[presenter: change ReviewManager.addReview() to static, add in parameter]

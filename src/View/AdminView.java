@@ -43,7 +43,7 @@ public class AdminView implements View{
 					+ "(5) Logout"
 					+ "Please enter choice");
 			int choice = sc.nextInt();
-			while (passChoiceNumber(choice, 1, 5)) { 
+			while (verifyChoiceNumber(choice, 1, 5)) { 
 				switch (choice) {
 	            case 1:
 	                intent(this, new MovieListView());

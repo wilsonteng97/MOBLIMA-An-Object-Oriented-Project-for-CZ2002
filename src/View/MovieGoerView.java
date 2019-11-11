@@ -17,7 +17,7 @@ public class MovieGoerView extends View{
 				+ "(6) Return");
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (passChoiceNumber(choice, 1, 3)) { 
+		while (verifyChoiceNumber(choice, 1, 3)) { 
 			switch (choice) {
 	        case 1:
 	            intent(this, new MovieListingView());
