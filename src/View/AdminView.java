@@ -3,11 +3,11 @@ import Presenter.Presenter;
 import Presenter.LoginManager;
 import java.util.Scanner;
 
-public class AdminView implements View{
+public class AdminView extends View{
 	private boolean loggedIn = false;
 	private String adminName;
 	private String password;
-	public StaffView() {
+	public AdminView() {
 		if(loggedIn == false)
 			adminlogin();
 		else

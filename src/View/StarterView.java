@@ -1,5 +1,10 @@
 package View;
+
+import View.*;
+
 import java.util.Scanner;
+
+
 
 public class StarterView extends View{
 	public StarterView() {
@@ -25,4 +30,5 @@ public class StarterView extends View{
             intent(this, new MovieGoerView());
             break;
 	}
+}
 }
