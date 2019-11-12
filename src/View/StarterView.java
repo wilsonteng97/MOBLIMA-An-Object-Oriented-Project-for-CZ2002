@@ -11,6 +11,7 @@ public class StarterView extends View{
 	} 
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
+		System.out.println("Hello, Welcome to MOBLIMA!");
 		System.out.println("Menu\n"
 				+ "----\n"
 				+ "(1) Staff\n"
