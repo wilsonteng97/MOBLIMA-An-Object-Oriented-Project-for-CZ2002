@@ -39,7 +39,8 @@ public class SystemSettingView extends View{
 		        case 5:
 		        	AdminManager.getTop5RankingSales();
 		        	break;
-		        case 6:
+				case 6:
+				
 		        	break;
 			}
 		}

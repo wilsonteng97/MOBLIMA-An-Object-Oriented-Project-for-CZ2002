@@ -1,8 +1,8 @@
 package View.admin;
 import View.View;
 import Presenter.CinemaOperator;
-import Presenter.Presenter;
-import Presenter.AdminManager;
+import static Presenter.Presenter.*;
+import static Presenter.AdminManager.*;
 
 import java.lang.annotation.Inherited;
 import java.util.Scanner;

@@ -57,7 +57,8 @@ public class AdminView extends View{
 					+ "(5) Logout"
 					+ "Please enter choice");
 			int choice = sc.nextInt();
-			while (verifyChoiceNumber(choice, 1, 5)) { 
+			if (verifyChoiceNumber(choice, 1, 5)) 
+			{ 
 				switch (choice) {
 	            case 1:
 	                intent(this, new MovieListView());
@@ -74,9 +75,13 @@ public class AdminView extends View{
 	            case 5:
 	                loggedIn = false;
 	                System.out.println("You have logged out.");
-	                destroy();
+	                end();
 	                break;
 				}
+			}
+			else
+			{
+				displayMenu();
 			}
 	}
 }

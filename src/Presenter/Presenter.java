@@ -9,7 +9,7 @@ public class Presenter
     {
         if(choice < min || choice > max)
         {
-            System.out.println("Incorrect input, please try again");
+            System.out.println("Incorrect input, please try again\n");
             //verifyChoiceNumber(choice, min, max);
             return false;
         }
