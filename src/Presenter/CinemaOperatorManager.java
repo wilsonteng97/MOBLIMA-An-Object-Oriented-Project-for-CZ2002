@@ -72,9 +72,9 @@ public class CinemaOperatorManager {
     }
 
     public static void addCinema(Cinema cinema){
-        if(cinemaList.get(cinema.getCinemaOperator()) == NULL)
-            cinemaList.put(cinema.getCinemaOperator(), new ArrayList<>());
-        cinemaList.get(cinema.getCinemaOperator().add(cinema));
+        if(cinemaList.get(cinema.getCinemaID()) == null)
+            cinemaList.put(cinema.getCinemaID(), new ArrayList<>());
+        cinemaList.get(cinema.getCinemaID().add(cinema));
         updateCinemaList();
     }
 

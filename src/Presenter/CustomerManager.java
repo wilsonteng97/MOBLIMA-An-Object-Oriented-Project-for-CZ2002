@@ -5,12 +5,15 @@ import Model.Movie;
 import Model.Cinema;
 
 public class CustomerManager {
-    String [] cinemaList = new String();
-    String [] top5 = new String();
-    String [] movieList = new String();
+    String[] cinemaList = new String();
+    String[] top5 = new String();
+    String[] movieList = new String();
     String cinema, movieName;
     double averageRating;
 
+    private getAverageRating() {
+    	
+    }
     public CustomerManager() {
 
     }
@@ -31,7 +34,7 @@ public class CustomerManager {
     public int getMovieRating(String movieName){
         return averageRating;
     }
-
+    
     public String [] getMovie(){
         return movieList;
     }
