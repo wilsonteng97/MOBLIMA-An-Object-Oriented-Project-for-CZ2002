@@ -3,6 +3,7 @@ import View.View;
 import Presenter.CinemaOperator;
 import static Presenter.Presenter.*;
 import static Presenter.AdminManager.*;
+import static Presenter.Query.*;
 
 import java.lang.annotation.Inherited;
 import java.util.Scanner;
