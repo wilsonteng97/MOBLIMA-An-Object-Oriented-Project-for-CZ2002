@@ -4,55 +4,41 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Scanner;
 
 import javax.lang.model.util.ElementScanner6;
 
 import Model.Cinema;
 import Model.CinemaOperator;
+import Model.Movie;
 
 public class AdminManager extends DataManager
 {
+    Scanner sc = new Scanner(System.in);
+    double ticket_price;
+
     private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
     private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
     private final static String reviewListFile = "datafiles/reviewListFile.txt";
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
     private final static String movieListFile = "datafiles/movieListFile.txt";
 
-    private static ArrayList<Admin> adminAccountList;
-    private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
-    private static HashMap<Movie, ArrayList<Review>> reviewList;
-    private static HashMap<CinemaOperator, ArrayList<Cinema>> cinemaList;
-    private static ArrayList<Movie> movieList;
+    private static ArrayList<Staff> adminAccountList;
+    private static Hashmap<Movie, ArrayList<Showtime>> showtimeList;
+    private static Hashmap<Movie, ArrayList<ReviewList>> reviewList;
+    private static Hashmap<CinemaOperator, ArrayList<Cinema>> cinemaList;
+    private static Hashmap<Movie> movieList;
 
-    public static void updateAdminAccount()
-    {
-       writeDataFile(adminAccountListFile, adminAccountList);
+    // =========================Movie Price=========================
+    public double setMoviePrice(){
+        System.out.println("How much do you want to charge?");
+        return ticket_price = sc.nextDouble();
     }
 
-    public static void updateShowtime() 
-    {
-       writeDataFile(showtimeListFile, showtimeList);
+    public void setHoliday(){
+        System.out.println("Please set the dates that will charge at holiday rates.");
     }
 
-    public static void updateReviewList() 
-    {
-        writeDataFile(reviewListFile, reviewList);
-    }
-
-    public static void updateCinemaList() 
-    {
-        writeDataFile(cinemaListFile, cinemaList);
-    }
-
-    public static void updateMovieListing() 
-    {
-        writeDataFile(movieListFile, movieList);
-    }
-
+    // =======================Admin Account=======================
     public static void readAdminAccount()
     {
         if(readDataFile(adminAccountListFile) == null)
@@ -61,22 +47,52 @@ public class AdminManager extends DataManager
         }
         else
         {
-            adminAccountList = (ArrayList<Admin>) readDataFile(adminAccountListFile);
+            adminAccountList = (ArrayList<Staff>) readDataFile(adminAccountListFile);
         }
     }
 
-    public static void readShowtime()
-    {
-        if(readDataFile(showtimeListFile) == null)
-        {
-            showtimeList = new Hashmap<>();
-        }
-        else
-        {
-            showtimeList = (Hashmap<Movie, ArrayList<Showtime>>) readDataFile(showtimeListFile);
-        }
+    public static void updateAdminAccount(){
+       writeDataFile(adminAccountListFile, adminAccountList);
     }
 
+    // =======================System Setting=======================
+
+    // =========================Top 5 Movies=========================
+    public static ArrayList<Movie> getTop5RankingRating(){
+        ArrayList<Movie> top5rating = new ArrayList();
+
+        for(Movie movie: movieList)
+        {
+            top5rating.add(movie);
+        }
+
+        Collections.sort(top5rating, new Comparator<Movie>()
+        {
+            public int compare(Movie m1, Movie m2)
+            {
+                if(m1.getMovieRating() > m2.getMovieRating())
+                {
+                    return 1;
+                }
+                else if(m1.getMovieRating() < m2.getMovieRating())
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 0;
+                }  
+            }
+        });
+        while(top5rating.size() > 5)
+        {
+            top5rating.remove(5);
+        }
+
+        return top5rating;
+    }
+
+    // =========================Review Lists=========================
     public static void readReviewList()
     {
         if(readDataFile(reviewListFile) == null)
@@ -89,61 +105,26 @@ public class AdminManager extends DataManager
         }
     }
 
-    public static void readCinemaList()
+    public static void updateReviewList() 
     {
-        if(readDataFile(cinemaListFile) == null)
-        {
-            cinemaList = new Hashmap<>();
-        }
-        else
-        {
-            cinemaList = (Hashmap<CinemaOperator, ArrayList<Cinema>>) readDataFile(cinemaListFile);
-        }
+        writeDataFile(reviewListFile, reviewList);
     }
 
-    public static void readMovieList()
+    public static ArrayList<Review> getReviewList(Movie movie)
     {
-        if(readDataFile(movieListFile) == null)
-        {
-            movieList = new ArrayList<>();
-        }
-        else
-        {
-            movieList = (ArrayList<Movie>) readDataFile(movieListFile);
-        }
+        return reviewList.get(movie);
     }
 
-    public static void addCinema(Cinema cinema)
+    // =========================Movie Sales=========================
+    public int getMovieSales(Movie movie)
     {
-        if(cinemaList.get(cinema.getCinemaOperator()) == NULL)
-        {
-            cinemaList.put(cinema.getCinemaOperator(), new ArrayList<>());
-        }
-        cinemaList.get(cinema.getCinemaOperator().add(cinema));
-        updateCinemaList();
+        return movie.getTotalSales();
     }
-
-    public static void removeCinema(Cinema cinema)
-    {
-        cinemaList.get(cinema.getCinemaOperator().remove(cinema));
-        updateCinemaList();
-    }
-
+    
+    // ====================Get Lists of Entitites====================  
     public static ArrayList<Cinema> getCinemaList(CinemaOperator cinemaOperator)
     {
         return cinemaList.get(cinemaOperator);
-    }
-
-    public static void addMovie(Movie movie)
-    {
-        movieList.add(movie);
-        updateMovieListing();
-    }
-
-    public static void removeMovie(Movie movie)
-    {
-        movieList.remote(movie);
-        updateMovieListing();
     }
 
     public static ArrayList<Movie> getMovieList()
@@ -151,39 +132,9 @@ public class AdminManager extends DataManager
         return movieList;
     }
 
-
-    public static void addShowtime(Showtime showtime)
-    {
-        showtimeList.get(showtime.getMovie()).add(showtime);
-        updateShowtime();
-    }
-
-    public static void removeShowtime(Showtime showtime)
-    {
-        showtimeList.get(showtime.getMovie()).remove(showtime);
-        updateShowtime();
-    }
-
     public static ArrayList<Showtime> getShowtimeList(Movie movie)
     {
         return showtimeList.get(movie);
-    }
-
-    public static void addReview(Movie movie, Review review)
-    {
-        reviewList.get(movie).add(review);
-        updateReviewList();
-    }
-
-    public static void removeReview(Movie movie, Review review)
-    {
-        reviewList.get(movie).remove(review);
-        updateReviewList();
-    }
-
-    public static ArrayList<Review> getReviewList(Movie movie)
-    {
-        return reviewList.get(movie);
     }
 
     public static ArrayList<Movie> getTop5RankingSales()
@@ -220,53 +171,4 @@ public class AdminManager extends DataManager
 
         return top5sales;
     }
-
-    public static ArrayList<Movie> getTop5RankingRating()
-    {
-        ArrayList<Movie> top5rating = new ArrayList();
-
-        for(Movie movie: movieList)
-        {
-            top5rating.add(movie);
-        }
-
-        Collections.sort(top5rating, new Comparator<Movie>()
-        {
-            public int compare(Movie m1, Movie m2)
-            {
-                if(m1.getMovieRating() > m2.getMovieRating())
-                {
-                    return 1;
-                }
-                else if(m1.getMovieRating() < m2.getMovieRating())
-                {
-                    return -1;
-                }
-                else
-                {
-                    return 0;
-                }  
-            }
-        });
-        while(top5rating.size() > 5)
-        {
-            top5rating.remove(5);
-        }
-
-        return top5rating;
-    }
-
-
-
-    public int getMovieSales(Movie movie)
-    {
-        return movie.getTotalSales();
-    }
-
-    public double getMovieRating(Movie movie)
-    {
-        return movie.getMovieRating();
-    }
-
-
 }

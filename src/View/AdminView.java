@@ -1,38 +1,49 @@
 package View;
-import Presenter.Presenter;
-import View.admin.AdminShowtimeView;
-import View.admin.CinemaListView;
+//import View.*;
+
 import View.admin.MovieListView;
+import View.admin.CinemaListView;
+import View.admin.AdminShowtimeView;
 import View.admin.SystemSettingView;
 
+import static Presenter.Presenter.*;
+import static Presenter.LoginManager.*;
 import java.util.Scanner;
 
-public class AdminView implements View{
-	private boolean loggedIn = false;
-	private String adminName;
-	private String password;
+import Presenter.LoginManager;
+
+public class AdminView extends View{
+	private boolean loggedIn;
+
 	public AdminView() {
+		loggedIn = true;
+	}
+	
+	@Override
+	protected void starter()
+	{
 		if(loggedIn == false)
 			adminLogin();
 		else
 			displayMenu();
 	}
-	
+
 	private void adminLogin() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please login to access staff system");
 		System.out.println("Enter Username: ");
-		adminName = sc.next();
+		String adminName = sc.next();
 		System.out.println("Enter Password: ");
-		password = sc.next();
-		verifyStaff(adminName,password); //[presenter]
+		String password = sc.next();
+		//verifyStaff(adminName, password); //[presenter] Done by KJ
 		if (verifyStaff(adminName, password)) {
             loggedIn = true;
             System.out.println("Login successful!");
             displayMenu();
         }
         else {
-            System.out.println("Invalid username or password.");
+            System.out.println("Your username or password could be incorrect.");
+            destroy();
         }
 		
 	}
@@ -46,7 +57,8 @@ public class AdminView implements View{
 					+ "(5) Logout"
 					+ "Please enter choice");
 			int choice = sc.nextInt();
-			while (passChoiceNumber(choice, 1, 5)) { 
+			if (verifyChoiceNumber(choice, 1, 5)) 
+			{ 
 				switch (choice) {
 	            case 1:
 	                intent(this, new MovieListView());
@@ -63,9 +75,13 @@ public class AdminView implements View{
 	            case 5:
 	                loggedIn = false;
 	                System.out.println("You have logged out.");
-	                
+	                end();
 	                break;
 				}
+			}
+			else
+			{
+				displayMenu();
 			}
 	}
 }

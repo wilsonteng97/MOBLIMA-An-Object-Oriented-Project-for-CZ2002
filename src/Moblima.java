@@ -1,4 +1,4 @@
-import View.StarterView;
+import View.*;
 
 public class Moblima extends View 
 {

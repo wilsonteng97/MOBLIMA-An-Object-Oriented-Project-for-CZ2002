@@ -1,21 +1,18 @@
 package View.moviegoer;
  
 import java.util.Scanner;
-
-
-import Model.Booking;
-import View.View;
+import Presenter.BookingManager;
 
 public class BookingHistoryView extends View{
 	
-    public void BookingView() {
+    public BookingView() {
     	displayMenu();
 	}	
     private void displayMenu() {
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Please Enter your Name");
-    	String customerName = sc.next();
-    	Booking bookingHistory[] = getBookingHistory(customerName); // [presenter: getBookingHistory()]
+    	int customerName = sc.next();
+    	BookingHistory bookingHistory[] = getBookingHistory(customerName); // [presenter: getBookingHistory()] done by KJ
 
         if (bookingHistory == null) {
             System.out.println("No history to show.");

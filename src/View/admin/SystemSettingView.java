@@ -1,12 +1,16 @@
 package View.admin;
+import View.View;
 import Presenter.AdminManager;
+import Presenter.CinemaOperatorManager;
 import Presenter.Presenter;
 import java.util.Scanner;
 
 public class SystemSettingView extends View{
-	public SystemSettingView() {
+
+	protected void starter()
+	{
 		displayMenu();
-	}	
+	}
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("(1) Configure Ticket Price\n"
@@ -18,13 +22,13 @@ public class SystemSettingView extends View{
 		
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (Presenter.verifyChoiceNumber(choice, 1, 6)) { //[presenter: change passChoiceNumber() to boolean]
+		while (verifyChoiceNumber(choice, 1, 6)) { //[presenter: change passChoiceNumber() to boolean] done by KJ
 			switch (choice) {
 		        case 1:
-		            setPrice(); //[presenter: setPrice()]
+		            setMoviePrice(); //[presenter: setPrice()] done by KJ
 		            break;
 		        case 2:
-		            setHoliday(); //[presenter: setHoliday()] [model: Holiday class]
+		            setHoliday(); //[presenter: setHoliday()] [model: Holiday class] presenter portion in AdminManager done by KJ
 		            break;
 		        case 3:
 		        	AdminManager.updateAdminAccount();
@@ -35,7 +39,8 @@ public class SystemSettingView extends View{
 		        case 5:
 		        	AdminManager.getTop5RankingSales();
 		        	break;
-		        case 6:
+				case 6:
+				
 		        	break;
 			}
 		}
