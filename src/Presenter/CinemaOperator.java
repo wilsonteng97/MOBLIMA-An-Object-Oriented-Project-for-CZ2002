@@ -41,7 +41,7 @@ public class CinemaOperator{
 
     }
 
-    public void addCinema(Cinema cinema){
+    public static void addCinema(Cinema cinema){
 
     }
 
@@ -65,7 +65,7 @@ public class CinemaOperator{
 
     }
 
-    public void updateMovieListing(){
+    public static void updateMovieListing(){
         for (String movie : movieList){
             System.out.println(movie);
         }

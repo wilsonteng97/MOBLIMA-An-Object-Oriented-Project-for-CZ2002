@@ -22,13 +22,13 @@ public class SystemSettingView extends View{
 		
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (verifyChoiceNumber(choice, 1, 6)) { //[presenter: change passChoiceNumber() to boolean] done by KJ
+		while (Presenter.verifyChoiceNumber(choice, 1, 6)) { 
 			switch (choice) {
 		        case 1:
-		            setMoviePrice(); //[presenter: setPrice()] done by KJ
+		            AdminManager.setMoviePrice(); 
 		            break;
 		        case 2:
-		            setHoliday(); //[presenter: setHoliday()] [model: Holiday class] presenter portion in AdminManager done by KJ
+		            AdminManager.setHoliday();  
 		            break;
 		        case 3:
 		        	AdminManager.updateAdminAccount();

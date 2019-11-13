@@ -35,12 +35,12 @@ public class AdminManager extends DataManager
     private static ArrayList<Movie> movieList;
 
     // =========================Movie Price=========================
-    public double setMoviePrice(){
+    public static double setMoviePrice(){
         System.out.println("How much do you want to charge?");
         return ticket_price = sc.nextDouble();
     }
 
-    public void setHoliday(){
+    public static void setHoliday(){
         System.out.println("Please set the dates that will charge at holiday rates.");
     }
 

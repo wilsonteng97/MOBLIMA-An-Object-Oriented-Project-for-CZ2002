@@ -1,7 +1,7 @@
 package View.admin;
 import Model.*;
 import View.View;
-
+import Presenter.CinemaOperatorManager;
 import Presenter.Query.*;
 import static Presenter.AdminManager.*;
 import static Presenter.CinemaOperatorManager.*;
@@ -20,27 +20,33 @@ public class AdminShowtimeView extends View{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Movie: ");
 		String movieIn = sc.next();
-		this.movie = passStringMovie(movieIn); //[presenter: change input from string to Movie] done by KJ
+		this.movie = Presenter.Query.passStringMovie(movieIn); 
 		System.out.println("(1) Display Showtimes\n"
 				+ "(2) Add Showtime\n"
-				+ "(3) Update Showtime\n"
+				+ "(3) Update Showtime List\n"
 				+ "(4) Remove Showtime\n"
 				+ "(5) Return\n");
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (verifyChoiceNumber(choice, 1, 5)) { //[presenter: change passChoiceNumber() to boolean] Changed, done by KJ
+		while (verifyChoiceNumber(choice, 1, 5)) { 
 			switch (choice) {
 		        case 1:
-					getShowtimeList(movie); //[presenter: displayShowtime(Movie movie)] done by KJ, actual method is getShowtimeList instead of displayShowtime
+		        	Presenter.Query.displayShowtime(movie); 
 		            break;
 		        case 2:
-		            CinemaOperator.addShowtime(movie, showtime); //[presenter: addShowtime(Movie movie), add in parameter Movie] added by KJ
+		        	System.out.println("Enter showtime: ");
+		        	double showtimeIn = sc.nextInt();
+		        	ShowTime showtime = Presenter.Query.passDoubleShowtime(showtimeIn);
+		        	CinemaOperatorManager.addShowtime(movie, showtime); 
 		            break;
 		        case 3:
-		        	CinemaOperator.updateShowtime(movie); //[presenter: updateShowtime(Movie movie)]
+		        	CinemaOperatorManager.updateShowTime(); 
 		        	break;
 		        case 4:
-		        	CinemaOperator.removeShowtime(movie); //[presenter: removeShowtime(Movie movie)]
+		        	System.out.println("Enter showtime: ");
+		        	double showtimeIn2 = sc.nextInt();
+		        	ShowTime showtime2 = Presenter.Query.passDoubleShowtime(showtimeIn2);
+		        	CinemaOperatorManager.removeShowtime(movie, showtime2); //[presenter: removeShowtime(Movie movie)]
 		        	break;
 		        case 5:
 		        	break;

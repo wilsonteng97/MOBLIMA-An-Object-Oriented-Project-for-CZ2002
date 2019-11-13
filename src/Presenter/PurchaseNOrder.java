@@ -37,4 +37,10 @@ public class PurchaseNOrder {
   public void passTID(){
         
   }
+
+public static void generateTID() {
+	String TID = cinema.getCinemaCode(); //[model: getCinemaCode]
+    TID = TID.concat(passSearchMovieTime());
+	
+}
 }

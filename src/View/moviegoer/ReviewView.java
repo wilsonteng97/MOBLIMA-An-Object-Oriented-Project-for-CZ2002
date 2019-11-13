@@ -1,19 +1,19 @@
 package View.moviegoer;
 import Presenter.ReviewManager;
+import View.View;
 import Presenter.Presenter;
 import java.util.Scanner;
 
 public class ReviewView extends View{
-	private Movie movie;
 	
     public ReviewView() {
-    	displayMenu();
+    	
 	}	
     private void displayMenu() {
-    	Scanner sc = new Scanner(System.in);
+    	/*Scanner sc = new Scanner(System.in);
     	System.out.println("Enter Movie: ");
 		String movieIn = sc.next();
-		this.movie = passStringMovie(movieIn); //[presenter: change input from string to Movie]
+		this.movie = passStringMovie(movieIn); */
     	System.out.println("(1) Write a review\n"
     			+ "(2) View all reviews\n"
     			+ "(3) Give a Rating\n"
@@ -21,7 +21,7 @@ public class ReviewView extends View{
     			+ "(5) Return\n");
     	System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (verifyChoiceNumber(choice, 1, 5)) { //[presenter: change passChoiceNumber() to boolean] done by KJ
+		while (Presenter.verifyChoiceNumber(choice, 1, 5)) { 
 			switch(choice) {
 			case 1:
 				ReviewManager.addReview(movie); //[presenter: change ReviewManager.addReview() to static, add in parameter] done by KJ
@@ -40,6 +40,11 @@ public class ReviewView extends View{
 		}
     }
 }
+	@Override
+	protected void starter() {
+		displayMenu();
+	}	
+	}
 
 
 
