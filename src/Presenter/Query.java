@@ -106,4 +106,11 @@ public class Query {
         else 
             return "Incorrect age restriction";
     }
+
+    public void searchMovie(String movie_name) {
+        Movie searched_movie = new Movie();
+        searched_movie = passStringMovie(movie_name);
+
+        // then proceed to print out the details
+    }
 }

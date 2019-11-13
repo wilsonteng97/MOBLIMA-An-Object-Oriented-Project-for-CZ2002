@@ -1,6 +1,7 @@
 package Presenter;
 
 import Model.Review;
+import Presenter.Query;
 
 public class ReviewManager {
     int rating;
@@ -15,20 +16,24 @@ public class ReviewManager {
         
     }
 
-    public Review addReview(Movie movie){
+    public void addReview(String movieIn){
+        this.movie = passStringMovie(movieIn); //[presenter: change input from string to Movie]
+        
         System.out.println("Please provide your review.");
         review = sc.next();
-        reviewList.get(movie).add(review);
+        reviewList.movie.add(review);
         updateReviewList();
     }
 
-    public int giveRating (){
+    public void giveRating (String movieIn){
+        this.movie = passStringMovie(movieIn);
+
         do {
             System.out.println("Please provide your rating (1-5).");
             rating = sc.nextInt();
         } while (!((rating>0) && (rating<6)));
         
-        return rating;
+        //the proceed to add rating for movie
     }
 
     public static void removeReview(Movie movie, Review review)
