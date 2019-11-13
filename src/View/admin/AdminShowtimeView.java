@@ -3,9 +3,11 @@ import Presenter.CinemaOperator;
 import Presenter.Presenter;
 import java.util.Scanner;
 
+import Model.Movie;
+
 public class AdminShowtimeView extends View{
 	private Movie movie;
-	public AdminShowtimeView(Movie movie) {
+	public AdminShowtimeView() {
 		displayMenu();
 	}	
 	private void displayMenu() {
@@ -20,7 +22,7 @@ public class AdminShowtimeView extends View{
 				+ "(5) Return\n");
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (passChoiceNumber(choice, 1, 5)) { //[presenter: change passChoiceNumber() to boolean]
+		while (Presenter.verifyChoiceNumber(choice, 1, 5)) { //[presenter: change passChoiceNumber() to boolean]
 			switch (choice) {
 		        case 1:
 		        	displayShowtime(movie); //[presenter: displayShowtime(Movie movie)]

@@ -24,5 +24,6 @@ public class StarterView extends View{
         case 2:
             intent(this, new MovieGoerView());
             break;
+		}
 	}
 }
