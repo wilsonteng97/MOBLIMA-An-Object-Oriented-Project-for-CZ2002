@@ -16,7 +16,7 @@ public class MovieListView extends View{
 				+ "(5) Return\n");
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (passChoiceNumber(choice, 1, 5)) { 
+		while (Presenter.verifyChoiceNumber(choice, 1, 5)) { 
 			switch (choice) {
 		        case 1:
 		            displayMovie(); //[presenter: displayMovie()]

@@ -18,7 +18,7 @@ public class SystemSettingView extends View{
 		
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (passChoiceNumber(choice, 1, 6)) { //[presenter: change passChoiceNumber() to boolean]
+		while (Presenter.verifyChoiceNumber(choice, 1, 6)) { //[presenter: change passChoiceNumber() to boolean]
 			switch (choice) {
 		        case 1:
 		            setPrice(); //[presenter: setPrice()]
