@@ -1,25 +1,20 @@
 package View.moviegoer;
-import Model.Customer;
-import Model.Cinema;
-import Model.Seat;
+
 import Presenter.Presenter;
 import Presenter.Query;
 import Presenter.PurchaseNOrder;
+import View.View;
+
 import java.util.Scanner;
 
 public class BookingView extends View{
-	private Seat seat;
-	private Movie movie;
-	private Showtime showtime;
-	private Cinema cinema;
-	private Customer customer;
 	private int age;
     private Double price;
 	
     public BookingView() {
-    	displayMenu();
 	}	
     private void displayMenu() {
+    	int choice;
     	Scanner sc = new Scanner(System.in);
     	System.out.println("(1) Please Choose Cinema\n"
     			+ "(2) Please Choose Movie\n"
@@ -91,4 +86,16 @@ public class BookingView extends View{
         System.out.println();
         System.out.println("Ticket price: " + computePrice(cinema, showtime, age, movie) + " SGD (Excl. GST)"); //[presenter: computePrice() according to holiday, age, movie type, cinema class]
     }
+
+	public Double getPrice() {
+		return price;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+	
+	@Override
+	protected void starter() {
+    	displayMenu();
+	}
 }

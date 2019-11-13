@@ -3,6 +3,7 @@ package View.moviegoer;
 import java.util.Scanner;
 import Model.Customer;
 import Presenter.BookingManager;
+import View.View;
 
 public class BookingHistoryView extends View{
 	
@@ -16,6 +17,11 @@ public class BookingHistoryView extends View{
     	Customer customerName = Query.passStringCustomer(customerNameIn);
     	BookingManager.getBookingHistory(customerName); 
     }
+	@Override
+	protected void starter() {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
 

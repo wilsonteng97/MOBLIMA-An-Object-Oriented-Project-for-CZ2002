@@ -1,5 +1,12 @@
 package View;
+
 import Presenter.Presenter;
+import View.moviegoer.BookingHistoryView;
+import View.moviegoer.BookingView;
+import View.moviegoer.CusShowtimeView;
+import View.moviegoer.MovieListingView;
+import View.moviegoer.ReviewView;
+
 import java.util.Scanner;
 
 public class MovieGoerView extends View{

@@ -5,10 +5,9 @@ import Presenter.Presenter;
 import java.util.Scanner;
 
 public class ReviewView extends View{
-	
     public ReviewView() {
-    	
 	}	
+    
     private void displayMenu() {
     	/*Scanner sc = new Scanner(System.in);
     	System.out.println("Enter Movie: ");
@@ -42,9 +41,8 @@ public class ReviewView extends View{
 }
 	@Override
 	protected void starter() {
-		displayMenu();
-	}	
-	}
+    	displayMenu();
+  }
 
 
 

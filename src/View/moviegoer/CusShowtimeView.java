@@ -1,6 +1,8 @@
 package View.moviegoer;
+
 import Presenter.Presenter;
 import Presenter.Query;
+
 import View.View;
 
 import java.util.Scanner;
@@ -8,9 +10,7 @@ import java.util.Scanner;
 import Model.Movie;
 
 public class CusShowtimeView extends View{
-	private Movie movie;
 	public CusShowtimeView() {
-		
 	}	
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);

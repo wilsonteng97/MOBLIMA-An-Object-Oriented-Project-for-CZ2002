@@ -1,4 +1,5 @@
 package View.moviegoer;
+
 import Presenter.Presenter;
 import Presenter.AdminManager;
 import Presenter.CinemaOperatorManager;
@@ -12,8 +13,8 @@ import Model.Customer;
 public class MovieListingView extends View{
 	
     public MovieListingView() {
-    	
 	}	
+    
     private void displayMenu() {
     	Scanner sc = new Scanner(System.in);
     	System.out.println("(1) List all movies\n" 
@@ -47,7 +48,7 @@ public class MovieListingView extends View{
 	}
 	@Override
 	protected void starter() {
-		displayMenu();
+      displayMenu();
 	}
 }
 
