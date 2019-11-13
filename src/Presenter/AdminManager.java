@@ -4,6 +4,10 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Scanner;
 
 import javax.lang.model.util.ElementScanner6;
 
@@ -18,11 +22,11 @@ public class AdminManager extends DataManager
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
     private final static String movieListFile = "datafiles/movieListFile.txt";
 
-    private static ArrayList<Staff> adminAccountList;
-    private static Hashmap<Movie, ArrayList<Showtime>> showtimeList;
-    private static Hashmap<Movie, ArrayList<ReviewList>> reviewList;
-    private static Hashmap<CinemaOperator, ArrayList<Cinema>> cinemaList;
-    private static Hashmap<Movie> movieList;
+    private static ArrayList<Admin> adminAccountList;
+    private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
+    private static HashMap<Movie, ArrayList<Review>> reviewList;
+    private static HashMap<CinemaOperator, ArrayList<Cinema>> cinemaList;
+    private static ArrayList<Movie> movieList;
 
     public static void updateAdminAccount()
     {
@@ -57,7 +61,7 @@ public class AdminManager extends DataManager
         }
         else
         {
-            adminAccountList = (ArrayList<Staff>) readDataFile(adminAccountListFile);
+            adminAccountList = (ArrayList<Admin>) readDataFile(adminAccountListFile);
         }
     }
 
