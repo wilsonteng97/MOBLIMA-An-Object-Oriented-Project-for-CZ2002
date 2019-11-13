@@ -1,5 +1,11 @@
 package Presenter;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+
 public class DataManager
 {
     public static String readDataFile(String filename)
@@ -8,12 +14,12 @@ public class DataManager
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         Object data = objectInputStream.readObject();
         objectInputStream.close();
-        return data;
+        return (String) data;
     }
 
     public static void writeDataFile(String filename, Object data)
     {
-        FileOutputStream adminAccountListFile = new FileInputStream(filename);
+        FileInputStream adminAccountListFile = new FileInputStream(filename);
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(adminAccountListFile);
         objectOutputStream.writeObject(data);
         objectOutputStream.close();
