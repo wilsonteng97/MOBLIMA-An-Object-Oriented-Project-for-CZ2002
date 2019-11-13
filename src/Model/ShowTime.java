@@ -1,6 +1,8 @@
 package Model;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -64,5 +66,18 @@ public class ShowTime implements Serializable {
  	}
  	public List<MovieTicket> getMovieTickets() {
  		return movieTickets;
+ 	}
+ 	
+ 	// getShowTimeString
+ 	public String getShowTimeString() {
+ 		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm");  
+ 		String strDate = dateFormat.format(this.time); 
+ 		return strDate;
+ 	}
+ 	// Format can be "yyyy-mm-dd hh:mm:ss"
+ 	public String getShowTimeString(String SpecificDateFormat) {
+ 		DateFormat dateFormat = new SimpleDateFormat(SpecificDateFormat);  
+ 		String strDate = dateFormat.format(this.time); 
+ 		return strDate;
  	}
 }
