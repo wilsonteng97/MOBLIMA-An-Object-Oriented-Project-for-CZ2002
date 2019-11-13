@@ -6,6 +6,13 @@ public class MovieGoerView extends View{
 	public MovieGoerView() {
 		displayMenu();
 	}
+
+	@Override
+	protected void starter()
+	{
+		displayMenu();
+	}
+
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Welcome, please make a selection:"
