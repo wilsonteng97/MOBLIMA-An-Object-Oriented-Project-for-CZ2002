@@ -38,7 +38,7 @@ public class CinemaOperatorManager {
         if(readDataFile(showtimeListFile) == null)
             showtimeList = new HashMap<>();
         else
-            showtimeList = (HashMap<Movie, ArrayList<Showtime>>) readDataFile(showtimeListFile);
+            showtimeList = (HashMap<Movie, ArrayList<ShowTime>>) readDataFile(showtimeListFile);
     }
 
     public static void addShowtime(Movie movie, ShowTime ShowTime){
@@ -47,12 +47,12 @@ public class CinemaOperatorManager {
         updateShowtime();
     }
 
-    public static void removeShowtime(Movie movie, ShowTime ShowTime){
+    public static void removeShowtime(Movie movie, ShowTime showTime){
         // for (String showtimeToBeRemoved : showtimeList){
         //     System.out.println(showtimeToBeRemoved);
         // }
         // showtimeList.get(ShowTime.getMovie()).remove(ShowTime);
-        showtimeList.get(movie.remove(ShowTime));
+        showtimeList.get(movie.removeShowTime(showTime);
         updateShowtime();
     }
 
@@ -82,7 +82,7 @@ public class CinemaOperatorManager {
         // for (String cinemaToBeRemoved : cinemaList){
         //     System.out.println(cinemaToBeRemoved);
         // }
-        cinemaList.get(cinema.getCinemaOperator().remove(cinema));
+        cinemaList.get(cinema.getOperatorID().remove(cinema));
         updateCinemaList();
     }
 
