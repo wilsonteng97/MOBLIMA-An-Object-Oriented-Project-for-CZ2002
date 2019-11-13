@@ -2,14 +2,21 @@ package Presenter;
 
 public class DataManager
 {
-    public static String readDataFile(String filename)
-    {
-        FileInputStream fileInputStream = new FileInputStream(filename);
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        Object data = objectInputStream.readObject();
-        objectInputStream.close();
-        return data;
-    }
+    public static List<String> readFileInList(String fileName) 
+  { 
+  
+    List<String> lines = Collections.emptyList(); 
+    try
+    { 
+      lines = Files.readAllLines(Paths.get(fileName), StandardCharsets.UTF_8); 
+    } 
+  
+    catch (IOException e) 
+    { // do something 
+      e.printStackTrace(); 
+    } 
+        return lines; 
+  } 
 
     public static void writeDataFile(String filename, Object data)
     {
