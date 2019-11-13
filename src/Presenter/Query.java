@@ -18,6 +18,10 @@ public class Query {
     Path path_Showtime = Paths.get(showtimeListFile);
     List<String> showtimeList = Files.readAllLines(path_Showtime, StandardCharsets.UTF_8);
 
+    private final static String customerListFile = "datafiles/userAccountListFile.txt";
+    Path path_customer = Paths.get(customerListFile);
+    List<String> customerList = Files.readAllLines(path_customer, StandardCharsets.UTF_8);
+
     public String passSearchMovieTime(String string)
     {
         SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd hh:mm");
@@ -53,6 +57,12 @@ public class Query {
             if (showtime == showtimeIn) return showtime;
         }
         System.out.println("Sorry, the Showtime that you are looking for does not exist.");
+    }
+
+    public Customer passStringCustomer (Customer customer_name) {
+        for (String customer : customerList){
+            if (customer == customer_name) return customer;
+        }
     }
 
     public Showtime displayShowtime(Movie movie_name){
