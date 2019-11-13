@@ -78,11 +78,11 @@ public class AdminManager extends DataManager
         {
             public int compare(Movie m1, Movie m2)
             {
-                if(m1.getMovieRating() > m2.getMovieRating())
+                if(getMovieRating(m1) > getMovieRating(m2))
                 {
                     return 1;
                 }
-                else if(m1.getMovieRating() < m2.getMovieRating())
+                else if(getMovieRating(m1) < getMovieRating(m2))
                 {
                     return -1;
                 }
@@ -105,7 +105,7 @@ public class AdminManager extends DataManager
     {
         if(readDataFile(reviewListFile) == null)
         {
-            reviewList = new Hashmap<>();
+            reviewList = new HashMap<>();
         }
         else
         {
@@ -122,12 +122,32 @@ public class AdminManager extends DataManager
     {
         return reviewList.get(movie);
     }
+    public static double getMovieRating(Movie movie)
+    {
+        ArrayList<Review> reviewList = getReviewList(movie);
+        double sum = 0;
+        double rating = 0;
+        if(reviewList == null)
+        {
+            return 0;
+        }
+        else 
+        {
+            for(Review review: reviewList)
+            {
+                sum = sum + review.getRating();
+            }
+            rating = sum / reviewList.size();
+            return rating;
+        }
+    }
 
     // =========================Movie Sales=========================
     public Double getMovieSales(Movie movie)
     {
         return movie.getTotalSales();
     }
+
     
     // ====================Get Lists of Entitites====================  
     public static ArrayList<Cinema> getCinemaList(CinemaOperator cinemaOperator)
