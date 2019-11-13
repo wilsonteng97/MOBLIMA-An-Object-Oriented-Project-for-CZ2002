@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 
 public class LoginManager {
-    Scannner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
     
     // Customer randCust = new Customer();
     // String password = randCust.getBookings();

@@ -22,11 +22,11 @@ public class Admin implements Serializable {
 	}
 	
 	public void setAdminID(int adminID) {
-		this.staffID = adminID;
+		this.adminID = adminID;
 	}
 	
 	public int getAdminID() {
-		return staffID;
+		return adminID;
 	}
 	
 	public void setUsername(String username) {
