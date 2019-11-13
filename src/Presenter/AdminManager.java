@@ -15,6 +15,8 @@ import Model.Review;
 import Model.ShowTime;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 import java.util.HashMap;
 
@@ -65,7 +67,7 @@ public class AdminManager extends DataManager
 
     // =========================Top 5 Movies=========================
     public static ArrayList<Movie> getTop5RankingRating(){
-        ArrayList<Movie> top5rating = new ArrayList();
+        ArrayList<Movie> top5rating = new ArrayList<Movie>();
 
         for(Movie movie: movieList)
         {
@@ -107,7 +109,7 @@ public class AdminManager extends DataManager
         }
         else
         {
-            reviewList = (Hashmap<Movie, ArrayList<ReviewList>>) readDataFile(reviewListFile);
+            reviewList = (Hashmap<Movie, ArrayList<Review>>) readDataFile(reviewListFile);
         }
     }
 
@@ -122,7 +124,7 @@ public class AdminManager extends DataManager
     }
 
     // =========================Movie Sales=========================
-    public int getMovieSales(Movie movie)
+    public Double getMovieSales(Movie movie)
     {
         return movie.getTotalSales();
     }
@@ -138,14 +140,14 @@ public class AdminManager extends DataManager
         return movieList;
     }
 
-    public static ArrayList<Showtime> getShowtimeList(Movie movie)
+    public static ArrayList<ShowTime> getShowtimeList(Movie movie)
     {
         return showtimeList.get(movie);
     }
 
     public static ArrayList<Movie> getTop5RankingSales()
     {
-        ArrayList<Movie> top5sales = new ArrayList();
+        ArrayList<Movie> top5sales = new ArrayList<Movie>();
 
         for(Movie movie: movieList)
         {
@@ -156,11 +158,11 @@ public class AdminManager extends DataManager
         {
             public int compare(Movie m1, Movie m2)
             {
-                if(m1.getMovieSales() > m2.getMovieSales())
+                if(m1.getTotalSales() > m2.getTotalSales())
                 {
                     return 1;
                 }
-                else if(m1.getMovieSales() < m2.getMovieSales())
+                else if(m1.getTotalSales() < m2.getTotalSales())
                 {
                     return -1;
                 }

@@ -7,7 +7,7 @@ import java.io.FileWriter;
 
 public class BookingManager {
     // private final static String userBookingListFile = "datafiles/userBookingFile.txt";
-    // private static ArrayList<Staff> userBookingList;
+    // private static ArrayList<Admin> userBookingList;
 
     public BookingManager(){
         
@@ -27,7 +27,7 @@ public class BookingManager {
         // writeDataFile(userBookingListFile, userBookingList);
     }
 
-    public void getBookingHistory(Custommer customer){
+    public void getBookingHistory(Customer customer){
         // for (String booking : userBookingList){
         //     if (booking == customer){
         //         System.out.println(booking);
