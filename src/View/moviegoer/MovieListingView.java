@@ -2,10 +2,13 @@ package View.moviegoer;
 
 import Presenter.Presenter;
 import Presenter.AdminManager;
+import Presenter.CinemaOperatorManager;
 import Presenter.Query;
 import View.View;
 
 import java.util.Scanner;
+
+import Model.Customer;
 
 public class MovieListingView extends View{
 	
@@ -21,10 +24,10 @@ public class MovieListingView extends View{
     			+ "(5) Return");
     	System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (verifyChoiceNumber(choice, 1, 5)) {
+		while (Presenter.verifyChoiceNumber(choice, 1, 5)) {
 			switch (choice) {
             case 1:
-				updateMovieListing(); //[presenter: displayMovie()] correct method is updateMovieListing, done by KJ
+            	CinemaOperatorManager.readMovieListing(); 
                 break;
             case 2:
                 AdminManager.getTop5RankingSales();
@@ -33,7 +36,10 @@ public class MovieListingView extends View{
                 AdminManager.getTop5RankingRating();
                 break;
             case 4:
-				passStringMovie(); //[presenter: searchMovie()] correct method is passStringMovie, done by KJ
+            	System.out.println("Please Enter the Movie: ");
+            	String movieIn = sc.next();
+            	Movie movie = Query.passStringMovie(movieIn);
+            	Query.searchMovie(movie); //[presenter: searchMovie()] correct method is passStringMovie, done by KJ
                 break;
             case 5:
                 break;
@@ -42,7 +48,7 @@ public class MovieListingView extends View{
 	}
 	@Override
 	protected void starter() {
-    	displayMenu();
+      displayMenu();
 	}
 }
 

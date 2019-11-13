@@ -32,7 +32,7 @@ public class AdminView extends View{
 		String adminName = sc.next();
 		System.out.println("Enter Password: ");
 		String password = sc.next();
-		//verifyStaff(adminName, password); //[presenter] Done by KJ
+		LoginManager.verifyStaff(adminName, password); //[presenter] Done by KJ
 		if (verifyStaff(adminName, password)) {
             loggedIn = true;
             System.out.println("Login successful!");
@@ -54,7 +54,7 @@ public class AdminView extends View{
 					+ "(5) Logout"
 					+ "Please enter choice");
 			int choice = sc.nextInt();
-			if (verifyChoiceNumber(choice, 1, 5)) 
+			if (Presenter.verifyChoiceNumber(choice, 1, 5)) 
 			{ 
 				switch (choice) {
 	            case 1:
