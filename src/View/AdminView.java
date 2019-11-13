@@ -1,12 +1,13 @@
 package View;
 
-import static Presenter.Presenter.*;
-import static Presenter.LoginManager.*;
+
 import View.admin.MovieListView;
 import View.admin.CinemaListView;
 import View.admin.AdminShowtimeView;
 import View.admin.SystemSettingView;
 
+import static Presenter.Presenter.*;
+import static Presenter.LoginManager.*;
 import java.util.Scanner;
 
 public class AdminView extends View{
@@ -32,8 +33,9 @@ public class AdminView extends View{
 		String adminName = sc.next();
 		System.out.println("Enter Password: ");
 		String password = sc.next();
-		LoginManager.verifyStaff(adminName, password); //[presenter] Done by KJ
-		if (verifyStaff(adminName, password)) {
+		//verifyStaff(adminName, password); //[presenter] Done by KJ
+		if (verifyStaff(adminName, password)) 
+		{
             loggedIn = true;
             System.out.println("Login successful!");
             displayMenu();
@@ -54,7 +56,7 @@ public class AdminView extends View{
 					+ "(5) Logout"
 					+ "Please enter choice");
 			int choice = sc.nextInt();
-			if (Presenter.verifyChoiceNumber(choice, 1, 5)) 
+			if (verifyChoiceNumber(choice, 1, 5)) 
 			{ 
 				switch (choice) {
 	            case 1:
