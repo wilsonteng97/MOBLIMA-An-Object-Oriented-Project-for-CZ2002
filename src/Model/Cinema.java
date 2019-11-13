@@ -12,22 +12,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Model.Enums.*;
-import Model.Seat;
 
 public class Cinema implements Serializable {
-	private String cinemaID; // eg. 1P for 1st PLATINUM Cinema or 1N for 1st NORMAL Cinema
+	private Integer cinemaID;
 	private String cinemaName; // This is for display.
-	private Integer operatorID;
+	private CinemaOperator operator;
 	private CinemaClass cinemaClass;
 	private List<ShowTime> showTimes;
 	private List<Seat> seats;
 	private Integer no_of_rows;
 	private Integer no_of_columns;
 	
-	public Cinema(String cinemaID, String cinemaName, Integer operatorID, CinemaClass cinemaClass) {
+	public Cinema(Integer cinemaID, String cinemaName, CinemaOperator operator, CinemaClass cinemaClass) {
 		this.cinemaID = cinemaID;
 		this.cinemaName = cinemaName;
-		this.setOperatorID(operatorID);
+		this.setOperator(operator);
 		this.cinemaClass = cinemaClass;
 
 		this.showTimes = new ArrayList<ShowTime>();
@@ -37,10 +36,10 @@ public class Cinema implements Serializable {
 	}
 	
 	// cinemaID
-	public String getCinemaID() {
+	public Integer getCinemaID() {
 		return cinemaID;
 	}
-	public void setCinemaID(String cinemaID) {
+	public void setCinemaID(Integer cinemaID) {
 		this.cinemaID = cinemaID;
 	}
 	
@@ -53,11 +52,11 @@ public class Cinema implements Serializable {
 	}
 
 	// operator
-	public Integer getOperatorID() {
-		return operatorID;
+	public CinemaOperator getOperator() {
+		return operator;
 	}
-	public void setOperatorID(Integer operatorID) {
-		this.operatorID = operatorID;
+	public void setOperator(CinemaOperator operator) {
+		this.operator = operator;
 	}
 	
 	// cinemaClass
@@ -93,6 +92,13 @@ public class Cinema implements Serializable {
 		return showtime_for_specific_input_movie;
 	}
 	
+	// seats
+	public void addSeat(Seat seat) {
+		seats.add(seat);
+	}
+	public void removeSeat(Seat seat) {
+		seats.remove(seat);
+	}
 	public List<Seat> getSeatList() {
 		return seats;
 	}
@@ -101,31 +107,17 @@ public class Cinema implements Serializable {
 	}
 	
 	// seat
-	public Seat getSpecificSeat(Integer seatID) {
+	public Seat getSpecificSeat(String seatRow, Integer seatNo) {
 		for(Seat seat: seats) {
-			if(seat.getSeatID()==seatID) {
+			if(seat.getSeatRow().equals(seatRow) && seat.getSeatNo()==seatNo) {
 				return seat;
 			}
 		}
 		return null;
-	}
-	public Seat getSpecificSeat(Integer seatRow, Integer seatCol) {
-		Integer seatID = this.getNoOfSeatColumn()*seatRow + seatCol;
-		for(Seat seat: seats) {
-			if(seat.getSeatID()==seatID) {
-				return seat;
-			}
-		}
-		return null;
-	}
-	
-	// getTotalNoOfSeats
-	private Integer getTotalNoOfSeats() {
-		return this.getNoOfSeatColumn()*this.getNoOfSeatRow();
 	}
 	
 	// no_of_rows
-	private void setNoOfSeatRow(int no_of_rows) {
+	public void setNoOfSeatRow(int no_of_rows) {
 		this.no_of_rows = no_of_rows;
 	}
 	public int getNoOfSeatRow() {
@@ -133,59 +125,10 @@ public class Cinema implements Serializable {
 	}
 	
 	// no_of_columns
-	private void setNoOfSeatColumn(int no_of_columns) {
+	public void setNoOfSeatColumn(int no_of_columns) {
 		this.no_of_columns = no_of_columns;
 	}
 	public int getNoOfSeatColumn() {
 		return no_of_columns;
-	}
-	
-	// initializeSeatsList
-	public void initializeSeatsList(Integer no_of_columns, Integer no_of_rows) {
-		if ((no_of_columns<1) || (no_of_rows<1)) {
-			return; // TO-DO -> Throw Exception
-		}
-		this.setNoOfSeatColumn(no_of_columns);
-		this.setNoOfSeatRow(no_of_rows);
-		
-		this.seats = new ArrayList<Seat>(this.getTotalNoOfSeats());
-		for (int row=1; row<=this.getNoOfSeatRow(); row++) {
-			for (int col=1; col<=this.getNoOfSeatColumn(); col++) {
-				Integer seatID = this.getNoOfSeatColumn()*row + col;
-				this.seats.add(new Seat(seatID, this.getCinemaID(), this.getOperatorID()));
-			}
-		}
-	}
-	
-	
-	// printCinemaSeats
-	public void printCinemaSeatsSpecificShowTime(ShowTime st) {
-		String SpecificDateFormat = "yyyy-mm-dd hh:mm";
-		System.out.println("Show Time ID:\t" + st.getShowTimeID());
-		System.out.println("Show Time" + " (" + SpecificDateFormat + "):\t" + 
-							st.getShowTimeString(SpecificDateFormat));
-		
-		System.out.println("\t\t[SCREEN]");
-		int letter = 65; // starts from A
-		for (Seat s : seats) {
-			if (s.getSeatID()==1) {
-				System.out.print((char)letter + "\t");
-				letter++;
-			}
-			s.printSeat(st);
-			if ((s.getSeatID()%this.getNoOfSeatColumn())==0 && 
-				(s.getSeatID()!=this.getTotalNoOfSeats())) {
-				System.out.println();
-				System.out.print((char)letter + "\t");
-			}
-		}
-	}
-	public void printCinemaSeatsForAllShowTimes() {
-		System.out.println();
-		System.out.println("[Cinema Operator " + this.operatorID + " | Cinema " + this.getCinemaID() + " | " + this.getCinemaName() + "]");
-		for (ShowTime st : showTimes) {
-			this.printCinemaSeatsSpecificShowTime(st);
-			System.out.println("\n");
-		}
 	}
 }

@@ -7,9 +7,12 @@ public class Presenter
 {
     public static boolean verifyChoiceNumber(int choice, int min, int max)
     {
+        Scanner sc = new Scanner(System.in);
+        choice = sc.nextInt();
+        sc.close();
         if(choice < min || choice > max)
         {
-            System.out.println("Incorrect input, please try again\n");
+            System.out.println("Incorrect input, please try again");
             //verifyChoiceNumber(choice, min, max);
             return false;
         }

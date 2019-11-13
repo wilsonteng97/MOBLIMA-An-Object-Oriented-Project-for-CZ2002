@@ -1,25 +1,21 @@
 package Presenter;
 
-import Model.Review;
-
 public class ReviewManager {
     int rating;
     String review;
     Scannner sc = new Scanner(System.in);
+
     // Customer CustReview = new Customer();
     // int userID = CustReview.getEmail();
-    private final static String reviewListFile = "datafiles/reviewListFile.txt";
-    private static Hashmap<Movie, ArrayList<ReviewList>> reviewList;
 
     public ReviewManager()  {
         
     }
 
-    public Review addReview(Movie movie){
+    public String addReview(){
         System.out.println("Please provide your review.");
         review = sc.next();
-        reviewList.get(movie).add(review);
-        updateReviewList();
+        return review;
     }
 
     public int giveRating (){
@@ -29,19 +25,5 @@ public class ReviewManager {
         } while (!((rating>0) && (rating<6)));
         
         return rating;
-    }
-
-    public static void removeReview(Movie movie, Review review)
-    {
-        reviewList.get(movie).remove(review);
-        updateReviewList();
-    }
-
-    public double getMovieRating(Movie movie){
-        return movie.getMovieRating();
-    }
-
-    public Review[] displayReview(Movie movie){
-        return all_reviews;
     }
 }

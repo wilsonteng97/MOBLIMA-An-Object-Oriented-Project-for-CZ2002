@@ -1,48 +1,33 @@
 package View;
-//import View.*;
-
-import View.admin.MovieListView;
-import View.admin.CinemaListView;
-import View.admin.AdminShowtimeView;
-import View.admin.SystemSettingView;
-
-import static Presenter.Presenter.*;
-import static Presenter.LoginManager.*;
+import Presenter.Presenter;
 import java.util.Scanner;
 
-import Presenter.LoginManager;
-
-public class AdminView extends View{
-	private boolean loggedIn;
-
-	public AdminView() {
-		loggedIn = true;
-	}
-	
-	@Override
-	protected void starter()
-	{
+public class AdminView implements View{
+	private boolean loggedIn = false;
+	private String adminName;
+	private String password;
+	public StaffView() {
 		if(loggedIn == false)
-			adminLogin();
+			adminlogin();
 		else
 			displayMenu();
 	}
-
+	
 	private void adminLogin() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please login to access staff system");
-		System.out.println("Enter Username: ");
-		String adminName = sc.next();
-		System.out.println("Enter Password: ");
-		String password = sc.next();
-		//verifyStaff(adminName, password); //[presenter] Done by KJ
+		System.out.println("Enter Username: ")
+		adminName = sc.next();
+		System.out.println("Enter Password: ")
+		password = sc.next();
+		verifyStaff(adminname,password); //[presenter]
 		if (verifyStaff(adminName, password)) {
             loggedIn = true;
             System.out.println("Login successful!");
             displayMenu();
         }
         else {
-            System.out.println("Your username or password could be incorrect.");
+            System.out.println("Invalid username or password.");
             destroy();
         }
 		
@@ -57,8 +42,7 @@ public class AdminView extends View{
 					+ "(5) Logout"
 					+ "Please enter choice");
 			int choice = sc.nextInt();
-			if (verifyChoiceNumber(choice, 1, 5)) 
-			{ 
+			while (passChoiceNumber(choice, 1, 5)) { 
 				switch (choice) {
 	            case 1:
 	                intent(this, new MovieListView());
@@ -75,13 +59,9 @@ public class AdminView extends View{
 	            case 5:
 	                loggedIn = false;
 	                System.out.println("You have logged out.");
-	                end();
+	                
 	                break;
 				}
-			}
-			else
-			{
-				displayMenu();
 			}
 	}
 }

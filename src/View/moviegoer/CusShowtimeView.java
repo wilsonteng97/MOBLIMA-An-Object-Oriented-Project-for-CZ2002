@@ -12,7 +12,7 @@ public class CusShowtimeView extends View{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Movie: ");
 		String movieIn = sc.next();
-		this.movie = passStringMovie(movieIn); //[presenter: change input from string to Movie] done by KJ
+		this.movie = passStringMovie(movieIn); //[presenter: change input from string to Movie]
 		System.out.println("(1) Display Showtimes\n"
 				+ "(2) Return\n");
 		System.out.println("Enter the number of your choice: ");
@@ -20,7 +20,7 @@ public class CusShowtimeView extends View{
 		while (passChoiceNumber(choice, 1, 2)) {
 			switch (choice) {
 		        case 1:
-		            displayShowtime(movie); //[presenter: displayShowtime(Movie movie)] done by KJ
+		            displayShowtime(movie); //[presenter: displayShowtime(Movie movie)]
 		            break;
 		        case 2:
 		        	break;

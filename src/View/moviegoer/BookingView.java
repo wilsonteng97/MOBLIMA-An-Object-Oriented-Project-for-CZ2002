@@ -1,10 +1,14 @@
 package View.moviegoer;
 import Model.Customer;
 import Model.Cinema;
+<<<<<<< HEAD
+import Model.Seat
+import Presenter.Presenter; 
+=======
 import Model.Seat;
 import Presenter.Presenter;
 import Presenter.Query;
-import Presenter.PurchaseNOrder;
+>>>>>>> bfea51f223c39c7be5b7d231617a6bee91ca0707
 import java.util.Scanner;
 
 public class BookingView extends View{
@@ -33,24 +37,29 @@ public class BookingView extends View{
     			+ "(10) Make Payment\n"
         		+ "(11) Return\n");
     	System.out.println("Enter the number of your choice: ");
-		choice = sc.nextInt();
+<<<<<<< HEAD
+		int choice = sc.nextInt();
+		while (passChoiceNumber(choice, 1, 10)) { //[presenter: change passChoiceNumber() to boolean]
+=======
+		  choice = sc.nextInt();
 
 		while (verifyChoiceNumber(choice, 1, 10)) { //[presenter: change passChoiceNumber() to boolean] Done by KJ
+>>>>>>> bfea51f223c39c7be5b7d231617a6bee91ca0707
 			switch(choice) {
 			case 1:
 				String cinemaIn = sc.next();
-				this.cinema = passStringCinema(cinemaIn); //[presenter: change input from string to Cinema] done by KJ
+				this.cinema = passStringCinema(cinemaIn); //[presenter: change input from string to Cinema]
 				break;
 			case 2:
 				String movieIn = sc.next();
-				this.movie = passStringMovie(movieIn); //[presenter: change input from string to Movie] done by KJ
+				this.movie = passStringMovie(movieIn); //[presenter: change input from string to Movie]
 				break;
 			case 3:
-				double showtimeIn = sc.nextDouble();
-				this.showtime = passDoubleShowtime(showtimeIn); //[presenter: change input from double to Showtime] done by KJ
+				double showtimeIn = sc.next();
+				this.showtime = passDoubleShowtime(showtimeIn); //[presenter: change input from double to Showtime]
 				break;
 			case 4:
-				Seat seatIn = selectSeat(); //[presenter: selectSeat(), return Seat seat] done by KJ
+				Seat seatIn = selectSeat(); //[presenter: selectSeat(), return Seat seat]
 				if (seatAvailable(seatIn)) //[presenter: seatAvailable(Seat seat)check whether the seat is available]
 					this.seat=seatIn;
 				else
@@ -84,6 +93,7 @@ public class BookingView extends View{
     }
 	//[model/presenter: save customer name, mobile no, email]
 	
+		
 	private void printBookingDetail() {
         System.out.println("Cinema: " + cinema + " (" + cinema.getOperator() + ")");
         System.out.println("Showtime: " + showtime);

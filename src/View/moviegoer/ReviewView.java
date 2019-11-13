@@ -21,19 +21,19 @@ public class ReviewView extends View{
     			+ "(5) Return\n");
     	System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (verifyChoiceNumber(choice, 1, 5)) { //[presenter: change passChoiceNumber() to boolean] done by KJ
+		while (passChoiceNumber(choice, 1, 5)) { //[presenter: change passChoiceNumber() to boolean]
 			switch(choice) {
 			case 1:
-				ReviewManager.addReview(movie); //[presenter: change ReviewManager.addReview() to static, add in parameter] done by KJ
+				ReviewManager.addReview(movie); //[presenter: change ReviewManager.addReview() to static, add in parameter]
 				break;
 			case 2:
-				ReviewManager.displayReview(movie); //[presenter: add method ReviewManager.displayReview(Movie movie)] done by KJ
+				ReviewManager.displayReview(movie); //[presenter: add method ReviewManager.displayReview(Movie movie)]
 				break;
 			case 3:
-				ReviewManager.giveRating(movie); //[presenter: same] done by KJ
+				ReviewManager.giveRating(movie); //[presenter: same]
 				break;
 			case 4:
-				ReviewManager.getMovieRating(movie); //[presenter: same] Correct method is getMovieRating. done by KJ
+				ReviewManager.displayRating(movie); //[presenter: same]
 				break;
 			case 5:
 				break;

@@ -12,17 +12,17 @@ import java.util.Hashtable;
 
 public class Seat implements Serializable {
 	
-	private Integer seatID; // SeatID starts from 1, starts from the row nearest to the cinema.
-	private String cinemaID;
-	private Integer operatorID;
+	private Integer seatID;
+	private Integer seatNo;
+	private String seatRow;
+	private Cinema cinema;
 	private Hashtable<ShowTime, Boolean> occupied;
 	
-	public Seat(Integer seatID, String cinemaID, Integer operatorID) {
-		this.seatID = seatID;
-//		this.seatNo = seatNo;
-//		this.seatRow = seatRow;
-		this.cinemaID = cinemaID;
-		this.operatorID = operatorID;
+	public Seat(int seatNo, String seatRow, Cinema cinema) {
+		this.seatID = -1;
+		this.seatNo = seatNo;
+		this.seatRow = seatRow;
+		this.cinema = cinema;
 		
 		this.occupied = new Hashtable<ShowTime, Boolean>();
 	}
@@ -35,20 +35,28 @@ public class Seat implements Serializable {
 		this.seatID = seatID;
 	}
 	
-	// cinemaID
-	public String getCinemaID() {
-		return cinemaID;
+	// seatNo
+	public int getSeatNo() {
+		return seatNo;
 	}
-	public void setCinemaID(String cinemaID) {
-		this.cinemaID = cinemaID;
+	public void setSeatNo(int seatNo) {
+		this.seatNo = seatNo;
 	}
 	
-	// operatorID
-	public Integer getOperatorID() {
-		return operatorID;
+	// seatRow
+	public String getSeatRow() {
+		return seatRow;
 	}
-	public void setOperatorID(Integer operatorID) {
-		this.operatorID = operatorID;
+	public void setSeatRow(String seatRow) {
+		this.seatRow = seatRow;
+	}
+	
+	// cinema
+	public Cinema getCinema() {
+		return cinema;
+	}
+	public void setCinema(Cinema cinema) {
+		this.cinema = cinema;
 	}
 	
 	// occupied
@@ -58,12 +66,6 @@ public class Seat implements Serializable {
 	}
 	public void setOccupiedAt(ShowTime showTime, boolean value) {
 		occupied.put(showTime, value);
-	}
-	
-	// printSeat
-	public void printSeat(ShowTime showTime) {
-		String symbolToPrint = this.isOccupiedAt(showTime) ? "X" : " ";
-		System.out.print("[" + symbolToPrint + "] ");
 	}
 }
 

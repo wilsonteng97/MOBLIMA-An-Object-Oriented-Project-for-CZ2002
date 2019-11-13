@@ -6,13 +6,6 @@ public class MovieGoerView extends View{
 	public MovieGoerView() {
 		displayMenu();
 	}
-
-	@Override
-	protected void starter()
-	{
-		displayMenu();
-	}
-
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Welcome, please make a selection:"
@@ -24,7 +17,7 @@ public class MovieGoerView extends View{
 				+ "(6) Return");
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (verifyChoiceNumber(choice, 1, 3)) { 
+		while (passChoiceNumber(choice, 1, 3)) { 
 			switch (choice) {
 	        case 1:
 	            intent(this, new MovieListingView());
