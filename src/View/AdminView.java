@@ -1,6 +1,5 @@
 package View;
 //import View.*;
-
 import View.admin.MovieListView;
 import View.admin.CinemaListView;
 import View.admin.AdminShowtimeView;
@@ -11,6 +10,7 @@ import static Presenter.LoginManager.*;
 import java.util.Scanner;
 
 import Presenter.LoginManager;
+import Presenter.Presenter;
 
 public class AdminView extends View{
 	private boolean loggedIn;
