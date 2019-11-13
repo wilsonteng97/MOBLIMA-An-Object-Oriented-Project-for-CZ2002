@@ -6,7 +6,7 @@ public abstract class View {
 
     protected abstract void starter();
 
-    protected void destroy()
+    protected void end()
     {
         if(previousView == null)
         {
