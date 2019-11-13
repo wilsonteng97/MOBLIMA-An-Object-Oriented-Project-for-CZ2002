@@ -1,12 +1,13 @@
 package View.moviegoer;
+
 import Presenter.CinemaOperator;
 import Presenter.Presenter;
+import View.View;
+
 import java.util.Scanner;
 
 public class CusShowtimeView extends View{
-	private Movie movie;
 	public CusShowtimeView() {
-		displayMenu();
 	}	
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
@@ -26,6 +27,10 @@ public class CusShowtimeView extends View{
 		        	break;
 			}
 		}
+	}
+	@Override
+	protected void starter() {
+		displayMenu();		
 	}
 }
 

@@ -1,14 +1,17 @@
 package View.moviegoer;
+
 import Presenter.Presenter;
 import Presenter.AdminManager;
 import Presenter.Query;
+import View.View;
+
 import java.util.Scanner;
 
 public class MovieListingView extends View{
 	
     public MovieListingView() {
-    	displayMenu();
 	}	
+    
     private void displayMenu() {
     	Scanner sc = new Scanner(System.in);
     	System.out.println("(1) List all movies\n" 
@@ -36,6 +39,10 @@ public class MovieListingView extends View{
                 break;
 			}
 		}
+	}
+	@Override
+	protected void starter() {
+    	displayMenu();
 	}
 }
 

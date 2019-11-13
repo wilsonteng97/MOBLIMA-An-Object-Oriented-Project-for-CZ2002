@@ -1,14 +1,13 @@
 package View.moviegoer;
 import Presenter.ReviewManager;
+import View.View;
 import Presenter.Presenter;
 import java.util.Scanner;
 
-public class ReviewView extends View{
-	private Movie movie;
-	
+public class ReviewView extends View{	
     public ReviewView() {
-    	displayMenu();
 	}	
+    
     private void displayMenu() {
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Enter Movie: ");
@@ -40,6 +39,10 @@ public class ReviewView extends View{
 		}
     }
 }
+	@Override
+	protected void starter() {
+    	displayMenu();
+	}
 
 
 

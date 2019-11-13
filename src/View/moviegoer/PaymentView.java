@@ -1,5 +1,8 @@
 package View.moviegoer;
-import Presenter.Presenter; 
+
+import Presenter.Presenter;
+import View.View;
+
 import java.util.Scanner;
 
 public class PaymentView extends View{
@@ -8,8 +11,6 @@ public class PaymentView extends View{
 	
     public PaymentView(Double price) {
     	this.price = price;
-    	generateTID();
-    	displayMenu();
 	}	
     private void generateTID() {
         TID = cinema.getCinemaCode(); //[model: getCinemaCode]
@@ -35,6 +36,11 @@ public class PaymentView extends View{
 			}
 		}
     }
+	@Override
+	protected void starter() {
+    	generateTID();
+    	displayMenu();
+	}
 	
 }
 

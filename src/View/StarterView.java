@@ -1,7 +1,5 @@
 package View;
 
-import View.*;
-
 import java.util.Scanner;
 
 
