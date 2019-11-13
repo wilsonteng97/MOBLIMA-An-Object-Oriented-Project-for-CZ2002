@@ -1,13 +1,20 @@
 package View.admin;
+import View.View;
 import Presenter.CinemaOperator;
 import Presenter.Presenter;
 import Presenter.AdminManager;
+
+import java.lang.annotation.Inherited;
 import java.util.Scanner;
 
 public class MovieListView extends View{
-	public MovieListView() {
+
+	@Override
+	protected void starter()
+	{
 		displayMenu();
-	}	
+	}
+
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("(1) Display Movies\n"

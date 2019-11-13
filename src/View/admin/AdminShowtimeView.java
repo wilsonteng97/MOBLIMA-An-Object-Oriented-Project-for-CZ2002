@@ -1,4 +1,5 @@
 package View.admin;
+import View.View;
 import Presenter.CinemaOperator;
 import Presenter.Presenter;
 import Presenter.Query;
@@ -7,9 +8,12 @@ import java.util.Scanner;
 
 public class AdminShowtimeView extends View{
 	private Movie movie;
-	public AdminShowtimeView(Movie movie) {
+
+	protected void starter()
+	{
 		displayMenu();
-	}	
+	}
+
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Movie: ");

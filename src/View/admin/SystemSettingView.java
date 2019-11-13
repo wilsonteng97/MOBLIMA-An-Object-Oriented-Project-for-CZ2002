@@ -1,13 +1,16 @@
 package View.admin;
+import View.View;
 import Presenter.AdminManager;
 import Presenter.CinemaOperatorManager;
 import Presenter.Presenter;
 import java.util.Scanner;
 
 public class SystemSettingView extends View{
-	public SystemSettingView() {
+
+	protected void starter()
+	{
 		displayMenu();
-	}	
+	}
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("(1) Configure Ticket Price\n"

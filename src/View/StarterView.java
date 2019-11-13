@@ -1,14 +1,26 @@
 package View;
+
+import View.*;
+
 import java.util.Scanner;
 
-public class StarterView extends View{
+
+
+public class StarterView extends View
+{
 	public StarterView() {
+	} 
+
+	@Override
+	public void starter()
+	{
 		System.out.println("============================\n"
 				+ "|          MOBLIMA         |\n"
 				+ "|   BY CZ2002 SS8 Group5   |\n"
 				+ "============================");
 		displayMenu();
-	} 
+	}
+
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Hello, Welcome to MOBLIMA!");
@@ -26,4 +38,5 @@ public class StarterView extends View{
             intent(this, new MovieGoerView());
             break;
 	}
+}
 }

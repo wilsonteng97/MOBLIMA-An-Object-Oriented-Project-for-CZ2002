@@ -1,13 +1,17 @@
 package View.admin;
+import View.View;
 import Presenter.CinemaOperator;
 import Presenter.Presenter;
 import Presenter.AdminManager;
 import java.util.Scanner;
 
-public class CinemaListView extends View{
-	public CinemaListView() {
+public class CinemaListView extends View
+{
+	protected void starter()
+	{
 		displayMenu();
-	}	
+	}
+
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("(1) Display Cinemas\n"

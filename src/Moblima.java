@@ -1,9 +1,12 @@
+import View.*;
 
-public class Moblima {
+public class Moblima extends View 
+{
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		StarterView starterView = new StarterView();
+		starterView.starter();
 	}
 
 }

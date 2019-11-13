@@ -10,17 +10,17 @@ public class LoginManager {
     // Customer randCust = new Customer();
     // String password = randCust.getBookings();
     // int userID = randCust.getEmail(); //temp code, need to get the user's username and password
-    int userID;
-    String password;
+    static int userID;
+    static String password;
 
-    private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt"; //file that stores the login data belonging to staff
-    private final static String userAccountListFile = "datafiles/adminAccountListFile.txt"; //file that stores the login data belonging to customer
-    
-    public LoginManager()  {
-        
-    }
+    private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt"; // file that stores the
+                                                                                             // login data belonging to
+                                                                                             // staff
+    private final static String userAccountListFile = "datafiles/adminAccountListFile.txt"; // file that stores the
+                                                                                            // login data belonging to
+                                                                                            // customer
 
-    public boolean verifyStaff(String username, String password) {
+    public static boolean verifyStaff(String username, String password) {
         Path path = Paths.get(adminAccountListFile);
         List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
 
@@ -31,7 +31,7 @@ public class LoginManager {
         }
     }
 
-    public boolean verifyCustomer(String username, String password) {
+    public static boolean verifyCustomer(String username, String password) {
         Path path = Paths.get(userAccountListFile);
         List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
 
