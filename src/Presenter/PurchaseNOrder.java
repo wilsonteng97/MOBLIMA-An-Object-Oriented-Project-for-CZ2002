@@ -20,9 +20,9 @@ public class PurchaseNOrder {
 		return seatNum;
   }
 
-  public void selectSeat(Cinema cinema){
+  public static void selectSeat(int seatrowIn, int seatnoIn){
     
-    return seat;
+    
   }
 
   public void readTheatre(){

@@ -53,7 +53,7 @@ public class Query {
         System.out.println("Sorry, the cinema that you are looking for does not exist.");
     }
 
-    public Showtime passDoubleShowtime(double showtimeIn){
+    public static ShowTime passDoubleShowtime(double showtimeIn){
         for (String showtime : showtimeList){
             if (showtime == showtimeIn) return showtime;
         }
