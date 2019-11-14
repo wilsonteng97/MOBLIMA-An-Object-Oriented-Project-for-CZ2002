@@ -12,27 +12,13 @@ public class CinemaOperatorManager {
     private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
     private final static String reviewListFile = "datafiles/reviewListFile.txt";
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
-
-    FileReader movieListFile = new FileReader("MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt.txt");
-    BufferedReader movieStream = new BufferedReader(movieListFile);
+    private final static String movieListFile = "datafiles/movieListFile.txt";
 
     private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<Movie, ArrayList<Review>> reviewList;
     private static HashMap<CinemaOperator, ArrayList<Cinema>> cinemaList;
     private static ArrayList<Movie> movieList;
-
-    // Path path_Showtime = Paths.get(showtimeListFile);
-    // List<String> showtimeList = Files.readAllLines(path_Showtime, StandardCharsets.UTF_8);
-
-    // Path path_Cinema = Paths.get(cinemaListFile);
-    // List<String> cinemaList = Files.readAllLines(path_Cinema, StandardCharsets.UTF_8);
-
-    // Path path_Movie = Paths.get(movieListFile);
-    // List<String> movieList = Files.readAllLines(path_Movie, StandardCharsets.UTF_8);
-
-    static String inputLine;
-    static int i, j;
 
     public static void readTheData()
     {
@@ -54,15 +40,18 @@ public class CinemaOperatorManager {
         updateShowtime();
     }
 
-    public static void removeShowtime(String moviename, double showTime){
-    	Movie movie = passStringMovie(moviename);
-    	ShowTime showtime = passDoubleShowtime(showTime);
+    public static void removeShowtime(Movie movie, ShowTime showTime){
     	// for (String showtimeToBeRemoved : showtimeList){
         //     System.out.println(showtimeToBeRemoved);
         // }
         // showtimeList.get(ShowTime.getMovie()).remove(ShowTime);
         showtimeList.get(movie).remove(showTime);
         updateShowtime();
+    }
+
+    public static void removeAllShowtimes(Movie movie)
+    {
+        showtimeList.remove(movie);
     }
 
     public static void updateShowTime(){
@@ -99,57 +88,27 @@ public class CinemaOperatorManager {
     public static void updateCinemaList() {
         writeDataFile(cinemaListFile, cinemaList);
     }
+   
 
     // ========================Movie========================
-    public static void readMovieListing(){
-        // for (String ShowTime : showtimeList){
-        //     System.out.println(ShowTime);
-        // }
-        // if(readDataFile(movieListFile) == null)
-        //     movieList = new ArrayList<>();
-        // else
-            // movieList = (ArrayList<Movie>) readDataFile(movieListFile);
-        try {                
-            for (i=0; i<12; i++) {
-                System.out.print(i+1 + ". ");
-                for (j=0; j<3; j++) {
-                    inputLine = brStream.readLine();
-                    System.out.println("\t" + inputLine);
-                }
-                System.out.print("\n");
-            }
-            brStream.close();
-        }
-        catch (FileNotFoundException e) {
-            System.out.println("Error message " + e.getMessage());
-            System.exit(0);
-        }
-        catch (IOException e) {
-            System.out.println("Error message " + e.getMessage());
-            e.printStackTrace();
-            System.exit(0);
-        }   
-    }
 
-
-    public static void addMovie(String movieIn){
+    public static void addMovie(Movie movie) {
         movieList.add(movie);
         updateMovieListing();
     }
 
-    public static void removeMovie(String movieIn){
-    	Movie movie = passStringMovie(movieIn);
-    	// for (String movieToBeRemoved : movieList){
-        //     System.out.println(movieToBeRemoved);
-        // }
+    public static void removeMovie(Movie movie)
+    {
         movieList.remove(movie);
         updateMovieListing();
     }
 
-    public static void updateMovieListing(){
-        // for (String movie : movieList){
-        //     System.out.println(movie);
-        // }
+    public static ArrayList<Movie> getMovieList()
+    {
+        return movieList;
+    }
+    public static void updateMovieListing()
+    {
         writeDataFile(movieListFile, movieList);
     }
 }

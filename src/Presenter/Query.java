@@ -2,6 +2,9 @@ package Presenter;
 
 import java.text.ParseException;
 import javax.lang.model.util.ElementScanner6;
+
+import Model.Enums.AgeRestriction;
+import Model.Enums.MovieType;
 import Model.Enums.ShowingStatus;
 import Model.Cinema;
 import Model.Movie;
@@ -86,28 +89,37 @@ public class Query {
             return ShowingStatus.NOW_SHOWING;
         else if(status == "NO_LONGER_AVAILABLE")
             return ShowingStatus.NO_LONGER_AVAILABLE;
-        else 
-            return "Incorrect showing status";
     }
 
     public static AgeRestriction passAgeRestriction(String ageRestriction)
     {
+        ageRestriction = ageRestriction.toUpperCase();
         if(ageRestriction == "G")
-            return G;
+            return AgeRestriction.G;
         else if(ageRestriction == "PG")
-            return PG;
+            return AgeRestriction.PG;
         else if(ageRestriction == "PG13")
-            return PG13;
+            return AgeRestriction.PG13;
         else if(ageRestriction == "NC16")
-            return NC16;
+            return AgeRestriction.NC16;
         else if(ageRestriction == "M18")
-            return M18;
+            return AgeRestriction.M18;
         else if(ageRestriction == "R21")
-            return R21;
+            return AgeRestriction.R21;
         else if(ageRestriction == "NAR")
-            return NAR;
+            return AgeRestriction.NAR;
         else 
-            return "Incorrect age restriction";
+            return null;
+    }
+
+    public static MovieType passMovieType(String movieType)
+    {
+        if(movieType == "MOVIE3D")
+            return MovieType.MOVIE3D;
+        else if(movieType == "DIGITAL")
+            return MovieType.DIGITAL;
+        else 
+            return null;
     }
 
     public static void searchMovie(String movie_name) {

@@ -28,13 +28,14 @@ public class StarterView extends View
 				+ "(2) MovieGoer\n"
 				+ "Please enter choice");
 		int choice = sc.nextInt();
-		switch (choice) {
+		switch (choice) 
+		{
         case 1:
             intent(this, new AdminView());
             break;
         case 2:
             intent(this, new MovieGoerView());
             break;
-	}
+		}
 }
 }

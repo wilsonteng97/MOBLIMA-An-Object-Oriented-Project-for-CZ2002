@@ -80,6 +80,7 @@ public class AdminView extends View{
 			}
 			else
 			{
+				System.out.println("Incorrect input, please try again");
 				displayMenu();
 			}
 	}
