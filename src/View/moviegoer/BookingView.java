@@ -1,83 +1,78 @@
 package View.moviegoer;
 
-import Presenter.Presenter;
+import static Presenter.Presenter.*;
 import Presenter.Query;
 import Presenter.PurchaseNOrder;
 import View.View;
-
 import java.util.Scanner;
+import Model.ShowTime;
 
 public class BookingView extends View{
-	private int age;
-    private Double price;
+	private String movieName;
+	private ShowTime showtime;
+	private int seatrow;
+	private int seatno;
+	private double price;
 	
-    public BookingView() {
-	}	
+    public BookingView(String movieName, ShowTime showtime, int seatrow, int seatno) {
+    	this.movieName=movieName;
+    	this.showtime=showtime;
+    	this.seatrow=seatrow;
+    	this.seatno=seatno;
+    }	
     private void displayMenu() {
-    	boolean[] arrayBoo = new boolean[8];
+    	boolean[] arrayBoo = new boolean[4];
     	int choice;
     	Scanner sc = new Scanner(System.in);
-    	System.out.println("(1) Please Choose Cinema\n"
-    			+ "(2) Please Choose Movie\n"
-    			+ "(3) Please Choose Showtime\n"
-    			+ "(4) Please Choose your Seat\n"
-    			+ "(5) Please Enter your Name\n"
-    			+ "(6) Please Enter your Mobile Number\n"
-    			+ "(7) Please Enter your Email\n"
-    			+ "(8) Please Enter your Age\n"
-    			+ "(9) Print Booking Details\n"
-    			+ "(10) Make Payment\n"
-        		+ "(11) Return\n");
+    	System.out.println("(1) Please Enter your Name\n"
+    			+ "(2) Please Enter your Mobile Number\n"
+    			+ "(3) Please Enter your Email\n"
+    			+ "(4) Please Enter your Age\n"
+    			+ "(5) Print Booking Details\n"
+    			+ "(6) Make Payment\n"
+        		+ "(7) Return\n");
     	System.out.println("Enter the number of your choice: ");
 		choice = sc.nextInt();
 
-		while (Presenter.verifyChoiceNumber(choice, 1, 10)) { 
+		while (verifyChoiceNumber(choice, 1, 7)) { 
 			switch(choice) {
+			
 			case 1:
-				String cinemaIn = sc.next();
-				this.cinema = passStringCinema(cinemaIn); //[presenter: change input from string to Cinema] done by KJ
+				String nameIn = sc.next();
+				recordName(nameIn);
 				arrayBoo[0]=true;
 				break;
 			case 2:
-				String movieIn = sc.next();
-				this.movie = passStringMovie(movieIn); //[presenter: change input from string to Movie] done by KJ
+				String mobileIn = sc.next();
+				recordMobileNo(mobileIn);
 				arrayBoo[1]=true;
 				break;
 			case 3:
-				double showtimeIn = sc.nextDouble();
-				this.showtime = passDoubleShowtime(showtimeIn); //[presenter: change input from double to Showtime] done by KJ
+				String emailIn = sc.next();
+				recordEmail(emailIn);
 				arrayBoo[2]=true;
 				break;
 			case 4:
-				Seat seatIn = selectSeat(); //[presenter: selectSeat(), return Seat seat] done by KJ
-				if (seatAvailable(seatIn)) //[presenter: seatAvailable(Seat seat)check whether the seat is available]
-					this.seat=seatIn;
-				else
-					System.out.println("This seat is not available, please choose another seat");
+				int ageIn = sc.nextInt();
 				arrayBoo[3]=true;
 				break;
+			case 5:
+				printBookingDetail();
 			case 6:
-				String nameIn = sc.next();
-				customer.setName(nameIn);
+				for (int i=0;i<4;i++) {
+					if (arrayBoo[i] == false)
+						System.out.println("please fill in ("+(i+1)+")");
+					else {
+						
+						price = computePrice(movieName, showtime, ageIn);
+						//computePrice(String movieName, ShowTime showtime, int ageIn)
+						//[presenter: computePrice() according to holiday, age, movie type, cinema class]
+						intent(this, new PaymentView(price));
+					}
+				}
+				
 				break;
 			case 7:
-				String mobileIn = sc.next();
-				customer.setMobileNo(mobileIn);
-				break;
-			case 8:
-				String emailIn = sc.next();
-				customer.setEmail(emailIn);
-				break;
-			case 8:
-				Int ageIn = sc.nextInt();
-				this.age = ageIn;
-				break;
-			case 9:
-				printBookingDetail();
-			case 10:
-				intent(this, new PaymentView());
-				break;
-			case 11:
 				break;
 			  }
 		  }
@@ -85,19 +80,11 @@ public class BookingView extends View{
 	//[model/presenter: save customer name, mobile no, email]
 	
 	private void printBookingDetail() {
-        System.out.println("Cinema: " + cinema + " (" + cinema.getOperator() + ")");
         System.out.println("Showtime: " + showtime);
-        System.out.println("Seat Row: " + seat.getSeatRow() + "Seat Number" + seat.getSeatNo());
+        System.out.println("Seat Row: " + seatrow + "Seat Number" + seatno);
         System.out.println();
-        System.out.println("Ticket price: " + computePrice(cinema, showtime, age, movie) + " SGD (Excl. GST)"); //[presenter: computePrice() according to holiday, age, movie type, cinema class]
+        System.out.println("Ticket price: " + price + " SGD (Excl. GST)"); 
     }
-
-	public Double getPrice() {
-		return price;
-	}
-	public void setPrice(Double price) {
-		this.price = price;
-	}
 	
 	@Override
 	protected void starter() {
