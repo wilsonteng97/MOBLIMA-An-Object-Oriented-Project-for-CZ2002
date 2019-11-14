@@ -13,39 +13,27 @@ public class Writefile {
 			String classification;
 
 			Scanner sc = new Scanner(System.in);
-//			System.out.print("Enter number of new records ");
-//			int n = sc.nextInt();
-//			
+	
 			FileWriter fwStream = new FileWriter(fileName, true);
 			BufferedWriter bwStream = new BufferedWriter(fwStream);
 			PrintWriter pwStream = new PrintWriter(bwStream);
 			
 			int i;
-//			doStream.writeBytes("\n");
 			for (i=0; i<1; i++) {
-				System.out.print("Enter name ");
+				System.out.print("Name: ");
 				movie_name = sc.nextLine();
-				System.out.print("Enter runtime ");
+				System.out.print("Runtime: ");
 				runtime = sc.next();
-				System.out.print("Enter classfication ");
+				System.out.print("Classfication ");
 				classification = sc.next();
-//				
-//				doStream.writeBytes(movie_name);
-//				doStream.writeBytes(" ");
-//				doStream.writeBytes(runtime);
-//				doStream.writeBytes(" ");
-//				doStream.writeBytes(classification);
-//				doStream.writeBytes("\n");
+				sc.next();
 				pwStream.flush();
-				pwStream.write(movie_name + " " + runtime + " mins "  + classification + "\n");
+				pwStream.write(movie_name + "\n" + runtime + " mins\n"  + classification);
 			}
 			System.out.println("Writing completed!");
 			pwStream.close();
 		}
-//		catch (FileNotFoundException e) {
-//			System.out.println("Error leh" + e.getMessage());
-//			System.exit(0);
-//		}
+
 		catch (IOException e) {
 			System.out.println("Error leh" + e.getMessage());
 			e.printStackTrace();
