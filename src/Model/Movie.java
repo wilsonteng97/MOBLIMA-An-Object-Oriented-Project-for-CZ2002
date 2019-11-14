@@ -12,7 +12,6 @@ import Model.Enums.*;
 
 public class Movie implements Serializable{
 	private Integer movieID;
-	
 	private String title;
 	private AgeRestriction ageRestriction;
 	private MovieType type;
