@@ -44,8 +44,5 @@ public class CustomerManager {
     public int getMovieRating(String movieName){
         return averageRating;
     }
-    
-    public String [] getMovie(){
-        return movieList;
-    }
+
 }

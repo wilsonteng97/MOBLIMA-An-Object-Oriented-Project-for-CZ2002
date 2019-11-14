@@ -26,7 +26,6 @@ public class Presenter
         }
         Scanner sc = new Scanner(System.in);
         String choice = sc.nextLine();
-        sc.close();
         return choice;
     }
 

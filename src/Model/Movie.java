@@ -22,14 +22,13 @@ public class Movie implements Serializable{
 	private Boolean blockBuster;
 	
 	private Double totalSales;
-	private List<String> languageList;
-	private List<String> directorList;
-	private List<String> castList;
-	private List<ShowTime> showTimes;
+	private String director;
+	private ArrayList<String> cast;
+	private ArrayList<ShowTime> showTimes;
 
 	
 	public Movie(String title, AgeRestriction ageRestriction, MovieType type, ShowingStatus status, 
-				String opening, String runtime, String synopsis, Boolean blockBuster) {
+				String opening, String director, String runtime, String synopsis, Boolean blockBuster, ArrayList<String> cast) {
 		this.movieID = -1;
 		
 		this.title = title;
@@ -37,15 +36,16 @@ public class Movie implements Serializable{
 		this.type = type;
 		this.status = status;
 		this.opening = opening;
+		this.director = director;
 		this.runtime = runtime;
 		this.synopsis = synopsis;
 		this.blockBuster = blockBuster;
-		
-		this.totalSales = 0.0;
-		this.languageList = new ArrayList<String>();
-		this.directorList = new ArrayList<String>();
-		this.castList = new ArrayList<String>();
-		this.showTimes = new ArrayList<ShowTime>();
+		this.cast = cast;
+	//	this.totalSales = 0.0;
+	//	this.languageList = new ArrayList<String>();
+	//	this.directorList = new ArrayList<String>();
+	//	this.castList = new ArrayList<String>();
+	//	this.showTimes = new ArrayList<ShowTime>();
 	}
 	
 	// movieCode
@@ -121,6 +121,16 @@ public class Movie implements Serializable{
 		this.blockBuster = blockBuster;
 	}
 
+	public ArrayList<String> getCast()
+	{
+		return cast;
+	}
+
+	public void setCast(ArrayList<String> cast)
+	{
+		this.cast = cast;
+	}
+
 	// totalSales
 	public Double getTotalSales(){
 		return totalSales;
@@ -136,19 +146,19 @@ public class Movie implements Serializable{
 	}
 	
 	// languageList
-	public List<String> getLanguageList() {
-		return languageList;
-	}
-	public void setLanguageList(ArrayList<String> languagelist) {
-		this.directorList = languagelist;
-	}
+	// public List<String> getLanguageList() {
+	// 	return languageList;
+	// }
+	// public void setLanguageList(ArrayList<String> languagelist) {
+	// 	this.directorList = languagelist;
+	// }
 	
 	// directorList
-	public List<String> getDirectorList() {
-		return directorList;
+	public String getDirector() {
+		return director;
 	}
-	public void setDirectorList(ArrayList<String> directorlist) {
-		this.directorList = directorlist;
+	public void setDirector(String director) {
+		this.director = director;
 	}
 	
 	// castList
@@ -186,10 +196,10 @@ public class Movie implements Serializable{
 		result.append("(8)"); result.append(this.getSynopsis()); result.append("\n");
 		result.append("(9)"); result.append(this.isBlockBuster()); result.append("\n");
 		result.append("(10)"); result.append(this.getTotalSales()); result.append("\n");
-		result.append("(11)"); result.append(this.getLanguageList()); result.append("\n");
-		result.append("(12)"); result.append(this.getDirectorList()); result.append("\n");
-		result.append("(13)"); result.append(this.getCastList()); result.append("\n");
-		result.append("(14)"); result.append(this.getShowTimes());
+	//	result.append("(11)"); result.append(this.getLanguage()); result.append("\n");
+		result.append("(11)"); result.append(this.getDirector()); result.append("\n");
+		result.append("(12)"); result.append(this.getCastList()); result.append("\n");
+		result.append("(13)"); result.append(this.getShowTimes());
 		return result.toString();
 	}
 	public boolean equals(Object o) {

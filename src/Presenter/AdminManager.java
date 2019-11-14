@@ -37,7 +37,7 @@ public class AdminManager extends DataManager
     private static ArrayList<Movie> movieList;
 
     // =========================Movie Price=========================
-    public static double setMoviePrice(){
+    public double setMoviePrice(){
         System.out.println("How much do you want to charge?");
         return ticket_price = sc.nextDouble();
     }
@@ -155,15 +155,23 @@ public class AdminManager extends DataManager
         return cinemaList.get(cinemaOperator);
     }
 
-    public static ArrayList<Movie> getMovieList()
-    {
-        return movieList;
-    }
-
     public static ArrayList<ShowTime> getShowtimeList(Movie movie)
     {
         return showtimeList.get(movie);
     }
+
+    public static boolean confirmChoice(String choice)
+    {
+        if(choice == "y" || choice =="Y")
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+
 
     public static ArrayList<Movie> getTop5RankingSales()
     {

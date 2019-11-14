@@ -20,6 +20,10 @@ public class SystemSettingView extends View{
 				+ "(6) Return\n");
 		
 		System.out.println("Enter the number of your choice: ");
+		// if(cinema.getStatus == PLATINUM)
+		// {
+		// 	price = price * 1.2;
+		// }
 		int choice = sc.nextInt();
 		while (verifyChoiceNumber(choice, 1, 6)) { 
 			switch (choice) {
