@@ -3,6 +3,7 @@ package Presenter;
 import java.text.ParseException;
 import javax.lang.model.util.ElementScanner6;
 import Model.Enums.ShowingStatus;
+import Model.Cinema;
 import Model.Movie;
 import Model.ShowTime;
 
@@ -53,7 +54,7 @@ public class Query {
         System.out.println("Sorry, the cinema that you are looking for does not exist.");
     }
 
-    public Showtime passDoubleShowtime(double showtimeIn){
+    public static ShowTime passDoubleShowtime(double showtimeIn){
         for (String showtime : showtimeList){
             if (showtime == showtimeIn) return showtime;
         }

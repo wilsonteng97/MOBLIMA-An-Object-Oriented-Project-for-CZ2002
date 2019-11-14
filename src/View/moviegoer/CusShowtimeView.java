@@ -7,10 +7,9 @@ import View.View;
 
 import java.util.Scanner;
 
-import Model.Movie;
-
 public class CusShowtimeView extends View{
-	public CusShowtimeView() {
+	private String movieInput;
+	public CusShowtimeView(String movieInput) {
 	}	
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
@@ -25,11 +24,15 @@ public class CusShowtimeView extends View{
 			switch (choice) {
 		        case 1:
 		            displayShowtime(movieIn); 
+		            //display seat
+		            //choose seat available
+		            //booking
 		            break;
 		        case 2:
 		        	break;
 			}
 		}
+		
 	}
 	@Override
 	protected void starter() {

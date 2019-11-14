@@ -1,6 +1,7 @@
 package Presenter;
 
 import Model.*;
+import static Presenter.Query.*;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -46,18 +47,22 @@ public class CinemaOperatorManager {
             showtimeList = (HashMap<Movie, ArrayList<ShowTime>>) readDataFile(showtimeListFile);
     }
 
-    public static void addShowtime(Movie movie, ShowTime ShowTime){
-        // showtimeList.get(ShowTime.getMovie()).add(ShowTime);
-        showtimeList.get(movie.add(ShowTime));
+    public static void addShowtime(String moviename, double showTime){
+    	Movie movie = passStringMovie(moviename);
+    	ShowTime showtime = passDoubleShowtime(showTime);
+    	// showtimeList.get(ShowTime.getMovie()).add(ShowTime);
+        showtimeList.get(movie.add(showtime));
         updateShowtime();
     }
 
-    public static void removeShowtime(Movie movie, ShowTime showTime){
-        // for (String showtimeToBeRemoved : showtimeList){
+    public static void removeShowtime(String moviename, double showTime){
+    	Movie movie = passStringMovie(moviename);
+    	ShowTime showtime = passDoubleShowtime(showTime);
+    	// for (String showtimeToBeRemoved : showtimeList){
         //     System.out.println(showtimeToBeRemoved);
         // }
         // showtimeList.get(ShowTime.getMovie()).remove(ShowTime);
-        showtimeList.get(movie.removeShowTime(showTime);
+        showtimeList.get(movie.removeShowTime(showtime);
         updateShowtime();
     }
 
@@ -76,15 +81,17 @@ public class CinemaOperatorManager {
             cinemaList = (HashMap<CinemaOperator, ArrayList<Cinema>>) readDataFile(cinemaListFile);
     }
 
-    public static void addCinema(Cinema cinema){
-        if(cinemaList.get(cinema.getCinemaID()) == null)
+    public static void addCinema(String cinemaname){
+    	Cinema cinema = passStringCinema(cinemaname);
+    	if(cinemaList.get(cinema.getCinemaID()) == null)
             cinemaList.put(cinema.getCinemaID(), new ArrayList<>());
         cinemaList.get(cinema.getCinemaID().add(cinema));
         updateCinemaList();
     }
 
-    public static void removeCinema(Cinema cinema){
-        // for (String cinemaToBeRemoved : cinemaList){
+    public static void removeCinema(String cinemaname){
+    	Cinema cinema = passStringCinema(cinemaname);
+    	// for (String cinemaToBeRemoved : cinemaList){
         //     System.out.println(cinemaToBeRemoved);
         // }
         cinemaList.get(cinema.getOperatorID().remove(cinema));
@@ -126,13 +133,16 @@ public class CinemaOperatorManager {
         }   
     }
 
-    public void addMovie(Movie Movie){
-        movieList.add(movie);
+    public static void addMovie(String movieIn){
+
+    	Movie movie = passStringMovie(movieIn);
+    	movieList.add(movie);
         updateMovieListing();
     }
 
-    public static void removeMovie(Movie movie){
-        // for (String movieToBeRemoved : movieList){
+    public static void removeMovie(String movieIn){
+    	Movie movie = passStringMovie(movieIn);
+    	// for (String movieToBeRemoved : movieList){
         //     System.out.println(movieToBeRemoved);
         // }
         movieList.remove(movie);

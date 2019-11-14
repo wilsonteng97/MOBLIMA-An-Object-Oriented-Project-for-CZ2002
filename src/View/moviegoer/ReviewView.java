@@ -12,7 +12,6 @@ public class ReviewView extends View{
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Enter Movie: ");
 		String movieIn = sc.next();
-		/*this.movie = passStringMovie(movieIn); */
     	System.out.println("(1) Write a review\n"
     			+ "(2) View all reviews\n"
     			+ "(3) Give a Rating\n"
