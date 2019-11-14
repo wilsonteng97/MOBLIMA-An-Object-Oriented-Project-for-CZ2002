@@ -8,8 +8,6 @@ import View.View;
 
 import java.util.Scanner;
 
-import Model.Customer;
-
 public class MovieListingView extends View{
 	
     public MovieListingView() {
@@ -27,7 +25,10 @@ public class MovieListingView extends View{
 		while (verifyChoiceNumber(choice, 1, 5)) {
 			switch (choice) {
             case 1:
-            	readMovieListing(); 
+            	displayMovieListing(); 
+            	System.out.println("Enter the movie you choose: ");
+        		String movieName = sc.next();
+        		
                 break;
             case 2:
                 getTop5RankingSales();
