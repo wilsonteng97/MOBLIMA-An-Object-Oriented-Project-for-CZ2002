@@ -14,6 +14,7 @@ public class BookingView extends View{
     public BookingView() {
 	}	
     private void displayMenu() {
+    	boolean[] arrayBoo = new boolean[8];
     	int choice;
     	Scanner sc = new Scanner(System.in);
     	System.out.println("(1) Please Choose Cinema\n"
@@ -30,19 +31,22 @@ public class BookingView extends View{
     	System.out.println("Enter the number of your choice: ");
 		choice = sc.nextInt();
 
-		while (verifyChoiceNumber(choice, 1, 10)) { //[presenter: change passChoiceNumber() to boolean] Done by KJ
+		while (Presenter.verifyChoiceNumber(choice, 1, 10)) { 
 			switch(choice) {
 			case 1:
 				String cinemaIn = sc.next();
 				this.cinema = passStringCinema(cinemaIn); //[presenter: change input from string to Cinema] done by KJ
+				arrayBoo[0]=true;
 				break;
 			case 2:
 				String movieIn = sc.next();
 				this.movie = passStringMovie(movieIn); //[presenter: change input from string to Movie] done by KJ
+				arrayBoo[1]=true;
 				break;
 			case 3:
 				double showtimeIn = sc.nextDouble();
 				this.showtime = passDoubleShowtime(showtimeIn); //[presenter: change input from double to Showtime] done by KJ
+				arrayBoo[2]=true;
 				break;
 			case 4:
 				Seat seatIn = selectSeat(); //[presenter: selectSeat(), return Seat seat] done by KJ
@@ -50,6 +54,7 @@ public class BookingView extends View{
 					this.seat=seatIn;
 				else
 					System.out.println("This seat is not available, please choose another seat");
+				arrayBoo[3]=true;
 				break;
 			case 6:
 				String nameIn = sc.next();

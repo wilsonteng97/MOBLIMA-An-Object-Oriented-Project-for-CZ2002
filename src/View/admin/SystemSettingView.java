@@ -1,8 +1,7 @@
 package View.admin;
 import View.View;
-import Presenter.AdminManager;
-import Presenter.CinemaOperatorManager;
-import Presenter.Presenter;
+import static Presenter.AdminManager.*;
+import static Presenter.Presenter.*;
 import java.util.Scanner;
 
 public class SystemSettingView extends View{
@@ -22,25 +21,24 @@ public class SystemSettingView extends View{
 		
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (Presenter.verifyChoiceNumber(choice, 1, 6)) { 
+		while (verifyChoiceNumber(choice, 1, 6)) { 
 			switch (choice) {
 		        case 1:
-		            AdminManager.setMoviePrice(); 
+		            setMoviePrice(); 
 		            break;
 		        case 2:
-		            AdminManager.setHoliday();  
+		            setHoliday();  
 		            break;
 		        case 3:
-		        	AdminManager.updateAdminAccount();
+		        	updateAdminAccount();
 		        	break;
 		        case 4:
-		        	AdminManager.getTop5RankingRating();
+		        	getTop5RankingRating();
 		        	break;
 		        case 5:
-		        	AdminManager.getTop5RankingSales();
+		        	getTop5RankingSales();
 		        	break;
-				case 6:
-				
+				case 6:				
 		        	break;
 			}
 		}
