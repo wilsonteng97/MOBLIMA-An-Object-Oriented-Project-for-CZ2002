@@ -5,45 +5,47 @@ import java.util.Scanner;
 
 public class Writefile {
 	public static void main (String[] args) {
-		String fileName = " ";
+		String fileName = "C:\\Users\\tkjie\\eclipse-workspace\\scse.cz2002.tkj.first\\hehe.txt";
 		
 		try {
 			String movie_name;
 			String runtime;
 			String classification;
-			
-			System.out.println("Enter the file name: ");
+
 			Scanner sc = new Scanner(System.in);
-			fileName = sc.nextLine();
-			
-			FileOutputStream foStream = new FileOutputStream(fileName);
-			BufferedOutputStream boStream = new BufferedOutputStream(foStream);
-			ObjectOutputStream doStream = new ObjectOutputStream(boStream);
+//			System.out.print("Enter number of new records ");
+//			int n = sc.nextInt();
+//			
+			FileWriter fwStream = new FileWriter(fileName, true);
+			BufferedWriter bwStream = new BufferedWriter(fwStream);
+			PrintWriter pwStream = new PrintWriter(bwStream);
 			
 			int i;
-			doStream.writeBytes("\n");
-			for (i=0; i<3; i++) {
+//			doStream.writeBytes("\n");
+			for (i=0; i<1; i++) {
 				System.out.print("Enter name ");
-				movie_name = sc.next();
+				movie_name = sc.nextLine();
 				System.out.print("Enter runtime ");
 				runtime = sc.next();
 				System.out.print("Enter classfication ");
 				classification = sc.next();
-				
-				doStream.writeBytes(movie_name);
-				doStream.writeBytes(" ");
-				doStream.writeBytes(runtime);
-				doStream.writeBytes(" ");
-				doStream.writeBytes(classification);
-				doStream.writeBytes("\n");
+//				
+//				doStream.writeBytes(movie_name);
+//				doStream.writeBytes(" ");
+//				doStream.writeBytes(runtime);
+//				doStream.writeBytes(" ");
+//				doStream.writeBytes(classification);
+//				doStream.writeBytes("\n");
+				pwStream.flush();
+				pwStream.write(movie_name + " " + runtime + " mins "  + classification + "\n");
 			}
 			System.out.println("Writing completed!");
-			doStream.close();
+			pwStream.close();
 		}
-		catch (FileNotFoundException e) {
-			System.out.println("Error leh" + e.getMessage());
-			System.exit(0);
-		}
+//		catch (FileNotFoundException e) {
+//			System.out.println("Error leh" + e.getMessage());
+//			System.exit(0);
+//		}
 		catch (IOException e) {
 			System.out.println("Error leh" + e.getMessage());
 			e.printStackTrace();
