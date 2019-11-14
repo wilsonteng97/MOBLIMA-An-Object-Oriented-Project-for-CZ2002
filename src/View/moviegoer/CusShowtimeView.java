@@ -1,7 +1,7 @@
 package View.moviegoer;
 
-import Presenter.Presenter;
-import Presenter.Query;
+import static Presenter.Presenter.*;
+import static Presenter.Query.*;
 
 import View.View;
 
@@ -16,15 +16,15 @@ public class CusShowtimeView extends View{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Movie: ");
 		String movieIn = sc.next();
-		this.movie = Query.passStringMovie(movieIn); 
+		 
 		System.out.println("(1) Display Showtimes\n"
 				+ "(2) Return\n");
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (Presenter.verifyChoiceNumber(choice, 1, 2)) {
+		while (verifyChoiceNumber(choice, 1, 2)) {
 			switch (choice) {
 		        case 1:
-		            Query.displayShowtime(movie); 
+		            displayShowtime(movieIn); 
 		            break;
 		        case 2:
 		        	break;

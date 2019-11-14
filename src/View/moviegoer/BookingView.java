@@ -30,7 +30,7 @@ public class BookingView extends View{
     	System.out.println("Enter the number of your choice: ");
 		choice = sc.nextInt();
 
-		while (verifyChoiceNumber(choice, 1, 10)) { //[presenter: change passChoiceNumber() to boolean] Done by KJ
+		while (Presenter.verifyChoiceNumber(choice, 1, 10)) { 
 			switch(choice) {
 			case 1:
 				String cinemaIn = sc.next();

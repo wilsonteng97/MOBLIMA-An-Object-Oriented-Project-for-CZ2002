@@ -1,9 +1,9 @@
 package View.moviegoer;
 
-import Presenter.Presenter;
-import Presenter.AdminManager;
-import Presenter.CinemaOperatorManager;
-import Presenter.Query;
+import static Presenter.Presenter.*;
+import static Presenter.AdminManager.*;
+import static Presenter.CinemaOperatorManager.*;
+import static Presenter.Query.*;
 import View.View;
 
 import java.util.Scanner;
@@ -24,22 +24,21 @@ public class MovieListingView extends View{
     			+ "(5) Return");
     	System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while (Presenter.verifyChoiceNumber(choice, 1, 5)) {
+		while (verifyChoiceNumber(choice, 1, 5)) {
 			switch (choice) {
             case 1:
-            	CinemaOperatorManager.readMovieListing(); 
+            	readMovieListing(); 
                 break;
             case 2:
-                AdminManager.getTop5RankingSales();
+                getTop5RankingSales();
                 break;
             case 3:
-                AdminManager.getTop5RankingRating();
+                getTop5RankingRating();
                 break;
             case 4:
             	System.out.println("Please Enter the Movie: ");
             	String movieIn = sc.next();
-            	Movie movie = Query.passStringMovie(movieIn);
-            	Query.searchMovie(movie); //[presenter: searchMovie()] correct method is passStringMovie, done by KJ
+            	searchMovie(movieIn); 
                 break;
             case 5:
                 break;

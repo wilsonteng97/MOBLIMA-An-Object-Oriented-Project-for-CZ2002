@@ -91,7 +91,7 @@ public class CinemaOperatorManager {
     }
 
     // ========================Movie========================
-    private static void readMovieListing(){
+    public static void readMovieListing(){
         // for (String ShowTime : showtimeList){
         //     System.out.println(ShowTime);
         // }

@@ -1,7 +1,9 @@
 package Presenter;
 
+import Model.Movie;
 import Model.Review;
-import Presenter.Query;
+import static Presenter.Query.*;
+import static Presenter.Presenter.*;
 
 public class ReviewManager {
     int rating;
@@ -16,8 +18,8 @@ public class ReviewManager {
         
     }
 
-    public void addReview(String movieIn){
-        this.movie = passStringMovie(movieIn); //[presenter: change input from string to Movie]
+    public static void addReview(String movieIn){
+        Movie movie = passStringMovie(movieIn); 
         
         System.out.println("Please provide your review.");
         review = sc.next();
@@ -25,8 +27,8 @@ public class ReviewManager {
         updateReviewList();
     }
 
-    public void giveRating (String movieIn){
-        this.movie = passStringMovie(movieIn);
+    public static void giveRating (String movieIn){
+        Movie movie = passStringMovie(movieIn);
 
         do {
             System.out.println("Please provide your rating (1-5).");
@@ -42,11 +44,13 @@ public class ReviewManager {
         updateReviewList();
     }
 
-    public double getMovieRating(Movie movie){
-        return movie.getMovieRating();
+    public static double getMovieRating(String movieIn){
+    	Movie movie = passStringMovie(movieIn);
+    	return movie.getMovieRating();
     }
 
-    public Review[] displayReview(Movie movie){
-        return all_reviews;
+    public static Review[] displayReview(String movieIn){
+    	Movie movie = passStringMovie(movieIn);
+    	return all_reviews;
     }
 }
