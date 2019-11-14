@@ -13,7 +13,6 @@ public class BookingHistoryView extends View{
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Please Enter your Name");
     	String customerName = sc.next();
-    	//Customer customerName = passStringCustomer(customerNameIn);
     	getBookingHistory(customerName); 
     }
 	@Override

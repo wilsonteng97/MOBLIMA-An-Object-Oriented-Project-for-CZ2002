@@ -10,8 +10,6 @@ import View.View;
 
 import java.util.Scanner;
 
-import Model.Customer;
-
 public class MovieListingView extends View{
 	
     public MovieListingView() {

@@ -3,6 +3,7 @@ package Presenter;
 import java.text.ParseException;
 import javax.lang.model.util.ElementScanner6;
 import Model.Enums.ShowingStatus;
+import Model.Cinema;
 import Model.Movie;
 import Model.ShowTime;
 

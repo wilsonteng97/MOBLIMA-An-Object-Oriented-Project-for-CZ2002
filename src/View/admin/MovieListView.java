@@ -1,16 +1,10 @@
 package View.admin;
 import View.View;
-import Presenter.CinemaOperator;
-import Presenter.CinemaOperatorManager;
+import static Presenter.CinemaOperatorManager.*;
 
 import static Presenter.Presenter.*;
 import static Presenter.AdminManager.*;
-import static Presenter.Query.*;
-
-import java.lang.annotation.Inherited;
 import java.util.Scanner;
-
-import Model.Movie;
 
 public class MovieListView extends View{
 
@@ -37,17 +31,15 @@ public class MovieListView extends View{
 		        case 2:
 		        	System.out.println("Enter the movie you want to add: ");
 		        	String movieIn = sc.next();
-		        	Movie movie = passStringMovie(movieIn);
-		        	CinemaOperatorManager.addMovie(movie);
+		        	addMovie(movieIn);
 		            break;
 		        case 3:
-		        	CinemaOperatorManager.updateMovieListing();
+		        	updateMovieListing();
 		        	break;
 		        case 4:
 		        	System.out.println("Enter the movie you want to add: ");
 		        	String movieIn2 = sc.next();
-		        	Movie movie2 = passStringMovie(movieIn2);
-		        	CinemaOperatorManager.removeMovie(movie2);
+		        	removeMovie(movieIn2);
 		        	break;
 		        case 5:
 		        	break;

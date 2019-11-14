@@ -9,13 +9,15 @@ import View.View;
 
 import java.util.Scanner;
 
+
 import Model.Seat;
 import Model.ShowTime;
 
+
 public class CusShowtimeView extends View{
-	private String movieName;
-	public CusShowtimeView(String movieIn) {
-		movieName=movieIn;
+	private String movieInput;
+	public CusShowtimeView(String movieInput) {
+
 	}	
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
@@ -38,11 +40,17 @@ public class CusShowtimeView extends View{
 		    		int seatnoIn = sc.nextInt();
 					selectSeat(seatrowIn, seatnoIn);
 					intent(this, new BookingView(movieName, showtime, seatrowIn, seatnoIn));
+		            displayShowtime(movieIn); 
+		            //display seat
+		            //choose seat available
+		            //booking
+
 		            break;
 		        case 2:
 		        	break;
 			}
 		}
+		
 	}
 	
 	private void displaySeat(Seat[][] seats) {

@@ -19,17 +19,18 @@ public class Cinema implements Serializable {
 	private String cinemaName; // This is for display.
 	private Integer operatorID;
 	private CinemaClass cinemaClass;
+	private CinemaOperator cinemaOperator;
 	private List<ShowTime> showTimes;
 	private List<Seat> seats;
 	private Integer no_of_rows;
 	private Integer no_of_columns;
 	
-	public Cinema(String cinemaID, String cinemaName, Integer operatorID, CinemaClass cinemaClass) {
+	public Cinema(String cinemaID, String cinemaName, CinemaClass cinemaClass, CinemaOperator cinemaOperator) {
 		this.cinemaID = cinemaID;
 		this.cinemaName = cinemaName;
-		this.setOperatorID(operatorID);
+	//	this.setOperatorID(operatorID);
 		this.cinemaClass = cinemaClass;
-
+		this.cinemaOperator = cinemaOperator;
 		this.showTimes = new ArrayList<ShowTime>();
 		this.seats = new ArrayList<Seat>();
 		this.no_of_rows = 0;
@@ -68,6 +69,15 @@ public class Cinema implements Serializable {
 		this.cinemaClass = cinemaClass;
 	}
 	
+	public CinemaOperator getCinemaOperator()
+	{
+		return cinemaOperator;
+	}
+	public void setCinemaOperator(CinemaOperator cinemaOperator)
+	{
+		this.cinemaOperator = cinemaOperator;
+	}
+
 	// showTime
 	public void addShowTime(ShowTime showTime) {
 		showTimes.add(showTime);

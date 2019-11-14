@@ -22,6 +22,7 @@ public class BookingView extends View{
     	seatno=searnoIn;
 	}	
     private void displayMenu() {
+    	boolean[] arrayBoo = new boolean[8];
     	int choice;
     	Scanner sc = new Scanner(System.in);
     	System.out.println("(1) Please Enter your Name\n"
@@ -52,6 +53,8 @@ public class BookingView extends View{
 			case 4:
 				int ageIn = sc.nextInt();
 				recordAge(ageIn);
+				String cinemaIn = sc.next();
+				
 				break;
 			case 5:
 				printBookingDetail();

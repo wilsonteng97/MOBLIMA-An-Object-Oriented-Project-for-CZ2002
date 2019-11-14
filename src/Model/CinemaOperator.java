@@ -86,13 +86,14 @@ public class CinemaOperator implements Serializable{
 			this.numOfNormalCinemas++;
 			cinemaID = this.numOfNormalCinemas + "N";
 			cinemaName = this.getOperatorName() + this.getLocation().toUpperCase();
-			cinemas.add(new Cinema(cinemaID, cinemaName, this.getOperatorID(), CinemaClass.NORMAL));
+			cinemas.add(new Cinema(cinemaID, cinemaName, CinemaClass.NORMAL, this));
 			break;
 		case PLATINUM:
 			this.numOfPlatinumCinemas++;
 			cinemaID = this.numOfPlatinumCinemas + "P";
 			cinemaName = this.getOperatorName() + this.getLocation().toUpperCase();
-			cinemas.add(new Cinema(cinemaID, cinemaName, this.getOperatorID(), CinemaClass.PLATINUM));		break;
+			cinemas.add(new Cinema(cinemaID, cinemaName, CinemaClass.PLATINUM, this));
+			break;
 		default:
 			break; // TO-DO throw exception
 		}
