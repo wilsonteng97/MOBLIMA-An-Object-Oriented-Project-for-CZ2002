@@ -11,7 +11,9 @@ public class CinemaOperatorManager {
     private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
     private final static String reviewListFile = "datafiles/reviewListFile.txt";
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
-    private final static String movieListFile = "datafiles/movieListFile.txt";
+
+    FileReader movieListFile = new FileReader("MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt.txt");
+    BufferedReader movieStream = new BufferedReader(movieListFile);
 
     private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
@@ -27,6 +29,9 @@ public class CinemaOperatorManager {
 
     // Path path_Movie = Paths.get(movieListFile);
     // List<String> movieList = Files.readAllLines(path_Movie, StandardCharsets.UTF_8);
+
+    static String inputLine;
+    static int i, j;
 
     public static void readTheData()
     {
@@ -95,10 +100,30 @@ public class CinemaOperatorManager {
         // for (String ShowTime : showtimeList){
         //     System.out.println(ShowTime);
         // }
-        if(readDataFile(movieListFile) == null)
-            movieList = new ArrayList<>();
-        else
-            movieList = (ArrayList<Movie>) readDataFile(movieListFile);
+        // if(readDataFile(movieListFile) == null)
+        //     movieList = new ArrayList<>();
+        // else
+            // movieList = (ArrayList<Movie>) readDataFile(movieListFile);
+        try {                
+            for (i=0; i<12; i++) {
+                System.out.print(i+1 + ". ");
+                for (j=0; j<3; j++) {
+                    inputLine = brStream.readLine();
+                    System.out.println("\t" + inputLine);
+                }
+                System.out.print("\n");
+            }
+            brStream.close();
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("Error message " + e.getMessage());
+            System.exit(0);
+        }
+        catch (IOException e) {
+            System.out.println("Error message " + e.getMessage());
+            e.printStackTrace();
+            System.exit(0);
+        }   
     }
 
     public void addMovie(Movie Movie){
