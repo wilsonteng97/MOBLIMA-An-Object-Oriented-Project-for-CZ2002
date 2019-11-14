@@ -7,7 +7,10 @@ import View.View;
 import java.util.Scanner;
 import Model.ShowTime;
 
+import Model.ShowTime;
+
 public class BookingView extends View{
+
 	private String movieName;
 	private ShowTime showtime;
 	private int seatrow;
@@ -20,6 +23,7 @@ public class BookingView extends View{
     	this.seatrow=seatrow;
     	this.seatno=seatno;
     }	
+
     private void displayMenu() {
     	boolean[] arrayBoo = new boolean[4];
     	int choice;
@@ -35,30 +39,38 @@ public class BookingView extends View{
 		choice = sc.nextInt();
 
 		while (verifyChoiceNumber(choice, 1, 7)) { 
+
 			switch(choice) {
 			
 			case 1:
 				String nameIn = sc.next();
 				recordName(nameIn);
+
 				arrayBoo[0]=true;
+
 				break;
 			case 2:
 				String mobileIn = sc.next();
 				recordMobileNo(mobileIn);
+
 				arrayBoo[1]=true;
+
 				break;
 			case 3:
 				String emailIn = sc.next();
 				recordEmail(emailIn);
+
 				arrayBoo[2]=true;
 				break;
 			case 4:
 				int ageIn = sc.nextInt();
 				arrayBoo[3]=true;
+
 				break;
 			case 5:
 				printBookingDetail();
 			case 6:
+
 				for (int i=0;i<4;i++) {
 					if (arrayBoo[i] == false)
 						System.out.println("please fill in ("+(i+1)+")");
@@ -71,6 +83,7 @@ public class BookingView extends View{
 					}
 				}
 				
+
 				break;
 			case 7:
 				break;

@@ -20,7 +20,9 @@ public class PurchaseNOrder {
 		return seatNum;
   }
 
-  public static void selectSeat(int seatrow, int seatno){
+
+  public static void selectSeat(int seatrowIn, int seatnoIn){
+
     
     
   }

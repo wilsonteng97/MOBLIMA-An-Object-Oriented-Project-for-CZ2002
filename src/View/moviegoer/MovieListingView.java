@@ -4,6 +4,8 @@ import static Presenter.Presenter.*;
 import static Presenter.AdminManager.*;
 import static Presenter.CinemaOperatorManager.*;
 import static Presenter.Query.*;
+
+import View.AdminView;
 import View.View;
 
 import java.util.Scanner;

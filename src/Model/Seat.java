@@ -14,15 +14,17 @@ public class Seat implements Serializable {
 	
 	private Integer seatID; // SeatID starts from 1, starts from the row nearest to the cinema.
 	private String cinemaID;
+	private int seatNo;
+	private int seatRow;
 	private Integer operatorID;
+	private ShowTime showtime;
 	private Hashtable<ShowTime, Boolean> occupied;
 	
-	public Seat(Integer seatID, String cinemaID, Integer operatorID) {
+	public Seat(Integer seatID, int seatNo, int seatRow, ShowTime showtime) {
 		this.seatID = seatID;
-//		this.seatNo = seatNo;
-//		this.seatRow = seatRow;
-		this.cinemaID = cinemaID;
-		this.operatorID = operatorID;
+		this.seatNo = seatNo;
+		this.seatRow = seatRow;
+		this.showtime = showtime;
 		
 		this.occupied = new Hashtable<ShowTime, Boolean>();
 	}
@@ -41,6 +43,11 @@ public class Seat implements Serializable {
 	}
 	public void setCinemaID(String cinemaID) {
 		this.cinemaID = cinemaID;
+	}
+	
+	public ShowTime getShowtime()
+	{
+		return showtime;
 	}
 	
 	// operatorID
