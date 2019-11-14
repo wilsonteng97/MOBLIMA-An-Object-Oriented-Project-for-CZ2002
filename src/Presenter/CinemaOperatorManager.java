@@ -47,11 +47,10 @@ public class CinemaOperatorManager {
             showtimeList = (HashMap<Movie, ArrayList<ShowTime>>) readDataFile(showtimeListFile);
     }
 
-    public static void addShowtime(String moviename, double showTime){
-    	Movie movie = passStringMovie(moviename);
-    	ShowTime showtime = passDoubleShowtime(showTime);
-    	// showtimeList.get(ShowTime.getMovie()).add(ShowTime);
-        showtimeList.get(movie.add(showtime));
+
+    public static void addShowtime(Movie movie, ShowTime showTime)
+    {
+        showtimeList.get(movie).add(showTime);
         updateShowtime();
     }
 
@@ -62,7 +61,7 @@ public class CinemaOperatorManager {
         //     System.out.println(showtimeToBeRemoved);
         // }
         // showtimeList.get(ShowTime.getMovie()).remove(ShowTime);
-        showtimeList.get(movie.removeShowTime(showtime);
+        showtimeList.get(movie).remove(showTime);
         updateShowtime();
     }
 
@@ -81,11 +80,10 @@ public class CinemaOperatorManager {
             cinemaList = (HashMap<CinemaOperator, ArrayList<Cinema>>) readDataFile(cinemaListFile);
     }
 
-    public static void addCinema(String cinemaname){
-    	Cinema cinema = passStringCinema(cinemaname);
-    	if(cinemaList.get(cinema.getCinemaID()) == null)
-            cinemaList.put(cinema.getCinemaID(), new ArrayList<>());
-        cinemaList.get(cinema.getCinemaID().add(cinema));
+    public static void addCinema(Cinema cinema){
+        if(cinemaList.get(cinema.getCinemaOperator()) == null)
+        cinemaList.put(cinema.getCinemaOperator(), new ArrayList<>());
+        cinemaList.get(cinema.getCinemaOperator()).add(cinema);
         updateCinemaList();
     }
 
@@ -94,7 +92,7 @@ public class CinemaOperatorManager {
     	// for (String cinemaToBeRemoved : cinemaList){
         //     System.out.println(cinemaToBeRemoved);
         // }
-        cinemaList.get(cinema.getOperatorID().remove(cinema));
+        cinemaList.get(cinema.getCinemaOperator()).remove(cinema);
         updateCinemaList();
     }
 
@@ -133,10 +131,9 @@ public class CinemaOperatorManager {
         }   
     }
 
-    public static void addMovie(String movieIn){
 
-    	Movie movie = passStringMovie(movieIn);
-    	movieList.add(movie);
+    public static void addMovie(String movieIn){
+        movieList.add(movie);
         updateMovieListing();
     }
 
