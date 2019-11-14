@@ -27,8 +27,9 @@ public class BookingManager {
         // writeDataFile(userBookingListFile, userBookingList);
     }
 
-    public void getBookingHistory(Customer customer){
-        // for (String booking : userBookingList){
+    public static void getBookingHistory(String customerName){
+    	//Customer customer = passStringCustomer(customerName);
+    	// for (String booking : userBookingList){
         //     if (booking == customer){
         //         System.out.println(booking);
         //     }

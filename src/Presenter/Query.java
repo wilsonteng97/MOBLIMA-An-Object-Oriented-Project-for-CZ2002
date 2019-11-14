@@ -4,6 +4,7 @@ import java.text.ParseException;
 import javax.lang.model.util.ElementScanner6;
 import Model.Enums.ShowingStatus;
 import Model.Movie;
+import Model.ShowTime;
 
 public class Query {
     private final static String movieListFile = "datafiles/movieListFile.txt";
@@ -38,14 +39,14 @@ public class Query {
         }
     }
 
-    public Movie passStringMovie(String name_of_movie){
+    public static Movie passStringMovie(String name_of_movie){
         for (String movie : movieList){
             if (movie == name_of_movie) return movie;
         }
         System.out.println("Sorry, the name of movie that you are looking for does not exist.");
     }
 
-    public Cinema passStringCinema(String cinema_ID){
+    public static Cinema passStringCinema(String cinema_ID){
         for (String cinema : cinemaList){
             if (cinema == cinema_ID) return cinema;
         }
@@ -65,9 +66,10 @@ public class Query {
         }
     }
 
-    public Showtime displayShowtime(Movie movie_name){
-        for (String showtime : showtimeList){
-            if (movie == movie_name) return showtime;
+    public static ShowTime displayShowtime(String movie_name){
+    	Movie movieIn = passStringMovie(movie_name);
+    	for (String showtime : showtimeList){
+            if (movie == movieIn) return showtime;
         }
         System.out.println("Sorry, the Showtime that you are looking for does not exist.");
     }
@@ -107,7 +109,7 @@ public class Query {
             return "Incorrect age restriction";
     }
 
-    public void searchMovie(String movie_name) {
+    public static void searchMovie(String movie_name) {
         Movie searched_movie = new Movie();
         searched_movie = passStringMovie(movie_name);
 

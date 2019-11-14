@@ -1,6 +1,6 @@
 package View.moviegoer;
-import Presenter.Presenter;
-import Presenter.PurchaseNOrder;
+import static Presenter.Presenter.*;
+import static Presenter.PurchaseNOrder.*;
 
 import View.View;
 
@@ -12,12 +12,9 @@ public class PaymentView extends View{
 	
     public PaymentView(Double price) {
     	this.price = price;
-    	PurchaseNOrder.generateTID();
+    	generateTID();
 	}	
-    /*private void generateTID() {
-        TID = cinema.getCinemaCode(); //[model: getCinemaCode]
-        TID = TID.concat(passSearchMovieTime()); //[presenter: is this method convert current time to string?]
-    }*/
+    
     private void displayMenu() {
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Transaction ID: " + TID);
@@ -28,7 +25,7 @@ public class PaymentView extends View{
     	System.out.println("(1) Confirm Payment\n"
     			+ "(2) Cancel Payment");
 		int choice = sc.nextInt();
-		while (Presenter.verifyChoiceNumber(choice, 1, 2)) { 
+		while (verifyChoiceNumber(choice, 1, 2)) { 
 			switch(choice) {
 			case 1:
 				saveBooking(); //[presenter: save the booking to booking history]
