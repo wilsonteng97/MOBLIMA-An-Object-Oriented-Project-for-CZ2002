@@ -9,7 +9,7 @@ public enum MovieType {
 		this.string = string;
 	}
 
-	public static MovieType getValue(String value)
+	public static MovieType getValueMovieType(String value)
 	{
 		value = value.toUpperCase();
 		if(value.equals("MOVIE3D"))

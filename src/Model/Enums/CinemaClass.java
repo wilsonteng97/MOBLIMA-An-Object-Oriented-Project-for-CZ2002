@@ -9,7 +9,7 @@ public enum CinemaClass {
 		this.string = string;
 	}
 
-	public static CinemaClass getValue(String value)
+	public static CinemaClass getValueCinemaClass(String value)
 	{
 		value = value.toUpperCase();
 		if(value.equals("NORMAL"))

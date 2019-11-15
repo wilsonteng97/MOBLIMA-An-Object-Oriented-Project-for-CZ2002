@@ -4,7 +4,7 @@ import View.View;
 
 import Presenter.Query;
 import Presenter.AdminManager;
-
+import Model.Enums.*;
 import static Presenter.Presenter.*;
 import static Presenter.Query.*;
 import static Presenter.AdminManager.*;
@@ -15,8 +15,7 @@ import java.util.Scanner;
 
 import Model.Cinema;
 import Model.CinemaOperator;
-import Model.ShowTime;
-import Model.Enums.CinemaClass;
+import static Model.Enums.CinemaClass.*;
 
 public class CinemaListView extends View
 {
@@ -95,7 +94,7 @@ public class CinemaListView extends View
 		{
 			String cinemaClassIn = passChoiceString("Enter cinema class from the following: \n"
 			+ "NORMAL, PLATINUM");
-			cinemaClass = passCinemaClass(cinemaClassIn);
+			cinemaClass = getValueCinemaClass(cinemaClassIn);
 		}
 		Cinema cinema = new Cinema(cinemaID, cinemaName, cinemaClass, cinemaOperator);
 		addCinema(cinema);

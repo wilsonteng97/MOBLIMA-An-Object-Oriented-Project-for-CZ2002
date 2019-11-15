@@ -9,7 +9,7 @@ public enum ShowingStatus {
 		this.string = string;
 	}
 
-	public static ShowingStatus getValue(String value)
+	public static ShowingStatus getValueShowingStatus(String value)
 	{
 		value = value.toUpperCase();
 		if(value.equals("COMING_SOON"))
