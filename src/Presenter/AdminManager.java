@@ -106,7 +106,7 @@ public class AdminManager extends DataManager
     }
 
     // =========================Review Lists=========================
-    public static void readReviewList()
+	public static void readReviewList()
     {
         if(readDataFile_List(reviewListFile) == null)
         {
@@ -114,8 +114,7 @@ public class AdminManager extends DataManager
         }
         else
         {
-        	Movie m; Review r;
-            reviewList = (HashMap<Movie, ArrayList<Review>>) readDataFile_HashMap(reviewListFile, m, r);
+            reviewList = (HashMap<Movie, ArrayList<Review>>) readDataFile_HashMap(reviewListFile);
         }
     }
 

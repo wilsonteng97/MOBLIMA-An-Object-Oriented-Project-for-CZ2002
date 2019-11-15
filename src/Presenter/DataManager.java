@@ -22,7 +22,7 @@ public abstract class DataManager {
 		try {
 			FileInputStream fwStream = new FileInputStream(fileName);
 			ObjectInputStream in = new ObjectInputStream(fwStream);
-			ArrayList<Object> lister = (ArrayList<Object>) in.readObject();
+			Object lister = (Object) in.readObject();
 
 			in.close();
 			return lister;
@@ -39,11 +39,11 @@ public abstract class DataManager {
 	    }
 	}
 		
-		public static <A, B> HashMap<A, ArrayList<B>> readDataFile_HashMap(String fileName, Object A, Object B){
+		public static Object readDataFile_HashMap(String fileName){
 			try {
 				FileInputStream fwStream = new FileInputStream(fileName);
 				ObjectInputStream in = new ObjectInputStream(fwStream);
-				HashMap<A, ArrayList<B>> hashmap = (HashMap<A, ArrayList<B>>) in.readObject();
+				Object hashmap = (Object) in.readObject();
 
 				in.close();
 				return hashmap;
