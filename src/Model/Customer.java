@@ -22,17 +22,19 @@ public class Customer implements Serializable{
 	private String mobile; // Mobile Number
 	private String email;
 	private Date DOB; // Date of Birth
+	String password;
 	private Integer age;
 	private boolean isSenior;
 //	private boolean ismember;
 	List<Booking> bookings;
 
-	public Customer(int customerID, String name, String mobile, String email, Date DOB) {
+	public Customer(int customerID, String name, String mobile, String email, Date DOB, String password) {
         this.customerID = customerID;
 		this.name = name;
         this.mobile = mobile;
 		this.email = email;
 		this.DOB = DOB;
+		this.password = password;
         bookings = new ArrayList<Booking>();
         
 //        this.setMember(false);
@@ -84,6 +86,14 @@ public class Customer implements Serializable{
 	}
 	public Date getDOB() {
 		return DOB;
+	}
+	
+	// password
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getPassword() {
+		return password;
 	}
 	
 	// private method to compute Age
