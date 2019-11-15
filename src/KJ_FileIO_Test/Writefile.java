@@ -3,32 +3,31 @@ package CZ2002_Mini_Project;
 import java.io.*;
 import java.util.Scanner;
 
-public class Writefile {
-	public static void main (String[] args) {
-		String fileName = "C:\\Users\\tkjie\\eclipse-workspace\\scse.cz2002.tkj.first\\hehe.txt";
+public class WriteFile {
+	public static void main(String [] args) {
+		String fileName = "C:\\Users\\tkjie\\eclipse-workspace\\scse.cz2002.tkj.first\\movieListFile.ser";
+		
+		Movie a = new Movie();
 		
 		try {
-			String movie_name;
-			String runtime;
-			String classification;
-
 			Scanner sc = new Scanner(System.in);
-	
+
 			FileWriter fwStream = new FileWriter(fileName, true);
 			BufferedWriter bwStream = new BufferedWriter(fwStream);
 			PrintWriter pwStream = new PrintWriter(bwStream);
 			
 			int i;
-			for (i=0; i<1; i++) {
+			for (i=0; i<2; i++) {
 				System.out.print("Name: ");
-				movie_name = sc.nextLine();
-				System.out.print("Runtime: ");
-				runtime = sc.next();
+				a.movieName = sc.nextLine();
 				System.out.print("Classfication ");
-				classification = sc.next();
-				sc.next();
-				pwStream.flush();
-				pwStream.write(movie_name + "\n" + runtime + " mins\n"  + classification);
+				a.classification = sc.nextLine();
+				System.out.print("Sypnosis ");
+				a.sypnosis = sc.nextLine();
+				System.out.print("Runtime: ");
+				a.runtime = sc.nextInt();
+				pwStream.write(a.movieName + "\n" + a.runtime + " mins\n"  + a.classification +
+						"\n" + a.sypnosis + "\n");
 			}
 			System.out.println("Writing completed!");
 			pwStream.close();
