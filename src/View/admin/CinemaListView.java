@@ -54,7 +54,7 @@ public class CinemaListView extends View
 		}
 	}
 
-	private void displayCinemaOperator()
+	protected static void displayCinemaOperator()
 	{
 		ArrayList<CinemaOperator> cinemaOperatorList;
 		cinemaOperatorList = getCinemaOperators();
@@ -69,7 +69,7 @@ public class CinemaListView extends View
 		displayCinemaList(cinemaOperatorList.get(choice));
 	}
 
-	private void displayCinemaList(CinemaOperator cinemaOperator)
+	protected static void displayCinemaList(CinemaOperator cinemaOperator)
 	{
 		ArrayList<Cinema> cinemaList = getCinemaList(cinemaOperator);
 		int numCinema =0;
@@ -80,7 +80,7 @@ public class CinemaListView extends View
 		displayMenu();
 	}
 
-	private void newCinema()
+	protected void newCinema()
 	{
 		System.out.println("New Cinema");
 		int choice = passChoiceInt("Choice a cinema operator to which add cinema");
