@@ -4,8 +4,12 @@ import View.View;
 import static Presenter.Presenter.*;
 import java.util.Scanner;
 
+import Model.Movie;
+
 public class ReviewView extends View{
-    public ReviewView() {
+	private Movie movieName;
+	public ReviewView(Movie movieInput) {
+    	movieName=movieInput;
 	}	
     
     private void displayMenu() {
