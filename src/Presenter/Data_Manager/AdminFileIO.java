@@ -4,25 +4,26 @@ import java.io.*;
 import java.util.ArrayList;
 import Model.Movie;
 
-public abstract class MovieFileIO {
-	public static final String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
-	
-  // =================================Movie Class=================================
-	public static void writeMovieFile(ArrayList<Movie> lister2) throws IOException{
-		ArrayList<Movie> lister = new ArrayList<Movie>();
-	
-		FileOutputStream fileOut = new FileOutputStream(fileName, true);
-	    ObjectOutputStream out = new ObjectOutputStream(fileOut);
-	
-		lister.addAll(lister2);
-	    out.writeObject(lister);
-		System.out.println("Writing Done");
-		out.close();
+public abstract class AdminFileIO {
+
+  // =================================Admin Class=================================
+  public static void writeMovieFile(ArrayList<Movie> lister2) throws IOException{
+    ArrayList<Movie> lister = new ArrayList<Movie>();
+	String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
+		
+	FileOutputStream fileOut = new FileOutputStream(fileName, true);
+    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+	lister.addAll(lister2);
+    out.writeObject(lister);
+	System.out.println("Done");
+	out.close();
   }
 
-	public static void readMovieFile(){
-		int i=1;
+  public static void readMovieFile(){
+    int i=1;
 		try {
+			String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
 			FileInputStream fwStream = new FileInputStream(fileName);
 			ObjectInputStream in = new ObjectInputStream(fwStream);
 			

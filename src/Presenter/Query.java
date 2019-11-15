@@ -11,7 +11,6 @@ import java.util.List;
 import javax.lang.model.util.ElementScanner6;
 
 import Model.Enums.AgeRestriction;
-import Model.Enums.CinemaClass;
 import Model.Enums.MovieType;
 import Model.Enums.ShowingStatus;
 import Model.Cinema;
@@ -136,20 +135,6 @@ public class Query {
                 return MovieType.MOVIE3D;
             case "DIGITAL":
                 return MovieType.DIGITAL;
-            default:
-                return null;
-        }
-    }
-
-    public static CinemaClass passCinemaClass(String cinemaclass)
-    {
-        cinemaclass = cinemaclass.toUpperCase();
-        switch(cinemaclass)
-        {
-            case "NORMAL":
-                return CinemaClass.NORMAL;
-            case "PLATINUM":
-                return CinemaClass.PLATINUM;
             default:
                 return null;
         }
