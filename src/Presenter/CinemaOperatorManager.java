@@ -89,7 +89,15 @@ public class CinemaOperatorManager {
         writeDataFile(cinemaListFile, cinemaList);
     }
    
+    public static ArrayList<CinemaOperator> getCinemaOperators()
+    {
+        return cinemaOperators;
+    }
 
+    public static ArrayList<Cinema> getCinemaList (CinemaOperator cinemaOperator)
+    {
+        return cinemaList.get(cinemaOperator);
+    }
     // ========================Movie========================
 
     public static void addMovie(Movie movie) {
