@@ -108,7 +108,7 @@ public class AdminManager extends DataManager
     // =========================Review Lists=========================
 	public static void readReviewList()
     {
-        if(readDataFile_List(reviewListFile) == null)
+        if(readDataFile_HashMap(reviewListFile) == null)
         {
             reviewList = new HashMap<>();
         }
