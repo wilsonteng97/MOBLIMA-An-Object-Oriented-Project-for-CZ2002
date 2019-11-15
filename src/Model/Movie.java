@@ -136,7 +136,7 @@ public class Movie implements Serializable{
 	public Double getTotalSales(){
 		return totalSales;
 	}
-	public void addTotalSales(Double amount){
+	public void addTotalSales(int amount){
 		this.totalSales += amount;
 	}
 	public void minusTotalSales(Double amount){
