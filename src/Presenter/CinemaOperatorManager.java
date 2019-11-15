@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CinemaOperatorManager {   
-    private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
-    private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
-    private final static String reviewListFile = "datafiles/reviewListFile.txt";
-    private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
-    private final static String movieListFile = "datafiles/movieListFile.txt";
+    private final static String adminAccountListFile = "../../datafiles/adminAccountListFile.txt";
+    private final static String showtimeListFile = "../../datafiles/showtimeListFile.txt";
+    private final static String reviewListFile = "../../datafiles/reviewListFile.txt";
+    private final static String cinemaListFile = "../../datafiles/cinemaListFile.txt";
+    private final static String movieListFile = "../../datafiles/movieListFile.txt";
 
     private static ArrayList<CinemaOperator> cinemaOperators;
     private static ArrayList<Admin> adminAccountList;

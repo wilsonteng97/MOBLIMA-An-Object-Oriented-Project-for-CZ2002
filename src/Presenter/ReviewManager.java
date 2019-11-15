@@ -3,16 +3,21 @@ package Presenter;
 import Model.Movie;
 import Model.Review;
 import static Presenter.Query.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
 import static Presenter.Presenter.*;
 
 public class ReviewManager {
     int rating;
     String review;
-    Scannner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
     // Customer CustReview = new Customer();
     // int userID = CustReview.getEmail();
     private final static String reviewListFile = "datafiles/reviewListFile.txt";
-    private static Hashmap<Movie, ArrayList<ReviewList>> reviewList;
+    private static HashMap<Movie, ArrayList<Review>> reviewList;
 
     public ReviewManager()  {
         
