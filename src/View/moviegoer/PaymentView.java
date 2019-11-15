@@ -6,11 +6,14 @@ import View.View;
 
 import java.util.Scanner;
 
+import Model.Customer;
+import Model.Seat;
+
 public class PaymentView extends View{
     private Double price;
     private String TID;
 	
-    public PaymentView(Double price) {
+    public PaymentView(Customer customer, Seat seat, Double price) {
     	this.price = price;
     	generateTID();
 	}	

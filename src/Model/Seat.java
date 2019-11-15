@@ -37,6 +37,20 @@ public class Seat implements Serializable {
 		this.seatID = seatID;
 	}
 	
+	// seat
+	public int getRow() {
+		return seatRow;
+	}
+	public void setRow(int seatRow) {
+		this.seatRow = seatRow;
+	}
+	public int getCol() {
+		return seatNo;
+	}
+	public void setCol(int seatNo) {
+		this.seatNo = seatNo;
+	}
+	
 	// cinemaID
 	public String getCinemaID() {
 		return cinemaID;
