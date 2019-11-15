@@ -81,39 +81,47 @@ public class Query {
     public static ShowingStatus passShowingStatus(String status)
     {
         status = status.toUpperCase();
-        if(status == "COMING_SOON")
-            return ShowingStatus.COMING_SOON;
-        else if(status == "PREVIEW")
-            return ShowingStatus.PREVIEW;
-        else if(status == "NOW_SHOWING")
-            return ShowingStatus.NOW_SHOWING;
-        else if(status == "NO_LONGER_AVAILABLE")
-            return ShowingStatus.NO_LONGER_AVAILABLE;
+        switch(status)
+        {
+            case "COMING_SOON":
+                return ShowingStatus.COMING_SOON;
+            case "PREVIEW":
+                return ShowingStatus.PREVIEW;
+            case "NOW_SHOWING":
+                return ShowingStatus.NOW_SHOWING;
+            case "NO_LONGER_AVAILABLE":
+                return ShowingStatus.NO_LONGER_AVAILABLE;
+            default: 
+                return null;
+        }
+            
     }
 
     public static AgeRestriction passAgeRestriction(String ageRestriction)
     {
         ageRestriction = ageRestriction.toUpperCase();
-        if(ageRestriction == "G")
-            return AgeRestriction.G;
-        else if(ageRestriction == "PG")
-            return AgeRestriction.PG;
-        else if(ageRestriction == "PG13")
-            return AgeRestriction.PG13;
-        else if(ageRestriction == "NC16")
-            return AgeRestriction.NC16;
-        else if(ageRestriction == "M18")
-            return AgeRestriction.M18;
-        else if(ageRestriction == "R21")
-            return AgeRestriction.R21;
-        else if(ageRestriction == "NAR")
-            return AgeRestriction.NAR;
-        else 
-            return null;
+        switch(ageRestriction)
+        {
+            case "G":
+                return AgeRestriction.G;
+            case "PG13":
+                return AgeRestriction.PG13;
+            case "NC16":
+                return AgeRestriction.NC16;
+            case "M18":
+                return AgeRestriction.M18;
+            case "R21":
+                return AgeRestriction.R21;
+            case "NAR":
+                return AgeRestriction.NAR;
+            default:
+                return null;
+        }
     }
 
     public static MovieType passMovieType(String movieType)
     {
+        
         if(movieType == "MOVIE3D")
             return MovieType.MOVIE3D;
         else if(movieType == "DIGITAL")
