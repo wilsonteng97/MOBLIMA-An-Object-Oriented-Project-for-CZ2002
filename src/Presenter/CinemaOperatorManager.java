@@ -78,11 +78,8 @@ public class CinemaOperatorManager {
         updateCinemaList();
     }
 
-    public static void removeCinema(String cinemaname){
-    	Cinema cinema = passStringCinema(cinemaname);
-    	// for (String cinemaToBeRemoved : cinemaList){
-        //     System.out.println(cinemaToBeRemoved);
-        // }
+    public static void removeCinema(Cinema cinema)
+    {
         cinemaList.get(cinema.getCinemaOperator()).remove(cinema);
         updateCinemaList();
     }

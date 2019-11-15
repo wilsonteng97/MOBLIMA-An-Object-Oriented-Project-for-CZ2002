@@ -5,9 +5,6 @@ import View.View;
 import Presenter.Query;
 import Presenter.AdminManager;
 
-import static Presenter.Presenter.*;
-import static Presenter.Query.*;
-import static Presenter.CinemaOperatorManager.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,6 +13,11 @@ import Model.Cinema;
 import Model.CinemaOperator;
 import Model.ShowTime;
 import Model.Enums.CinemaClass;
+
+import static Presenter.Presenter.*;
+import static Presenter.Query.*;
+import static Presenter.AdminManager.*;
+import static Presenter.CinemaOperatorManager.*;
 
 public class CinemaListView extends View
 {
@@ -28,7 +30,7 @@ public class CinemaListView extends View
 		Scanner sc = new Scanner(System.in);
 		System.out.println("(1) Display Cinemas\n"
 				+ "(2) Add Cinema\n"
-				+ "(3) Remove Cinema\n"
+				+ "(3) Delete Cinema\n"
 				+ "(3) Return\n");
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
@@ -41,8 +43,7 @@ public class CinemaListView extends View
 		        	newCinema(); 
 		            break;
 				case 3:
-					int removecinema = passChoiceInt("Enter the index of the cinema You want to remove ");
-		        	removeCinema(removecinema); 
+		        	deleteCinema(); 
 		            break;
 		        case 4:
 		            break;
@@ -97,21 +98,40 @@ public class CinemaListView extends View
 			cinemaClass = passCinemaClass(cinemaClassIn);
 		}
 		Cinema cinema = new Cinema(cinemaID, cinemaName, cinemaClass, cinemaOperator);
-		addCinema(cinema);
+		try {
+			addCinema(cinema);
+			System.out.println("You successfully added the cinema");
+		} catch (Exception e) {
+			System.out.println("Failed to add cinema");
+		}
+		finally
+		{
+			displayMenu();
+		}
+		
 
 	}
 
-	private void removeCinema()
+	private void deleteCinema()
 	{
-		System.out.println("Remove Cinema");
+		System.out.println("Delete Cinema");
 		int choiceOperator = passChoiceInt("Choice a cinema operator from which remove cinema");
 		ArrayList<CinemaOperator> cinemaOperatorsList = getCinemaOperators();
 		CinemaOperator cinemaOperator = cinemaOperatorsList.get(choiceOperator);
-		displayCinemaList(cinemaOperator);
 		ArrayList<Cinema> cinemaList = getCinemaList(cinemaOperator);
 		int choiceCinema = passChoiceInt("Choice a cinema you want to remove");
+		Cinema cinema = cinemaList.get(choiceCinema);
 		String choice = passChoiceString("Are You sure You want to remove cinema "+ cinemaList.get(choiceCinema).getCinemaName() + "Y/N");
-
+		if(confirmChoice(choice))
+		{
+			removeCinema(cinema);
+			System.out.println("The movie has been removed");
+		}
+		else 
+		{
+			System.out.println("Failed to remove listing");
+		}
+		displayMenu();
 
 	}
 }

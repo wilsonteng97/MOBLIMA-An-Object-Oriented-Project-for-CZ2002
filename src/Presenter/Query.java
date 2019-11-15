@@ -89,70 +89,96 @@ public class Query {
     public static ShowingStatus passShowingStatus(String status)
     {
         status = status.toUpperCase();
-        switch(status)
+        if(status == "COMING_SOON")
         {
-            case "COMING_SOON":
-                return ShowingStatus.COMING_SOON;
-            case "PREVIEW":
-                return ShowingStatus.PREVIEW;
-            case "NOW_SHOWING":
-                return ShowingStatus.NOW_SHOWING;
-            case "NO_LONGER_AVAILABLE":
-                return ShowingStatus.NO_LONGER_AVAILABLE;
-            default: 
-                return null;
+            return ShowingStatus.COMING_SOON;
         }
-            
+        else if(status == "PREVIEW")
+        {
+            return ShowingStatus.PREVIEW;
+        }
+        else if(status == "NOW_SHOWING")
+        {
+            return ShowingStatus.NOW_SHOWING;
+        }
+        else if(status == "NO_LONGER_AVAILABLE")
+        {
+            return ShowingStatus.NO_LONGER_AVAILABLE;
+        }
+        else 
+        {
+            return null;
+        }            
     }
 
     public static AgeRestriction passAgeRestriction(String ageRestriction)
     {
         ageRestriction = ageRestriction.toUpperCase();
-        switch(ageRestriction)
+        if(ageRestriction == "G")
         {
-            case "G":
-                return AgeRestriction.G;
-            case "PG13":
-                return AgeRestriction.PG13;
-            case "NC16":
-                return AgeRestriction.NC16;
-            case "M18":
-                return AgeRestriction.M18;
-            case "R21":
-                return AgeRestriction.R21;
-            case "NAR":
-                return AgeRestriction.NAR;
-            default:
-                return null;
+            return AgeRestriction.G;
         }
+        else if(ageRestriction == "PG13")
+        {
+            return AgeRestriction.PG13;
+        }
+        else if(ageRestriction == "NC16")
+        {
+            return AgeRestriction.NC16;
+        }
+        else if(ageRestriction == "M18")
+        {
+            return AgeRestriction.M18;
+        }
+        else if(ageRestriction == "R21")
+        {
+            return AgeRestriction.R21;
+        }
+        else if(ageRestriction == "NAR")
+        {
+            return AgeRestriction.NAR;
+        }
+        else 
+        {
+            return null;
+        }
+           
     }
 
     public static MovieType passMovieType(String movieType)
     {
         movieType = movieType.toUpperCase();
-        switch(movieType)
+        if(movieType == "MOVIE3D")
         {
-            case "MOVIE3D":
-                return MovieType.MOVIE3D;
-            case "DIGITAL":
-                return MovieType.DIGITAL;
-            default:
-                return null;
+            return MovieType.MOVIE3D;
+        }
+        else if(movieType == "DIGITAL")
+        {
+            return MovieType.DIGITAL;
+        }
+        else 
+        {
+            return null;
         }
     }
 
     public static CinemaClass passCinemaClass(String cinemaclass)
     {
         cinemaclass = cinemaclass.toUpperCase();
-        switch(cinemaclass)
+        
+        if(cinemaclass == "NORMAL")
         {
-            case "NORMAL":
-                return CinemaClass.NORMAL;
-            case "PLATINUM":
-                return CinemaClass.PLATINUM;
-            default:
-                return null;
+            return CinemaClass.NORMAL;
         }
+        else if(cinemaclass == "PLATINUM")
+        {
+            return CinemaClass.PLATINUM;
+        }
+        else 
+        {
+            return null;
+        }
+        
     }
 
     public static void searchMovie(String movie_name) {

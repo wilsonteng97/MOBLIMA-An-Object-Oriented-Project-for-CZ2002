@@ -301,8 +301,7 @@ public class MovieListView extends View{
 
 	private void deleteMovie(Movie movie)
 	{
-		System.out.println("Are You sure you want to delete "+ movie.getTitle() +  " Y/N");
-		String choice = sc.next();
+		String choice = passChoiceString("Are You sure you want to delete "+ movie.getTitle() +  " Y/N");
 		if(confirmChoice(choice))
 		{
 			removeMovie(movie);
