@@ -9,7 +9,7 @@ public enum TicketType {
 		this.string = string;
 	}
 
-	public static TicketType getValue(String value)
+	public static TicketType getValueTicketType(String value)
 	{
 		value = value.toUpperCase();
 		if(value.equals("NORMAL"))
