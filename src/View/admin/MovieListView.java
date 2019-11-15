@@ -5,6 +5,7 @@ import Model.Movie;
 import Model.Enums.AgeRestriction;
 import Model.Enums.MovieType;
 import Model.Enums.ShowingStatus;
+import Presenter.AdminManager;
 
 import static Presenter.CinemaOperatorManager.*;
 import static Presenter.Presenter.*;
@@ -37,7 +38,8 @@ public class MovieListView extends View{
 				+ "(2) Add new Movie\n"
 				+ "(3) Update Movie Listing\n"
 				+ "(4) Remove Movie\n"
-				+ "(5) Return\n");
+				+ "(5) Initizialize Movies\n"
+				+ "(6) Return\n");
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
 		if(verifyChoiceNumber(choice, 1, 5)) { 
@@ -59,6 +61,13 @@ public class MovieListView extends View{
 					deleteMovie(movieList.get(deletemovie));
 		        	break;
 				case 5:
+					try {
+						AdminManager.initialiseMovies();
+					} catch (IOException e) {
+						System.out.println(e.getMessage());
+					}
+					break;
+				case 6:
 					end();
 					break;
 			}

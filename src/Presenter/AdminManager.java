@@ -14,7 +14,7 @@ import Model.CinemaOperator;
 import Model.Movie;
 import Model.Review;
 import Model.ShowTime;
-
+import Model.MovieListGenerator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -69,6 +69,10 @@ public class AdminManager extends DataManager
     }
 
     // =======================System Setting=======================
+    
+    public static void initialiseMovies() throws IOException {
+    	MovieListGenerator.MovieList();
+    }
 
     // =========================Top 5 Movies=========================
     public static ArrayList<Movie> getTop5RankingRating(){

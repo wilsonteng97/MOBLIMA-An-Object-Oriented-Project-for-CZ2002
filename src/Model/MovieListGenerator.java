@@ -1,15 +1,19 @@
 package Model;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import Presenter.DataManager;
+
 
 import Model.Movie;
 import Model.Enums.AgeRestriction;
 import Model.Enums.MovieType;
 import Model.Enums.ShowingStatus;
+import static Presenter.CinemaOperatorManager.*;
 
 public class MovieListGenerator {
 	
-	public static ArrayList<Movie> MovieList() {
+	public static void MovieList() throws IOException {
 		
 		ArrayList<Movie> list = new ArrayList<Movie>();
 		
@@ -31,7 +35,7 @@ public class MovieListGenerator {
 				"In the film, a teacher and a student in a Singapore secondary school form a special, self-affirming relationship.",
 				true, m2_cast);
 		list.add(m2);
-		
+		addMovie(m2);
 		ArrayList<String> m3_cast = new ArrayList<String>();
 		m3_cast.add("\r\n" + 
 				"Kristen Stewart, Naomi Scott, Ella Balinska, Elizabeth Banks, Djimon Hounsou, Noah Centineo, Sam Claflin, Patrick Stewart");
@@ -41,7 +45,8 @@ public class MovieListGenerator {
 				false, m3_cast);
 		list.add(m3);
 		
-		return list;
+		String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile";
+		DataManager.writeDataFile(list, fileName);
 	}
 
 }
