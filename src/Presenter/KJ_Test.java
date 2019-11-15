@@ -15,7 +15,7 @@ public class KJ_Test {
     	cust = Model.UserAccountListGenerator.CustomerList();
     	
 //    	Movie a = new Movie()    	
-    	String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\userAccountListFile.txt";
+    	String fileName = "datafiles/userAccountListFile.txt";
     	DataManager.writeDataFile(cust, fileName);
     	ArrayList<Customer> print_movies = new ArrayList<Customer>();
     	print_movies = (ArrayList<Customer>) DataManager.readDataFile_List(fileName);

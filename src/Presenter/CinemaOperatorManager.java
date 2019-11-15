@@ -22,7 +22,7 @@ public class CinemaOperatorManager extends DataManager {
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<Movie, ArrayList<Review>> reviewList;
     private static HashMap<CinemaOperator, ArrayList<Cinema>> cinemaList;
-    private static ArrayList<Movie> movieList;
+    private static ArrayList<Movie> movieList = (ArrayList<Movie>) DataManager.readDataFile_List(movieListFile);;
 
     public static void readTheData()
     {
@@ -108,30 +108,26 @@ public class CinemaOperatorManager extends DataManager {
         return cinemaList.get(cinemaOperator);
     }
     
+    
     // ========================Movie========================
     public static void addMovie(Movie movie) throws IOException {
-        ArrayList<Movie> movieList = new ArrayList<Movie>();
-    	movieList = Model.MovieListGenerator.MovieList();
     	movieList.add(movie);
         updateMovieListing(movieList);
     }
 
     public static void removeMovie(Movie movie) throws IOException
     {
-    	ArrayList<Movie> movieList = new ArrayList<Movie>();
-    	movieList = Model.MovieListGenerator.MovieList();
-    	
-    	for (Movie m : movieList) {
-    		if (m == movie)
-    			movieList.remove(m.getTitle());
+    	try {
+    		movieList.remove(movie);
     	}
-        updateMovieListing(movieList);
+    	catch (Exception e) {
+    		System.out.println(e.getMessage());
+    	}
+    	updateMovieListing(movieList);
     }
 
     public static ArrayList<Movie> getMovieList()
     {
-    	ArrayList<Movie> movieList = new ArrayList<Movie>();
-    	movieList = Model.MovieListGenerator.MovieList();
         return movieList;
     }
     
