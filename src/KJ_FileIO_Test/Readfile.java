@@ -2,7 +2,7 @@ package CZ2002_Mini_Project;
 
 import java.io.*;
 
-public class Readfile {
+public class ReadFile {
 	public static void main(String[] args) {
 		try {
 			FileReader frStream = new FileReader(
@@ -15,7 +15,7 @@ public class Readfile {
 			
 			for (i=0; i<12; i++) {
 				System.out.print(i+1 + ". ");
-				for (j=0; j<3; j++) {
+				for (j=0; j<4; j++) {
 					inputLine = brStream.readLine();
 					System.out.println("\t" + inputLine);
 				}
