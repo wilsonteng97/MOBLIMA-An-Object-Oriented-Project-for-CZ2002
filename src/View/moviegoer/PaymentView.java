@@ -11,10 +11,10 @@ import Model.Movie;
 import Model.Seat;
 
 public class PaymentView extends View{
-	private Seat seat;
+	private double price;
+    private Seat seat;
     private Customer customer;
     private String TID;
-    private double price;
     private double GST;
     private double totalPrice;
     Scanner sc = new Scanner(System.in);
@@ -45,6 +45,7 @@ public class PaymentView extends View{
                 saveBooking();
                 break;
             case 2:
+            	intent(this, new MovieListingView());
                 break;
         }
     }
@@ -84,14 +85,15 @@ public class PaymentView extends View{
     }
     
     private void saveBooking() {
-            seat.setOccupiedAt(seat.getShowtime(), true);
-            Movie movie = seat.getShowtime().getMovie();
-            getMovieList().get(getMovieList().indexOf(movie)).addTotalSales(1);
-            Booking record = new Booking(TID, customer, seat);
-            addBooking(record);
-            updateShowTime();
-            updateMovieListing();
-            System.out.println("Payment succeed!");
+        seat.setOccupiedAt(seat.getShowtime(), true);
+        Movie movie = seat.getShowtime().getMovie();
+        getMovieList().get(getMovieList().indexOf(movie)).addTotalSales(1);
+        Booking record = new Booking(TID, customer, seat);
+        addBooking(record);
+        updateShowTime();
+        updateMovieListing();
+        System.out.println("Payment succeed!");
+        intent(this, new MovieListingView());
     }
 
 	@Override

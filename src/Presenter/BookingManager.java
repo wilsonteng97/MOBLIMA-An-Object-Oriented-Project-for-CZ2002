@@ -34,5 +34,19 @@ public class BookingManager {
         //         System.out.println(booking);
         //     }
         // }
+    	
+    	/*
+    	 ArrayList<BookingHistory> bookingHistory = getBookingHistory();
+
+        if (bookingHistory == null || bookingHistory.isEmpty()) {
+            readString("No history to show.",
+                    "Press ENTER to go back.", "");
+        }
+        else {
+            for (BookingHistory record : bookingHistory) {
+                System.out.println(record);
+            }
+        }
+    	 */
     }
 }
