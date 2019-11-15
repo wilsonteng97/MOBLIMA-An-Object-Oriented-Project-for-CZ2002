@@ -1,53 +1,39 @@
-package Presenter.Data_Manager;
+package Presenter;
 
 import java.io.*;
 import java.util.ArrayList;
 import Model.Movie;
 
-public abstract class MovieFileIO {
-	public static final String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
-	
-  // =================================Movie Class=================================
-	public static void writeMovieFile(ArrayList<Movie> lister2) throws IOException{
-		ArrayList<Movie> lister = new ArrayList<Movie>();
-	
-		FileOutputStream fileOut = new FileOutputStream(fileName, true);
+public abstract class DataManager {
+
+	public static void writeFile(Object lister, String fileName) throws IOException{
+		new FileOutputStream(fileName).close(); //make a clean slate of data file first then add
+		FileOutputStream fileOut = new FileOutputStream(fileName);
 	    ObjectOutputStream out = new ObjectOutputStream(fileOut);
 	
-		lister.addAll(lister2);
 	    out.writeObject(lister);
 		System.out.println("Writing Done");
 		out.close();
   }
 
-	public static void readMovieFile(){
-		int i=1;
+	public static Object readFile(String fileName){
 		try {
 			FileInputStream fwStream = new FileInputStream(fileName);
 			ObjectInputStream in = new ObjectInputStream(fwStream);
-			
-			ArrayList<Movie> lister = (ArrayList<Movie>) in.readObject();
-			
-			System.out.println("The list of movies are: \n");
-			for (Movie m : lister) {
-				System.out.println(i + "\tName: " +  m.getTitle());
-				System.out.println("\tRuntime: " + m.getRunTime());
-				System.out.println("\tDirected by: " + m.getDirector());
-				System.out.println("\tSypnosis: " + m.getSynopsis() + "\n");
-				i++;
-			}
-			
+			ArrayList<Object> lister = (ArrayList<Object>) in.readObject();
+
 			in.close();
+			return lister;
 		}
 		catch (IOException e) {
 			System.out.println("Error occured: " + e.getMessage());
 			e.printStackTrace();
-			return;
+			return null;
 	    }
 		catch (ClassNotFoundException e) {
 			System.out.println("Error occured: " + e.getMessage());
 			e.printStackTrace();
-	         return;
+	        return null;
 	    }
   }
 

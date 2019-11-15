@@ -8,38 +8,36 @@ import java.util.Date;
 
 import Model.Customer;
 import Model.Enums.*;
-import Presenter.Data_Manager.CustomerFileIO;
-import Presenter.Data_Manager.MovieFileIO;
+import Presenter.DataManager;
 
 public class KJ_Test {
     public static void main(String [] arg) throws IOException, ParseException, ClassNotFoundException{
-<<<<<<< Updated upstream
-//    	ArrayList<Customer> lister = new ArrayList<Customer>();
-=======
     	ArrayList<Customer> lister = new ArrayList<Customer>();
->>>>>>> Stashed changes
     	
-        SimpleDateFormat simpleDateFormat_DDMMyyyy = new SimpleDateFormat("DD/MM/yyyy");
-		Date some_date = simpleDateFormat_DDMMyyyy.parse("19/07/1963");
-		Integer intg = new Integer((int)Math.random()*10000);
-<<<<<<< Updated upstream
-        Customer a = new Customer(intg, "me tooo", "84125369", "president@inpeached.com", some_date);
+//        SimpleDateFormat simpleDateFormat_DDMMyyyy = new SimpleDateFormat("DD/MM/yyyy");
+//		Date some_date = simpleDateFormat_DDMMyyyy.parse("19/07/1963");
+//		Integer intg = new Integer(101582);
+//    	
+//        Customer a = new Customer(intg, "KJ Teo", "95212543", "KJ@genius.com", some_date);
 //        lister.add(a);
-        CustomerFileIO.writeCustomerFile(a);
-    	CustomerFileIO.readCustomerFile(a);
-=======
-        Customer a = new Customer(intg, "Rachel", "84125369", "president@inpeached.com", some_date);
-        lister.add(a);
+//        
+//        Customer b = new Customer(intg, "John", "84125369", "president@inpeached.com", some_date);
+//        lister.add(b);
+//        
+//        Customer c = new Customer(intg, "May", "84125369", "president@inpeached.com", some_date);
+//        lister.add(c);
+//        
+        String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\userAccountListFile.txt";
+//        DataManager.writeFile(lister, fileName);
         
-        Customer b = new Customer(intg, "John", "84125369", "president@inpeached.com", some_date);
-        lister.add(b);
+        lister = (ArrayList<Customer>) DataManager.readFile(fileName);
         
-        Customer c = new Customer(intg, "May", "84125369", "president@inpeached.com", some_date);
-        lister.add(c);
-        
-        CustomerFileIO.writeCustomerFile(lister);
-    	CustomerFileIO.readCustomerFile();
->>>>>>> Stashed changes
+        for (Customer a: lister) {
+        	System.out.println(a.getCustomerID());
+        	System.out.println(a.getName());
+        	System.out.println(a.getMobileNo());
+        	System.out.println(" ");
+        }
     }
     
 //  ArrayList<String> some_str = new ArrayList<String>();
