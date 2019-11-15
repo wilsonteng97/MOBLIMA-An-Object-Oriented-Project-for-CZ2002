@@ -62,7 +62,7 @@ public class MovieListView extends View{
 		        	break;
 				case 5:
 					try {
-						AdminManager.initialiseMovies();
+						initialiseMovies();
 					} catch (IOException e) {
 						System.out.println(e.getMessage());
 					}

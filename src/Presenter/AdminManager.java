@@ -25,11 +25,11 @@ public class AdminManager extends DataManager
 {
     Scanner sc = new Scanner(System.in);
     double ticket_price;
-    private final static String adminAccountListFile = "../../datafiles/adminAccountListFile.txt";
-    private final static String showtimeListFile = "../../datafiles/showtimeListFile.txt";
-    private final static String reviewListFile = "../../datafiles/reviewListFile.txt";
-    private final static String cinemaListFile = "../../datafiles/cinemaListFile.txt";
-    private final static String movieListFile = "../../datafiles/movieListFile.txt";
+    private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
+    private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
+    private final static String reviewListFile = "datafiles/reviewListFile.txt";
+    private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
+    private final static String movieListFile = "datafiles/movieListFile.txt";
 
     private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
