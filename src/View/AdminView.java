@@ -47,7 +47,9 @@ public class AdminView extends View{
 		
 	}
 	private void displayMenu() {
-		Scanner sc = new Scanner(System.in);	
+		Scanner sc = new Scanner(System.in);
+		
+		
 		System.out.println("Welcome, please make a selection:\n"
 					+ "(1) Modify movie listing\n"
 					+ "(2) Modify cinema listing\n"

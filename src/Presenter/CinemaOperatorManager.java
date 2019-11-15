@@ -25,7 +25,6 @@ public class CinemaOperatorManager extends DataManager {
     private static ArrayList<Movie> movieList;
 
 
-
     public static boolean readTheData()
     {
         try {
