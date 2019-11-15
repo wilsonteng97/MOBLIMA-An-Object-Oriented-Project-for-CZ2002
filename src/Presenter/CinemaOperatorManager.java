@@ -24,10 +24,16 @@ public class CinemaOperatorManager extends DataManager {
     private static HashMap<CinemaOperator, ArrayList<Cinema>> cinemaList;
     private static ArrayList<Movie> movieList;
 
-    public static void readTheData()
-    {
-        readShowtime();
 
+    public static boolean readTheData()
+    {
+        try {
+            readShowtime();
+            readCinemaList();
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
     // =======================Showtime=======================
     private static void readShowtime(){
