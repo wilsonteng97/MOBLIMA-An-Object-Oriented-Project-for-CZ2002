@@ -2,11 +2,13 @@ package Presenter;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import Model.Movie;
 
 public abstract class DataManager {
 
-	public static void writeFile(Object lister, String fileName) throws IOException{
+	public static void writeDataFile(Object lister, String fileName) throws IOException{
 		new FileOutputStream(fileName).close(); //make a clean slate of data file first then add
 		FileOutputStream fileOut = new FileOutputStream(fileName);
 	    ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -16,7 +18,7 @@ public abstract class DataManager {
 		out.close();
   }
 
-	public static Object readFile(String fileName){
+	public static Object readDataFile_List(String fileName){
 		try {
 			FileInputStream fwStream = new FileInputStream(fileName);
 			ObjectInputStream in = new ObjectInputStream(fwStream);
@@ -35,6 +37,27 @@ public abstract class DataManager {
 			e.printStackTrace();
 	        return null;
 	    }
+	}
+		
+		public static HashMap<Object, ArrayList<Object>> readDataFile_HashMap(String fileName){
+			try {
+				FileInputStream fwStream = new FileInputStream(fileName);
+				ObjectInputStream in = new ObjectInputStream(fwStream);
+				HashMap<Object, ArrayList<Object>> hashmap = (HashMap<Object, ArrayList<Object>>) in.readObject();
+
+				in.close();
+				return hashmap;
+			}
+			catch (IOException e) {
+				System.out.println("Error occured: " + e.getMessage());
+				e.printStackTrace();
+				return null;
+		    }
+			catch (ClassNotFoundException e) {
+				System.out.println("Error occured: " + e.getMessage());
+				e.printStackTrace();
+		        return null;
+		    }
   }
 
   // public static List<String> readFileInList(String fileName) { 

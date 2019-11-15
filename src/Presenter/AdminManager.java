@@ -2,6 +2,7 @@ package Presenter;
 
 import java.io.FileInputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
@@ -24,11 +25,11 @@ public class AdminManager extends DataManager
 {
     Scanner sc = new Scanner(System.in);
     double ticket_price;
-    private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
-    private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
-    private final static String reviewListFile = "datafiles/reviewListFile.txt";
-    private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
-    private final static String movieListFile = "datafiles/movieListFile.txt";
+    private final static String adminAccountListFile = "../../datafiles/adminAccountListFile.txt";
+    private final static String showtimeListFile = "../../datafiles/showtimeListFile.txt";
+    private final static String reviewListFile = "../../datafiles/reviewListFile.txt";
+    private final static String cinemaListFile = "../../datafiles/cinemaListFile.txt";
+    private final static String movieListFile = "../../datafiles/movieListFile.txt";
 
     private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
@@ -49,18 +50,22 @@ public class AdminManager extends DataManager
     // =======================Admin Account=======================
     public static void readAdminAccount()
     {
-        if(readDataFile(adminAccountListFile) == null)
+        if(readDataFile_List(adminAccountListFile) == null)
         {
-            adminAccountList = new ArrayList<>();
+            adminAccountList = new ArrayList<Admin>();
         }
         else
         {
-            adminAccountList = (ArrayList<Admin>) readDataFile(adminAccountListFile);
+            adminAccountList = (ArrayList<Admin>) readDataFile_List(adminAccountListFile);
         }
     }
 
     public static void updateAdminAccount(){
-       writeDataFile(adminAccountListFile, adminAccountList);
+       try {
+		writeDataFile(adminAccountList, adminAccountListFile);
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
     }
 
     // =======================System Setting=======================
@@ -103,13 +108,13 @@ public class AdminManager extends DataManager
     // =========================Review Lists=========================
     public static void readReviewList()
     {
-        if(readDataFile(reviewListFile) == null)
+        if(readDataFile_List(reviewListFile) == null)
         {
             reviewList = new HashMap<>();
         }
         else
         {
-            reviewList = (Hashmap<Movie, ArrayList<Review>>) readDataFile(reviewListFile);
+            reviewList = (Hashmap<Movie, ArrayList<Review>>) readDataFile_HashMap(reviewListFile);
         }
     }
 
