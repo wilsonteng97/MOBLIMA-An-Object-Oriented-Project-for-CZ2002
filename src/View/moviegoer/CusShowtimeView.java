@@ -75,6 +75,7 @@ public class CusShowtimeView extends View{
 
         if (showtimeList.isEmpty()) {
         	System.out.println("No showtime on that day.");
+        	intent(this, new MovieListingView());
             return;
         }
 
@@ -111,6 +112,7 @@ public class CusShowtimeView extends View{
                 displayPrice(showtime);
                 break;
             case 4:
+            	intent(this, new MovieListingView());
                 break;
         }
     }
