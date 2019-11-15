@@ -138,11 +138,12 @@ public class CinemaOperatorManager extends DataManager {
     	movieList = Model.MovieListGenerator.MovieList();
         return movieList;
     }
-    public static void updateMovieListing(ArrayList<Movie> movieList)
-    {
-    try {
+    
+    public static void updateMovieListing(ArrayList<Movie> movieList) {
+	    try {
 			writeDataFile(movieList, movieListFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+    }
 }
