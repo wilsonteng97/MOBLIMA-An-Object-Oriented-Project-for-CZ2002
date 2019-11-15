@@ -87,66 +87,6 @@ public class Query {
 //        System.out.println("Sorry, the Showtime that you are looking for does not exist.");
 //    }
 
-    public static ShowingStatus passShowingStatus(String status)
-    {
-        status = status.toUpperCase();
-        if(status == "COMING_SOON")
-        {
-            return ShowingStatus.COMING_SOON;
-        }
-        else if(status == "PREVIEW")
-        {
-            return ShowingStatus.PREVIEW;
-        }
-        else if(status == "NOW_SHOWING")
-        {
-            return ShowingStatus.NOW_SHOWING;
-        }
-        else if(status == "NO_LONGER_AVAILABLE")
-        {
-            return ShowingStatus.NO_LONGER_AVAILABLE;
-        }
-        else 
-        {
-            return null;
-        }            
-    }
-
-    public static MovieType passMovieType(String movieType)
-    {
-        movieType = movieType.toUpperCase();
-        if(movieType == "MOVIE3D")
-        {
-            return MovieType.MOVIE3D;
-        }
-        else if(movieType == "DIGITAL")
-        {
-            return MovieType.DIGITAL;
-        }
-        else 
-        {
-            return null;
-        }
-    }
-
-    public static CinemaClass passCinemaClass(String cinemaclass)
-    {
-        cinemaclass = cinemaclass.toUpperCase();
-        
-        if(cinemaclass == "NORMAL")
-        {
-            return CinemaClass.NORMAL;
-        }
-        else if(cinemaclass == "PLATINUM")
-        {
-            return CinemaClass.PLATINUM;
-        }
-        else 
-        {
-            return null;
-        }
-        
-    }
 
 //    public static void searchMovie(String movie_name) {
 //        Movie searched_movie = new Movie();
