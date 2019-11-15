@@ -114,13 +114,18 @@ public class AdminManager extends DataManager
         }
         else
         {
-            reviewList = (Hashmap<Movie, ArrayList<Review>>) readDataFile_HashMap(reviewListFile);
+        	Movie m; Review r;
+            reviewList = (HashMap<Movie, ArrayList<Review>>) readDataFile_HashMap(reviewListFile, m, r);
         }
     }
 
     public static void updateReviewList() 
     {
-        writeDataFile(reviewListFile, reviewList);
+        try {
+			writeDataFile(reviewList, reviewListFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
     public static ArrayList<Review> getReviewList(Movie movie)
