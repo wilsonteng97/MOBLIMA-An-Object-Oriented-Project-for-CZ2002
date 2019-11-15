@@ -10,7 +10,11 @@ import static Presenter.CinemaOperatorManager.*;
 import static Presenter.Presenter.*;
 import static Presenter.AdminManager.*;
 import static Presenter.Query.*;
-
+import static Model.Enums.CinemaClass.*;
+import static Model.Enums.AgeRestriction.*;
+import static Model.Enums.BookingStatus.*;
+import static Model.Enums.ShowingStatus.*;
+import static Model.Enums.MovieType.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -52,7 +56,7 @@ public class MovieListView extends View{
 		        case 4:
 					System.out.println("Enter the index of the movie you want to remove: ");
 					int deletemovie = sc.nextInt();
-		        	removeMovie(movieList.get(deletemovie));
+					deleteMovie(movieList.get(deletemovie));
 		        	break;
 				case 5:
 					end();
@@ -88,21 +92,21 @@ public class MovieListView extends View{
 		{
 			String ageIn = passChoiceString("Enter the age restriction from the following: \n"
 			+ "G, PG, PG13, NC16, M18, R21, NAR");
-			ageRestriction = passAgeRestriction(ageIn);
+			ageRestriction = getValueAgeRestriction(ageIn);
 		}
 
 		while (type == null)
 		{
 			String typeIn = passChoiceString("Enter the movie type from the following: \n"
 			+ "MOVIE3D, DIGITAL");
-			type = passMovieType(typeIn);
+			type = getValueMovieType(typeIn);
 		}
 
 		while(status == null)
 		{
 			String statusIn = passChoiceString("Enter the status of the movie from the following: \n"
 			+ "COMING_SOON, PREVIEW, NOW_SHOWING, NO_LONGER_AVAILABLE");
-			status = passShowingStatus(statusIn);
+			status = getValueShowingStatus(statusIn);
 		}
 
 		opening = passChoiceString("Enter the opening");
@@ -131,7 +135,14 @@ public class MovieListView extends View{
 		}
 
 		Movie movie = new Movie(title, ageRestriction, type, status, opening, director, runtime, synopsis, blockBuster, cast);
-		addMovie(movie);
+		try {
+			addMovie(movie);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		displayMenu();
 	}
 
 	private void displayMovieList()
@@ -214,7 +225,7 @@ public class MovieListView extends View{
 						{
 							String ageIn = passChoiceString("Enter the age restriction from the following: \n"
 							+ "G, PG, PG13, NC16, M18, R21, NAR");
-							ageRestriction = passAgeRestriction(ageIn);
+							ageRestriction = getValueAgeRestriction(ageIn);
 						}
 						movie.setAgeRestriction(ageRestriction);
 						System.out.println("You changed age restriction correctly");
@@ -225,7 +236,7 @@ public class MovieListView extends View{
 						{
 							String typeIn = passChoiceString("Enter the movie type from the following: \n"
 							+ "MOVIE3D, DIGITAL");
-							type = passMovieType(typeIn);
+							type = getValueMovieType(typeIn);
 						}
 						System.out.println("You changed movie type correctly");
 						break;
@@ -235,7 +246,7 @@ public class MovieListView extends View{
 						{
 							String showIn = passChoiceString("Enter the movie status from the following: \n"
 							+"COMING_SOON, PREVIEW, NOW_SHOWING, NO_LONGER_AVAILABLE");
-							showingStatus = passShowingStatus(showIn);
+							showingStatus = getValueShowingStatus(showIn);
 						}
 						System.out.println("You changed showing status correctly");
 						break;
@@ -281,7 +292,7 @@ public class MovieListView extends View{
 					case 11:
 					//	try
 					//	{
-							updateMovieListing();
+						
 							System.out.println("Changes applied!");		
 					//	}
 					//	catch(IOException e)
@@ -305,7 +316,11 @@ public class MovieListView extends View{
 		String choice = sc.next();
 		if(confirmChoice(choice))
 		{
-			removeMovie(movie);
+			try {
+				removeMovie(movie);
+			} catch (IOException e) {
+				System.out.println("Failed to remove listing");
+			}
 			removeAllShowtimes(movie);
 			System.out.println("The movie has been removed");
 		}

@@ -20,7 +20,7 @@ public enum AgeRestriction {
 		this.string = string;
 	}
 
-	public static AgeRestriction getValue(String value)
+	public static AgeRestriction getValueAgeRestriction(String value)
 	{
 		value = value.toUpperCase();
 		if(value.equals("G"))

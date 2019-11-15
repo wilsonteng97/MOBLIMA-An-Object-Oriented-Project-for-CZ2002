@@ -9,7 +9,7 @@ public enum TransactionMethod {
 		this.string = string;
 	}
 
-	public static TransactionMethod getValue(String value)
+	public static TransactionMethod getValueTransactionMethod(String value)
 	{
 		value = value.toUpperCase();
 		if(value.equals("DEBIT_CREDIT"))

@@ -9,7 +9,7 @@ public enum BookingStatus {
 		this.string = string;
 	}
 
-	public static BookingStatus getValue(String value)
+	public static BookingStatus getValueBookingStatus(String value)
 	{
 		value = value.toUpperCase();
 		if(value.equals("ACCEPTED"))
