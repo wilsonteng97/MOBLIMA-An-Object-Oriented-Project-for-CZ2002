@@ -112,11 +112,7 @@ public class CinemaOperatorManager extends DataManager {
     public static void addMovie(Movie movie) throws IOException {
         ArrayList<Movie> movieList = new ArrayList<Movie>();
     	movieList = Model.MovieListGenerator.MovieList();
-    	
-    	for (Movie m : movieList) {
-    		if (m == movie)
-    			movieList.add(movie);
-    	}
+    	movieList.add(movie);
         updateMovieListing(movieList);
     }
 
