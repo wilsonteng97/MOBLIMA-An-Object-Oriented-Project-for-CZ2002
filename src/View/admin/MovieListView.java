@@ -7,11 +7,11 @@ import Model.Enums.MovieType;
 import Model.Enums.ShowingStatus;
 
 import static Presenter.CinemaOperatorManager.*;
-import static Model.Enums.AgeRestriction.*;
 import static Presenter.Presenter.*;
 import static Presenter.AdminManager.*;
 import static Presenter.Query.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -87,8 +87,8 @@ public class MovieListView extends View{
 		while (ageRestriction == null)
 		{
 			String ageIn = passChoiceString("Enter the age restriction from the following: \n"
-			+ "G, PG, PG13, NC16, M18, R21, NAR").toUpperCase();
-			ageRestriction = getValue(ageIn);
+			+ "G, PG, PG13, NC16, M18, R21, NAR");
+			ageRestriction = passAgeRestriction(ageIn);
 		}
 
 		while (type == null)

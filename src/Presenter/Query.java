@@ -111,6 +111,40 @@ public class Query {
         }            
     }
 
+    public static AgeRestriction passAgeRestriction(String ageRestriction)
+    {
+        ageRestriction = ageRestriction.toUpperCase();
+        if(ageRestriction == "G")
+        {
+            return AgeRestriction.G;
+        }
+        else if(ageRestriction == "PG13")
+        {
+            return AgeRestriction.PG13;
+        }
+        else if(ageRestriction == "NC16")
+        {
+            return AgeRestriction.NC16;
+        }
+        else if(ageRestriction == "M18")
+        {
+            return AgeRestriction.M18;
+        }
+        else if(ageRestriction == "R21")
+        {
+            return AgeRestriction.R21;
+        }
+        else if(ageRestriction == "NAR")
+        {
+            return AgeRestriction.NAR;
+        }
+        else 
+        {
+            return null;
+        }
+           
+    }
+
     public static MovieType passMovieType(String movieType)
     {
         movieType = movieType.toUpperCase();

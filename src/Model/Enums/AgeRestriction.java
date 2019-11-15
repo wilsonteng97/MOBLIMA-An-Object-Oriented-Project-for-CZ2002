@@ -12,45 +12,5 @@ package Model.Enums;
 // NAR (not allowed for all ratings) � In exceptional cases, a film may not be allowed for all ratings (NAR) when the content of the film undermines national interest or erodes the moral fabric of society. This includes themes that promote issues that denigrate any race or religion, or undermine national interest, language that denigrates religion or is religiously profane, real sexual activities (e.g. actual penetration, actual ejaculation), content deemed to be pornographic or obscene in nature, explicit promotion and normalisation of homosexual lifestyle, explicit homosexual activity, materials glorifying or encouraging drug and substance abuse and detailed or gratuitous depictions of extreme violence or cruelty. Films classified as 'NAR' in Singapore are banned and cannot be legally sold, rented, possessed, imported or made public in any format in Singapore, punishable by fines and/or imprisonment.
 
 public enum AgeRestriction {
-	G("G"), PG("PG"), PG13("PG13"), NC16("NC16"), M18("M18"), R21("R21"), NAR("NAR");
-
-	private String string;
-	AgeRestriction(String string)
-	{
-		this.string = string;
-	}
-
-	public static AgeRestriction getValue(String value)
-	{
-		value = value.toUpperCase();
-		if(value.equals("G"))
-		{
-			return G;
-		}
-		else if(value.equals("PG"))
-        {
-            return PG13;
-        }
-        else if(value.equals("NC16"))
-        {
-            return NC16;
-        }
-        else if(value.equals("M18"))
-        {
-            return M18;
-        }
-        else if(value.equals("R21"))
-        {
-            return R21;
-        }
-        else if(value.equals("NAR"))
-        {
-            return NAR;
-        }
-        else 
-        {
-            return null;
-        }
-	}
-	
+	G, PG, PG13, NC16, M18, R21, NAR
 }
