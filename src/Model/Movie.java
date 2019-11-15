@@ -163,17 +163,17 @@ public class Movie implements Serializable{
 	
 	// castList
 	public List<String> getCastList() {
-		return castList;
+		return cast;
 	}
 	public void setCastlist(ArrayList<String> castlist) {
-		this.castList = castlist;
+		this.cast = castlist;
 	}
 	
 	//showTime
-	public List<ShowTime> getShowTimes() {
+	public ArrayList<ShowTime> getShowTimes() {
 		return showTimes;
 	}
-	public void setShowTimes(List<ShowTime> showTimes) {
+	public void setShowTimes(ArrayList<ShowTime> showTimes) {
 		this.showTimes = showTimes;
 	}
 	public void addShowTime(ShowTime showTime) {
