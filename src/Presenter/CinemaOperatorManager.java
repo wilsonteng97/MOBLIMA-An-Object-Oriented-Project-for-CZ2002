@@ -14,6 +14,7 @@ public class CinemaOperatorManager {
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
     private final static String movieListFile = "datafiles/movieListFile.txt";
 
+    private static ArrayList<CinemaOperator> cinemaOperators;
     private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<Movie, ArrayList<Review>> reviewList;
@@ -76,11 +77,8 @@ public class CinemaOperatorManager {
         updateCinemaList();
     }
 
-    public static void removeCinema(String cinemaname){
-    	Cinema cinema = passStringCinema(cinemaname);
-    	// for (String cinemaToBeRemoved : cinemaList){
-        //     System.out.println(cinemaToBeRemoved);
-        // }
+    public static void removeCinema(Cinema cinema){
+
         cinemaList.get(cinema.getCinemaOperator()).remove(cinema);
         updateCinemaList();
     }

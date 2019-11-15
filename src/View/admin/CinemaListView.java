@@ -7,6 +7,7 @@ import Presenter.AdminManager;
 
 import static Presenter.Presenter.*;
 import static Presenter.Query.*;
+import static Presenter.AdminManager.*;
 import static Presenter.CinemaOperatorManager.*;
 
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class CinemaListView extends View
 		            break;
 				case 3:
 					int removecinema = passChoiceInt("Enter the index of the cinema You want to remove ");
-		        	removeCinema(removecinema); 
+		        	deleteCinema(); 
 		            break;
 		        case 4:
 		            break;
@@ -101,7 +102,7 @@ public class CinemaListView extends View
 
 	}
 
-	private void removeCinema()
+	private void deleteCinema()
 	{
 		System.out.println("Remove Cinema");
 		int choiceOperator = passChoiceInt("Choice a cinema operator from which remove cinema");
@@ -111,7 +112,15 @@ public class CinemaListView extends View
 		ArrayList<Cinema> cinemaList = getCinemaList(cinemaOperator);
 		int choiceCinema = passChoiceInt("Choice a cinema you want to remove");
 		String choice = passChoiceString("Are You sure You want to remove cinema "+ cinemaList.get(choiceCinema).getCinemaName() + "Y/N");
-
-
+		if(confirmChoice(choice))
+		{
+			removeCinema(cinemaOperator.getCinemas().get(choiceCinema));
+			System.out.println("The cinema has been removed");
+		}
+		else 
+		{
+			System.out.println("Failed to remove listing");
+		}
+		displayMenu();
 	}
 }
