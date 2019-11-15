@@ -1,24 +1,30 @@
 package Presenter;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
-import Model.Movie;
+import Model.Customer;
 import Model.Enums.*;
-import Presenter.DataManager;
+import Presenter.Data_Manager.CustomerFileIO;
+import Presenter.Data_Manager.MovieFileIO;
 
 public class KJ_Test {
-    public static void main(String [] arg) throws IOException{
-//        ArrayList<String> m1_cast = new ArrayList<String>();
-//        m1_cast.add("Joaquin Phoenix, Robert De Niro, Zazie Beetz, Bill Camp, Frances Conroy, Brett Cullen, Glenn Fleshler, Douglas Hodge");
+    public static void main(String [] arg) throws IOException, ParseException{
+//        ArrayList<String> some_str = new ArrayList<String>();
+//        some_str.add("Joaquin Phoenix, Robert De Niro, Zazie Beetz, Bill Camp, Frances Conroy, Brett Cullen, Glenn Fleshler, Douglas Hodge");
 
-//        ArrayList<Movie> lister = new ArrayList<Movie>();
-//        Movie m1 = new Movie("Joker", Model.Enums.AgeRestriction.NC16, Model.Enums.MovieType.DIGITAL, Model.Enums.ShowingStatus.NOW_SHOWING, "03-10-2019", "Todd Phillips", "122 minutes",
-//        "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. He becomes a psychopathic murderer.",
-//        true, m1_cast);
+//        ArrayList<Customer> lister = new ArrayList<Customer>();
 //        
-//        lister.add(m1);
-//        DataManager.writeMovieFile(lister);
-        DataManager.readMovieFile();
+//        SimpleDateFormat simpleDateFormat_DDMMyyyy = new SimpleDateFormat("DD/MM/yyyy");
+//		Date some_date = simpleDateFormat_DDMMyyyy.parse("05/12/1985");
+//		int randId = (int)Math.random()*10000;
+//        Customer a = new Customer(Integer.toString(randId), "Donald John Trump", "88889999", "impresident@mail.com", some_date);
+//       
+//        lister.add(a);
+//        CustomerFileIO.writeCustomerFile(lister);
+    	CustomerFileIO.readCustomerFile();
     }
 }
