@@ -14,6 +14,8 @@ public class CinemaOperatorManager {
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
     private final static String movieListFile = "datafiles/movieListFile.txt";
 
+
+    private static ArrayList<CinemaOperator> cinemaOperators;
     private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<Movie, ArrayList<Review>> reviewList;
@@ -88,7 +90,16 @@ public class CinemaOperatorManager {
     public static void updateCinemaList() {
         writeDataFile(cinemaListFile, cinemaList);
     }
-   
+    
+    public static ArrayList<Cinema> getCinemaList(CinemaOperator cinemaOperator)
+    {
+        return cinemaOperator.getCinemas();
+    }
+
+    public static ArrayList<CinemaOperator> getCinemaOperators()
+    {
+        return cinemaOperators;
+    }
 
     // ========================Movie========================
 
