@@ -1,11 +1,13 @@
 package View.admin;
+
 import View.View;
 import static Presenter.AdminManager.*;
 import static Presenter.Presenter.*;
+
 import java.util.Scanner;
 
 public class SystemSettingView extends View{
-
+	
 	protected void starter()
 	{
 		displayMenu();
