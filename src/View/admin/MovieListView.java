@@ -276,14 +276,12 @@ public class MovieListView extends View{
 						movie.setCast(cast);
 						break;
 					case 11:
-						//try
 					//	{
 							updateMovieListing();
 							System.out.println("Changes applied!");		
 					//	}
 					//	catch(IOException e)
 					//	{
-						//	System.out.println("Fail to applied changes, try again");
 					//	}
 						break;
 				}

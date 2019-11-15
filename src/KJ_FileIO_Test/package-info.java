@@ -1,1 +1,1 @@
-package CZ2002_Mini_Project;
+package KJ_FileIO_Test;
