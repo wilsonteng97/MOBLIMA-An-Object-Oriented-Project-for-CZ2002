@@ -7,7 +7,6 @@ import Model.CinemaOperator;
 import Model.Movie;
 import Model.Review;
 import Model.ShowTime;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -108,29 +107,42 @@ public class CinemaOperatorManager extends DataManager {
     {
         return cinemaList.get(cinemaOperator);
     }
+    
     // ========================Movie========================
-
-    public static void addMovie(Movie movie) {
-        movieList.add(movie);
-        updateMovieListing();
+    public static void addMovie(Movie movie) throws IOException {
+        ArrayList<Movie> movieList = new ArrayList<Movie>();
+    	movieList = Model.MovieListGenerator.MovieList();
+    	
+    	for (Movie m : movieList) {
+    		if (m == movie)
+    			movieList.add(movie);
+    	}
+        updateMovieListing(movieList);
     }
 
-    public static void removeMovie(Movie movie)
+    public static void removeMovie(Movie movie) throws IOException
     {
-        movieList.remove(movie);
-        updateMovieListing();
+    	ArrayList<Movie> movieList = new ArrayList<Movie>();
+    	movieList = Model.MovieListGenerator.MovieList();
+    	
+    	for (Movie m : movieList) {
+    		if (m == movie)
+    			movieList.remove(m.getTitle());
+    	}
+        updateMovieListing(movieList);
     }
 
     public static ArrayList<Movie> getMovieList()
     {
+    	ArrayList<Movie> movieList = new ArrayList<Movie>();
+    	movieList = Model.MovieListGenerator.MovieList();
         return movieList;
     }
-    public static void updateMovieListing()
+    public static void updateMovieListing(ArrayList<Movie> movieList)
     {
-        try {
+    try {
 			writeDataFile(movieList, movieListFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    }
 }

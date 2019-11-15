@@ -13,7 +13,9 @@ public class BookingHistoryView extends View{
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Please Enter your Name");
     	String customerName = sc.next();
-    	getBookingHistory(customerName); 
+    	System.out.println("Booking History");  		
+     	getBookingHistory(customerName); 
+     	intent(this, new MovieListingView());
     }
 	@Override
 	protected void starter() {

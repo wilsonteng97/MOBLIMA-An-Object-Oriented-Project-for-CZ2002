@@ -5,17 +5,13 @@ import static Presenter.Presenter.*;
 import Presenter.Query;
 import Presenter.PurchaseNOrder;
 import View.View;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
-
 import Model.Cinema;
 import Model.Customer;
 import Model.Movie;
 import Model.Seat;
-import Model.ShowTime;
-
 import Model.ShowTime;
 
 public class BookingView extends View{
@@ -64,7 +60,8 @@ public class BookingView extends View{
             case 1:
                 customerInfo();
                 break;
-            case 2:
+            case 2:            	
+            	intent(this, new MovieListingView());
                 break;
         }
     }  
@@ -106,7 +103,9 @@ public class BookingView extends View{
 	
 	@Override
 	protected void starter() {
-		if (!bookingDone) 
+		if (bookingDone) 
+			intent(this, new MovieListingView());
+		else
 			displayMenu();
 	}
 }

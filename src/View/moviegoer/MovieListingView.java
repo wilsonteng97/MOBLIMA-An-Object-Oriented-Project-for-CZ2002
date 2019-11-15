@@ -46,6 +46,7 @@ public class MovieListingView extends View{
             	searchMovie(); 
                 break;
             case 5:
+            	intent(this, new MovieListingView());
                 break;
 			}
 		}
