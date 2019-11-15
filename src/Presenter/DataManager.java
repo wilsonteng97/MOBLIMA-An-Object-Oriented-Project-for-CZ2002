@@ -39,11 +39,11 @@ public abstract class DataManager {
 	    }
 	}
 		
-		public static HashMap<Object, ArrayList<Object>> readDataFile_HashMap(String fileName){
+		public static <A, B> HashMap<A, ArrayList<B>> readDataFile_HashMap(String fileName, Object A, Object B){
 			try {
 				FileInputStream fwStream = new FileInputStream(fileName);
 				ObjectInputStream in = new ObjectInputStream(fwStream);
-				HashMap<Object, ArrayList<Object>> hashmap = (HashMap<Object, ArrayList<Object>>) in.readObject();
+				HashMap<A, ArrayList<B>> hashmap = (HashMap<A, ArrayList<B>>) in.readObject();
 
 				in.close();
 				return hashmap;
