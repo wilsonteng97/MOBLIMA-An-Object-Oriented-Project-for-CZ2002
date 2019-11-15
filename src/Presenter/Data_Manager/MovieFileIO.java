@@ -1,10 +1,10 @@
-package Presenter;
+package Presenter.Data_Manager;
 
 import java.io.*;
 import java.util.ArrayList;
 import Model.Movie;
 
-public class DataManager {
+public abstract class MovieFileIO {
 
   // =================================Movie Class=================================
   public static void writeMovieFile(ArrayList<Movie> lister2) throws IOException{
