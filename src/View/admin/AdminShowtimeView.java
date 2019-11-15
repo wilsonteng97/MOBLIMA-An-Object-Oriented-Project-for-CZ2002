@@ -8,7 +8,6 @@ import static Presenter.Presenter.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -40,10 +39,10 @@ public class AdminShowtimeView extends View{
 		this.setInputMovie(movieIn);
 		
 		System.out.println("(1) Display Showtimes\n"
-				+ "(2) Add Showtime\n"
-				+ "(3) Update Showtime List\n"
-				+ "(4) Remove Showtime\n"
-				+ "(5) Return\n");
+							+ "(2) Add Showtime\n"
+							+ "(3) Update Showtime List\n"
+							+ "(4) Remove Showtime\n"
+							+ "(5) Return\n");
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
 		Date showtimeIn;
