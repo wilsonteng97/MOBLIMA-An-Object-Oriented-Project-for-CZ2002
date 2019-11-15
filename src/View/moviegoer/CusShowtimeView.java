@@ -9,14 +9,14 @@ import View.View;
 
 import java.util.Scanner;
 
-
+import Model.Movie;
 import Model.Seat;
 import Model.ShowTime;
 
 
 public class CusShowtimeView extends View{
-	private String movieName;
-	public CusShowtimeView(String movieInput) {
+	private Movie movieName;
+	public CusShowtimeView(Movie movieInput) {
 
 		movieName=movieInput;
 
