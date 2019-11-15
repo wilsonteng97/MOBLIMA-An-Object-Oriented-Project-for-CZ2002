@@ -170,14 +170,27 @@ public class AdminShowtimeView extends View{
 	}
 	
 	private Cinema getCinema() {
-		CinemaListView.displayCinemaOperator();
+		ArrayList<CinemaOperator> cinemaOperatorList;
+		cinemaOperatorList = getCinemaOperators();
+		int numCinemaOperator = 0;
+		for(CinemaOperator cinemaOperator: cinemaOperatorList)
+		{
+			System.out.println(numCinemaOperator + " " + cinemaOperator.getOperatorID() + cinemaOperator.getOperatorName());
+			numCinemaOperator++;
+		}
+
 		int choice = passChoiceInt("Choose Cinema Operator: ");
 		ArrayList<CinemaOperator> cinemaOperatorsList = getCinemaOperators();
 		CinemaOperator cinemaOperator = cinemaOperatorsList.get(choice);
 		
-		CinemaListView.displayCinemaList(cinemaOperator);
-		choice = passChoiceInt("Choose Cinema: ");
 		ArrayList<Cinema> cinemaList = getCinemaList(cinemaOperator);
+		int numCinema =0;
+		for(Cinema cinema: cinemaList)
+		{
+			System.out.println(numCinema + " "+ cinema.getCinemaID() + cinema.getCinemaName());
+		}
+
+		choice = passChoiceInt("Choose Cinema: ");
 		Cinema cinema = cinemaList.get(choice);
 		
 		return cinema;

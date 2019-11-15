@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CinemaOperatorManager extends DataManager {   
-    private final static String adminAccountListFile = "../../datafiles/adminAccountListFile.txt";
-    private final static String showtimeListFile = "../../datafiles/showtimeListFile.txt";
-    private final static String reviewListFile = "../../datafiles/reviewListFile.txt";
-    private final static String cinemaListFile = "../../datafiles/cinemaListFile.txt";
-    private final static String movieListFile = "../../datafiles/movieListFile.txt";
+    private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
+    private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
+    private final static String reviewListFile = "datafiles/reviewListFile.txt";
+    private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
+    private final static String movieListFile = "datafiles/movieListFile.txt";
 
     private static ArrayList<CinemaOperator> cinemaOperators;
     private static ArrayList<Admin> adminAccountList;
@@ -30,10 +30,24 @@ public class CinemaOperatorManager extends DataManager {
         try {
             readShowtime();
             readCinemaList();
+            readAdminAccount();
+            readMovieList();
         } catch (Exception e) {
             return false;
         }
         return true;
+    }
+
+    private static void readAdminAccount()
+    {
+        if(readDataFile_List(adminAccountListFile) == null)
+        {
+            adminAccountList = new ArrayList<>();
+        }
+        else 
+        {
+            adminAccountList = (ArrayList<Admin>) readDataFile_List(adminAccountListFile);
+        }
     }
     // =======================Showtime=======================
     private static void readShowtime(){
@@ -62,6 +76,7 @@ public class CinemaOperatorManager extends DataManager {
     public static void removeAllShowtimes(Movie movie)
     {
         showtimeList.remove(movie);
+        updateShowTime();
     }
 
     public static void updateShowTime(){
@@ -85,7 +100,7 @@ public class CinemaOperatorManager extends DataManager {
 
     public static void addCinema(Cinema cinema){
         if(cinemaList.get(cinema.getCinemaOperator()) == null)
-        cinemaList.put(cinema.getCinemaOperator(), new ArrayList<>());
+        cinemaList.put(cinema.getCinemaOperator(), new ArrayList<Cinema>());
         cinemaList.get(cinema.getCinemaOperator()).add(cinema);
         updateCinemaList();
     }
@@ -116,6 +131,18 @@ public class CinemaOperatorManager extends DataManager {
     
     
     // ========================Movie========================
+    public static void readMovieList()
+    {
+        if(readDataFile_List(movieListFile) == null)
+        {
+            movieList = new ArrayList<>();
+        }
+        else 
+        {
+            movieList = (ArrayList<Movie>) readDataFile_List(movieListFile);
+        }
+    }
+
     public static void addMovie(Movie movie) throws IOException {
     	movieList.add(movie);
         updateMovieListing(movieList);
@@ -144,4 +171,5 @@ public class CinemaOperatorManager extends DataManager {
 			e.printStackTrace();
 		}
     }
+
 }

@@ -10,8 +10,9 @@ import Model.Enums.AgeRestriction;
 import Model.Enums.MovieType;
 import Model.Enums.ShowingStatus;
 import static Presenter.CinemaOperatorManager.*;
+import static Presenter.DataManager.*;
 
-public class MovieListGenerator {
+public class MovieListGenerator extends DataManager {
 	
 	public static void MovieList() throws IOException {
 		
@@ -41,12 +42,12 @@ public class MovieListGenerator {
 				"Kristen Stewart, Naomi Scott, Ella Balinska, Elizabeth Banks, Djimon Hounsou, Noah Centineo, Sam Claflin, Patrick Stewart");
 		Movie m3 = new Movie("Charlie's Angels", Model.Enums.AgeRestriction.PG13, Model.Enums.MovieType.MOVIE3D, Model.Enums.ShowingStatus.NOW_SHOWING,
 				"14-11-2019", "Elizabeth Banks", "119 minutes",
-				"Director Elizabeth Banks takes the helm as the next generation of fearless Charlie’s Angels take flight. In Banks’ bold vision, Kristen Stewart, Naomi Scott, and Ella Balinska are working for the mysterious Charles Townsend, whose security and investigative agency has expanded internationally. With the world’s smartest, bravest, and most highly trained women all over the globe, there are now teams of Angels guided by multiple Bosleys taking on the toughest jobs everywhere. The screenplay is by Elizabeth Banks from a story by Evan Spiliotopoulos and David Auburn.",
+				"Director Elizabeth Banks takes the helm as the next generation of fearless Charlieï¿½s Angels take flight. In Banksï¿½ bold vision, Kristen Stewart, Naomi Scott, and Ella Balinska are working for the mysterious Charles Townsend, whose security and investigative agency has expanded internationally. With the worldï¿½s smartest, bravest, and most highly trained women all over the globe, there are now teams of Angels guided by multiple Bosleys taking on the toughest jobs everywhere. The screenplay is by Elizabeth Banks from a story by Evan Spiliotopoulos and David Auburn.",
 				false, m3_cast);
 		list.add(m3);
 		
-		String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile";
-		DataManager.writeDataFile(list, fileName);
+		String fileName = "datafiles/movieListFile.txt";
+		writeDataFile(list, fileName);
 	}
 
 }

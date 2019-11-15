@@ -1,7 +1,7 @@
 package View;
 
 import java.util.Scanner;
-
+import static Presenter.CinemaOperatorManager.*;
 
 
 public class StarterView extends View
@@ -16,7 +16,9 @@ public class StarterView extends View
 				+ "|          MOBLIMA         |\n"
 				+ "|   BY CZ2002 SS8 Group5   |\n"
 				+ "============================");
+		boolean correctStart = readTheData();
 		displayMenu();
+
 	}
 
 	private void displayMenu() {

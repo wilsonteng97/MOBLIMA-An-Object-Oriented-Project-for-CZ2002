@@ -54,7 +54,7 @@ public class CinemaListView extends View
 		}
 	}
 
-	protected static void displayCinemaOperator()
+	protected void displayCinemaOperator()
 	{
 		ArrayList<CinemaOperator> cinemaOperatorList;
 		cinemaOperatorList = getCinemaOperators();
@@ -69,7 +69,7 @@ public class CinemaListView extends View
 		displayCinemaList(cinemaOperatorList.get(choice));
 	}
 
-	protected static void displayCinemaList(CinemaOperator cinemaOperator)
+	protected void displayCinemaList(CinemaOperator cinemaOperator)
 	{
 		ArrayList<Cinema> cinemaList = getCinemaList(cinemaOperator);
 		int numCinema =0;
