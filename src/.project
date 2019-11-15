@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>src</name>
+	<name>cz2002_Project</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -13,9 +13,5 @@
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
-
-	</buildSpec>
-	<natures>
-
 	</natures>
 </projectDescription>
