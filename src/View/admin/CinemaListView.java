@@ -112,8 +112,6 @@ public class CinemaListView extends View
 		int choiceCinema = passChoiceInt("Choice a cinema you want to remove");
 		String choice = passChoiceString("Are You sure You want to remove cinema "+ cinemaList.get(choiceCinema).getCinemaName() + "Y/N");
 
-		ShowTime showtime = new Showtime(3, cinema, movie, time);
-		showtime.getCinema();
 
 	}
 }

@@ -22,7 +22,7 @@ public class CinemaOperator implements Serializable{
 	private String location;
 	private Integer numOfNormalCinemas;
 	private Integer numOfPlatinumCinemas;
-	private List<Cinema> cinemas;
+	private ArrayList<Cinema> cinemas;
 
 	
 	public CinemaOperator(Integer operatorID, String operatorName, String location) {
@@ -123,7 +123,7 @@ public class CinemaOperator implements Serializable{
 	}
 	
 	// cinemas
-	public List<Cinema> getCinemas() {
+	public ArrayList<Cinema> getCinemas() {
 		return cinemas;
 	}
 	public List<Cinema> getCinemas(Movie input_movie) {
