@@ -22,12 +22,19 @@ public class CinemaOperatorManager extends DataManager {
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<Movie, ArrayList<Review>> reviewList;
     private static HashMap<CinemaOperator, ArrayList<Cinema>> cinemaList;
-    private static ArrayList<Movie> movieList = (ArrayList<Movie>) DataManager.readDataFile_List(movieListFile);;
+    private static ArrayList<Movie> movieList;
 
-    public static void readTheData()
+
+
+    public static boolean readTheData()
     {
-        readShowtime();
-
+        try {
+            readShowtime();
+            readCinemaList();
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
     // =======================Showtime=======================
     private static void readShowtime(){

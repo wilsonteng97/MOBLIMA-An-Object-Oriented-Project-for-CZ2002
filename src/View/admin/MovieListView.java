@@ -154,14 +154,20 @@ public class MovieListView extends View{
 
 	private void displayMovieList()
 	{
-		ArrayList<Movie> movieList;
-		movieList = getMovieList();
 		num = 0;
-		for(Movie movie: movieList)
+		if(movieList.isEmpty())
 		{
-			System.out.println(num + " " + movie.getTitle() + "   " + movie.getStatus());
-			num++;
+			System.out.println("List of movie is currently empty");
 		}
+		else
+		{
+			for(Movie movie: movieList)
+			{
+				System.out.println(num + " " + movie.getTitle() + "   " + movie.getStatus());
+				num++;
+			}
+		}
+		
 		displayMenu();
 	}
 
@@ -299,7 +305,7 @@ public class MovieListView extends View{
 					case 11:
 					//	try
 					//	{
-							updateMovieListing();
+						//	updateMovieListing();
 							System.out.println("Changes applied!");		
 					//	}
 					//	catch(IOException e)

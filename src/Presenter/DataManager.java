@@ -22,7 +22,7 @@ public abstract class DataManager {
 		try {
 			FileInputStream fwStream = new FileInputStream(fileName);
 			ObjectInputStream in = new ObjectInputStream(fwStream);
-			Object lister = (Object) in.readObject();
+			Object lister = in.readObject();
 
 			in.close();
 			return lister;
