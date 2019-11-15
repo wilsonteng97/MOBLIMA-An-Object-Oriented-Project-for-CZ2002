@@ -21,11 +21,12 @@ public class Customer implements Serializable{
 	private String mobile; // Mobile Number
 	private String email;
 	private Date DOB; // Date of Birth
-	private Integer age;	
+	private Integer age;
+	private boolean isSenior;
 //	private boolean ismember;
 	List<Booking> bookings;
 
-	public Customer(String customerID, String name, String mobile, String email, Date DOB) {
+	public Customer(int customerID, String name, String mobile, String email, Date DOB) {
         this.customerID = customerID;
 		this.name = name;
         this.mobile = mobile;
@@ -34,6 +35,14 @@ public class Customer implements Serializable{
         bookings = new ArrayList<Booking>();
         
 //        this.setMember(false);
+	}
+	
+	public Customer(String name, String mobile, String email, boolean isSenior) {
+		this.name = name;
+        this.mobile = mobile;
+		this.email = email;
+        bookings = new ArrayList<Booking>();
+        this.isSenior = isSenior;
 	}
 	
 	// customerID
@@ -99,6 +108,14 @@ public class Customer implements Serializable{
 	public int getAge() {
 		computeAge();
 		return this.age;
+	}
+	
+	// senior
+	public void setIsSenior(boolean isSenior) {
+		this.isSenior = isSenior;
+	}
+	public boolean getIsSenior() {
+		return isSenior;
 	}
 	
 	// bookings
