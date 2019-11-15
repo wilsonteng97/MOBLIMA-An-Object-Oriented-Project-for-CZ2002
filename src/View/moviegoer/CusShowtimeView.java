@@ -3,55 +3,129 @@ package View.moviegoer;
 import static Presenter.Presenter.*;
 import static Presenter.Query.*;
 import static Presenter.PurchaseNOrder.*;
-
-
+import static Model.Enums.ShowingStatus.*;
 import View.View;
-
 import java.util.Scanner;
-
+import static Model.Movie.*;
+import static Model.Enums.MovieType.*;
 import Model.Movie;
 import Model.Seat;
 import Model.ShowTime;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
+
 
 public class CusShowtimeView extends View{
-	private Movie movieName;
+	private Movie movie;
+	Scanner sc = new Scanner(System.in);
 	public CusShowtimeView(Movie movieInput) {
-
-		movieName=movieInput;
-
+		movie=movieInput;
 	}	
 	private void displayMenu() {
-		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("(1) Display Showtimes\n"
-				+ "(2) Return\n");
-		System.out.println("Enter the number of your choice: ");
-		int choice = sc.nextInt();
-		while (verifyChoiceNumber(choice, 1, 2)) {
-			switch (choice) {
-		        case 1:
-		            displayShowtime(movieName); 
+		Date today = new Date();
+        Date tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+        Date afterTomorrow = new Date(new Date().getTime() + 2* 24 * 60 * 60 * 1000);
+        Date dateChosen;
+        
+        if (movie.getStatus().equals(NO_LONGER_AVAILABLE)) {
+            System.out.println("(1) " + formatTimeDate(today) + " (today)\n"+
+                    "(2) " + formatTimeDate(tomorrow) + " (tomorrow)\n"+
+                    "(3) " + formatTimeDate(afterTomorrow) + " (after tomorrow)\n"+
+                    "Please choose a date:");
+            int choice = sc.nextInt();
+    		switch (choice) {
+                case 1:
+                    dateChosen = today;
+                    break;
+                case 2:
+                    dateChosen = tomorrow;
+                    break;
+                default:
+                    dateChosen = afterTomorrow;
+                    break;
+            }
+        }
+        else {
+        	System.out.println("1. " + formatTimeDate(tomorrow)+
+                    "\n2. " + formatTimeDate(afterTomorrow)+
+                    "\nPlease choose a date:");
+        	int choice = sc.nextInt();
+    		switch (choice) {
+                case 1:
+                    dateChosen = tomorrow;
+                    break;
+                default:
+                    dateChosen = afterTomorrow;
+                    break;
+            }
+        }
 
-		            System.out.println("Please choose a showtime: ");
-		    		double showtimeIn = sc.nextDouble();
-		    		ShowTime showtime = passDoubleShowtime(showtimeIn);
-		            displaySeat(showtime.getSeats());
-		            System.out.println("Please choose seat row: ");
-		    		int seatrow = sc.nextInt();
-		    		System.out.println("Please choose seat no: ");
-		    		int seatno = sc.nextInt();
-		            selectSeat(seatrow, seatno);
-		            intent(this, new BookingView(movieName, showtime, seatrow, seatno));
+        System.out.println("Showtime on " + formatTimeDate(dateChosen));
 
-		            break;
-		        case 2:
-		        	break;
-			}
-		}
-		
+        ArrayList<ShowTime> showtimeList = new ArrayList<>();
+
+        if (movie.getShowTimes() != null) {
+            for (ShowTime s : movie.getShowTimes()) {
+                if (s.getTime() == dateChosen) showtimeList.add(s);
+            }
+        }
+
+        if (showtimeList.isEmpty()) {
+        	System.out.println("No showtime on that day.");
+            return;
+        }
+
+        int index = 0;
+        for (ShowTime s : showtimeList) {
+            System.out.println(++index + ": " + s);
+        }
+        
+        System.out.println("Please choose a showtime:\n");
+        int choice = sc.nextInt();        
+
+        ShowTime showtime = showtimeList.get(choice - 1);
+        displayShowtimeDetail(showtime);
 	}
 
+	private void displayShowtimeDetail(ShowTime showtime) {
+		System.out.println(showtime.toString());
+		System.out.println("(1) Check seat availability"+
+                "(2) Book seat"+
+                "(3) Check price"+
+                "(4) Return");
+
+		int choice = sc.nextInt();
+        switch (choice) {
+            case 1:
+                displaySeat(showtime.getSeats());
+                displayShowtimeDetail(showtime);
+                break;
+            case 2:
+                displaySeat(showtime.getSeats());
+                bookSeatMenu(showtime);
+                break;
+            case 3:
+                displayPrice(showtime);
+                break;
+            case 4:
+                break;
+        }
+    }
+	
+	private void displayPrice(ShowTime showtime) {
+        double basePrice = showtime.getMovieTickets().get(0).getPrice();
+        Movie movie = showtime.getMovie();
+        System.out.println("Ticket price for " + movie.getTitle() + " (" + movie.getType().equals(MOVIE3D) != null ? "3D" : "Digital" + ")");
+        System.out.printf("                    " + "Weekdays" + "        " + "Weekends\n" +
+                "Regular Citizens    %-8.2f        %-8.2f\n" +
+                "Senior Citizens     %-8.2f        %-8.2f\n\n", basePrice, basePrice * 1.2, basePrice * 0.5, basePrice * 0.5 * 1.2);
+        System.out.println("Discount on holidays\n");
+        displayShowtimeDetail(showtime);
+    }
+	
 	private void displaySeat(Seat[][] seats) {
         System.out.println("                    -------Screen------");
         System.out.println("     1  2  3  4  5  6  7  8     9 10 11 12 13 14 15 16");
@@ -65,6 +139,26 @@ public class CusShowtimeView extends View{
             System.out.println();
         }
         System.out.println();
+    }
+	
+	private void bookSeatMenu(ShowTime showtime) {
+        System.out.println("Enter the row (1 - 9) of the seat:");
+        int row = sc.nextInt();
+        System.out.println("Enter the column (1 - 16) of the seat:");
+        int col = sc.nextInt();
+
+        if (showtime.getSeatAt(row, col) == null) {
+            System.out.println("Error. Please choose another seat.");
+            bookSeatMenu(showtime);
+        }
+        else if (showtime.getSeatAt(row, col).isBooked()) {
+            System.out.println("The seat has been booked. Please choose another seat.");
+            bookSeatMenu(showtime);
+        }
+        else {
+            System.out.println(showtime.getMovie().getTotalSales());
+            intent(this, new BookingView(showtime.getSeatAt(row, col)));
+        }
     }
 
 	@Override
