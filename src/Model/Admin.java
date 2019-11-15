@@ -10,6 +10,7 @@ package Model;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Admin implements Serializable {
 	private Integer adminID;
 	private String username;

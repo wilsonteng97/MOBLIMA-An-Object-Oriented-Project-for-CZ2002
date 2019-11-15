@@ -16,6 +16,7 @@ import Model.Cinema;
  * @author wilso
  *
  */
+@SuppressWarnings("serial")
 public class CinemaOperator implements Serializable{
 	private Integer operatorID;
 	private String operatorName;

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@SuppressWarnings("serial")
 public class ShowTime implements Serializable {
 	
 	private Integer showTimeID;

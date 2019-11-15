@@ -5,6 +5,7 @@ import java.util.Date;
 
 import Model.Enums.TransactionMethod;
 
+@SuppressWarnings("serial")
 public class Transaction implements Serializable {
 	private final Integer transaction_ID;
 	private Double amount;

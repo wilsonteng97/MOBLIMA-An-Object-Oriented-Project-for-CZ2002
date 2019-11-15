@@ -10,6 +10,7 @@ import Model.ShowTime;
 
 import Model.Enums.*;
 
+@SuppressWarnings("serial")
 public class Movie implements Serializable{
 	private Integer movieID;
 	private String title;
