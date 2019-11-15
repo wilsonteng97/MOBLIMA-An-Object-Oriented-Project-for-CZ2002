@@ -1,6 +1,10 @@
 package Presenter;
 
 import Model.Movie;
+import Model.Enums.AgeRestriction;
+import Model.Enums.MovieType;
+import Model.Enums.ShowingStatus;
+
 import java.io.*;
 
 public class initialiseMovie {
