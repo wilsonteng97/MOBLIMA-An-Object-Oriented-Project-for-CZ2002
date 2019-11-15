@@ -11,6 +11,7 @@ import static Presenter.Presenter.*;
 import static Presenter.AdminManager.*;
 import static Presenter.Query.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -170,7 +171,7 @@ public class MovieListView extends View{
 					intent(this, new AdminShowtimeView(movie));
 					break;
 				case 4:
-					end();
+					displayMenu();
 					break;
 			}
 		}
@@ -192,50 +193,111 @@ public class MovieListView extends View{
 		+ "(7) Change runtime\n"
 		+ "(8) Change synopsis\n"
 		+ "(9) Change blockbuster status\n"
-		+ "(10) Change cast\n");
+		+ "(10) Change cast\n"
+		+ "(11) Come back to previous page\n");
 
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		if(verifyChoiceNumber(choice, 1, 10)) 
-		{ 
-			switch (choice) 
+		while(choice != 11)
+		{
+			if(verifyChoiceNumber(choice, 1, 11)) 
+			{ 
+				switch (choice) 
+				{
+					case 1:
+						movie.setTitle(passChoiceString("Enter the title"));
+						System.out.println("You changed the title correctly");
+						break;
+					case 2:
+						AgeRestriction ageRestriction = null;
+						while (ageRestriction == null)
+						{
+							String ageIn = passChoiceString("Enter the age restriction from the following: \n"
+							+ "G, PG, PG13, NC16, M18, R21, NAR");
+							ageRestriction = passAgeRestriction(ageIn);
+						}
+						movie.setAgeRestriction(ageRestriction);
+						System.out.println("You changed age restriction correctly");
+						break;
+					case 3:
+						MovieType type = null;
+						while (type == null)
+						{
+							String typeIn = passChoiceString("Enter the movie type from the following: \n"
+							+ "MOVIE3D, DIGITAL");
+							type = passMovieType(typeIn);
+						}
+						System.out.println("You changed movie type correctly");
+						break;
+					case 4:
+						ShowingStatus showingStatus = null;
+						while(showingStatus == null)
+						{
+							String showIn = passChoiceString("Enter the movie status from the following: \n"
+							+"COMING_SOON, PREVIEW, NOW_SHOWING, NO_LONGER_AVAILABLE");
+							showingStatus = passShowingStatus(showIn);
+						}
+						System.out.println("You changed showing status correctly");
+						break;
+					case 5:
+						movie.setOpening(passChoiceString("Enter the opening"));
+						System.out.println("You changed the opening correctly");
+						break;
+					case 6:
+						movie.setDirector(passChoiceString("Enter the director"));
+						System.out.println("You changed the director correctly");
+						break;
+					case 7:
+						movie.setRunTime(passChoiceString("Enter the runtime"));
+						System.out.println("You changed the showtime correctly");
+						break;
+					case 8:
+						movie.setSynopsis(passChoiceString("Enter the synopsis"));
+						System.out.println("You changed the synopsis correctly");
+						break;
+					case 9:
+						System.out.println("Is it a blockbuster? Y/N ");
+						String isBlockBuster = sc.next();
+						if(isBlockBuster == "Y" || isBlockBuster == "y")
+						{
+							movie.setBlockBuster(true);
+						}
+						else
+						{
+							movie.setBlockBuster(false);
+						} 
+						break;
+					case 10:
+						System.out.println("Enter how many casts you would like to add: ");
+						ArrayList<String> cast = new ArrayList<String>();
+						int castAmount = sc.nextInt();
+						for(int i =0; i<castAmount; i++)
+						{
+							String castName = passChoiceString("Enter the name of cast");
+							cast.add(castName);
+						}
+						movie.setCast(cast);
+						break;
+					case 11:
+						try
+						{
+							updateMovieListing();
+							System.out.println("Changes applied!");		
+						}
+						catch(IOException e)
+						{
+							System.out.println("Fail to applied changes, try again");
+						}
+						break;
+				}
+			}
+			else 
 			{
-				case 1:
-					movie.setTitle(passChoiceString("Enter the title"));
-					System.out.println("You changed the title correctly");
-					break;
-				case 2:
-					AgeRestriction ageRestriction = null;
-					while (ageRestriction == null)
-					{
-						String ageIn = passChoiceString("Enter the age restriction from the following: \n"
-						+ "G, PG, PG13, NC16, M18, R21, NAR");
-						ageRestriction = passAgeRestriction(ageIn);
-					}
-					movie.setAgeRestriction(ageRestriction);
-					System.out.println("You changed age restriction correctly");
-					break;
-				case 3:
-					MovieType type = null;
-					while (type == null)
-					{
-						String typeIn = passChoiceString("Enter the movie type from the following: \n"
-						+ "MOVIE3D, DIGITAL");
-						type = passMovieType(typeIn);
-					}
-				case 4:
-					ShowingStatus showingStatus = null;
-
+				updateMovieDetails(movie);
 			}
 		}
-		else 
-		{
-			updateMovieDetails(movie);
-		}
+		updateMovieDetails(movie);
 	}
-
-
-
 
 	private void deleteMovie(Movie movie)
 	{
