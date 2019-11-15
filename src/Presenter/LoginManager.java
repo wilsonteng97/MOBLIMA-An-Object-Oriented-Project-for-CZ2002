@@ -1,5 +1,6 @@
 package Presenter;
 
+import Model.Admin;
 import Model.Customer;
 import java.io.FileInputStream;
 import java.io.FileWriter;
@@ -27,24 +28,24 @@ public class LoginManager {
                                                                                             // customer
 
     public static boolean verifyStaff(String username, String password) {
-        Path path = Paths.get(adminAccountListFile);
-        List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+//        Path path = Paths.get(adminAccountListFile);
+        List<Admin> all_accounts = (List<Admin>) DataManager.readDataFile_List(adminAccountListFile);
 
-        for (String login_username : lines) {
-            if ((login_username == userID) && (login_username == password))
+        for (Admin account : all_accounts) {
+            if ((account.getUsername() == username) && (account.getPassword() == password))
                 return true;
-            else return false;
         }
+        return false;
     }
 
     public static boolean verifyCustomer(String username, String password) {
-        Path path = Paths.get(userAccountListFile);
-        List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+//        Path path = Paths.get(userAccountListFile);
+        List<Customer> all_accounts = (List<Customer>) DataManager.readDataFile_List(userAccountListFile);
 
-        for (String login_username : lines) {
-            if ((login_username == userID) && (login_username == password))
+        for (Customer user_Account : all_accounts) {
+            if ((user_Account.getEmail() == username) && (user_Account.getPassword() == password))
                 return true;
-            else return false;
         }
+        return false;
     }
 }
