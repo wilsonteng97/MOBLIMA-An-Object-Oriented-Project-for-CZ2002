@@ -14,6 +14,8 @@ public class CinemaOperatorManager {
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
     private final static String movieListFile = "datafiles/movieListFile.txt";
 
+    private static ArrayList<CinemaOperator> cinemaOperatorList;
+
     private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<Movie, ArrayList<Review>> reviewList;
@@ -72,6 +74,7 @@ public class CinemaOperatorManager {
     public static void addCinema(Cinema cinema){
         if(cinemaList.get(cinema.getCinemaOperator()) == null)
         cinemaList.put(cinema.getCinemaOperator(), new ArrayList<>());
+        
         cinemaList.get(cinema.getCinemaOperator()).add(cinema);
         updateCinemaList();
     }
@@ -89,6 +92,17 @@ public class CinemaOperatorManager {
         writeDataFile(cinemaListFile, cinemaList);
     }
    
+    public static ArrayList<Cinema> getCinemaList(CinemaOperator cinemaOperator)
+    {
+        return cinemaOperator.getCinemas();
+    }
+
+    // ========================CinemaOperator========================
+
+    public static ArrayList<CinemaOperator> getCinemaOperators()
+    {
+        return cinemaOperatorList;
+    }
 
     // ========================Movie========================
 

@@ -30,6 +30,17 @@ public class Presenter
         return choice;
     }
 
+    public static int passChoiceInt(String... integer)
+    {
+        for(String i: integer)
+        {
+            System.out.println(i);
+        }
+        Scanner sc = new Scanner(System.in);
+        int choice = sc.nextInt();
+        return choice;
+    }
+
     public static void printCurrentMenu(String... menu)
     {
         for(String m: menu)

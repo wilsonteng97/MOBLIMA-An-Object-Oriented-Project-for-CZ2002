@@ -25,6 +25,7 @@ public class ShowTime implements Serializable {
 		movieTickets = new ArrayList<MovieTicket>();
 	}
 	
+	
 	// showTimeID
 	public int getShowTimeID() {
 		return showTimeID;

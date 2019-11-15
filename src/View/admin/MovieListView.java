@@ -17,8 +17,6 @@ import java.util.Scanner;
 
 public class MovieListView extends View{
 
-	private ArrayList<Movie> movieList = getMovieList();
-	private int num =0;
 	private Scanner sc = new Scanner(System.in);
 	
 
@@ -29,6 +27,8 @@ public class MovieListView extends View{
 	}
 
 	private void displayMenu() {
+		
+		ArrayList<Movie> movieList = getMovieList();
 			System.out.println("(1) Display Movies\n"
 				+ "(2) Add new Movie\n"
 				+ "(3) Update Movie Listing\n"
@@ -45,13 +45,11 @@ public class MovieListView extends View{
 		        	newMovie();
 		            break;
 		        case 3:
-					System.out.println("Enter the index of the movie you want to update: ");
-					int movie = sc.nextInt();
+					int movie = passChoiceInt("Enter the index of the movie you want to update: ")
 					displayMovieEditingMenu(movieList.get(movie));
 		        	break;
-		        case 4:
-					System.out.println("Enter the index of the movie you want to remove: ");
-					int deletemovie = sc.nextInt();
+				case 4:
+					int deletemovie = passChoiceInt("Enter the index of the movie you want to remove: ")
 		        	removeMovie(movieList.get(deletemovie));
 		        	break;
 				case 5:
@@ -65,8 +63,7 @@ public class MovieListView extends View{
 		}
 
 	}
-
-
+	
 	private void newMovie()
 	{
 		String title;
@@ -138,7 +135,7 @@ public class MovieListView extends View{
 	{
 		ArrayList<Movie> movieList;
 		movieList = getMovieList();
-		num = 0;
+		int num = 0;
 		for(Movie movie: movieList)
 		{
 			System.out.println(num + " " + movie.getTitle() + "   " + movie.getStatus());
@@ -279,15 +276,15 @@ public class MovieListView extends View{
 						movie.setCast(cast);
 						break;
 					case 11:
-						try
-						{
+						//try
+					//	{
 							updateMovieListing();
 							System.out.println("Changes applied!");		
-						}
-						catch(IOException e)
-						{
-							System.out.println("Fail to applied changes, try again");
-						}
+					//	}
+					//	catch(IOException e)
+					//	{
+						//	System.out.println("Fail to applied changes, try again");
+					//	}
 						break;
 				}
 			}
