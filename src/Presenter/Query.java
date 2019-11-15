@@ -128,13 +128,16 @@ public class Query {
 
     public static MovieType passMovieType(String movieType)
     {
-        
-        if(movieType == "MOVIE3D")
-            return MovieType.MOVIE3D;
-        else if(movieType == "DIGITAL")
-            return MovieType.DIGITAL;
-        else 
-            return null;
+        movieType = movieType.toUpperCase();
+        switch(movieType)
+        {
+            case "MOVIE3D":
+                return MovieType.MOVIE3D;
+            case "DIGITAL":
+                return MovieType.DIGITAL;
+            default:
+                return null;
+        }
     }
 
     public static void searchMovie(String movie_name) {
