@@ -14,6 +14,7 @@ import java.util.List;
 import Model.Enums.*;
 import Model.Seat;
 
+@SuppressWarnings("serial")
 public class Cinema implements Serializable {
 	private String cinemaID; // eg. 1P for 1st PLATINUM Cinema or 1N for 1st NORMAL Cinema
 	private String cinemaName; // This is for display.

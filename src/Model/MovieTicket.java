@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import Model.Enums.*;
 
+@SuppressWarnings("serial")
 public class MovieTicket implements Serializable {
 	
 	private Integer movieTicketID;

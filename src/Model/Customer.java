@@ -15,6 +15,7 @@ import Model.Booking;
  * @author wilso
  *
  */
+@SuppressWarnings("serial")
 public class Customer implements Serializable{
 	private Integer customerID;
 	private String name;

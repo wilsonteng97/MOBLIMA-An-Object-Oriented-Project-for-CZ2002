@@ -10,6 +10,7 @@ package Model;
 import java.io.Serializable;
 import java.util.Hashtable;
 
+@SuppressWarnings("serial")
 public class Seat implements Serializable {
 	
 	private Integer seatID; // SeatID starts from 1, starts from the row nearest to the cinema.

@@ -6,6 +6,7 @@ import java.util.List;
 
 import Model.Enums.*;
 
+@SuppressWarnings("serial")
 public class Booking implements Serializable{
 	private Integer bookingID;
 	
