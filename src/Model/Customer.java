@@ -25,7 +25,7 @@ public class Customer implements Serializable{
 //	private boolean ismember;
 	List<Booking> bookings;
 
-	public Customer(String customerID, String name, String mobile, String email, Date DOB) {
+	public Customer(Integer customerID, String name, String mobile, String email, Date DOB) {
         this.customerID = customerID;
 		this.name = name;
         this.mobile = mobile;

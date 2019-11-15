@@ -6,38 +6,59 @@ import Model.Customer;
 
 public abstract class CustomerFileIO {
 
+	public static final String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\userAccountListFile.txt";
   // =================================Customer Class=================================
-  public static void writeCustomerFile(ArrayList<Customer> customer_list) throws IOException{
-    ArrayList<Customer> lister = new ArrayList<Customer>();
-	String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\cinemaListFile.txt";
-		
-	FileOutputStream fileOut = new FileOutputStream(fileName, true);
-    ObjectOutputStream out = new ObjectOutputStream(fileOut);
-
-	lister.addAll(customer_list);
-    out.writeObject(lister);
-	System.out.println("Writing Done!");
-	out.close();
+	public static void writeCustomerFile(Customer customer) throws IOException, ClassNotFoundException, EOFException{
+		  
+		  
+		  FileInputStream fwStream = new FileInputStream(fileName);
+		  ObjectInputStream in = new ObjectInputStream(fwStream);
+		  ArrayList<Customer> lister = (ArrayList<Customer>) in.readObject();
+		  
+		  if (lister == null) {
+			  FileOutputStream fileOut = new FileOutputStream(fileName, true);
+			  ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			  lister.add(customer);
+		  	  out.writeObject(lister);
+		  }
+		  else {
+			  ArrayList<Customer> newCust = new  ArrayList<Customer>();
+			  FileOutputStream fileOut = new FileOutputStream(fileName, true);
+			  ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			  out.writeObject(newCust);
+			  System.out.println("Writing Done!");
+			  out.close();
+		  }
   }
+  
+//  public static void saveNewCustomer(Customer customer) throws IOException, ClassNotFoundException {
+//	  String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\userAccountListFile.txt";
+//	  FileInputStream fwStream = new FileInputStream(fileName);
+//	  ObjectInputStream in = new ObjectInputStream(fwStream);
+//	  ArrayList<Customer> existingCust = (ArrayList<Customer>) in.readObject();
+//	  existingCust.add(customer);
+//	  in.close();
+//	  writeCustomerFile(existingCust);
+//  }
 
-  public static void readCustomerFile(){
+  public static void readCustomerFile(Customer customer){
     int i=1;
 		try {
-			String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\cinemaListFile.txt";
-			FileInputStream fwStream = new FileInputStream(fileName);
 			ObjectInputStream in = new ObjectInputStream(fwStream);
 			
 			ArrayList<Customer> lister = (ArrayList<Customer>) in.readObject();
 			
 			System.out.println("The list of customers: \n");
-			for (Customer cust : lister) {
-				System.out.println(i + "\tID: " +  cust.getCustomerID());
-				System.out.println("\tName: " + cust.getName());
-				System.out.println("\tMobile Number: " + cust.getMobileNo());
-				System.out.println("\tEmail: " + cust.getEmail() + "\n");
-				i++;
+			for (Customer c : lister) {
+				if (c == customer) {
+					System.out.println(i + "\tID: " +  c.getCustomerID());
+					System.out.println("\tName: " + c.getName());
+					System.out.println("\tContact Number: " + c.getMobileNo());
+					System.out.println("\tEmail Address: " + c.getEmail() + "\n");
+				}
+				else
+					System.out.println("No such customer");
 			}
-			
 			in.close();
 		}
 		catch (IOException e) {
