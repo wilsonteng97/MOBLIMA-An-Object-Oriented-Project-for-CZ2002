@@ -32,6 +32,10 @@ public class AdminShowtimeView extends View{
 	{
 		this.setInputMovie(movieIn);
 	}
+	
+	public AdminShowtimeView()
+	{
+	}
 
 	protected void starter()
 	{

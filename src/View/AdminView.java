@@ -68,7 +68,7 @@ public class AdminView extends View{
 	                intent(this, new CinemaListView());
 	                break;
 	            case 3:
-	                intent(this, new AdminShowtimeView(movieIn, cinemaIn));
+	                intent(this, new AdminShowtimeView());
 	                break;
 	            case 4:
 	                intent(this, new SystemSettingView());

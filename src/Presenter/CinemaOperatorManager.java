@@ -22,7 +22,7 @@ public class CinemaOperatorManager extends DataManager {
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<Movie, ArrayList<Review>> reviewList;
     private static HashMap<CinemaOperator, ArrayList<Cinema>> cinemaList;
-    private static ArrayList<Movie> movieList = (ArrayList<Movie>) DataManager.readDataFile_List(movieListFile);;
+    private static ArrayList<Movie> movieList;
 
     public static void readTheData()
     {
