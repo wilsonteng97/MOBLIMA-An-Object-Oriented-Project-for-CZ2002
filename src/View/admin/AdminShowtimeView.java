@@ -1,11 +1,21 @@
 package View.admin;
+
 import View.View;
 import static Presenter.Query.*;
 import static Presenter.CinemaOperatorManager.*;
 import static Presenter.Presenter.*;
 import java.util.Scanner;
 
+import Model.Movie;
+
 public class AdminShowtimeView extends View{
+
+	private Movie movie;
+	
+	public AdminShowtimeView(Movie movie)
+	{
+		this.movie = movie;
+	}
 
 	protected void starter()
 	{
