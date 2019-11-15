@@ -1,13 +1,17 @@
 package Presenter;
 
-import Model.*;
-import static Presenter.Query.*;
-import java.io.FileInputStream;
-import java.io.FileWriter;
+import java.io.IOException;
+import Model.Admin;
+import Model.Cinema;
+import Model.CinemaOperator;
+import Model.Movie;
+import Model.Review;
+import Model.ShowTime;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CinemaOperatorManager {   
+public class CinemaOperatorManager extends DataManager {   
     private final static String adminAccountListFile = "../../datafiles/adminAccountListFile.txt";
     private final static String showtimeListFile = "../../datafiles/showtimeListFile.txt";
     private final static String reviewListFile = "../../datafiles/reviewListFile.txt";
@@ -28,17 +32,17 @@ public class CinemaOperatorManager {
     }
     // =======================Showtime=======================
     private static void readShowtime(){
-        if(readDataFile(showtimeListFile) == null)
-            showtimeList = new HashMap<>();
+        if(readDataFile_HashMap(showtimeListFile) == null)
+            showtimeList = new HashMap<Movie, ArrayList<ShowTime>>();
         else
-            showtimeList = (HashMap<Movie, ArrayList<ShowTime>>) readDataFile(showtimeListFile);
+            showtimeList = (HashMap<Movie, ArrayList<ShowTime>>) readDataFile_HashMap(showtimeListFile);
     }
 
 
     public static void addShowtime(Movie movie, ShowTime showTime)
     {
         showtimeList.get(movie).add(showTime);
-        updateShowtime();
+        updateShowTime();
     }
 
     public static void removeShowtime(Movie movie, ShowTime showTime){
@@ -47,7 +51,7 @@ public class CinemaOperatorManager {
         // }
         // showtimeList.get(ShowTime.getMovie()).remove(ShowTime);
         showtimeList.get(movie).remove(showTime);
-        updateShowtime();
+        updateShowTime();
     }
 
     public static void removeAllShowtimes(Movie movie)
@@ -56,7 +60,11 @@ public class CinemaOperatorManager {
     }
 
     public static void updateShowTime(){
-        writeDataFile(showtimeListFile, showtimeList);
+        try {
+			writeDataFile(showtimeList, showtimeListFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
     
     // ========================Cinema========================
@@ -64,10 +72,10 @@ public class CinemaOperatorManager {
         // for (String cinema : cinemaList){
         //     System.out.println(cinema);
         // }
-        if(readDataFile(cinemaListFile) == null)
-            cinemaList = new HashMap<>();
+        if(readDataFile_HashMap(cinemaListFile) == null)
+            cinemaList = new HashMap<CinemaOperator, ArrayList<Cinema>>();
         else
-            cinemaList = (HashMap<CinemaOperator, ArrayList<Cinema>>) readDataFile(cinemaListFile);
+            cinemaList = (HashMap<CinemaOperator, ArrayList<Cinema>>) readDataFile_HashMap(cinemaListFile);
     }
 
     public static void addCinema(Cinema cinema){
@@ -84,7 +92,11 @@ public class CinemaOperatorManager {
     }
 
     public static void updateCinemaList() {
-        writeDataFile(cinemaListFile, cinemaList);
+        try {
+			writeDataFile(cinemaList, cinemaListFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
    
     public static ArrayList<CinemaOperator> getCinemaOperators()
@@ -115,6 +127,10 @@ public class CinemaOperatorManager {
     }
     public static void updateMovieListing()
     {
-        writeDataFile(movieListFile, movieList);
+        try {
+			writeDataFile(movieList, movieListFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 }

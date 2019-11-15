@@ -1,9 +1,6 @@
 package Presenter;
 
-import Model.Customer;
 import Model.Booking;
-import java.io.FileInputStream;
-import java.io.FileWriter;
 
 public class BookingManager {
     // private final static String userBookingListFile = "datafiles/userBookingFile.txt";
