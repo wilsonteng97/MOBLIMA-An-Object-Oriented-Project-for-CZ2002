@@ -152,21 +152,21 @@ public class Cinema implements Serializable {
 	}
 	
 	// initializeSeatsList
-	public void initializeSeatsList(Integer no_of_columns, Integer no_of_rows) {
-		if ((no_of_columns<1) || (no_of_rows<1)) {
-			return; // TO-DO -> Throw Exception
-		}
-		this.setNoOfSeatColumn(no_of_columns);
-		this.setNoOfSeatRow(no_of_rows);
-		
-		this.seats = new ArrayList<Seat>(this.getTotalNoOfSeats());
-		for (int row=1; row<=this.getNoOfSeatRow(); row++) {
-			for (int col=1; col<=this.getNoOfSeatColumn(); col++) {
-				Integer seatID = this.getNoOfSeatColumn()*row + col;
-				this.seats.add(new Seat(seatID, this.getCinemaID(), this.getOperatorID()));
-			}
-		}
-	}
+//	public void initializeSeatsList(Integer no_of_columns, Integer no_of_rows) {
+//		if ((no_of_columns<1) || (no_of_rows<1)) {
+//			return; // TO-DO -> Throw Exception
+//		}
+//		this.setNoOfSeatColumn(no_of_columns);
+//		this.setNoOfSeatRow(no_of_rows);
+//		
+//		this.seats = new ArrayList<Seat>(this.getTotalNoOfSeats());
+//		for (int row=1; row<=this.getNoOfSeatRow(); row++) {
+//			for (int col=1; col<=this.getNoOfSeatColumn(); col++) {
+//				Integer seatID = this.getNoOfSeatColumn()*row + col;
+//				this.seats.add(new Seat(seatID, this.getCinemaID(), this.getOperatorID()));
+//			}
+//		}
+//	}
 	
 	
 	// printCinemaSeats
