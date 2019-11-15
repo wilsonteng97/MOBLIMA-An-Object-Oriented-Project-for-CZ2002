@@ -30,11 +30,23 @@ public class Presenter
         return choice;
     }
 
+    public static int passChoiceInt(String... string)
+    {
+        for(String s: string)
+        {
+            System.out.println(s);
+        }
+        Scanner sc = new Scanner(System.in);
+        int choice = sc.nextInt();
+        return choice;
+    }
+
     public static void printCurrentMenu(String... menu)
     {
         for(String m: menu)
         {
             System.out.println(m);
+            
         }
     }
 

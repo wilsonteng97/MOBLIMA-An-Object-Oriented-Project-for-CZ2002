@@ -150,11 +150,6 @@ public class AdminManager extends DataManager
 
     
     // ====================Get Lists of Entitites====================  
-    public static ArrayList<Cinema> getCinemaList(CinemaOperator cinemaOperator)
-    {
-        return cinemaList.get(cinemaOperator);
-    }
-
     public static ArrayList<ShowTime> getShowtimeList(Movie movie)
     {
         return showtimeList.get(movie);
