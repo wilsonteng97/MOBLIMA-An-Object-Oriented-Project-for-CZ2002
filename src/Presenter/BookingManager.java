@@ -13,7 +13,7 @@ public class BookingManager {
         
     }
 
-    public void addBooking(Booking new_booking){
+    public static void addBooking(Booking new_booking){
         // userBookingList.add(new_booking);
         // updateBookingListing();
     }

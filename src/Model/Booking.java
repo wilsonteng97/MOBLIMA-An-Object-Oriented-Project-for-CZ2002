@@ -8,9 +8,10 @@ import Model.Enums.*;
 
 public class Booking implements Serializable{
 	private Integer bookingID;
-	
+	private String TID;
 	private Customer customer;
 	private Date date;
+	private Seat seat;
 	private Transaction transaction;
 	private BookingStatus status;
 	private List<MovieTicket> movieTickets;
@@ -23,6 +24,25 @@ public class Booking implements Serializable{
 		this.transaction = transaction;
 		this.customer = customer;
 		this.movieTickets = movieTickets;
+	}
+	
+	public Booking(String TID, Customer customer, Seat seat) {
+		this.TID=TID;
+		this.customer=customer;
+		this.seat=seat;
+	}
+
+	// TID
+	public String getTID() {
+		return TID;
+	}
+		
+	// seat
+	public Seat getSeat() {
+		return seat;
+	}
+	public void setSeat(Seat seat) {
+		this.seat=seat;
 	}
 	
 	// bookingID
