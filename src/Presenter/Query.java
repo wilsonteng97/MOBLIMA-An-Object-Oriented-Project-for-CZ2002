@@ -31,8 +31,8 @@ public class Query {
     private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
 //    Path path_Showtime = Paths.get(showtimeListFile);
 //    List<String> showtimeList = Files.readAllLines(path_Showtime, StandardCharsets.UTF_8);
-
-    private final static String customerListFile = "datafiles/userAccountListFile.txt";
+    
+    static ArrayList<Customer> customerList = CustomerManager.getCustomerList();
 //    Path path_customer = Paths.get(customerListFile);
 //    List<String> customerList = Files.readAllLines(path_customer, StandardCharsets.UTF_8);
 
@@ -73,11 +73,12 @@ public class Query {
 //        System.out.println("Sorry, the Showtime that you are looking for does not exist.");
 //    }
 
-//    public Customer passStringCustomer (Customer customer_name) {
-//        for (String customer : customerList){
-//            if (customer == customer_name) return customer;
-//        }
-//    }
+    public static Customer passStringCustomer (String customer_name) {
+        for (Customer customer : customerList){
+            if (customer.getName().equalsIgnoreCase(customer_name)) return customer;
+        }
+		return null;
+    }
 
 //    public static ShowTime displayShowtime(String movie_name){
 //    	Movie movieIn = passStringMovie(movie_name);
