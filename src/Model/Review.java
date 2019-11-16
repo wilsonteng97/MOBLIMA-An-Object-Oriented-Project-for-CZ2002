@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class Review {
 	private Integer rating;
-	private String synopsis;
+	private String comment;
 	private Date date;
 	private Customer customer;
 	
-	public Review (Integer rating, String synopsis, Date date, Customer customer) {
+	public Review (Integer rating, String comment, Date date, Customer customer) {
 		this.rating = rating;
-		this.synopsis = synopsis;
+		this.comment = comment;
 		this.date = date;
 		this.customer = customer;
 	}
@@ -20,8 +20,8 @@ public class Review {
 		return this.rating;
 	}
 	
-	public String getSynopsis() {
-		return this.synopsis;
+	public String getComment() {
+		return this.comment;
 	}
 	
 	public Date getDate() {
