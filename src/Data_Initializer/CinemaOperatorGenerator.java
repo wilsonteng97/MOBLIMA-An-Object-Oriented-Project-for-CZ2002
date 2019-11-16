@@ -1,7 +1,9 @@
-package Model;
+package Data_Initializer;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import Model.CinemaOperator;
 import Presenter.DataManager;
 import static Presenter.CinemaOperatorManager.*;
 

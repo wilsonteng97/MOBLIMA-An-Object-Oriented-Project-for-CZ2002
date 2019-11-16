@@ -1,6 +1,7 @@
-package Model;
+package Data_Initializer;
 
 import Model.Admin;
+import Model.Cinema;
 import Model.Enums.CinemaClass;
 
 import java.io.IOException;

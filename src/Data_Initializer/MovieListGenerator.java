@@ -1,4 +1,4 @@
-package Model;
+package Data_Initializer;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class MovieListGenerator extends DataManager {
 		m3_cast.add("Kristen Stewart, Naomi Scott, Ella Balinska, Elizabeth Banks, Djimon Hounsou, Noah Centineo, Sam Claflin, Patrick Stewart");
 		Movie m3 = new Movie("Charlie's Angels", Model.Enums.AgeRestriction.PG13, Model.Enums.MovieType.MOVIE3D, Model.Enums.ShowingStatus.NOW_SHOWING,
 				"14-11-2019", "Elizabeth Banks", "119 minutes",
-				"Director Elizabeth Banks takes the helm as the next generation of fearless Charlie Angels take flight. In Banks, Kristen Stewart, Naomi Scott, and Ella Balinska are working for the mysterious Charles Townsend, whose security and investigative agency has expanded internationally. With the world锟絪 smartest, bravest, and most highly trained women all over the globe, there are now teams of Angels guided by multiple Bosleys taking on the toughest jobs everywhere. The screenplay is by Elizabeth Banks from a story by Evan Spiliotopoulos and David Auburn.",
+				"Director Elizabeth Banks takes the helm as the next generation of fearless Charlie Angels take flight. In Banks, Kristen Stewart, Naomi Scott, and Ella Balinska are working for the mysterious Charles Townsend, whose security and investigative agency has expanded internationally. With the worldé”Ÿçµª smartest, bravest, and most highly trained women all over the globe, there are now teams of Angels guided by multiple Bosleys taking on the toughest jobs everywhere. The screenplay is by Elizabeth Banks from a story by Evan Spiliotopoulos and David Auburn.",
 				false, m3_cast);
 //		m3.addTotalSales(1086);
 		list.add(m3);
@@ -65,7 +65,7 @@ public class MovieListGenerator extends DataManager {
 		m5_cast.add("Chloe Bennet, TenzNorgay Trainor, Albert Tsai, Eddie Izzard, Sarah Paulson, Tsai Chin, Michelle Wong");
 		Movie m5 = new Movie("Abominable", Model.Enums.AgeRestriction.PG, Model.Enums.MovieType.DIGITAL, Model.Enums.ShowingStatus.NOW_SHOWING,
 				"07-11-2019", "Jill Culton", "98 minutes",
-				"Abominable takes audiences on an epic 2,000-mile adventure from the streets of a Chinese city to the breathtaking Himalayan snowscapes. When teenage Yi (Chloe Bennet) encounters a young Yeti on the roof of her apartment building, she and her friends, Jin (Tenzing Norgay Trainor) and Peng (Albert Tsai), name him “Everest” and embark on an epic quest to reunite the magical creature with his family at the highest point on Earth.",
+				"Abominable takes audiences on an epic 2,000-mile adventure from the streets of a Chinese city to the breathtaking Himalayan snowscapes. When teenage Yi (Chloe Bennet) encounters a young Yeti on the roof of her apartment building, she and her friends, Jin (Tenzing Norgay Trainor) and Peng (Albert Tsai), name him â€œEverestâ€� and embark on an epic quest to reunite the magical creature with his family at the highest point on Earth.",
 				false, m5_cast);
 		m5.addTotalSales(1026);
 		list.add(m5);
@@ -75,7 +75,7 @@ public class MovieListGenerator extends DataManager {
 		m6_cast.add("Hairul Azreen, Fify Azmi, Hilal Azman, Ismi Melinda, Henley Hii, Dain Iskandar Said, Josiah Hogan, Yayan Ruhian");
 		Movie m6 = new Movie("Wira", Model.Enums.AgeRestriction.PG13, Model.Enums.MovieType.DIGITAL, Model.Enums.ShowingStatus.COMING_SOON,
 				"21-11-2019", "Adrian Teh", "109 minutes",
-				"Hassan (Hairul Azreen) left his family since he was younger. He became military man to overcome his demon and to get away from the injustice towards his family and community committed by Raja (Dain Iskandar). After his stint in the army Hassan returns to help his family with a debt owed by his sister Zain (Fify Azmi) by fighting in a MMA match. Hassan and Zain had to go against Vee (Ismi Melinda) and Rayyan (Josiah Hogan) who are Raja’s children. Can they go against all odds to win the fight and would Hassan be able to save his family and community?",
+				"Hassan (Hairul Azreen) left his family since he was younger. He became military man to overcome his demon and to get away from the injustice towards his family and community committed by Raja (Dain Iskandar). After his stint in the army Hassan returns to help his family with a debt owed by his sister Zain (Fify Azmi) by fighting in a MMA match. Hassan and Zain had to go against Vee (Ismi Melinda) and Rayyan (Josiah Hogan) who are Rajaâ€™s children. Can they go against all odds to win the fight and would Hassan be able to save his family and community?",
 
 				false, m6_cast);
 		m5.addTotalSales(0);

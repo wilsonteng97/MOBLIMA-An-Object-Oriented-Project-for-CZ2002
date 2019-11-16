@@ -1,4 +1,4 @@
-package Model;
+package Data_Initializer;
 
 import Model.Admin;
 import java.io.IOException;

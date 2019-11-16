@@ -1,9 +1,11 @@
-package Model;
+package Data_Initializer;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import Model.Customer;
 
 public class UserAccountListGenerator {
 	public static ArrayList<Customer> CustomerList() throws ParseException {
