@@ -33,8 +33,7 @@ public class CinemaListView extends View
 		System.out.println("(1) Display Cinemas\n"
 				+ "(2) Add Cinema\n"
 				+ "(3) Remove Cinema\n"
-				+ "(3) Return\n");
-		System.out.println();
+				+ "(4) Return\n");
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
 		if (verifyChoiceNumber(choice, 1, 3)) { 
@@ -46,10 +45,10 @@ public class CinemaListView extends View
 		        	newCinema(); 
 		            break;
 				case 3:
-					int removecinema = passChoiceInt("Enter the index of the cinema You want to remove ");
 		        	deleteCinema(); 
 		            break;
-		        case 4:
+				case 4:
+					end();
 		            break;
 			}
 		}

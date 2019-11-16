@@ -26,7 +26,7 @@ public class AdminShowtimeView extends View{
 
 	private Movie movieIn;
 	private Scanner sc = new Scanner(System.in);
-	SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy hh:mm");
+
 
 	public AdminShowtimeView(Movie movieIn)
 	{
@@ -43,7 +43,7 @@ public class AdminShowtimeView extends View{
 	}
 
 	private void displayMenu() {
-		Date dateIn;
+		Date dateIn = null;
 		Cinema cinemaIn;
 		ShowTime showTimeIn;
 		String inputString;
@@ -67,9 +67,7 @@ public class AdminShowtimeView extends View{
 		        	displayShowtime(this.getInputMovie()); 
 		            break;
 		        case 2:
-		        	System.out.println("Enter showtime in the following format (dd/mm/yyyy hh:mm): ");
-		        	inputString = sc.next();
-		        	dateIn = parseStringToDate(inputString);
+		        	dateIn = parseStringToDate("Enter showtime in the following format (dd/mm/yyyy hh:mm):");
 		        	cinemaIn = getCinema();
 		        	
 		        	showTimeIn = new ShowTime(cinemaIn, movieIn, dateIn); 
@@ -129,6 +127,7 @@ public class AdminShowtimeView extends View{
 	}
 	
 	private void removeShowtime(Movie movieIn, ShowTime showTimeIn) {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 		System.out.println("Are You sure you want to remove showtime "+ (String)(formatter.format(showTimeIn)) +
 						   " for " + movieIn.getTitle() +
 						   " Y/N");
@@ -146,22 +145,14 @@ public class AdminShowtimeView extends View{
 	}
 
 	private void addShowtime(Movie movieIn, ShowTime showTimeIn) {
-		
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 		addShowtime(movieIn, showTimeIn);
 		System.out.println("Added showtime "+ (String)(formatter.format(showTimeIn)) +
 				   " for " + movieIn.getTitle());
 		displayMenu();
 	}
 
-	private Date parseStringToDate(String inputString) {
-	    Date showtimeIn = null;
-		try {
-			showtimeIn = formatter.parse(inputString);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return showtimeIn;
-	}
+	
 
 	private Movie getInputMovie() {
 		return this.movieIn;

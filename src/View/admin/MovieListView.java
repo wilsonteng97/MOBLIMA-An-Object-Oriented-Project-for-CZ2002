@@ -231,9 +231,7 @@ public class MovieListView extends View{
 
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while(choice != 11)
-		{
-			if(verifyChoiceNumber(choice, 1, 11)) 
+		if(verifyChoiceNumber(choice, 1, 11)) 
 			{ 
 				switch (choice) 
 				{
@@ -315,7 +313,8 @@ public class MovieListView extends View{
 					//	try
 					//	{
 						//	updateMovieListing();
-							System.out.println("Changes applied!");		
+							System.out.println("Changes applied!");	
+							displayMenu();	
 					//	}
 					//	catch(IOException e)
 					//	{
@@ -328,7 +327,6 @@ public class MovieListView extends View{
 			{
 				updateMovieDetails(movie);
 			}
-		}
 		updateMovieDetails(movie);
 	}
 
