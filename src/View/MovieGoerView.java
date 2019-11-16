@@ -15,14 +15,13 @@ public class MovieGoerView extends View{
 	}
 
 	@Override
-	protected void starter()
-	{
+	protected void starter(){
 		displayMenu();
 	}
 
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Welcome, please make a selection:"
+		System.out.println("\nWelcome, please make a selection:\n"
 				+ "(1) Movie Listing\n"
 				+ "(2) Booking History\n"
 				+ "(3) Movie Review\n"
@@ -40,13 +39,13 @@ public class MovieGoerView extends View{
 	            intent(this, new BookingHistoryView());
 	            break;
 	        case 3:
-	            intent(this, new ReviewView());
+	            //intent(this, new ReviewView());
 	            break;
 	        case 4:
-	            intent(this, new CusShowtimeView());
+	            //intent(this, new CusShowtimeView());
 	            break;
 	        case 5:
-	            intent(this, new BookingView());
+	            //intent(this, new BookingView());
 	            break;
 	        case 6:
 	            break;
