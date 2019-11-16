@@ -14,9 +14,9 @@ import static Presenter.DataManager.*;
 
 public class MovieListGenerator extends DataManager {
 	
+	static ArrayList<Movie> list = new ArrayList<Movie>();
+	
 	public static void MovieList() throws IOException {
-		
-		ArrayList<Movie> list = new ArrayList<Movie>();
 		
 //		Movie(String title, AgeRestriction ageRestriction, MovieType type, ShowingStatus status, 
 //		String opening, String director, String runtime, String synopsis, Boolean blockBuster, ArrayList<String> cast)
@@ -87,6 +87,10 @@ public class MovieListGenerator extends DataManager {
    // String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
 		
 	//	writeDataFile(list, fileName);
+	}
+	
+	public static Movie getMovieFromGenerator(int n) {
+		return list.get(n);
 	}
 
 }
