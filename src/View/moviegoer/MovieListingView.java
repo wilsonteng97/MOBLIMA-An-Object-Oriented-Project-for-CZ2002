@@ -19,7 +19,8 @@ public class MovieListingView extends View{
 	}	
     
     private void displayMenu() {
-    	
+    	System.out.println("Movie Listing");
+    	System.out.println();
     	System.out.println("(1) List all movies\n" 
     			+ "(2) List the top 5 movies by sales\n"
     			+ "(3) List the top 5 movies by ratings\n"
@@ -47,10 +48,10 @@ public class MovieListingView extends View{
             	searchMovie(); 
                 break;
             case 5:
-            	intent(this, new MovieListingView());
-                break;
+            	break;
 			}
-		}
+		end();
+	}
 	
 	@Override
 	protected void starter() {
@@ -61,21 +62,26 @@ public class MovieListingView extends View{
 		}
 
 	private void searchMovie() {
+		System.out.println();
 		System.out.println("Enter the movie you choose: ");
 		String movieName = sc.next();
         Movie movieResult = passStringMovie(movieName);
         if (movieResult==null) {
+        	System.out.println();
         	System.out.println("No movie found");
             displayMenu();
         }
         else {
+        	System.out.println();
         	System.out.println(movieResult.getTitle() + " (" + movieResult.getStatus().toString() + ")");
             displayMovieDetail(movieResult);
         }
     }
 	
 	 private void displayMovieDetail(Movie movie) {
+		 System.out.println();
 		 System.out.println(movie.toString());
+		 System.out.println();
 		 System.out.println("1. Display showtime\n"+
 	                "2. Display/write reviews\n"+
 	                "3. Go back");
@@ -107,6 +113,7 @@ public class MovieListingView extends View{
 	    	movieListing = getMovieList();
 	
 	    if (movieListing.isEmpty()) {
+	    	System.out.println();
 	    	System.out.println("Movie listing is not available");
 	        displayMenu();
 	    }
@@ -115,6 +122,7 @@ public class MovieListingView extends View{
             for (Movie movie : movieListing) {
                 if (movie.getStatus().equals(NO_LONGER_AVAILABLE)) 
                 	continue;
+                System.out.println();
                 System.out.println(++index + ". " + movie.getTitle() 
                         + "(" + movie.getStatus().toString() + ") " +
                         "[" + (getMovieRating(movie) == 0 ? "No rating" : getMovieRating(movie)) + "]");
@@ -124,6 +132,7 @@ public class MovieListingView extends View{
             for (Movie movie : movieListing) {  
                 if (movie.getStatus().equals(NO_LONGER_AVAILABLE)) 
                 	continue;
+                System.out.println();
                 System.out.println(++index + ". " + movie.getTitle() 
                                 + "(" + movie.getStatus().toString() + ") " +
                         "[" + (movie.getTotalSales() == 0 ? "No sale" : movie.getTotalSales()) + "]");
@@ -134,6 +143,7 @@ public class MovieListingView extends View{
             for (Movie movie : movieListing) {  
                 if (movie.getStatus().equals(NO_LONGER_AVAILABLE)) 
                 	continue;
+                System.out.println();
                 System.out.println(++index + ". " + movie.getTitle() 
                                 + "(" + movie.getStatus().toString() + ") " );
             }
