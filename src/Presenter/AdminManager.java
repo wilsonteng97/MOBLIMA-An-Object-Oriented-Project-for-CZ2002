@@ -31,8 +31,8 @@ public class AdminManager extends DataManager
     private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
     private final static String reviewListFile = "datafiles/reviewListFile.txt";
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
-//    private final static String movieListFile = "datafiles/movieListFile.txt";
-    private final static String movieListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
+    private final static String movieListFile = "datafiles/movieListFile.txt";
+//    private final static String movieListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
 
     private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;

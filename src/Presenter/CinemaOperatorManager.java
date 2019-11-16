@@ -16,6 +16,7 @@ public class CinemaOperatorManager extends DataManager {
     private final static String reviewListFile = "datafiles/reviewListFile.txt";
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
     private final static String movieListFile = "datafiles/movieListFile.txt";
+//    private final static String movieListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
     private final static String cinemaOperatorListFile = "datafiles/cinemaOperatorListFile.txt";
 
     private static ArrayList<CinemaOperator> cinemaOperators;
@@ -159,7 +160,7 @@ public class CinemaOperatorManager extends DataManager {
     public static void addMovie(Movie movie) throws IOException {
     	readMovieList();
     	movieList.add(movie);
-        updateMovieListing(movieList);
+        updateMovieListing();
     }
 
     public static void removeMovie(Movie movie) throws IOException{
@@ -170,7 +171,7 @@ public class CinemaOperatorManager extends DataManager {
     	catch (Exception e) {
     		System.out.println(e.getMessage());
     	}
-    	updateMovieListing(movieList);
+    	updateMovieListing();
     }
 
     public static ArrayList<Movie> getMovieList(){
