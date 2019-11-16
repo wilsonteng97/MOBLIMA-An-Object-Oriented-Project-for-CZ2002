@@ -1,9 +1,14 @@
 package Model;
 
+import Model.Admin;
+import java.io.IOException;
 import java.util.ArrayList;
+import static Presenter.CinemaOperatorManager.*;
+import Presenter.DataManager;
 
-public class AdminAccountListGenerator {
-	public static ArrayList<Admin> AdminAccounts() {
+
+public class AdminAccountListGenerator extends DataManager {
+	public static void AdminAccounts() throws IOException {
 		ArrayList<Admin> admin_list = new ArrayList<Admin>();
 		
 //		Admin(String username, String password)
@@ -25,6 +30,7 @@ public class AdminAccountListGenerator {
 		Admin a6 = new Admin("yiming", "Password-Yiming");
 		admin_list.add(a6);
 		
-		return admin_list;
+		String fileName = "datafiles\\adminAccountListFile.txt";
+		writeDataFile(admin_list, fileName);
 	}
 }
