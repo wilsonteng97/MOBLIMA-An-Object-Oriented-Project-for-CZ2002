@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,9 +21,8 @@ import Model.Movie;
 import Model.ShowTime;
 
 public class Query {
-    private final static String movieListFile = "datafiles/movieListFile.txt";
-//    Path path_Movie = Paths.get(movieListFile);
-//    List<String> movieList = Files.readAllLines(path_Movie, StandardCharsets.UTF_8);
+//    private final static String movieListFile = "datafiles/movieListFile.txt";
+	static ArrayList<Movie> movieList = CinemaOperatorManager.getMovieList();
 
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
 //    Path path_Cinema = Paths.get(cinemaListFile);
@@ -52,12 +52,12 @@ public class Query {
 //        }
 //    }
 
-//    public static Movie passStringMovie(String name_of_movie){
-//        for (String movie : movieList){
-//            if (movie == name_of_movie) return movie;
-//        }
-//        System.out.println("Sorry, the name of movie that you are looking for does not exist.");
-//    }
+    public static Movie passStringMovie(String name_of_movie){
+        for (Movie movie : movieList){
+            if (movie.getTitle().equalsIgnoreCase(name_of_movie)) return movie;
+        }
+		return null;
+    }
 
 //    public static Cinema passStringCinema(String cinema_ID){
 //        for (String cinema : cinemaList){
