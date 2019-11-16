@@ -13,6 +13,8 @@ import Presenter.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class CinemaOperatorManager extends DataManager {   
     private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
@@ -158,7 +160,15 @@ public class CinemaOperatorManager extends DataManager {
 
     public static ArrayList<Cinema> getCinemaList (CinemaOperator cinemaOperator)
     {
-        return cinemaList.get(cinemaOperator);
+    	Map<CinemaOperator, ArrayList<Cinema>> map = (Map<CinemaOperator, ArrayList<Cinema>>) cinemaList; // new HashMap<CinemaOperator, ArrayList<Cinema>>();
+        for (Entry<CinemaOperator, ArrayList<Cinema>> entry : map.entrySet()) {
+        	CinemaOperator key = entry.getKey();
+        	if (key.getOperatorID()==cinemaOperator.getOperatorID()) {
+               ArrayList<Cinema> value = entry.getValue();
+               return value;
+           }
+        }
+		return null;
     }
     
     
