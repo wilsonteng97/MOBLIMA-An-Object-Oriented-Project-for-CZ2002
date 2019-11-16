@@ -18,12 +18,12 @@ public class MovieListingView extends View{
 	}	
     
     private void displayMenu() {
-    	System.out.println("Movie Listing");
     	System.out.println();
+    	System.out.println("Movie Listing");
     	System.out.println("(1) List all movies\n" 
     			+ "(2) List the top 5 movies by sales\n"
     			+ "(3) List the top 5 movies by ratings\n"
-    			+ "(4) Search Movie" 
+    			+ "(4) Search Movie\n" 
     			+ "(5) Return");
     	System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
@@ -138,17 +138,17 @@ public class MovieListingView extends View{
             }
         }
         else {
+        	System.out.println();
             for (Movie movie : movieListing) {  
                 if (movie.getStatus().equals(NO_LONGER_AVAILABLE)) 
                 	continue;
-                System.out.println();
                 System.out.println(++index + ". " + movie.getTitle() 
                                 + "(" + movie.getStatus().toString() + ") " );
             }
         }
 	
         System.out.println(index + 1 + ". Return");
-
+        System.out.println();
         int choice = sc.nextInt();
 
         if (choice == index + 1) 
