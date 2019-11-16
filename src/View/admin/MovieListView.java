@@ -34,8 +34,6 @@ public class MovieListView extends View{
 	}
 
 	private void displayMenu() {
-		Boolean isInitialize = false;
-		
 		System.out.println("Movie Listing");
 		System.out.println();
 		System.out.println("(1) Display Movies\n"
@@ -58,7 +56,6 @@ public class MovieListView extends View{
 		            break;
 		        case 3:
 					System.out.println("Enter the index of the movie you want to edit: ");
-					displayMovieList();
 					int movie = sc.nextInt();
 					displayMovieEditingMenu(movieList.get(movie));
 		        	break;
@@ -70,7 +67,6 @@ public class MovieListView extends View{
 				case 5:
 					try {
 						initialiseMovies();
-						isInitialize = true;
 					} catch (IOException e) {
 						System.out.println(e.getMessage());
 					}
