@@ -15,7 +15,7 @@ public class StarterView extends View
 				+ "|          MOBLIMA         |\n"
 				+ "|   BY CZ2002 SS8 Group5   |\n"
 				+ "============================");
-//		boolean correctStart = readTheData();
+		readTheData();
 		displayMenu();
 
 	}
