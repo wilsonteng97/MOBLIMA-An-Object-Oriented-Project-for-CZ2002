@@ -211,9 +211,9 @@ public class Movie implements Serializable{
 			this.reviewList.remove(review);
 		}
 	}
-	public double getReviewRatingAverage(ArrayList<Review> review_list) {
+	public double getReviewRatingAverage() {
 		double count = 0;
-		for (Review r : review_list) {
+		for (Review r : reviewList) {
 			count+=r.getRating();
 		}
 		return count;
