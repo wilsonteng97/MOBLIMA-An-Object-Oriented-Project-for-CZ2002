@@ -2,6 +2,8 @@ package View.moviegoer;
 import static Presenter.BookingManager.*;
 import static Presenter.CinemaOperatorManager.*;
 import View.View;
+
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -71,8 +73,12 @@ public class PaymentView extends View{
         getMovieList().get(getMovieList().indexOf(movie)).addTotalSales(1);
         Booking record = new Booking(TID, customer, seat);
         addBooking(record);
-        updateShowTime();
-        updateMovieListing();
+        try {
+			updateShowTime();
+	        updateMovieListing();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
         System.out.println();
         System.out.println("Payment succeed!");
         intent(this, new MovieListingView());
