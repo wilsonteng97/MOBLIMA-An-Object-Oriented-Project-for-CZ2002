@@ -20,7 +20,7 @@ public class AdminView extends View {
 
 	@Override
 	protected void starter() {
-		if (loggedIn == false)
+		if (loggedIn == true)
 			adminLogin();
 		else
 			displayMenu();

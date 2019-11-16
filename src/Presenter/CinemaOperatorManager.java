@@ -40,7 +40,7 @@ public class CinemaOperatorManager extends DataManager {
             readMovieList();
             readHolidayList();
             readCinemaOperator();
-
+            readShowtime();
     }
 //    public static boolean readTheData()
 //    {
@@ -161,7 +161,7 @@ public class CinemaOperatorManager extends DataManager {
     {
         return cinemaOperators;
     }
-
+    
     public static ArrayList<Cinema> getCinemaList (CinemaOperator cinemaOperator)
     {
     	Map<CinemaOperator, ArrayList<Cinema>> map = (Map<CinemaOperator, ArrayList<Cinema>>) cinemaList; // new HashMap<CinemaOperator, ArrayList<Cinema>>();
