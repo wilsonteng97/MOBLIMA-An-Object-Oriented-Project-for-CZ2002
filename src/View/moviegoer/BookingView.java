@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Scanner;
 import Model.Cinema;
 import Model.Customer;
+import Model.Holiday;
 import Model.Movie;
 import Model.Seat;
 import Model.ShowTime;
