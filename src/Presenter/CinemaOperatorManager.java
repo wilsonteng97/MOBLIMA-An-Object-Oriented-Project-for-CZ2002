@@ -103,6 +103,10 @@ public class CinemaOperatorManager extends DataManager {
 
     public static void addShowtime(Movie movie, ShowTime showTime) throws IOException
     {
+        if (showtimeList.get(movie) == null) 
+        {
+            showtimeList.put(movie, new ArrayList<ShowTime>());
+        }
         showtimeList.get(movie).add(showTime);
         updateShowTime();
     }

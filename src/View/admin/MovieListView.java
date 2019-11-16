@@ -151,10 +151,12 @@ public class MovieListView extends View{
 		Movie movie = new Movie(title, ageRestriction, type, status, opening, director, runtime, synopsis, blockBuster, cast);
 		try {
 			addMovie(movie);
+			displayMenu();
 		} catch (IOException e) {
 			System.out.println("Failed to add the movie");
+			displayMenu();
 		}
-		displayMenu();
+		
 	}
 
 	private void displayMovieList()
