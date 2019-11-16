@@ -4,6 +4,7 @@ import java.io.IOException;
 import Model.Admin;
 import Model.Cinema;
 import Model.CinemaOperator;
+import Model.Holiday;
 import Model.Movie;
 import Model.Review;
 import Model.ShowTime;
@@ -16,6 +17,8 @@ public class CinemaOperatorManager extends DataManager {
     private final static String reviewListFile = "datafiles/reviewListFile.txt";
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
     private final static String movieListFile = "datafiles/movieListFile.txt";
+    private final static String holidayListFile = "datafiles/holidayListFile.txt";
+//    private final static String movieListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
     private final static String cinemaOperatorListFile = "datafiles/cinemaOperatorListFile.txt";
 
     private static ArrayList<CinemaOperator> cinemaOperators;
@@ -24,6 +27,7 @@ public class CinemaOperatorManager extends DataManager {
     private static HashMap<Movie, ArrayList<Review>> reviewList;
     private static HashMap<CinemaOperator, ArrayList<Cinema>> cinemaList;
     private static ArrayList<Movie> movieList;
+    private static HashMap<String, Holiday> holidayList;
     
     public static boolean readTheData()
     {
@@ -32,6 +36,7 @@ public class CinemaOperatorManager extends DataManager {
             readCinemaList();
             readAdminAccount();
             readMovieList();
+            readHolidayList();
             readCinemaOperator();
         } catch (Exception e) {
             return false;
@@ -185,5 +190,21 @@ public class CinemaOperatorManager extends DataManager {
 			e.printStackTrace();
 		}
     }
+    
+    // ========================Holiday========================
+    private static void readHolidayList() {
+        if(readDataFile_HashMap(holidayListFile) == null)
+        	holidayList = new HashMap<String, Holiday>();
+        else
+        	holidayList = (HashMap<String, Holiday>) readDataFile_HashMap(holidayListFile);
+    }
+    
+    public static void updateHolidayList(){
+        try {
+ 		writeDataFile(holidayList, holidayListFile);
+ 		} catch (IOException e) {
+ 			e.printStackTrace();
+ 		}
+     }
 
 }

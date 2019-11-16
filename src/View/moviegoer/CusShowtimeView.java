@@ -1,19 +1,14 @@
 package View.moviegoer;
 
 import static Presenter.Presenter.*;
-import static Presenter.Query.*;
-import static Presenter.PurchaseNOrder.*;
 import static Model.Enums.ShowingStatus.*;
 import View.View;
 import java.util.Scanner;
-import static Model.Movie.*;
 import static Model.Enums.MovieType.*;
 import Model.Movie;
 import Model.Seat;
 import Model.ShowTime;
-
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 
 
@@ -30,7 +25,7 @@ public class CusShowtimeView extends View{
         Date afterTomorrow = new Date(new Date().getTime() + 2* 24 * 60 * 60 * 1000);
         Date dateChosen;
         
-        if (movie.getStatus().equals(NO_LONGER_AVAILABLE)) {
+        if (movie.getStatus().equals(NOW_SHOWING)) {
         	System.out.println("Movie Showtime");
         	System.out.println();
         	System.out.println("(1) " + formatTimeDate(today) + " (today)\n"+
@@ -157,7 +152,7 @@ public class CusShowtimeView extends View{
             System.out.println("Error. Please choose another seat.");
             bookSeatMenu(showtime);
         }
-        else if (showtime.getSeatAt(row, col).isBooked()) {
+        else if (showtime.getSeatAt(row, col).isOccupiedAt(showtime)) {
             System.out.println("The seat has been booked. Please choose another seat.");
             bookSeatMenu(showtime);
         }
@@ -170,6 +165,9 @@ public class CusShowtimeView extends View{
 	@Override
 	protected void starter() {
 		displayMenu();		
+	}
+	protected void end() {
+    	((MovieListingView)(getPrevious())).starter(movie);
 	}
 }
 

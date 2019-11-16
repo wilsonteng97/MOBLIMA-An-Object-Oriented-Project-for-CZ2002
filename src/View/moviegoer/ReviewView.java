@@ -41,7 +41,6 @@ public class ReviewView extends View{
 	protected void starter() {
     	displayMenu();
 	}
-	@Override
 	protected void end() {
     	((MovieListingView)(getPrevious())).starter(movie);
 	}

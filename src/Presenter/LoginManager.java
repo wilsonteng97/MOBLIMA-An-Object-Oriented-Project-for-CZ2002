@@ -26,13 +26,13 @@ public class LoginManager {
     private final static String userAccountListFile = "datafiles/adminAccountListFile.txt"; // file that stores the
                                                                                             // login data belonging to
                                                                                             // customer
-
+    
     public static boolean verifyStaff(String username, String password) {
 //        Path path = Paths.get(adminAccountListFile);
         List<Admin> all_accounts = (List<Admin>) DataManager.readDataFile_List(adminAccountListFile);
 
         for (Admin account : all_accounts) {
-            if ((account.getUsername() == username) && (account.getPassword() == password))
+            if ((account.getUsername().equals(username)) && (account.getPassword().equals(password)))
                 return true;
         }
         return false;
@@ -43,7 +43,7 @@ public class LoginManager {
         List<Customer> all_accounts = (List<Customer>) DataManager.readDataFile_List(userAccountListFile);
 
         for (Customer user_Account : all_accounts) {
-            if ((user_Account.getEmail() == username) && (user_Account.getPassword() == password))
+            if ((user_Account.getEmail().equals(username)) && (user_Account.getPassword().equals(password)))
                 return true;
         }
         return false;

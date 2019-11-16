@@ -13,14 +13,17 @@ import Model.AdminAccountListGenerator;
 import Model.Cinema;
 import Model.CinemaListGenerator;
 import Model.CinemaOperator;
+import Model.Holiday;
 import Model.CinemaOperatorGenerator;
 import Model.Movie;
 import Model.Review;
 import Model.ShowTime;
 import Model.MovieListGenerator;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.HashMap;
 
@@ -33,21 +36,23 @@ public class AdminManager extends DataManager
     private final static String reviewListFile = "datafiles/reviewListFile.txt";
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
     private final static String movieListFile = "datafiles/movieListFile.txt";
+    private final static String holidayListFile = "datafiles/holidayListFile.txt";
+    
+//    private final static String movieListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
 
     private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<Movie, ArrayList<Review>> reviewList;
     private static ArrayList<Movie> movieList;
+    private static HashMap<String, Holiday> holidayList;
 
     // =========================Movie Price=========================
-    public double setMoviePrice(){
-        System.out.println("How much do you want to charge?");
-        return ticket_price = sc.nextDouble();
-    }
+//    public double setMoviePrice(){
+//        System.out.println("How much do you want to charge?");
+//        return ticket_price = sc.nextDouble();
+//    }
 
-    public static void setHoliday(){
-        System.out.println("Please set the dates that will charge at holiday rates.");
-    }
+
 
     // =======================Admin Account=======================
     public static void readAdminAccount()
@@ -65,9 +70,9 @@ public class AdminManager extends DataManager
     public static void updateAdminAccount(){
        try {
 		writeDataFile(adminAccountList, adminAccountListFile);
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
     // =======================System Setting=======================
@@ -75,6 +80,41 @@ public class AdminManager extends DataManager
     public static void initialiseMovies() throws IOException {
     	MovieListGenerator.MovieList();
     }
+    
+ // =======================Holiday=======================
+    public static void addHoliday(Holiday holiday) {
+    	String key = holiday.getDate().toString();
+    	holidayList.put(key, holiday);
+    }
+    
+    public static void removeHoliday(Date holidayDate) throws IOException{
+    	String key = holidayDate.toString();
+    	holidayList.remove(key);
+    }
+    
+    public static HashMap<String, Holiday> getHolidayList() {
+    	return holidayList;
+    }
+    
+//    public static void readHolidayList()
+//    {
+//        if(readDataFile_List(adminAccountListFile) == null)
+//        {
+//        	holidayList = new HashMap<String, Holiday>();
+//        }
+//        else
+//        {
+//        	holidayList = (HashMap<String, Holiday>) readDataFile_List(holidayListFile);
+//        }
+//    }
+//
+//    public static void updateHolidayList(){
+//       try {
+//		writeDataFile(holidayList, holidayListFile);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//    }
 
     public static void initialiseCinemaOperators() throws IOException
     {
@@ -201,34 +241,33 @@ public class AdminManager extends DataManager
     public static ArrayList<Movie> getTop5RankingSales()
     {
         ArrayList<Movie> top5sales = new ArrayList<Movie>();
-
-        for(Movie movie: movieList)
-        {
+        movieList = CinemaOperatorManager.getMovieList();
+        for(Movie movie: movieList){
             top5sales.add(movie);
         }
-
-        Collections.sort(top5sales, new Comparator<Movie>()
-        {
-            public int compare(Movie m1, Movie m2)
-            {
-                if(m1.getTotalSales() > m2.getTotalSales())
-                {
-                    return 1;
-                }
-                else if(m1.getTotalSales() < m2.getTotalSales())
-                {
-                    return -1;
-                }
-                else
-                {
-                    return 0;
-                }  
-            }
-        });
-        while(top5sales.size() > 5)
-        {
-            top5sales.remove(5);
-        }
+        Collections.sort(top5sales, Model.Movie.movieSalesComparator);
+        
+//        Collections.sort(top5sales, new Comparator<Movie>(){
+//            public int compare(Movie m1, Movie m2)
+//            {
+//                if(m1.getTotalSales() > m2.getTotalSales())
+//                {
+//                    return 1;
+//                }
+//                else if(m1.getTotalSales() < m2.getTotalSales())
+//                {
+//                    return -1;
+//                }
+//                else
+//                {
+//                    return 0;
+//                }  
+//            }
+//        });
+//        while(top5sales.size() > 5)
+//        {
+//            top5sales.remove(5);
+//        }
 
         return top5sales;
     }

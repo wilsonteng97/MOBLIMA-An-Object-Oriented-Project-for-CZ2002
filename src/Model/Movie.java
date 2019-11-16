@@ -2,6 +2,7 @@ package Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.lang.StringBuilder;
 
@@ -42,7 +43,7 @@ public class Movie implements Serializable{
 		this.synopsis = synopsis;
 		this.blockBuster = blockBuster;
 		this.cast = cast;
-	//	this.totalSales = 0.0;
+		this.totalSales = 0.0;
 	//	this.languageList = new ArrayList<String>();
 	//	this.directorList = new ArrayList<String>();
 	//	this.castList = new ArrayList<String>();
@@ -145,6 +146,18 @@ public class Movie implements Serializable{
 			totalSales=0.0;
 		}
 	}
+
+	public static Comparator<Movie> movieSalesComparator = new Comparator<Movie>() {
+
+		public int compare(Movie m1, Movie m2) {
+			Double total_sales1 = m1.getTotalSales();
+			Double total_sales2 = m2.getTotalSales();
+	
+		//	  ascending order
+		//    return total_sales1.compareTo(total_sales2);
+		//    descending order
+		   return total_sales2.compareTo(total_sales1);
+		}};
 	
 	// languageList
 	// public List<String> getLanguageList() {
