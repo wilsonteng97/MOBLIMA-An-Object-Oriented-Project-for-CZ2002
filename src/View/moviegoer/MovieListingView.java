@@ -67,7 +67,7 @@ public class MovieListingView extends View{
 		System.out.println("Enter the movie you choose: ");
 		String movieName = sc.next();
         Movie movieResult = passStringMovie(movieName);
-        if (movieResult==null) {
+        if (movieResult == null) {
         	System.out.println();
         	System.out.println("No movie found");
             displayMenu();
@@ -88,7 +88,7 @@ public class MovieListingView extends View{
 	                "3. Return");
 
 		 int choice = sc.nextInt();
-			while (verifyChoiceNumber(choice, 1, 3)) {
+		 while (verifyChoiceNumber(choice, 1, 3)) {
 				switch (choice) {
 		            case 1:
 		            	intent(this, new CusShowtimeView(movie));
