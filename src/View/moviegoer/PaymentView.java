@@ -51,28 +51,7 @@ public class PaymentView extends View{
                 break;
         }
     }
-    
-    /*private void displayMenu() {
-    	Scanner sc = new Scanner(System.in);
-    	System.out.println("Transaction ID: " + TID);
-    	System.out.println("Ticket price: " + price);
-    	System.out.println("GST: " + Math.round(price * 0.07*100)/100);
-    	System.out.println("Grand total: " + (price+Math.round(price * 0.07*100)/100));
-    	System.out.println("Ticket price: " + price);		
-    	System.out.println("(1) Confirm Payment\n"
-    			+ "(2) Cancel Payment");
-		int choice = sc.nextInt();
-		while (verifyChoiceNumber(choice, 1, 2)) { 
-			switch(choice) {
-			case 1:
-				saveBooking(); //[presenter: save the booking to booking history]
-				break;
-			case 2:
-				break;
-			}
-		}
-    }*/
-
+   
     private void generateTID() {
     	TID = seat.getShowtime().getCinema().getCinemaID() +
                 new SimpleDateFormat("YYYYMMddhhmm").format(new Date().getTime())
@@ -93,7 +72,7 @@ public class PaymentView extends View{
         Booking record = new Booking(TID, customer, seat);
         addBooking(record);
         updateShowTime();
-        updateMovieListing(movie);
+        updateMovieListing();
         System.out.println();
         System.out.println("Payment succeed!");
         intent(this, new MovieListingView());
@@ -104,8 +83,27 @@ public class PaymentView extends View{
 	protected void starter() {
 		displayMenu();		
 	}
-	
 }
 
 
 
+/*private void displayMenu() {
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Transaction ID: " + TID);
+	System.out.println("Ticket price: " + price);
+	System.out.println("GST: " + Math.round(price * 0.07*100)/100);
+	System.out.println("Grand total: " + (price+Math.round(price * 0.07*100)/100));
+	System.out.println("Ticket price: " + price);		
+	System.out.println("(1) Confirm Payment\n"
+			+ "(2) Cancel Payment");
+	int choice = sc.nextInt();
+	while (verifyChoiceNumber(choice, 1, 2)) { 
+		switch(choice) {
+		case 1:
+			saveBooking(); //[presenter: save the booking to booking history]
+			break;
+		case 2:
+			break;
+		}
+	}
+}*/
