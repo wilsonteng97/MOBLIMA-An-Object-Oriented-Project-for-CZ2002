@@ -8,18 +8,14 @@ import java.io.ObjectOutputStream;
 
 import javax.lang.model.util.ElementScanner6;
 
+import Data_Initializer.*;
 import Model.Admin;
-import Model.AdminAccountListGenerator;
 import Model.Cinema;
-import Model.CinemaListGenerator;
 import Model.CinemaOperator;
 import Model.Holiday;
-import Model.CinemaOperatorGenerator;
 import Model.Movie;
 import Model.Review;
 import Model.ShowTime;
-import Model.MovieListGenerator;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

@@ -8,6 +8,8 @@ import java.util.Date;
 import Model.*;
 import Model.Enums.*;
 import Presenter.DataManager;
+import Data_Initializer.*;
+
 
 public class KJ_Test {
     public static void main(String [] arg) throws IOException, ParseException, ClassNotFoundException{
@@ -17,7 +19,7 @@ public class KJ_Test {
     	String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
 //    	DataManager.readDataFile_List(fileName);
     	ArrayList<Movie> print_movies = new ArrayList<Movie>();
-    	Model.MovieListGenerator.MovieList();
+    	MovieListGenerator.MovieList();
     	print_movies = (ArrayList<Movie>) DataManager.readDataFile_List(fileName);
     	
     	for (Movie m : print_movies) {
