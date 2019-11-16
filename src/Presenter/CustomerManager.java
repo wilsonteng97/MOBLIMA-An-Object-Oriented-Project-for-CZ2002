@@ -11,7 +11,10 @@ import static Presenter.AdminManager.*;
 public class CustomerManager {
     ArrayList<Cinema> cinemaList;
     ArrayList<Movie> movieList;
-  //  Cinema CustCheckID = new Cinema();
+    static ArrayList<Customer> customerList;
+
+    private final static String customerListFile = "datafiles/userAccountListFile.txt";
+    
     String cinema, movieName;
     double averageRating;
 
@@ -45,4 +48,12 @@ public class CustomerManager {
         return averageRating;
     }
 
+    public static ArrayList<Customer> getCustomerList(){
+    	
+    	if(readDataFile_List(customerListFile) == null)
+    		customerList = new ArrayList<>();
+        else 
+        	customerList = (ArrayList<Customer>) readDataFile_List(customerListFile);
+    	return customerList;
+    }
 }

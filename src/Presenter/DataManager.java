@@ -16,7 +16,7 @@ public abstract class DataManager {
 	    out.writeObject(lister);
 		System.out.println("Writing Done");
 		out.close();
-  }
+	}
 
 	public static Object readDataFile_List(String fileName){
 		try {
@@ -58,7 +58,9 @@ public abstract class DataManager {
 				e.printStackTrace();
 		        return null;
 		    }
-  }
+		}
+		
+		
 
   // public static List<String> readFileInList(String fileName) { 
   
