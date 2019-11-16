@@ -212,11 +212,12 @@ public class Movie implements Serializable{
 		}
 	}
 	public double getReviewRatingAverage(ArrayList<Review> review_list) {
-		double count = 0;
+		double count = 0, i = 1;
 		for (Review r : review_list) {
 			count+=r.getRating();
+			i++;
 		}
-		return count;
+		return count/i;
 	}
 	public static Comparator<Movie> reviewRatingAvgComparator = new Comparator<Movie>() {
 
