@@ -2,8 +2,7 @@ package View.moviegoer;
 
 import static Model.Enums.MovieType.MOVIE3D;
 import static Presenter.Presenter.*;
-import Presenter.Query;
-import Presenter.PurchaseNOrder;
+import static Presenter.PurchaseNOrder.*;
 import View.View;
 import java.util.Calendar;
 import java.util.Date;
@@ -92,13 +91,13 @@ public class BookingView extends View{
         String mobile = sc.next();
         System.out.println("Please enter your Email address:");
         String email = sc.next();
-        System.out.println("Enter Y if you are senior citizen:");
+        System.out.println("Enter Y if you are senior citizen:\n"
+        		+ "Validation upon entering");
         String seniorIn = sc.next();
         boolean isSenior = false;
         if (seniorIn=="Y") {
         	isSenior = true;
         }
-        //boolean isSeniorCitizen = askConfirm("Are you a senior citizen?","Enter Y if yes (validation will be done upon entering):");
 
         Customer customer = new Customer(name, mobile, email, isSenior);
         bookingDone = true;
