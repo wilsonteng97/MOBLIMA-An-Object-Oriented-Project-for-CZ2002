@@ -1,45 +1,22 @@
 package Presenter;
 
-import Model.Seat;
-import Model.Cinema;
+import java.util.Date;
+import java.util.HashMap;
+import static Presenter.Presenter.*;
+import Model.Holiday;
 
 public class PurchaseNOrder {
-  boolean confirm = true;
-  String seatNum;
-  Seat seat = new Seat();
-
+  private static HashMap<String, Holiday> holidayList;
+  
   public PurchaseNOrder(){
   }
-  
-  public void passAge(int userID){
-
+  public static Holiday getHoliday(Date time) {
+      HashMap<String, Holiday> holidayList = getHolidayList();
+      return holidayList.get(formatTimeDate(time));
+  }
+  public static HashMap<String, Holiday> getHolidayList() {
+      
+	  return holidayList;
   }
 
-  public String readSeat(Seat seat){
-    
-		return seatNum;
-  }
-
-
-  public static void selectSeat(int seatrowIn, int seatnoIn){
-
-    
-    
-  }
-
-  public void readTheatre(){
-
-  }
-  
-  public boolean confirmOrder(){
-        
-		return confirm ;
-  }
-
-  public static void generateTID(){
-	  /*private void generateTID() {
-      TID = cinema.getCinemaCode(); //[model: getCinemaCode]
-      TID = TID.concat(passSearchMovieTime()); //[presenter: is this method convert current time to string?]
-  }*/
-  }
 }
