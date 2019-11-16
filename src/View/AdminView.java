@@ -49,10 +49,10 @@ public class AdminView extends View {
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println();
-		System.out.println(
-				"Welcome, please make a selection:\n" + "(1) Modify movie listing\n" + "(2) Modify cinema listing\n"
+		System.out.println("Menu\n" + "----\n" + 
+				"Welcome Staff, please make a selection:\n" + "(1) Modify movie listing\n" + "(2) Modify cinema listing\n"
 						 + "(3) Configure system settings\n" + "(4) Initialize admins\n"
-						+ "(5) Initialize cinema operator \n" + "(6) Logout\n" + "Please enter your choice:");
+						+ "(5) Initialize cinema operator \n" + "(6) Logout\n" + "\nPlease enter your choice:");
 		int choice = sc.nextInt();
 		if (verifyChoiceNumber(choice, 1, 6)) {
 			switch (choice) {
