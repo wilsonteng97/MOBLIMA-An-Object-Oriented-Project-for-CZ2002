@@ -187,28 +187,23 @@ public class AdminManager extends DataManager
 		}
     }
 
-    public static ArrayList<Review> getReviewList(Movie movie)
-    {
-        return reviewList.get(movie);
+    public static ArrayList<Review> getReviewList(Movie movie){
+        return movie.getReviewList();
     }
-    public static double getMovieRating(Movie movie)
-    {
+    public static double getMovieRating(Movie movie){
         ArrayList<Review> reviewList = getReviewList(movie);
-        double sum = 0;
-        double rating = 0;
-        if(reviewList == null)
-        {
-            return 0;
-        }
-        else 
-        {
-            for(Review review: reviewList)
-            {
-                sum = sum + review.getRating();
-            }
-            rating = sum / reviewList.size();
-            return rating;
-        }
+//        double sum = 0;
+//        double rating = 0;
+//        if(reviewList == null)
+//            return 0;
+//        else {
+//            for(Review review: reviewList){
+//                sum = sum + review.getRating();
+//            }
+//            rating = sum / reviewList.size();
+//            return rating;
+//        }
+    	return movie.getReviewRatingAverage(reviewList);
     }
 
     // =========================Movie Sales=========================
