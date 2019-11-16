@@ -16,6 +16,7 @@ public class CinemaOperatorManager extends DataManager {
     private final static String reviewListFile = "datafiles/reviewListFile.txt";
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
     private final static String movieListFile = "datafiles/movieListFile.txt";
+    private final static String cinemaOperatorListFile = "datafiles/cinemaOperatorListFile.txt";
 
     private static ArrayList<CinemaOperator> cinemaOperators;
     private static ArrayList<Admin> adminAccountList;
@@ -27,14 +28,27 @@ public class CinemaOperatorManager extends DataManager {
     public static boolean readTheData()
     {
         try {
-            readShowtime();
+         //   readShowtime();
             readCinemaList();
             readAdminAccount();
             readMovieList();
+            readCinemaOperator();
         } catch (Exception e) {
             return false;
         }
         return true;
+    }
+
+    private static void readCinemaOperator()
+    {
+        if(readDataFile_List(cinemaOperatorListFile) == null)
+        {
+            cinemaOperators = new ArrayList<>();
+        }
+        else 
+        {
+            cinemaOperators = (ArrayList<CinemaOperator>) readDataFile_List(cinemaOperatorListFile);
+        }
     }
 
     private static void readAdminAccount()
