@@ -75,11 +75,6 @@ public class AdminShowtimeView extends View{
 		        	addShowtime(this.getInputMovie(), showTimeIn); 
 		            break;
 		        case 3:
-					try {
-						updateShowTime();
-					} catch (IOException e) {
-						e.printStackTrace();
-					} 
 		        	break;
 		        case 4:
 		        	System.out.println("Enter showtime: ");
