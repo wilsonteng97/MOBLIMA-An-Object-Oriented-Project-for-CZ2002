@@ -128,7 +128,7 @@ public class AdminManager extends DataManager
     // =========================Top 5 Movies=========================
     public static ArrayList<Movie> getTop5RankingRating(){
         ArrayList<Movie> top5rating = new ArrayList<Movie>();
-
+        int count = 0;
         for(Movie movie: movieList)
             top5rating.add(movie);
         
@@ -156,8 +156,13 @@ public class AdminManager extends DataManager
 //        {
 //            top5rating.remove(5);
 //        }
-
-        return top5rating;
+        ArrayList<Movie> final_list = new ArrayList<Movie>();
+        for (Movie a: top5rating) {
+        	final_list.add(a);
+        	if (count == 5) break;
+        	count++;
+        }
+        return final_list;
     }
 
     // =========================Review Lists=========================
@@ -237,12 +242,9 @@ public class AdminManager extends DataManager
     {
         ArrayList<Movie> top5sales = new ArrayList<Movie>();
         movieList = CinemaOperatorManager.getMovieList();
-        int counter = 0;
+
         for(Movie movie: movieList){
-            top5sales.add(movie);
-            if (counter == 5) break;
-            counter++;
-            
+            top5sales.add(movie);            
         }
         Collections.sort(top5sales, Model.Movie.movieSalesComparator);
         
@@ -267,7 +269,14 @@ public class AdminManager extends DataManager
 //        {
 //            top5sales.remove(5);
 //        }
+        ArrayList<Movie> final_list = new ArrayList<Movie>();
 
-        return top5sales;
+        int counter = 0;
+        for (Movie a: top5sales) {
+        	final_list.add(a);
+            if (counter == 5) break;
+            counter++;
+        }
+        return final_list;
     }
 }
