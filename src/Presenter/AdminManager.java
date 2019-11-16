@@ -11,7 +11,6 @@ import javax.lang.model.util.ElementScanner6;
 import Model.Admin;
 import Model.AdminAccountListGenerator;
 import Model.Cinema;
-import Model.CinemaListGenerator;
 import Model.CinemaOperator;
 import Model.Holiday;
 import Model.CinemaOperatorGenerator;
@@ -31,15 +30,20 @@ public class AdminManager extends DataManager
 {
     Scanner sc = new Scanner(System.in);
     double ticket_price;
-    private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
-    private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
-    private final static String reviewListFile = "datafiles/reviewListFile.txt";
-    private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
-    private final static String movieListFile = "datafiles/movieListFile.txt";
-    private final static String holidayListFile = "datafiles/holidayListFile.txt";
-    
-//    private final static String movieListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
+//    private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
+//  private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
+//  private final static String reviewListFile = "datafiles/reviewListFile.txt";
+//  private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
+//  private final static String movieListFile = "datafiles/movieListFile.txt";
+//  private final static String holidayListFile = "datafiles/holidayListFile.txt";
 
+    private final static String adminAccountListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\adminAccountListFile.txt";
+    private final static String showtimeListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\showtimeListFile.txt";
+    private final static String reviewListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\reviewListFile.txt";
+    private final static String cinemaListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\cinemaListFile.txt";
+    private final static String movieListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
+    private final static String holidayListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\holidayListFile.txt";
+    
     private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<Movie, ArrayList<Review>> reviewList;
@@ -123,11 +127,6 @@ public class AdminManager extends DataManager
     public static void initialiseAdminAccounts() throws IOException
     {
         AdminAccountListGenerator.AdminAccounts();
-    }
-
-    public static void initialiseCinemas() throws IOException
-    {
-        CinemaListGenerator.CinemaList();
     }
 
     // =========================Top 5 Movies=========================
