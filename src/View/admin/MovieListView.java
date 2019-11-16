@@ -333,7 +333,7 @@ public class MovieListView extends View{
 	private void deleteMovie(Movie movie)
 	{
 		System.out.println("Are You sure you want to delete "+ movie.getTitle() +  " Y/N");
-		char choice = sc.next().charAt(0);
+		String choice = sc.next();
 		if(confirmChoice(choice))
 		{
 			try {

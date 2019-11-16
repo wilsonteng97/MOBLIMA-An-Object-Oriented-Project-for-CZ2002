@@ -19,7 +19,8 @@ public class MovieListingView extends View{
 	}	
     
     private void displayMenu() {
-    	System.out.println("Movie Listing\n");
+    	System.out.println();
+    	System.out.println("Movie Listing");
     	System.out.println("(1) List all movies\n" 
     			+ "(2) List the top 5 movies by sales\n"
     			+ "(3) List the top 5 movies by ratings\n"
