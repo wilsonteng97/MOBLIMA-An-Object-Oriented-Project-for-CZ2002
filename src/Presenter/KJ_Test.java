@@ -17,10 +17,10 @@ public class KJ_Test {
     	
 //    	Movie a = new Movie()    	
     	String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
-//    	DataManager.readDataFile_List(fileName);
+    	DataManager.readDataFile_List(fileName);
     	ArrayList<Movie> print_movies = new ArrayList<Movie>();
-    	MovieListGenerator.MovieList();
-    	print_movies = (ArrayList<Movie>) DataManager.readDataFile_List(fileName);
+//    	CinemaOperatorManager.updateMovieListing();
+//    	print_movies = (ArrayList<Movie>) DataManager.readDataFile_List(fileName);
     	
     	for (Movie m : print_movies) {
     		System.out.println(m.getTitle() + " " + m.getDirector());
