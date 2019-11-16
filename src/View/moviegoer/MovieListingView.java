@@ -81,6 +81,7 @@ public class MovieListingView extends View{
 	
 	 private void displayMovieDetail(Movie movie) {
 		 System.out.println();
+		 System.out.println("The movies");
 		 System.out.println(movie.toString());
 		 System.out.println();
 		 System.out.println("1. Display showtime\n"+
@@ -118,37 +119,39 @@ public class MovieListingView extends View{
 	        displayMenu();
 	    }
 	    int index = 0;
-        if (top5Rating) {  
+        if (top5Rating) { 
+        	System.out.println("\nThe top 5 movies based on its ratings");
             for (Movie movie : movieListing) {
                 if (movie.getStatus().equals(NO_LONGER_AVAILABLE)) 
                 	continue;
                 System.out.println(++index + ". " + movie.getTitle() 
-                        + "(" + movie.getStatus().toString() + ") " +
+                        + " (" + movie.getStatus().toString() + ") " +
                         "[" + (getMovieRating(movie) == 0 ? "No rating" : getMovieRating(movie)) + "]");
             }
         }
         else if (top5Sales){
+        	System.out.println("\nThe top 5 movies based on its total sales");
             for (Movie movie : movieListing) {  
                 if (movie.getStatus().equals(NO_LONGER_AVAILABLE)) 
                 	continue;
                 System.out.println(++index + ". " + movie.getTitle() 
-                                + "(" + movie.getStatus().toString() + ") " +
+                                + " (" + movie.getStatus().toString() + ") " +
                         "[" + (movie.getTotalSales() == 0 ? "No sale" : movie.getTotalSales()) + "]");
             }
         }
         else {
-        	System.out.print("\n");
+        	System.out.print("\nThe movies.\n");
             for (Movie movie : movieListing) {  
                 if (movie.getStatus().equals(NO_LONGER_AVAILABLE)) 
                 	continue;
                 System.out.println(++index + ". " + movie.getTitle() 
-                                + "(" + movie.getStatus().toString() + ") " );
+                                + " (" + movie.getStatus().toString() + ") " );
             }
         }
 	
         System.out.println(index + 1 + ". Return");
         System.out.print("\n");
-        System.out.println("Enter the number of your choice: ");
+        System.out.println("Enter the number of your choice for the movie you want to watch: ");
         int choice = sc.nextInt();
 
         if (choice == index + 1) 
