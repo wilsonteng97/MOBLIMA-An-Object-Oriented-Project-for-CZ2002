@@ -10,6 +10,7 @@ import static Presenter.Query.*;
 import static Presenter.AdminManager.*;
 import static Presenter.CinemaOperatorManager.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,43 +18,47 @@ import Model.Cinema;
 import Model.CinemaOperator;
 import static Model.Enums.CinemaClass.*;
 
-public class CinemaListView extends View
-{
+public class CinemaListView extends View {
 	Scanner sc = new Scanner(System.in);
 
-	protected void starter()
-	{
+	protected void starter() {
 		displayMenu();
 	}
 
 	private void displayMenu() {
-		Scanner sc = new Scanner(System.in);
 		System.out.println("Cinema Listing");
 		System.out.println();
-		System.out.println("(1) Display Cinemas\n"
-				+ "(2) Add Cinema\n"
-				+ "(3) Remove Cinema\n"
-				+ "(4) Change Base Price of cinema"
-				+ "(5) Return\n");
+		System.out.println("(1) Display Cinemas\n" + "(2) Add Cinema\n" + "(3) Remove Cinema\n"
+				+ "(4) Change Base Price of cinema\n" + "(5) Initialise cinemas\n" + "(6) Return\n");
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		if (verifyChoiceNumber(choice, 1, 5)) { 
+		if (verifyChoiceNumber(choice, 1, 6)) {
 			switch (choice) {
-		        case 1:
-					displayCinemaOperator(); //[presenter: displayCinema()] actual method is getCinemaList instead of displayCinema, done by KJ
-		            break;
-		        case 2:
-		        	newCinema(); 
-		            break;
-				case 3:
-		        	deleteCinema(); 
-		            break;
-				case 4:
-					setMoviePrice();
+			case 1:
+				displayCinemaOperator(); // [presenter: displayCinema()] actual method is getCinemaList instead of
+											// displayCinema, done by KJ
+				break;
+			case 2:
+				newCinema();
+				break;
+			case 3:
+				deleteCinema();
+				break;
+			case 4:
+				setMoviePrice();
+				break;
+			case 5:
+					try {
+						initialiseCinemas();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						System.out.println("Fail to initialise the seats");
+					}
+					displayMenu();
 					break;
-		    case 5:
+		    case 6:
 					end();
-		      break;
+		     		break;
 			}
 		}
 		else 
@@ -73,11 +78,9 @@ public class CinemaListView extends View
 	{
 		ArrayList<CinemaOperator> cinemaOperatorList;
 		cinemaOperatorList = getCinemaOperators();
-		int numCinemaOperator = 0;
 		for(CinemaOperator cinemaOperator: cinemaOperatorList)
 		{
-			System.out.println(numCinemaOperator + " " + cinemaOperator.getOperatorID() + cinemaOperator.getOperatorName());
-			numCinemaOperator++;
+			System.out.println(cinemaOperator.getOperatorID() + " " + cinemaOperator.getOperatorName());
 		}
 
 		int choice = passChoiceInt("Enter which cinema operator's cinema to view");
@@ -87,10 +90,9 @@ public class CinemaListView extends View
 	protected void displayCinemaList(CinemaOperator cinemaOperator)
 	{
 		ArrayList<Cinema> cinemaList = getCinemaList(cinemaOperator);
-		int numCinema =0;
 		for(Cinema cinema: cinemaList)
 		{
-			System.out.println(numCinema + " "+ cinema.getCinemaID() + cinema.getCinemaName());
+			System.out.println(cinema.getCinemaID() + " " + cinema.getCinemaName());
 		}
 		displayMenu();
 	}
@@ -126,16 +128,27 @@ public class CinemaListView extends View
 	private void deleteCinema()
 	{
 		System.out.println("Remove Cinema");
+		ArrayList<CinemaOperator> cinemaOperatorList = getCinemaOperators();
+		for(CinemaOperator cinemaOperator: cinemaOperatorList)
+		{
+			System.out.println(cinemaOperator.getOperatorID() + " " + cinemaOperator.getOperatorName());
+		}
 		int choiceOperator = passChoiceInt("Choice a cinema operator from which remove cinema");
-		ArrayList<CinemaOperator> cinemaOperatorsList = getCinemaOperators();
-		CinemaOperator cinemaOperator = cinemaOperatorsList.get(choiceOperator);
-		displayCinemaList(cinemaOperator);
+
+		CinemaOperator cinemaOperator = cinemaOperatorList.get(choiceOperator);
+		System.out.println(cinemaOperator.getOperatorName());
+		
 		ArrayList<Cinema> cinemaList = getCinemaList(cinemaOperator);
+		for(Cinema cinema: cinemaList)
+		{
+			System.out.println(cinema.getCinemaID() + " " + cinema.getCinemaName());
+		}
+
 		int choiceCinema = passChoiceInt("Choice a cinema you want to remove");
 		String choice = passChoiceString("Are You sure You want to remove cinema "+ cinemaList.get(choiceCinema).getCinemaName() + "Y/N");
 		if(confirmChoice(choice))
 		{
-			removeCinema(cinemaOperator.getCinemas().get(choiceCinema));
+			removeCinema(cinemaList.get(choiceCinema));
 			System.out.println("The cinema has been removed");
 		}
 		else 

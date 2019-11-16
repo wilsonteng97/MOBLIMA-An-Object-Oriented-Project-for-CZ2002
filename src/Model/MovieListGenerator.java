@@ -29,7 +29,8 @@ public class MovieListGenerator extends DataManager {
 				true, m1_cast);
 //		m1.addTotalSales(1500);
 		list.add(m1);
-		
+		addMovie(m1);
+
 		ArrayList<String> m2_cast = new ArrayList<String>();
 		m2_cast.add("Yann Yann Yeo, Koh Jia Ler, Christopher Lee, Yang Shi Bin");
 		Movie m2 = new Movie("Wet Season", Model.Enums.AgeRestriction.M18, Model.Enums.MovieType.DIGITAL, Model.Enums.ShowingStatus.COMING_SOON,
@@ -38,7 +39,7 @@ public class MovieListGenerator extends DataManager {
 				true, m2_cast);
 //		m2.addTotalSales(0);
 		list.add(m2);
-
+    addMovie(m2);
 		
 		ArrayList<String> m3_cast = new ArrayList<String>();
 		m3_cast.add("Kristen Stewart, Naomi Scott, Ella Balinska, Elizabeth Banks, Djimon Hounsou, Noah Centineo, Sam Claflin, Patrick Stewart");
@@ -48,7 +49,8 @@ public class MovieListGenerator extends DataManager {
 				false, m3_cast);
 //		m3.addTotalSales(1086);
 		list.add(m3);
-		
+		addMovie(m3);
+
 		ArrayList<String> m4_cast = new ArrayList<String>();
 		m4_cast.add("Tom Holland, Samuel L. Jackson, Jake Gyllenhaal, Marisa Tomei, Jon Favreau, Zendaya , Jacob Batalon, Tony Revolori");
 		Movie m4 = new Movie("Spider-Man: Far From Home", Model.Enums.AgeRestriction.PG13, Model.Enums.MovieType.MOVIE3D, Model.Enums.ShowingStatus.NO_LONGER_AVAILABLE,
@@ -57,7 +59,8 @@ public class MovieListGenerator extends DataManager {
 				false, m4_cast);
 		m4.addTotalSales(2486);
 		list.add(m4);
-		
+		addMovie(m4);
+
 		ArrayList<String> m5_cast = new ArrayList<String>();
 		m5_cast.add("Chloe Bennet, TenzNorgay Trainor, Albert Tsai, Eddie Izzard, Sarah Paulson, Tsai Chin, Michelle Wong");
 		Movie m5 = new Movie("Abominable", Model.Enums.AgeRestriction.PG, Model.Enums.MovieType.DIGITAL, Model.Enums.ShowingStatus.NOW_SHOWING,
@@ -66,7 +69,8 @@ public class MovieListGenerator extends DataManager {
 				false, m5_cast);
 		m5.addTotalSales(1026);
 		list.add(m5);
-		
+		addMovie(m5);
+
 		ArrayList<String> m6_cast = new ArrayList<String>();
 		m6_cast.add("Hairul Azreen, Fify Azmi, Hilal Azman, Ismi Melinda, Henley Hii, Dain Iskandar Said, Josiah Hogan, Yayan Ruhian");
 		Movie m6 = new Movie("Wira", Model.Enums.AgeRestriction.PG13, Model.Enums.MovieType.DIGITAL, Model.Enums.ShowingStatus.COMING_SOON,
@@ -76,12 +80,13 @@ public class MovieListGenerator extends DataManager {
 				false, m6_cast);
 		m5.addTotalSales(0);
 		list.add(m6);
+		addMovie(m6);
+
+   // String fileName = "datafiles\\movieListFile.txt";
+
+   // String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
 		
-		String fileName = "datafiles/movieListFile.txt";
-
-//		String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
-
-		writeDataFile(list, fileName);
+	//	writeDataFile(list, fileName);
 	}
 
 }

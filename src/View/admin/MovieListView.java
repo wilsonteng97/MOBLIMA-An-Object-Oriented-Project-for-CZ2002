@@ -22,7 +22,7 @@ import java.util.Scanner;
 
 public class MovieListView extends View{
 
-	private ArrayList<Movie> movieList = getMovieList();
+	private ArrayList<Movie> movieList;
 	private int num =0;
 	private Scanner sc = new Scanner(System.in);
 	

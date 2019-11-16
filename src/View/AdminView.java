@@ -51,10 +51,10 @@ public class AdminView extends View {
 		System.out.println();
 		System.out.println(
 				"Welcome, please make a selection:\n" + "(1) Modify movie listing\n" + "(2) Modify cinema listing\n"
-						+ "(3) Modify movie showtime\n" + "(4) Configure system settings\n" + "(5) Initialize admins\n"
-						+ "(6) Initialize cinema operator \n" + "(7) Logout\n" + "Please enter your choice:");
+						 + "(3) Configure system settings\n" + "(4) Initialize admins\n"
+						+ "(5) Initialize cinema operator \n" + "(6) Logout\n" + "Please enter your choice:");
 		int choice = sc.nextInt();
-		if (verifyChoiceNumber(choice, 1, 7)) {
+		if (verifyChoiceNumber(choice, 1, 6)) {
 			switch (choice) {
 			case 1:
 				intent(this, new MovieListView());
@@ -63,33 +63,30 @@ public class AdminView extends View {
 				intent(this, new CinemaListView());
 				break;
 			case 3:
-				intent(this, new AdminShowtimeView());
-				break;
-			case 4:
 				intent(this, new SystemSettingView());
 				break;
-			case 5:
+			case 4:
 				try {
 					initialiseAdminAccounts();
-				} catch (IOException e1) {
+					} catch (IOException e1) {
 					System.out.println("Fail to load admin accounts");
-				}
-					displayMenu();
-					break;
-				case 6:
-					try {
-						initialiseCinemaOperators();
-					} catch (IOException e) {
-						System.out.println("Fail to load cinema operators");
 					}
 					displayMenu();
 					break;
-	            case 7:
-	                loggedIn = false;
-	                System.out.println();
-	                System.out.println("You have logged out.");
-	                end();
-	                break;
+			case 5:
+				try {
+					initialiseCinemaOperators();
+				} catch (IOException e) {
+					System.out.println("Fail to load cinema operators");
+				}
+				displayMenu();
+				break;
+			case 6:
+				loggedIn = false;
+				System.out.println();
+				System.out.println("You have logged out.");
+				end();
+				break;               
 				}
 			}
 			else
