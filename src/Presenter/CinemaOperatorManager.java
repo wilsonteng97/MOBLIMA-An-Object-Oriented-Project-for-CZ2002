@@ -172,6 +172,18 @@ public class CinemaOperatorManager extends DataManager {
 		return null;
     }
     
+    public static ArrayList<ShowTime> getShowTimeList (Movie movie)
+    {
+    	Map<Movie, ArrayList<ShowTime>> map = (Map<Movie, ArrayList<ShowTime>>) showtimeList; // new HashMap<CinemaOperator, ArrayList<Cinema>>();
+        for (Entry<Movie, ArrayList<ShowTime>> entry : map.entrySet()) {
+        	Movie key = entry.getKey();
+        	if (key.getTitle()==movie.getTitle()) {
+               ArrayList<ShowTime> value = entry.getValue();
+               return value;
+           }
+        }
+		return null;
+    }
     
     // ========================Movie========================
     public static void readMovieList()

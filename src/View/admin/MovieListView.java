@@ -68,10 +68,6 @@ public class MovieListView extends View{
 					deleteMovie(movieList.get(deletemovie));
 		        	break;
 				case 5:
-					if (isInitialize) {
-						break;
-					}
-					
 					try {
 						initialiseMovies();
 						isInitialize = true;
