@@ -6,6 +6,7 @@ import static Presenter.AdminManager.confirmChoice;
 import static Presenter.CinemaOperatorManager.*;
 import static Presenter.Presenter.*;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -74,7 +75,11 @@ public class AdminShowtimeView extends View{
 		        	addShowtime(this.getInputMovie(), showTimeIn); 
 		            break;
 		        case 3:
-		        	updateShowTime(); 
+					try {
+						updateShowTime();
+					} catch (IOException e) {
+						e.printStackTrace();
+					} 
 		        	break;
 		        case 4:
 		        	System.out.println("Enter showtime: ");
