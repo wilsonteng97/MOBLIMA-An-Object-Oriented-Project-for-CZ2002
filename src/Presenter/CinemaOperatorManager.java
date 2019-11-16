@@ -73,6 +73,17 @@ public class CinemaOperatorManager extends DataManager {
         }
     }
 
+    public static void addCinemaOperator(CinemaOperator cinemaOperator) throws IOException
+    {
+        cinemaOperators.add(cinemaOperator);
+        updateCinemaOperator();
+    }
+
+    public static void updateCinemaOperator() throws IOException
+    {
+		writeDataFile(cinemaOperators, cinemaOperatorListFile);
+    } 
+
     private static void readAdminAccount()
     {
         if(readDataFile_List(adminAccountListFile) == null)
@@ -84,6 +95,7 @@ public class CinemaOperatorManager extends DataManager {
             adminAccountList = (ArrayList<Admin>) readDataFile_List(adminAccountListFile);
         }
     }
+
     // =======================Showtime=======================
     private static void readShowtime(){
         if(readDataFile_HashMap(showtimeListFile) == null)
@@ -93,33 +105,26 @@ public class CinemaOperatorManager extends DataManager {
     }
 
 
-    public static void addShowtime(Movie movie, ShowTime showTime)
+    public static void addShowtime(Movie movie, ShowTime showTime) throws IOException
     {
         showtimeList.get(movie).add(showTime);
         updateShowTime();
     }
 
-    public static void removeShowtime(Movie movie, ShowTime showTime){
-    	// for (String showtimeToBeRemoved : showtimeList){
-        //     System.out.println(showtimeToBeRemoved);
-        // }
-        // showtimeList.get(ShowTime.getMovie()).remove(ShowTime);
+    public static void removeShowtime(Movie movie, ShowTime showTime) throws IOException {
         showtimeList.get(movie).remove(showTime);
         updateShowTime();
     }
 
-    public static void removeAllShowtimes(Movie movie)
+    public static void removeAllShowtimes(Movie movie) throws IOException
     {
         showtimeList.remove(movie);
         updateShowTime();
     }
 
-    public static void updateShowTime(){
-        try {
-			writeDataFile(showtimeList, showtimeListFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+    public static void updateShowTime() throws IOException
+    {
+		writeDataFile(showtimeList, showtimeListFile);
     }
     
     // ========================Cinema========================
@@ -133,25 +138,23 @@ public class CinemaOperatorManager extends DataManager {
             cinemaList = (HashMap<CinemaOperator, ArrayList<Cinema>>) readDataFile_HashMap(cinemaListFile);
     }
 
-    public static void addCinema(Cinema cinema){
+    public static void addCinema(Cinema cinema) throws IOException {
         if(cinemaList.get(cinema.getCinemaOperator()) == null)
-        cinemaList.put(cinema.getCinemaOperator(), new ArrayList<Cinema>());
+        {
+            cinemaList.put(cinema.getCinemaOperator(), new ArrayList<Cinema>());
+        }   
         cinemaList.get(cinema.getCinemaOperator()).add(cinema);
         updateCinemaList();
     }
 
-    public static void removeCinema(Cinema cinema){
+    public static void removeCinema(Cinema cinema) throws IOException {
 
         cinemaList.get(cinema.getCinemaOperator()).remove(cinema);
         updateCinemaList();
     }
 
-    public static void updateCinemaList() {
-        try {
-			writeDataFile(cinemaList, cinemaListFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+    public static void updateCinemaList() throws IOException {
+		writeDataFile(cinemaList, cinemaListFile);
     }
    
     public static ArrayList<CinemaOperator> getCinemaOperators()
@@ -179,7 +182,6 @@ public class CinemaOperatorManager extends DataManager {
     }
 
     public static void addMovie(Movie movie) throws IOException {
-    	readMovieList();
     	movieList.add(movie);
         updateMovieListing();
     }
@@ -196,17 +198,11 @@ public class CinemaOperatorManager extends DataManager {
     }
 
     public static ArrayList<Movie> getMovieList(){
-    	readMovieList();
         return movieList;
     }
     
-    public static void updateMovieListing() {
-    	readMovieList();
-	    try {
-			writeDataFile(movieList, movieListFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+    public static void updateMovieListing() throws IOException {
+		writeDataFile(movieList, movieListFile);
     }
     
     // ========================Holiday========================
@@ -217,12 +213,8 @@ public class CinemaOperatorManager extends DataManager {
         	holidayList = (HashMap<String, Holiday>) readDataFile_HashMap(holidayListFile);
     }
     
-    public static void updateHolidayList(){
-        try {
+    public static void updateHolidayList() throws IOException {
  		writeDataFile(holidayList, holidayListFile);
- 		} catch (IOException e) {
- 			e.printStackTrace();
- 		}
      }
 
 }

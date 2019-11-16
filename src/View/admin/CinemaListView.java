@@ -122,7 +122,11 @@ public class CinemaListView extends View {
 			basePrice = sc.nextDouble();
 		}
 		Cinema cinema = new Cinema(cinemaID, cinemaName, cinemaClass, cinemaOperator, basePrice);
-		addCinema(cinema);
+		try {
+			addCinema(cinema);
+		} catch (IOException e) {
+			System.out.println("Fail to add the cinema");
+		}
 
 	}
 
@@ -149,7 +153,11 @@ public class CinemaListView extends View {
 		String choice = passChoiceString("Are You sure You want to remove cinema "+ cinemaList.get(choiceCinema).getCinemaName() + "Y/N");
 		if(confirmChoice(choice))
 		{
-			removeCinema(cinemaList.get(choiceCinema));
+			try {
+				removeCinema(cinemaList.get(choiceCinema));
+			} catch (IOException e) {
+				System.out.println("Fail to delete the cinema");
+			}
 			System.out.println("The cinema has been removed");
 		}
 		else 
