@@ -20,16 +20,14 @@ import Model.Cinema;
 public class CinemaOperator implements Serializable{
 	private Integer operatorID;
 	private String operatorName;
-	private String location;
 	private Integer numOfNormalCinemas;
 	private Integer numOfPlatinumCinemas;
 	private ArrayList<Cinema> cinemas;
 
 	
-	public CinemaOperator(Integer operatorID, String operatorName, String location) {
+	public CinemaOperator(Integer operatorID, String operatorName) {
 		this.operatorID = operatorID;
 		this.operatorName = operatorName;
-		this.location = location;
 		this.cinemas = new ArrayList<Cinema>();
 		this.numOfNormalCinemas=0;
 		this.numOfPlatinumCinemas=0;
@@ -51,13 +49,6 @@ public class CinemaOperator implements Serializable{
 		this.operatorName = operatorName;
 	}
 	
-	// location 
-	public String getLocation() {
-		return location;
-	}
-	public void setLocation(String location) {
-		this.location = location;
-	}
 	
 	// numOfCinemas
 	private void setNumOfNormalCinemas(Integer numOfNormalCinemas) {
