@@ -35,6 +35,7 @@ public class Cinema implements Serializable {
 		this.cinemaClass = cinemaClass;
 		this.cinemaOperator = cinemaOperator;
 		this.setBasePrice(basePrice);
+		
 		this.showTimes = new ArrayList<ShowTime>();
 		this.seats = new ArrayList<Seat>();
 		this.no_of_rows = 0;

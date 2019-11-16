@@ -28,8 +28,8 @@ public class StarterView extends View
 		System.out.println("Menu\n"
 				+ "----\n"
 				+ "(1) Staff\n"
-				+ "(2) Movie Goer\n"
-				+ "Please enter choice");
+				+ "(2) Movie Goer\n");
+		System.out.println("Please enter your choice");
 		int choice = sc.nextInt();
 		switch (choice) 
 		{

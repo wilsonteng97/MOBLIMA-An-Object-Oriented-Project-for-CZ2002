@@ -1,5 +1,6 @@
 package Presenter;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -55,4 +56,17 @@ public class Presenter
         SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd");
         return sim.format(date);
     }
+
+    public static Date parseStringToDate(String... inputString) {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		String stringDate = passChoiceString(inputString);
+		try {
+			Date showtimeIn = formatter.parse(stringDate);
+			System.out.println(showtimeIn);
+			return showtimeIn;
+		} catch (ParseException e) {
+			System.out.println("You input wrong format!");
+		}
+		return null;
+	}
 }

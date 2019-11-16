@@ -33,11 +33,11 @@ public class CinemaListView extends View
 		System.out.println("(1) Display Cinemas\n"
 				+ "(2) Add Cinema\n"
 				+ "(3) Remove Cinema\n"
-				+ "(3) Return\n");
-		System.out.println();
+				+ "(4) Change Base Price of cinema"
+				+ "(5) Return\n");
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		if (verifyChoiceNumber(choice, 1, 3)) { 
+		if (verifyChoiceNumber(choice, 1, 5)) { 
 			switch (choice) {
 		        case 1:
 					displayCinemaOperator(); //[presenter: displayCinema()] actual method is getCinemaList instead of displayCinema, done by KJ
@@ -46,17 +46,27 @@ public class CinemaListView extends View
 		        	newCinema(); 
 		            break;
 				case 3:
-					int removecinema = passChoiceInt("Enter the index of the cinema You want to remove ");
 		        	deleteCinema(); 
 		            break;
-		        case 4:
-		            break;
+				case 4:
+					setMoviePrice();
+					break;
+		    case 5:
+					end();
+		      break;
 			}
 		}
 		else 
 		{
 			displayMenu();
 		}
+	}
+
+	private void setMoviePrice() {
+		Cinema cinema = getCinema();
+		System.out.println("Enter Base Price to set for " + cinema.getCinemaName() + ": ");
+		Double basePrice = sc.nextDouble();
+		cinema.setBasePrice(basePrice);
 	}
 
 	protected void displayCinemaOperator()
@@ -133,5 +143,32 @@ public class CinemaListView extends View
 			System.out.println("Failed to remove listing");
 		}
 		displayMenu();
+	}
+	
+	private Cinema getCinema() {
+		ArrayList<CinemaOperator> cinemaOperatorList;
+		cinemaOperatorList = getCinemaOperators();
+		int numCinemaOperator = 0;
+		for(CinemaOperator cinemaOperator: cinemaOperatorList)
+		{
+			System.out.println(numCinemaOperator + " " + cinemaOperator.getOperatorID() + cinemaOperator.getOperatorName());
+			numCinemaOperator++;
+		}
+
+		int choice = passChoiceInt("Choose Cinema Operator: ");
+		ArrayList<CinemaOperator> cinemaOperatorsList = getCinemaOperators();
+		CinemaOperator cinemaOperator = cinemaOperatorsList.get(choice);
+		
+		ArrayList<Cinema> cinemaList = getCinemaList(cinemaOperator);
+		int numCinema =0;
+		for(Cinema cinema: cinemaList)
+		{
+			System.out.println(numCinema + " "+ cinema.getCinemaID() + cinema.getCinemaName());
+		}
+
+		choice = passChoiceInt("Choose Cinema: ");
+		Cinema cinema = cinemaList.get(choice);
+		
+		return cinema;
 	}
 }
