@@ -12,6 +12,7 @@ import Model.ShowTime;
 import Presenter.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 
 public class CinemaOperatorManager extends DataManager {   
     private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
@@ -195,6 +196,8 @@ public class CinemaOperatorManager extends DataManager {
     }
     
     public static void updateMovieListing() throws IOException {
+//    	LinkedHashSet<Movie> hashSet = new LinkedHashSet<>(movieList);
+//        ArrayList<Movie> listWithoutDuplicates = new ArrayList<>(hashSet);
 		writeDataFile(movieList, movieListFile);
     }
     
