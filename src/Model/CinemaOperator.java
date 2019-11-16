@@ -24,6 +24,9 @@ public class CinemaOperator implements Serializable{
 	private Integer numOfNormalCinemas;
 	private Integer numOfPlatinumCinemas;
 	private ArrayList<Cinema> cinemas;
+	
+	private static Double DEFAULT_BASEPRICE = 10.0;
+	private static Double DEFAULT_PLATINUM_MODIFIER = 1.5;
 
 	
 	public CinemaOperator(Integer operatorID, String operatorName, String location) {
@@ -80,20 +83,20 @@ public class CinemaOperator implements Serializable{
 		}
 	}
 
-	public void addCinema(CinemaClass cinemaClass) {		
+	public void addCinema(CinemaClass cinemaClass, Double basePrice) {		
 		String cinemaID, cinemaName;
 		switch(cinemaClass) {
 		case NORMAL:
 			this.numOfNormalCinemas++;
 			cinemaID = this.numOfNormalCinemas + "N";
 			cinemaName = this.getOperatorName() + this.getLocation().toUpperCase();
-			cinemas.add(new Cinema(cinemaID, cinemaName, CinemaClass.NORMAL, this));
+			cinemas.add(new Cinema(cinemaID, cinemaName, CinemaClass.NORMAL, this, basePrice));
 			break;
 		case PLATINUM:
 			this.numOfPlatinumCinemas++;
 			cinemaID = this.numOfPlatinumCinemas + "P";
 			cinemaName = this.getOperatorName() + this.getLocation().toUpperCase();
-			cinemas.add(new Cinema(cinemaID, cinemaName, CinemaClass.PLATINUM, this));
+			cinemas.add(new Cinema(cinemaID, cinemaName, CinemaClass.PLATINUM, this, basePrice));
 			break;
 		default:
 			break; // TO-DO throw exception
@@ -148,11 +151,11 @@ public class CinemaOperator implements Serializable{
 			this.cinemas = new ArrayList<Cinema>(this.getNumOfCinemas());
 			// initialize Normal Cinemas
 			for (int normalCinema=1; normalCinema<=this.getNumOfCinemas(CinemaClass.NORMAL); normalCinema++) {
-				this.addCinema(CinemaClass.NORMAL);
+				this.addCinema(CinemaClass.NORMAL, DEFAULT_BASEPRICE);
 			}
 			// initialize Platinum Cinemas
 			for (int platinumCinema=1; platinumCinema<=this.getNumOfCinemas(CinemaClass.PLATINUM); platinumCinema++) {
-				this.addCinema(CinemaClass.PLATINUM);
+				this.addCinema(CinemaClass.PLATINUM, DEFAULT_BASEPRICE*DEFAULT_PLATINUM_MODIFIER);
 			}
 		}
 
