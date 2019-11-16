@@ -20,7 +20,7 @@ public class PaymentView extends View{
     private double GST;
     private double totalPrice;
     Scanner sc = new Scanner(System.in);
-    public PaymentView(Customer customer, Seat seat, Double price) {
+    public PaymentView(Customer customer, Seat seat, double price) {
     	this.customer = customer;
         this.seat = seat;
         this.price = price;
@@ -28,7 +28,7 @@ public class PaymentView extends View{
     	computeTotalPrice();
 	}	
     
-    private void displayMenu() {
+    private void displayMenu() throws IOException {
     	System.out.println("Movie Payment");
     	System.out.println();
     	System.out.println("Transaction ID: " + TID);
@@ -67,7 +67,7 @@ public class PaymentView extends View{
         totalPrice = Math.round((price+GST)*100)/100;
     }
     
-    private void saveBooking() {
+    private void saveBooking() throws IOException {
         seat.setOccupiedAt(seat.getShowtime(), true);
         Movie movie = seat.getShowtime().getMovie();
         getMovieList().get(getMovieList().indexOf(movie)).addTotalSales(1);
@@ -87,7 +87,12 @@ public class PaymentView extends View{
 
 	@Override
 	protected void starter() {
-		displayMenu();		
+		try {
+			displayMenu();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 }
 

@@ -2,6 +2,8 @@ package View.moviegoer;
 import static Presenter.ReviewManager.*;
 import View.View;
 import static Model.Enums.ShowingStatus.*;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 import Model.Movie;
@@ -11,7 +13,7 @@ public class ReviewView extends View{
 	public ReviewView(Movie movie) {
     	this.movie=movie;
 	}	    
-    private void displayMenu() {
+    private void displayMenu() throws IOException {
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Movie Review");
     	if (movie.getStatus() == COMING_SOON) {
@@ -26,7 +28,7 @@ public class ReviewView extends View{
         int choice = sc.nextInt();
         switch (choice) {
             case 1:
-                addReview(movie);
+                addNewReview(movie);
                 break;
             case 2:
             	displayReview(movie);
@@ -39,7 +41,12 @@ public class ReviewView extends View{
     }	
 	@Override
 	protected void starter() {
-    	displayMenu();
+    	try {
+			displayMenu();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	protected void end() {
     	((MovieListingView)(getPrevious())).starter(movie);
