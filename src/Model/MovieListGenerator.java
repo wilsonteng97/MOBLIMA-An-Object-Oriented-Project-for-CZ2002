@@ -46,7 +46,7 @@ public class MovieListGenerator extends DataManager {
 				false, m3_cast);
 		list.add(m3);
 		
-		String fileName = "datafiles\movieListFile.txt";
+		String fileName = "datafiles/movieListFile.txt";
 		writeDataFile(list, fileName);
 	}
 
