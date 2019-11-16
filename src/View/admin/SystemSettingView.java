@@ -26,29 +26,25 @@ public class SystemSettingView extends View{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nSystem Setting");
 		System.out.println("(1) Configure Holidays\n"
-							+ "(2) Update Admin Account\n"
-							+ "(3) Configure Top 5 Ranking by Rating\n"
-							+ "(4) Configure Top 5 Ranking by Sales\n"
-							+ "(5) Return\n");
+							+ "(2) Configure Top 5 Ranking by Rating\n"
+							+ "(3) Configure Top 5 Ranking by Sales\n"
+							+ "(4) Return\n");
 		System.out.println();
 		System.out.println("Enter the number of your choice: ");
 
 		int choice = sc.nextInt();
-		while (verifyChoiceNumber(choice, 1, 5)) { 
+		while (verifyChoiceNumber(choice, 1, 4)) { 
 			switch (choice) {
 		        case 1:
 		            configureHoliday();  
 		            break;
 		        case 2:
-		        	updateAdminAccount();
-		        	break;
-		        case 3:
 		        	getTop5RankingRating();
 		        	break;
-		        case 4:
+		        case 3:
 		        	getTop5RankingSales();
 		        	break;
-				case 5:				
+				case 4:				
 		        	break;
 			}
 		}
