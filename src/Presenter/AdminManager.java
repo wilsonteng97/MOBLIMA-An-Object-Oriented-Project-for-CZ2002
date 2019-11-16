@@ -203,7 +203,7 @@ public class AdminManager extends DataManager
 //            rating = sum / reviewList.size();
 //            return rating;
 //        }
-    	return movie.getReviewRatingAverage(reviewList);
+    	return movie.getReviewRatingAverage();
     }
 
     // =========================Movie Sales=========================
