@@ -36,6 +36,15 @@ public class CinemaOperatorManager extends DataManager {
     private static ArrayList<Movie> movieList;
     private static HashMap<String, Holiday> holidayList;
     
+    public static void readTheData()
+    {
+            readCinemaList();
+            readAdminAccount();
+            readMovieList();
+            readHolidayList();
+            readCinemaOperator();
+
+    }
 //    public static boolean readTheData()
 //    {
 //        try {
@@ -77,7 +86,7 @@ public class CinemaOperatorManager extends DataManager {
     // =======================Showtime=======================
     private static void readShowtime(){
         if(readDataFile_HashMap(showtimeListFile) == null)
-            showtimeList = new HashMap<Movie, ArrayList<ShowTime>>();
+            showtimeList = new HashMap<>();
         else
             showtimeList = (HashMap<Movie, ArrayList<ShowTime>>) readDataFile_HashMap(showtimeListFile);
     }
@@ -118,7 +127,7 @@ public class CinemaOperatorManager extends DataManager {
         //     System.out.println(cinema);
         // }
         if(readDataFile_HashMap(cinemaListFile) == null)
-            cinemaList = new HashMap<CinemaOperator, ArrayList<Cinema>>();
+            cinemaList = new HashMap<>();
         else
             cinemaList = (HashMap<CinemaOperator, ArrayList<Cinema>>) readDataFile_HashMap(cinemaListFile);
     }
@@ -202,7 +211,7 @@ public class CinemaOperatorManager extends DataManager {
     // ========================Holiday========================
     private static void readHolidayList() {
         if(readDataFile_HashMap(holidayListFile) == null)
-        	holidayList = new HashMap<String, Holiday>();
+        	holidayList = new HashMap<>();
         else
         	holidayList = (HashMap<String, Holiday>) readDataFile_HashMap(holidayListFile);
     }
