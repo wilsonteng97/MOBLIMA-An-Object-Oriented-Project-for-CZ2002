@@ -11,11 +11,14 @@ public class BookingHistoryView extends View{
 	}	
     private void displayMenu() {
     	Scanner sc = new Scanner(System.in);
+    	System.out.println("Booking History");
+    	System.out.println();
     	System.out.println("Please Enter your Name");
     	String customerName = sc.next();
-    	System.out.println("Booking History");  		
+    	System.out.println("Booking History");  	
+    	System.out.println();
      	getBookingHistory(customerName); 
-     	intent(this, new MovieListingView());
+     	end();
     }
 	@Override
 	protected void starter() {
