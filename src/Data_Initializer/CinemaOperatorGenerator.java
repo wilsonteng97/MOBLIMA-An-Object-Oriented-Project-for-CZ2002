@@ -10,7 +10,7 @@ import static Presenter.CinemaOperatorManager.*;
 
 public class CinemaOperatorGenerator extends DataManager {
 	
-	static ArrayList<CinemaOperator> list = new ArrayList<CinemaOperator>();
+	public static ArrayList<CinemaOperator> list = new ArrayList<CinemaOperator>();
     
         public static void CinemaOperatorList() throws IOException
         {
