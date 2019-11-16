@@ -50,6 +50,7 @@ public class CinemaListView extends View {
 			case 5:
 					try {
 						initialiseCinemas();
+						System.out.println("You inicialise cinemas correctly");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						System.out.println("Fail to initialise the seats");
