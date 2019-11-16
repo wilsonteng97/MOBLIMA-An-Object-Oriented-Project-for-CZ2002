@@ -26,10 +26,13 @@ public class CinemaListView extends View
 
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
+		System.out.println("Cinema Listing");
+		System.out.println();
 		System.out.println("(1) Display Cinemas\n"
 				+ "(2) Add Cinema\n"
 				+ "(3) Remove Cinema\n"
 				+ "(3) Return\n");
+		System.out.println();
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
 		if (verifyChoiceNumber(choice, 1, 3)) { 

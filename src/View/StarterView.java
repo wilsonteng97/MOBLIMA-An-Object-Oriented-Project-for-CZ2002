@@ -3,7 +3,6 @@ package View;
 import java.util.Scanner;
 import static Presenter.CinemaOperatorManager.*;
 
-
 public class StarterView extends View
 {
 	public StarterView() {
@@ -23,7 +22,9 @@ public class StarterView extends View
 
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
+		System.out.println();
 		System.out.println("Hello, Welcome to MOBLIMA!");
+		System.out.println();
 		System.out.println("Menu\n"
 				+ "----\n"
 				+ "(1) Staff\n"
