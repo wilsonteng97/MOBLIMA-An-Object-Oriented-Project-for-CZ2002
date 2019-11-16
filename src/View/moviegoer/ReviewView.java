@@ -42,7 +42,7 @@ public class ReviewView extends View{
     	displayMenu();
 	}
 	protected void end() {
-    	
+    	((MovieListingView)(getPrevious())).starter(movie);
 	}
   }
 

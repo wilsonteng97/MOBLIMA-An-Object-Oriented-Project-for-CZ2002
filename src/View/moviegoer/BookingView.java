@@ -111,6 +111,9 @@ public class BookingView extends View{
 		else
 			displayMenu();
 	}
+	protected void destroy() {
+		intent(this, new MovieListingView());
+	}
 }
 
 

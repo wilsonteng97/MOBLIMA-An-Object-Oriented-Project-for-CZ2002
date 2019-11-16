@@ -18,7 +18,8 @@ public class CinemaOperatorManager extends DataManager {
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
     private final static String movieListFile = "datafiles/movieListFile.txt";
     private final static String holidayListFile = "datafiles/holidayListFile.txt";
-
+//    private final static String movieListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
+    private final static String cinemaOperatorListFile = "datafiles/cinemaOperatorListFile.txt";
 
     private static ArrayList<CinemaOperator> cinemaOperators;
     private static ArrayList<Admin> adminAccountList;
@@ -31,15 +32,28 @@ public class CinemaOperatorManager extends DataManager {
     public static boolean readTheData()
     {
         try {
-            readShowtime();
+         //   readShowtime();
             readCinemaList();
             readAdminAccount();
             readMovieList();
             readHolidayList();
+            readCinemaOperator();
         } catch (Exception e) {
             return false;
         }
         return true;
+    }
+
+    private static void readCinemaOperator()
+    {
+        if(readDataFile_List(cinemaOperatorListFile) == null)
+        {
+            cinemaOperators = new ArrayList<>();
+        }
+        else 
+        {
+            cinemaOperators = (ArrayList<CinemaOperator>) readDataFile_List(cinemaOperatorListFile);
+        }
     }
 
     private static void readAdminAccount()
@@ -150,7 +164,7 @@ public class CinemaOperatorManager extends DataManager {
     public static void addMovie(Movie movie) throws IOException {
     	readMovieList();
     	movieList.add(movie);
-        updateMovieListing(movieList);
+        updateMovieListing();
     }
 
     public static void removeMovie(Movie movie) throws IOException{
@@ -161,7 +175,7 @@ public class CinemaOperatorManager extends DataManager {
     	catch (Exception e) {
     		System.out.println(e.getMessage());
     	}
-    	updateMovieListing(movieList);
+    	updateMovieListing();
     }
 
     public static ArrayList<Movie> getMovieList(){
@@ -169,7 +183,7 @@ public class CinemaOperatorManager extends DataManager {
         return movieList;
     }
     
-    public static void updateMovieListing(ArrayList<Movie> movieList) {
+    public static void updateMovieListing() {
     	readMovieList();
 	    try {
 			writeDataFile(movieList, movieListFile);

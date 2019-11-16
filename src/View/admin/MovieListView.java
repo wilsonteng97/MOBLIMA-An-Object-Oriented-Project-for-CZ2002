@@ -332,17 +332,16 @@ public class MovieListView extends View{
 
 	private void deleteMovie(Movie movie)
 	{
-		System.out.println("Are You sure you want to delete "+ movie.getTitle() +  " Y/N");
-		char choice = sc.next().charAt(0);
+		String choice = passChoiceString("Are You sure you want to delete "+ movie.getTitle() +  " Y/N");
 		if(confirmChoice(choice))
 		{
 			try {
 				removeMovie(movie);
+				removeAllShowtimes(movie);
+				System.out.println("The movie has been removed");
 			} catch (IOException e) {
 				System.out.println("Failed to remove listing");
 			}
-			removeAllShowtimes(movie);
-			System.out.println("The movie has been removed");
 		}
 		else 
 		{

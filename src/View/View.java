@@ -31,4 +31,9 @@ public abstract class View {
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }
+
+    public View getPrevious()
+    {
+    	return previousView;
+    }
 }
