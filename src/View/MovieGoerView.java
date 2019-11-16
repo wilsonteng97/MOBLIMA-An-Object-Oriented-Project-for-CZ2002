@@ -11,10 +11,9 @@ public class MovieGoerView extends View{
 	@Override
 	protected void starter(){
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Moviegoer\n"
-				+ "Welcome, please make a selection:\n");
-		System.out.println("Menu\n"
-				+ "----\n"
+		System.out.println("\n"
+				+ "Menu\n" + "----");
+		System.out.println("Welcome Moviegoer, please make a selection:\n"
 				+"(1) Movie Listing\n"
 				+ "(2) View Booking History\n"
 				+ "(3) Return\n");
