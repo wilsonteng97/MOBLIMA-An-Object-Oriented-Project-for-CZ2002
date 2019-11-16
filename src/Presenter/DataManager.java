@@ -43,7 +43,7 @@ public abstract class DataManager {
 			try {
 				FileInputStream fwStream = new FileInputStream(fileName);
 				ObjectInputStream in = new ObjectInputStream(fwStream);
-				Object hashmap = (Object) in.readObject();
+				Object hashmap = in.readObject();
 
 				in.close();
 				return hashmap;

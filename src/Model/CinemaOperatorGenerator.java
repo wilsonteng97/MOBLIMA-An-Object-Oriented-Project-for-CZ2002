@@ -5,18 +5,19 @@ import java.util.ArrayList;
 import Presenter.DataManager;
 
 
-import Model.Movie;
-import Model.Enums.AgeRestriction;
-import Model.Enums.MovieType;
-import Model.Enums.ShowingStatus;
-import static Presenter.CinemaOperatorManager.*;
-import static Presenter.DataManager.*;
-
 public class CinemaOperatorGenerator extends DataManager {
-    {
+    
         public static void CinemaOperatorList() throws IOException
         {
             ArrayList<CinemaOperator> list = new ArrayList<CinemaOperator>();
-            CinemaOperator c1 = new CinemaOperator(operatorID, operatorName, location)
+            CinemaOperator c1 = new CinemaOperator(1, "Golden Village");
+            list.add(c1);
+            CinemaOperator c2 = new CinemaOperator(2, "Shaw");
+            list.add(c2);
+            CinemaOperator c3 = new CinemaOperator(3, "Cathay");
+            list.add(c3);
+
+            String fileName = "datafiles\\cinemaOperatorListFile.txt";
+            writeDataFile(list, fileName);
         }
     }

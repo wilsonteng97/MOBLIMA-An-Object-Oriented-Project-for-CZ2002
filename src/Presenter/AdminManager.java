@@ -9,8 +9,10 @@ import java.io.ObjectOutputStream;
 import javax.lang.model.util.ElementScanner6;
 
 import Model.Admin;
+import Model.AdminAccountListGenerator;
 import Model.Cinema;
 import Model.CinemaOperator;
+import Model.CinemaOperatorGenerator;
 import Model.Movie;
 import Model.Review;
 import Model.ShowTime;
@@ -34,7 +36,6 @@ public class AdminManager extends DataManager
     private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<Movie, ArrayList<Review>> reviewList;
-    private static HashMap<CinemaOperator, ArrayList<Cinema>> cinemaList;
     private static ArrayList<Movie> movieList;
 
     // =========================Movie Price=========================
@@ -72,6 +73,15 @@ public class AdminManager extends DataManager
     
     public static void initialiseMovies() throws IOException {
     	MovieListGenerator.MovieList();
+    }
+
+    public static void initialiseCinemaOperators() throws IOException
+    {
+        CinemaOperatorGenerator.CinemaOperatorList();
+    }
+    public static void initialiseAdminAccounts() throws IOException
+    {
+        AdminAccountListGenerator.AdminAccounts();
     }
 
     // =========================Top 5 Movies=========================
@@ -168,9 +178,9 @@ public class AdminManager extends DataManager
         return showtimeList.get(movie);
     }
 
-    public static boolean confirmChoice(char choice)
+    public static boolean confirmChoice(String choice)
     {
-        if (choice == 'y' || choice == 'y')
+        if (choice.equals("Y") || choice.equals("y"))
         {
             return true;
         }
