@@ -77,9 +77,9 @@ public class MovieListGenerator extends DataManager {
 		m5.addTotalSales(0);
 		list.add(m6);
 		
-		String fileName = "datafiles/movieListFile.txt";
+//		String fileName = "datafiles/movieListFile.txt";
 
-//		String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
+		String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
 
 		writeDataFile(list, fileName);
 	}

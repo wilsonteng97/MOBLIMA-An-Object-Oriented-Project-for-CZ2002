@@ -4,22 +4,29 @@ import java.io.IOException;
 import Model.Admin;
 import Model.Cinema;
 import Model.CinemaOperator;
-import Model.Holiday;
+//import Model.Holiday;
 import Model.Movie;
 import Model.Review;
 import Model.ShowTime;
+import Presenter.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CinemaOperatorManager extends DataManager {   
-    private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
-    private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
-    private final static String reviewListFile = "datafiles/reviewListFile.txt";
-    private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
-    private final static String movieListFile = "datafiles/movieListFile.txt";
-    private final static String holidayListFile = "datafiles/holidayListFile.txt";
-//    private final static String movieListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
-    private final static String cinemaOperatorListFile = "datafiles/cinemaOperatorListFile.txt";
+//    private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
+//    private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
+//    private final static String reviewListFile = "datafiles/reviewListFile.txt";
+//    private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
+//    private final static String movieListFile = "datafiles/movieListFile.txt";
+//    private final static String holidayListFile = "datafiles/holidayListFile.txt";
+//    private final static String cinemaOperatorListFile = "datafiles/cinemaOperatorListFile.txt";
+	
+    private final static String adminAccountListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\adminAccountListFile.txt";
+    private final static String showtimeListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\showtimeListFile.txt";
+    private final static String reviewListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\reviewListFile.txt";
+    private final static String cinemaListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\cinemaListFile.txt";
+    private final static String movieListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
+    private final static String holidayListFile = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\holidayListFile.txt";
 
     private static ArrayList<CinemaOperator> cinemaOperators;
     private static ArrayList<Admin> adminAccountList;
@@ -29,20 +36,20 @@ public class CinemaOperatorManager extends DataManager {
     private static ArrayList<Movie> movieList;
     private static HashMap<String, Holiday> holidayList;
     
-    public static boolean readTheData()
-    {
-        try {
-         //   readShowtime();
-            readCinemaList();
-            readAdminAccount();
-            readMovieList();
-            readHolidayList();
-            readCinemaOperator();
-        } catch (Exception e) {
-            return false;
-        }
-        return true;
-    }
+//    public static boolean readTheData()
+//    {
+//        try {
+//         //   readShowtime();
+//            readCinemaList();
+//            readAdminAccount();
+//            readMovieList();
+//            readHolidayList();
+//            readCinemaOperator();
+//        } catch (Exception e) {
+//            return false;
+//        }
+//        return true;
+//    }
 
     private static void readCinemaOperator()
     {
