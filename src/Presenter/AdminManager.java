@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.ParseException;
 
 import javax.lang.model.util.ElementScanner6;
 
@@ -23,8 +24,7 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.HashMap;
 
-public class AdminManager extends DataManager
-{
+public class AdminManager extends DataManager {
     Scanner sc = new Scanner(System.in);
     double ticket_price;
     private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
@@ -33,7 +33,7 @@ public class AdminManager extends DataManager
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
     private final static String movieListFile = "datafiles/movieListFile.txt";
     private final static String holidayListFile = "datafiles/holidayListFile.txt";
-    
+
     private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<Movie, ArrayList<Review>> reviewList;
@@ -41,88 +41,87 @@ public class AdminManager extends DataManager
     private static HashMap<String, Holiday> holidayList;
 
     // =========================Movie Price=========================
-//    public double setMoviePrice(){
-//        System.out.println("How much do you want to charge?");
-//        return ticket_price = sc.nextDouble();
-//    }
-
-
+    // public double setMoviePrice(){
+    // System.out.println("How much do you want to charge?");
+    // return ticket_price = sc.nextDouble();
+    // }
 
     // =======================Admin Account=======================
-    public static void readAdminAccount()
-    {
-        if(readDataFile_List(adminAccountListFile) == null)
-        {
+    public static void readAdminAccount() {
+        if (readDataFile_List(adminAccountListFile) == null) {
             adminAccountList = new ArrayList<Admin>();
-        }
-        else
-        {
+        } else {
             adminAccountList = (ArrayList<Admin>) readDataFile_List(adminAccountListFile);
         }
     }
 
-    public static void updateAdminAccount(){
-       try {
-		writeDataFile(adminAccountList, adminAccountListFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+    public static void updateAdminAccount() {
+        try {
+            writeDataFile(adminAccountList, adminAccountListFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // =======================System Setting=======================
-    
+
     public static void initialiseMovies() throws IOException {
-    	MovieListGenerator.MovieList();
+        MovieListGenerator.MovieList();
     }
 
-    
- // =======================Holiday=======================
+    // =======================Holiday=======================
     public static void addHoliday(Holiday holiday) {
-    	String key = holiday.getDate().toString();
-    	holidayList.put(key, holiday);
+        String key = holiday.getDate().toString();
+        holidayList.put(key, holiday);
     }
-    
-    public static void removeHoliday(Date holidayDate) throws IOException{
-    	String key = holidayDate.toString();
-    	holidayList.remove(key);
-    }
-    
-    public static HashMap<String, Holiday> getHolidayList() {
-    	return holidayList;
-    }
-    
-//    public static void readHolidayList()
-//    {
-//        if(readDataFile_List(adminAccountListFile) == null)
-//        {
-//        	holidayList = new HashMap<String, Holiday>();
-//        }
-//        else
-//        {
-//        	holidayList = (HashMap<String, Holiday>) readDataFile_List(holidayListFile);
-//        }
-//    }
-//
-//    public static void updateHolidayList(){
-//       try {
-//		writeDataFile(holidayList, holidayListFile);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//    }
 
-    public static void initialiseCinemaOperators() throws IOException
-    {
+    public static void removeHoliday(Date holidayDate) throws IOException {
+        String key = holidayDate.toString();
+        holidayList.remove(key);
+    }
+
+    public static HashMap<String, Holiday> getHolidayList() {
+        return holidayList;
+    }
+
+    // public static void readHolidayList()
+    // {
+    // if(readDataFile_List(adminAccountListFile) == null)
+    // {
+    // holidayList = new HashMap<String, Holiday>();
+    // }
+    // else
+    // {
+    // holidayList = (HashMap<String, Holiday>) readDataFile_List(holidayListFile);
+    // }
+    // }
+    //
+    // public static void updateHolidayList(){
+    // try {
+    // writeDataFile(holidayList, holidayListFile);
+    // } catch (IOException e) {
+    // e.printStackTrace();
+    // }
+    // }
+
+    public static void initialiseCinemaOperators() throws IOException {
         CinemaOperatorGenerator.CinemaOperatorList();
     }
-    public static void initialiseAdminAccounts() throws IOException
-    {
+
+    public static void initialiseAdminAccounts() throws IOException {
         AdminAccountListGenerator.AdminAccounts();
     }
 
-    public static void initialiseCinemas() throws IOException
-    {
+    public static void initialiseCinemas() throws IOException {
+        MovieListGenerator.MovieList();
+        CinemaOperatorGenerator.CinemaOperatorList();
         CinemaListGenerator.CinemaList();
+        try {
+            ShowTimeGenerator.Showtimes();
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     // =========================Top 5 Movies=========================
