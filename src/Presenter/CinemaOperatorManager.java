@@ -105,7 +105,7 @@ public class CinemaOperatorManager extends DataManager {
     {
         if (showtimeList.get(movie) == null) 
         {
-            showtimeList.put(movie, new ArrayList<ShowTime>());
+            showtimeList.put(movie, new ArrayList<>());
         }
         showtimeList.get(movie).add(showTime);
         updateShowTime();
@@ -141,7 +141,7 @@ public class CinemaOperatorManager extends DataManager {
     public static void addCinema(Cinema cinema) throws IOException {
         if (cinemaList.get(cinema.getCinemaOperator()) == null) 
         {
-            cinemaList.put(cinema.getCinemaOperator(), new ArrayList<Cinema>());
+            cinemaList.put(cinema.getCinemaOperator(), new ArrayList<>());
         }
         cinemaList.get(cinema.getCinemaOperator()).add(cinema);
         updateCinemaList();
@@ -207,13 +207,7 @@ public class CinemaOperatorManager extends DataManager {
     }
 
     public static void removeMovie(Movie movie) throws IOException{
-    	readMovieList();
-    	try {
-    		movieList.remove(movie);
-    	}
-    	catch (Exception e) {
-    		System.out.println(e.getMessage());
-    	}
+    	movieList.remove(movie);
     	updateMovieListing();
     }
 

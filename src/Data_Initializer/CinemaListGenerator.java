@@ -17,6 +17,7 @@ public class CinemaListGenerator extends DataManager {
 	
     public static void CinemaList() throws IOException 
     {
+        CinemaOperatorGenerator.CinemaOperatorList();
         CinemaOperator co1 = CinemaOperatorGenerator.getCinemaOperatorFromGenerator(0);
         Cinema g1 = new Cinema("1G", "Vivo City", CinemaClass.NORMAL, co1, 8.0);
         cinema_list.add(g1);

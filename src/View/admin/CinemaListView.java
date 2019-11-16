@@ -40,9 +40,11 @@ public class CinemaListView extends View {
 				break;
 			case 2:
 				newCinema();
+				displayMenu();
 				break;
 			case 3:
 				deleteCinema();
+				
 				break;
 			case 4:
 				setMoviePrice();

@@ -337,7 +337,7 @@ public class MovieListView extends View{
 		{
 			try {
 				removeMovie(movie);
-				removeAllShowtimes(movie);
+				//removeAllShowtimes(movie);
 				System.out.println("The movie has been removed");
 			} catch (IOException e) {
 				System.out.println("Failed to remove listing");
