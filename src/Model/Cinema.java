@@ -92,9 +92,9 @@ public class Cinema implements Serializable {
 	}
 
 	// showTime
-	public void addShowTime(ShowTime showTime) {
-		showTimes.add(showTime);
-	}
+	// public void addShowTime(ShowTime showTime) {
+	// 	showTimes.add(showTime);
+	// }
 	public void removeShowTime(ShowTime showTime) {
 		showTimes.remove(showTime);
 	}

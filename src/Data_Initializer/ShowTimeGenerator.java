@@ -15,34 +15,34 @@ import Presenter.CinemaOperatorManager;
 public class ShowTimeGenerator {
 	public static void Showtimes() throws ParseException, IOException {
 		ArrayList<ShowTime> showtimeList = new ArrayList<ShowTime>();
-		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
 //		ShowTime(Cinema cinema, Movie movie, Date time)
 		
 		Movie m1 = MovieListGenerator.getMovieFromGenerator(0);
         Cinema c1 = CinemaListGenerator.getCinemaFromGenerator(0);
-		String s1_time = "08:00";
-		Date s1_time_final = (Date) formatter.parse(s1_time);
+		String s1_time = "19/11/2019 08:00";
+		java.util.Date s1_time_final = formatter.parse(s1_time);
 		ShowTime s1 = new ShowTime(c1, m1, s1_time_final);
 		showtimeList.add(s1);
 		CinemaOperatorManager.addShowtime(m1, s1);
 		
-		String s2_time = "12:00";
-		Date s2_time_final = (Date) formatter.parse(s2_time);
+		String s2_time = "19/11/2019 12:00";
+		java.util.Date s2_time_final = formatter.parse(s2_time);
 		ShowTime s2 = new ShowTime(c1, m1, s2_time_final);
 		showtimeList.add(s2);
 		CinemaOperatorManager.addShowtime(m1, s2);
 		
-		String s3_time = "16:00";
-		Date s3_time_final = (Date) formatter.parse(s3_time);
+		String s3_time = "19/11/2019 16:00";
+		java.util.Date s3_time_final = formatter.parse(s3_time);
 		ShowTime s3 = new ShowTime(c1, m1, s3_time_final);
 		showtimeList.add(s3);
 		CinemaOperatorManager.addShowtime(m1, s3);
 		
 		Movie m2 = MovieListGenerator.getMovieFromGenerator(1);
 		Cinema c2 = CinemaListGenerator.getCinemaFromGenerator(1);
-		String s4_time = "09:00";
-		Date s4_time_final = (Date) formatter.parse(s4_time);
+		String s4_time = "19/11/2019 09:00";
+		java.util.Date s4_time_final = formatter.parse(s4_time);
 		ShowTime s4 = new ShowTime(c2, m2, s4_time_final);
 		showtimeList.add(s4);
 		CinemaOperatorManager.addShowtime(m2, s4);
