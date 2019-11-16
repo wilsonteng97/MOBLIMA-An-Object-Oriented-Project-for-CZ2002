@@ -1,9 +1,7 @@
 package View.moviegoer;
  
-import java.util.ArrayList;
 import java.util.Scanner;
 import Model.Customer;
-import Presenter.CustomerManager;
 import Presenter.Query;
 
 import static Presenter.BookingManager.*;
