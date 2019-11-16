@@ -148,6 +148,7 @@ public class MovieListingView extends View{
 	
         System.out.println(index + 1 + ". Return");
         System.out.print("\n");
+        System.out.println("Enter the number of your choice: ");
         int choice = sc.nextInt();
 
         if (choice == index + 1) 

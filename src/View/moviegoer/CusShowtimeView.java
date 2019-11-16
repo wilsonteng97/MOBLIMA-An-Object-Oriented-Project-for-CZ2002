@@ -25,7 +25,7 @@ public class CusShowtimeView extends View{
         Date afterTomorrow = new Date(new Date().getTime() + 2* 24 * 60 * 60 * 1000);
         Date dateChosen;
         
-        if (movie.getStatus().equals(NO_LONGER_AVAILABLE)) {
+        if (movie.getStatus().equals(NOW_SHOWING)) {
         	System.out.println("Movie Showtime");
         	System.out.println();
         	System.out.println("(1) " + formatTimeDate(today) + " (today)\n"+
