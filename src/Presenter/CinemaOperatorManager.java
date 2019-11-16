@@ -24,7 +24,8 @@ public class CinemaOperatorManager extends DataManager {
     private static HashMap<CinemaOperator, ArrayList<Cinema>> cinemaList;
     private static ArrayList<Movie> movieList;
 
-
+    
+    
     public static boolean readTheData()
     {
         try {
