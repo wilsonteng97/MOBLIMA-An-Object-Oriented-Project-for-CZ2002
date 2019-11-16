@@ -211,12 +211,16 @@ public class Movie implements Serializable{
 			this.reviewList.remove(review);
 		}
 	}
+
 	public double getReviewRatingAverage() {
 		double count = 0;
+    int i=0;
 		for (Review r : reviewList) {
+
 			count+=r.getRating();
+			i++;
 		}
-		return count;
+		return count/i;
 	}
 	public static Comparator<Movie> reviewRatingAvgComparator = new Comparator<Movie>() {
 
@@ -229,20 +233,20 @@ public class Movie implements Serializable{
 	// Other Methods
 	public String toString() {
 		StringBuilder result = new StringBuilder();
-		result.append("(1)"); result.append(this.getMovieID()); result.append("\n");
-		result.append("(2)"); result.append(this.getTitle()); result.append("\n");
-		result.append("(3)"); result.append(this.getAgeRestriction()); result.append("\n");
-		result.append("(4)"); result.append(this.getType()); result.append("\n");
-		result.append("(5)"); result.append(this.getStatus()); result.append("\n");
-		result.append("(6)"); result.append(this.getOpening()); result.append("\n");
-		result.append("(7)"); result.append(this.getRunTime()); result.append("\n");
-		result.append("(8)"); result.append(this.getSynopsis()); result.append("\n");
-		result.append("(9)"); result.append(this.isBlockBuster()); result.append("\n");
-		result.append("(10)"); result.append(this.getTotalSales()); result.append("\n");
+		result.append("(1) ID: "); result.append(this.getMovieID()); result.append("\n");
+		result.append("(2) Title: "); result.append(this.getTitle()); result.append("\n");
+		result.append("(3) Classification: "); result.append(this.getAgeRestriction()); result.append("\n");
+		result.append("(4) Viewing Type: "); result.append(this.getType()); result.append("\n");
+		result.append("(5) Viewing Status: "); result.append(this.getStatus()); result.append("\n");
+		result.append("(6) Opening Date: "); result.append(this.getOpening()); result.append("\n");
+		result.append("(7) Runtime: "); result.append(this.getRunTime()); result.append("\n");
+		result.append("(8) Synopsis: "); result.append(this.getSynopsis()); result.append("\n");
+//		result.append("(9)"); result.append(this.isBlockBuster()); result.append("\n");
+		result.append("(9) Total Sales: "); result.append(this.getTotalSales()); result.append("\n");
 	//	result.append("(11)"); result.append(this.getLanguage()); result.append("\n");
-		result.append("(11)"); result.append(this.getDirector()); result.append("\n");
-		result.append("(12)"); result.append(this.getCastList()); result.append("\n");
-		result.append("(13)"); result.append(this.getShowTimes());
+		result.append("(10) Directed by: "); result.append(this.getDirector()); result.append("\n");
+		result.append("(11) Starring: "); result.append(this.getCastList()); result.append("\n");
+		result.append("(12) Available Showtimes: "); result.append(this.getShowTimes());
 		return result.toString();
 	}
 	public boolean equals(Object o) {

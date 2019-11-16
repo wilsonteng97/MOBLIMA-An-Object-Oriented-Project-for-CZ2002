@@ -28,11 +28,11 @@ public class AdminManager extends DataManager
     Scanner sc = new Scanner(System.in);
     double ticket_price;
     private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
-  private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
-  private final static String reviewListFile = "datafiles/reviewListFile.txt";
-  private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
-  private final static String movieListFile = "datafiles/movieListFile.txt";
-  private final static String holidayListFile = "datafiles/holidayListFile.txt";
+    private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
+    private final static String reviewListFile = "datafiles/reviewListFile.txt";
+    private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
+    private final static String movieListFile = "datafiles/movieListFile.txt";
+    private final static String holidayListFile = "datafiles/holidayListFile.txt";
     
     private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
@@ -128,7 +128,7 @@ public class AdminManager extends DataManager
     // =========================Top 5 Movies=========================
     public static ArrayList<Movie> getTop5RankingRating(){
         ArrayList<Movie> top5rating = new ArrayList<Movie>();
-
+        int count = 0;
         for(Movie movie: movieList)
             top5rating.add(movie);
         
@@ -156,8 +156,13 @@ public class AdminManager extends DataManager
 //        {
 //            top5rating.remove(5);
 //        }
-
-        return top5rating;
+        ArrayList<Movie> final_list = new ArrayList<Movie>();
+        for (Movie a: top5rating) {
+        	final_list.add(a);
+        	if (count == 5) break;
+        	count++;
+        }
+        return final_list;
     }
 
     // =========================Review Lists=========================
@@ -182,28 +187,23 @@ public class AdminManager extends DataManager
 		}
     }
 
-    public static ArrayList<Review> getReviewList(Movie movie)
-    {
-        return reviewList.get(movie);
+    public static ArrayList<Review> getReviewList(Movie movie){
+        return movie.getReviewList();
     }
-    public static double getMovieRating(Movie movie)
-    {
+    public static double getMovieRating(Movie movie){
         ArrayList<Review> reviewList = getReviewList(movie);
-        double sum = 0;
-        double rating = 0;
-        if(reviewList == null)
-        {
-            return 0;
-        }
-        else 
-        {
-            for(Review review: reviewList)
-            {
-                sum = sum + review.getRating();
-            }
-            rating = sum / reviewList.size();
-            return rating;
-        }
+//        double sum = 0;
+//        double rating = 0;
+//        if(reviewList == null)
+//            return 0;
+//        else {
+//            for(Review review: reviewList){
+//                sum = sum + review.getRating();
+//            }
+//            rating = sum / reviewList.size();
+//            return rating;
+//        }
+    	return movie.getReviewRatingAverage(reviewList);
     }
 
     // =========================Movie Sales=========================
@@ -237,12 +237,9 @@ public class AdminManager extends DataManager
     {
         ArrayList<Movie> top5sales = new ArrayList<Movie>();
         movieList = CinemaOperatorManager.getMovieList();
-        int counter = 0;
+
         for(Movie movie: movieList){
-            top5sales.add(movie);
-            if (counter == 5) break;
-            counter++;
-            
+            top5sales.add(movie);            
         }
         Collections.sort(top5sales, Model.Movie.movieSalesComparator);
         
@@ -267,7 +264,14 @@ public class AdminManager extends DataManager
 //        {
 //            top5sales.remove(5);
 //        }
+        ArrayList<Movie> final_list = new ArrayList<Movie>();
 
-        return top5sales;
+        int counter = 0;
+        for (Movie a: top5sales) {
+        	final_list.add(a);
+            if (counter == 5) break;
+            counter++;
+        }
+        return final_list;
     }
 }

@@ -13,6 +13,8 @@ import Presenter.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class CinemaOperatorManager extends DataManager {   
     private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
@@ -133,10 +135,11 @@ public class CinemaOperatorManager extends DataManager {
     }
 
     public static void addCinema(Cinema cinema) throws IOException {
-        if(cinemaList.get(cinema.getCinemaOperator()) == null)
-        {
-            cinemaList.put(cinema.getCinemaOperator(), new ArrayList<Cinema>());
-        }   
+    	ArrayList<Cinema> tempCinemaList = cinemaList.get(cinema.getCinemaOperator());
+    	if (tempCinemaList.contains(cinema)) {
+    		return;
+    	}
+    	
         cinemaList.get(cinema.getCinemaOperator()).add(cinema);
         updateCinemaList();
     }
@@ -158,7 +161,15 @@ public class CinemaOperatorManager extends DataManager {
 
     public static ArrayList<Cinema> getCinemaList (CinemaOperator cinemaOperator)
     {
-        return cinemaList.get(cinemaOperator);
+    	Map<CinemaOperator, ArrayList<Cinema>> map = (Map<CinemaOperator, ArrayList<Cinema>>) cinemaList; // new HashMap<CinemaOperator, ArrayList<Cinema>>();
+        for (Entry<CinemaOperator, ArrayList<Cinema>> entry : map.entrySet()) {
+        	CinemaOperator key = entry.getKey();
+        	if (key.getOperatorID()==cinemaOperator.getOperatorID()) {
+               ArrayList<Cinema> value = entry.getValue();
+               return value;
+           }
+        }
+		return null;
     }
     
     
@@ -176,6 +187,9 @@ public class CinemaOperatorManager extends DataManager {
     }
 
     public static void addMovie(Movie movie) throws IOException {
+    	if (movieList.contains(movie)) {
+    		return;
+    	}
     	movieList.add(movie);
         updateMovieListing();
     }
@@ -196,8 +210,6 @@ public class CinemaOperatorManager extends DataManager {
     }
     
     public static void updateMovieListing() throws IOException {
-//    	LinkedHashSet<Movie> hashSet = new LinkedHashSet<>(movieList);
-//        ArrayList<Movie> listWithoutDuplicates = new ArrayList<>(hashSet);
 		writeDataFile(movieList, movieListFile);
     }
     
