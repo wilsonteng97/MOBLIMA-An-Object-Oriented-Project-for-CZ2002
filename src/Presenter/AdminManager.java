@@ -11,6 +11,7 @@ import javax.lang.model.util.ElementScanner6;
 import Model.Admin;
 import Model.AdminAccountListGenerator;
 import Model.Cinema;
+import Model.CinemaListGenerator;
 import Model.CinemaOperator;
 import Model.CinemaOperatorGenerator;
 import Model.Movie;
@@ -82,6 +83,11 @@ public class AdminManager extends DataManager
     public static void initialiseAdminAccounts() throws IOException
     {
         AdminAccountListGenerator.AdminAccounts();
+    }
+
+    public static void initialiseCinemas() throws IOException
+    {
+        CinemaListGenerator.CinemaList();
     }
 
     // =========================Top 5 Movies=========================

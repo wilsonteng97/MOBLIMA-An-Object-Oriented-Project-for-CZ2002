@@ -113,7 +113,9 @@ public class CinemaOperatorManager extends DataManager {
 
     public static void addCinema(Cinema cinema){
         if(cinemaList.get(cinema.getCinemaOperator()) == null)
-        cinemaList.put(cinema.getCinemaOperator(), new ArrayList<Cinema>());
+        {
+            cinemaList.put(cinema.getCinemaOperator(), new ArrayList<Cinema>());
+        }
         cinemaList.get(cinema.getCinemaOperator()).add(cinema);
         updateCinemaList();
     }
@@ -131,7 +133,7 @@ public class CinemaOperatorManager extends DataManager {
 			e.printStackTrace();
 		}
     }
-   
+
     public static ArrayList<CinemaOperator> getCinemaOperators()
     {
         return cinemaOperators;
@@ -157,20 +159,18 @@ public class CinemaOperatorManager extends DataManager {
     }
 
     public static void addMovie(Movie movie) throws IOException {
-    	readMovieList();
     	movieList.add(movie);
-        updateMovieListing(movieList);
+        updateMovieListing();
     }
 
     public static void removeMovie(Movie movie) throws IOException{
-    	readMovieList();
     	try {
     		movieList.remove(movie);
     	}
     	catch (Exception e) {
     		System.out.println(e.getMessage());
     	}
-    	updateMovieListing(movieList);
+    	updateMovieListing();
     }
 
     public static ArrayList<Movie> getMovieList(){
@@ -178,8 +178,7 @@ public class CinemaOperatorManager extends DataManager {
         return movieList;
     }
     
-    public static void updateMovieListing(ArrayList<Movie> movieList) {
-    	readMovieList();
+    public static void updateMovieListing() {
 	    try {
 			writeDataFile(movieList, movieListFile);
 		} catch (IOException e) {

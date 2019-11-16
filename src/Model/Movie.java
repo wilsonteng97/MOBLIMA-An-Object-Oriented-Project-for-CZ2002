@@ -22,7 +22,7 @@ public class Movie implements Serializable{
 	private String synopsis;
 	private Boolean blockBuster;
 	
-	private Double totalSales;
+	private Double totalSales = 0.0;
 	private String director;
 	private ArrayList<String> cast;
 	private ArrayList<ShowTime> showTimes;

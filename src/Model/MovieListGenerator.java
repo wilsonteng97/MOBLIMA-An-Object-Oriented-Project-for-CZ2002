@@ -29,7 +29,8 @@ public class MovieListGenerator extends DataManager {
 				true, m1_cast);
 		m1.addTotalSales(1500);
 		list.add(m1);
-		
+		addMovie(m1);
+
 		ArrayList<String> m2_cast = new ArrayList<String>();
 		m2_cast.add("Yann Yann Yeo, Koh Jia Ler, Christopher Lee, Yang Shi Bin");
 		Movie m2 = new Movie("Wet Season", Model.Enums.AgeRestriction.M18, Model.Enums.MovieType.DIGITAL, Model.Enums.ShowingStatus.COMING_SOON,
@@ -49,7 +50,7 @@ public class MovieListGenerator extends DataManager {
 				false, m3_cast);
 		m3.addTotalSales(1086);
 		list.add(m3);
-		
+		addMovie(m3);
 
 		ArrayList<String> m4_cast = new ArrayList<String>();
 		m4_cast.add("\r\n" + 
@@ -59,7 +60,8 @@ public class MovieListGenerator extends DataManager {
 				"Peter Parker's relaxing European vacation takes an unexpected turn when Nick Fury shows up in his hotel room to recruit him for a mission. The world is in danger as four massive elemental creatures -- each representing Earth, air, water and fire -- emerge from a hole torn in the universe. Parker soon finds himself donning the Spider-Man suit to help Fury and fellow superhero Mysterio stop the evil entities from wreaking havoc across the continent.",
 				false, m4_cast);
 		list.add(m4);
-		
+		addMovie(m4);
+
 		ArrayList<String> m5_cast = new ArrayList<String>();
 		m5_cast.add("\r\n" + 
 				"Chloe Bennet, TenzNorgay Trainor, Albert Tsai, Eddie Izzard, Sarah Paulson, Tsai Chin, Michelle Wong");
@@ -68,7 +70,8 @@ public class MovieListGenerator extends DataManager {
 				"Abominable” takes audiences on an epic 2,000-mile adventure from the streets of a Chinese city to the breathtaking Himalayan snowscapes. When teenage Yi (Chloe Bennet) encounters a young Yeti on the roof of her apartment building, she and her friends, Jin (Tenzing Norgay Trainor) and Peng (Albert Tsai), name him “Everest” and embark on an epic quest to reunite the magical creature with his family at the highest point on Earth.",
 				false, m5_cast);
 		list.add(m5);
-		
+		addMovie(m5);
+
 		ArrayList<String> m6_cast = new ArrayList<String>();
 		m6_cast.add("\r\n" + 
 				"Chloe Bennet, TenzNorgay Trainor, Albert Tsai, Eddie Izzard, Sarah Paulson, Tsai Chin, Michelle Wong");
@@ -77,12 +80,13 @@ public class MovieListGenerator extends DataManager {
 				"Abominable” takes audiences on an epic 2,000-mile adventure from the streets of a Chinese city to the breathtaking Himalayan snowscapes. When teenage Yi (Chloe Bennet) encounters a young Yeti on the roof of her apartment building, she and her friends, Jin (Tenzing Norgay Trainor) and Peng (Albert Tsai), name him “Everest” and embark on an epic quest to reunite the magical creature with his family at the highest point on Earth.",
 				false, m6_cast);
 		list.add(m6);
-		
-    String fileName = "datafiles\\movieListFile.txt";
+		addMovie(m6);
 
-    String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
+   // String fileName = "datafiles\\movieListFile.txt";
 
-		writeDataFile(list, fileName);
+   // String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
+
+	//	writeDataFile(list, fileName);
 	}
 
 }
