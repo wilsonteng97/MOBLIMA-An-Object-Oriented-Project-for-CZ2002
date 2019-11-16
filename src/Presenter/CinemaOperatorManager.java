@@ -135,11 +135,10 @@ public class CinemaOperatorManager extends DataManager {
     }
 
     public static void addCinema(Cinema cinema) throws IOException {
-    	ArrayList<Cinema> tempCinemaList = cinemaList.get(cinema.getCinemaOperator());
-    	if (tempCinemaList.contains(cinema)) {
-    		return;
-    	}
-    	
+        if (cinemaList.get(cinema.getCinemaOperator()) == null) 
+        {
+            cinemaList.put(cinema.getCinemaOperator(), new ArrayList<Cinema>());
+        }
         cinemaList.get(cinema.getCinemaOperator()).add(cinema);
         updateCinemaList();
     }
@@ -199,9 +198,6 @@ public class CinemaOperatorManager extends DataManager {
     }
 
     public static void addMovie(Movie movie) throws IOException {
-    	if (movieList.contains(movie)) {
-    		return;
-    	}
     	movieList.add(movie);
         updateMovieListing();
     }
