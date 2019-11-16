@@ -49,8 +49,8 @@ public class CinemaListGenerator extends DataManager {
         cinema_list.add(c3);
         addCinema(c3);
 
-      //  String fileName = "datafiles\\cinemaListFile.txt";
-      //  writeDataFile(cinema_list, fileName);
+        String fileName = "datafiles\\cinemaListFile.txt";
+        writeDataFile(cinema_list, fileName);
 
     }
 }

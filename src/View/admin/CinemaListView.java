@@ -127,7 +127,7 @@ public class CinemaListView extends View {
 		} catch (IOException e) {
 			System.out.println("Fail to add the cinema");
 		}
-
+		displayMenu();
 	}
 
 	private void deleteCinema()

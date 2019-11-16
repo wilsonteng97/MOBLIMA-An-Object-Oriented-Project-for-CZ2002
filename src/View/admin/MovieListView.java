@@ -57,7 +57,7 @@ public class MovieListView extends View{
 		            break;
 		        case 3:
 					System.out.println("Enter the index of the movie you want to edit: ");
-					displayMovieList();
+				//	displayMovieList();
 					int movie = sc.nextInt();
 					displayMovieEditingMenu(movieList.get(movie));
 		        	break;
@@ -172,7 +172,7 @@ public class MovieListView extends View{
 			System.out.println("The list of all movies.\n");
 			for(Movie movie: movieList)
 			{
-				System.out.println(num + "\t" + movie.getTitle() + "\n\t" + movie.getRunTime() + "\n\t" + movie.getStatus());
+				System.out.println(movieList.indexOf(movie) + "\t" + movie.getTitle() + "\n\t" + movie.getRunTime() + "\n\t" + movie.getStatus());
 				System.out.print("\n");
 				num++;
 			}
@@ -337,7 +337,7 @@ public class MovieListView extends View{
 		{
 			try {
 				removeMovie(movie);
-				removeAllShowtimes(movie);
+			//	removeAllShowtimes(movie);
 				System.out.println("The movie has been removed");
 			} catch (IOException e) {
 				System.out.println("Failed to remove listing");

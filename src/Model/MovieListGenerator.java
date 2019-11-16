@@ -39,7 +39,7 @@ public class MovieListGenerator extends DataManager {
 				true, m2_cast);
 //		m2.addTotalSales(0);
 		list.add(m2);
-    addMovie(m2);
+    	addMovie(m2);
 		
 		ArrayList<String> m3_cast = new ArrayList<String>();
 		m3_cast.add("Kristen Stewart, Naomi Scott, Ella Balinska, Elizabeth Banks, Djimon Hounsou, Noah Centineo, Sam Claflin, Patrick Stewart");

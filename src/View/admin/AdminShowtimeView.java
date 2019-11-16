@@ -6,6 +6,7 @@ import static Presenter.AdminManager.confirmChoice;
 import static Presenter.CinemaOperatorManager.*;
 import static Presenter.Presenter.*;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,23 +23,19 @@ import Model.ShowTime;
 
 import View.admin.CinemaListView;
 
-public class AdminShowtimeView extends View{
+public class AdminShowtimeView extends View {
 
 	private Movie movieIn;
 	private Scanner sc = new Scanner(System.in);
 
-
-	public AdminShowtimeView(Movie movieIn)
-	{
+	public AdminShowtimeView(Movie movieIn) {
 		this.setInputMovie(movieIn);
 	}
-	
-	public AdminShowtimeView()
-	{
+
+	public AdminShowtimeView() {
 	}
 
-	protected void starter()
-	{
+	protected void starter() {
 		displayMenu();
 	}
 
@@ -47,35 +44,31 @@ public class AdminShowtimeView extends View{
 		Cinema cinemaIn;
 		ShowTime showTimeIn;
 		String inputString;
-		
+
 		Scanner sc = new Scanner(System.in);
 		this.setInputMovie(movieIn);
 		System.out.println("Showtime");
 		System.out.println();
-		System.out.println("(1) Display Showtimes\n"
-							+ "(2) Add Showtime\n"
-							+ "(3) Update Showtime List\n"
-							+ "(4) Remove Showtime\n"
-							+ "(5) Return\n");
+		System.out.println("(1) Display Showtimes\n" + "(2) Add Showtime\n" + "(3) Modify showtime time\n"
+				+ "(4) Remove Showtime\n" + "(5) Return\n");
 		System.out.println();
 		System.out.println("Enter the number of your choice: ");
-		
+
 		int choice = sc.nextInt();
-		while (verifyChoiceNumber(choice, 1, 5)) { 
+		while (verifyChoiceNumber(choice, 1, 5)) {
 			switch (choice) {
-		        case 1:
-		        	displayShowtime(this.getInputMovie()); 
-		            break;
-		        case 2:
-		        	dateIn = parseStringToDate("Enter showtime in the following format (dd/mm/yyyy hh:mm):");
-		        	cinemaIn = getCinema();
-		        	
-		        	showTimeIn = new ShowTime(cinemaIn, movieIn, dateIn); 
-		        	addShowtime(this.getInputMovie(), showTimeIn); 
-		            break;
-		        case 3:
-		        	updateShowTime(); 
-		        	break;
+			case 1:
+				displayShowtime(this.getInputMovie());
+				break;
+			case 2:
+				dateIn = parseStringToDate("Enter showtime in the following format (dd/mm/yyyy hh:mm):");
+				cinemaIn = getCinema();
+
+				showTimeIn = new ShowTime(cinemaIn, movieIn, dateIn);
+				addShowtime(this.getInputMovie(), showTimeIn);
+				break;
+			case 3:
+				break;
 		        case 4:
 		        	System.out.println("Enter showtime: ");
 		        	inputString = sc.next();
@@ -152,7 +145,12 @@ public class AdminShowtimeView extends View{
 		displayMenu();
 	}
 
-	
+	// private void modifyShowTime(ShowTime showtime)
+	// {
+	// 	Date dateIn = parseStringToDate("Enter showtime in the following format (dd/mm/yyyy hh:mm):");
+	// 	showtime.setTime(dateIn);
+	// 	displayMenu();
+	// }
 
 	private Movie getInputMovie() {
 		return this.movieIn;

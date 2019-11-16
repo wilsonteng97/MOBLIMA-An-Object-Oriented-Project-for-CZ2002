@@ -10,6 +10,7 @@ import Model.Movie;
 import Model.Review;
 import Model.ShowTime;
 import Presenter.*;
+import java.util.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -128,27 +129,33 @@ public class CinemaOperatorManager extends DataManager {
     }
     
     // ========================Cinema========================
-    private static void readCinemaList() {
+    public static void readCinemaList()
+     {
         // for (String cinema : cinemaList){
         //     System.out.println(cinema);
         // }
-        if(readDataFile_HashMap(cinemaListFile) == null)
-            cinemaList = new HashMap<>();
+        if(readDataFile_List(cinemaListFile) == null)
+             cinemaList = new HashMap<>();
+        
         else
-            cinemaList = (HashMap<CinemaOperator, ArrayList<Cinema>>) readDataFile_HashMap(cinemaListFile);
+            System.out.println("Cinema list is full");
+            cinemaList = (HashMap<CinemaOperator, ArrayList<Cinema>>) readDataFile_List(cinemaListFile);
+            
     }
 
     public static void addCinema(Cinema cinema) throws IOException {
-        if(cinemaList.get(cinema.getCinemaOperator()) == null)
+
+        CinemaOperator cinemaOperator1 = cinema.getCinemaOperator();
+        if(cinemaList.get(cinemaOperator1) == null)
         {
-            cinemaList.put(cinema.getCinemaOperator(), new ArrayList<Cinema>());
+            cinemaList.put(cinemaOperator1, new ArrayList<Cinema>());
         }   
         cinemaList.get(cinema.getCinemaOperator()).add(cinema);
         updateCinemaList();
     }
 
     public static void removeCinema(Cinema cinema) throws IOException {
-
+       
         cinemaList.get(cinema.getCinemaOperator()).remove(cinema);
         updateCinemaList();
     }
@@ -187,13 +194,7 @@ public class CinemaOperatorManager extends DataManager {
     }
 
     public static void removeMovie(Movie movie) throws IOException{
-    	readMovieList();
-    	try {
-    		movieList.remove(movie);
-    	}
-    	catch (Exception e) {
-    		System.out.println(e.getMessage());
-    	}
+    	movieList.remove(movie);
     	updateMovieListing();
     }
 
