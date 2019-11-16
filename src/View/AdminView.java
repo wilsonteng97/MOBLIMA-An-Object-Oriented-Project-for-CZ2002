@@ -55,7 +55,7 @@ public class AdminView extends View{
 					+ "(2) Modify cinema listing\n"
 					+ "(3) Modify movie showtime\n"
 					+ "(4) Configure system settings\n"
-					+ "(5) Logout"
+					+ "(5) Logout\n"
 					+ "Please enter choice");
 			int choice = sc.nextInt();
 			if (verifyChoiceNumber(choice, 1, 5)) 

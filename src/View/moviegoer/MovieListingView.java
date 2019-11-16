@@ -9,6 +9,7 @@ import View.View;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Model.Movie;
+import Presenter.CinemaOperatorManager;
 
 public class MovieListingView extends View{
 	private boolean top5Sales = false;
@@ -96,7 +97,7 @@ public class MovieListingView extends View{
 	    }
 	
 	private void displayMovieListing() {
-	    ArrayList<Movie> movieListing;
+	    ArrayList<Movie> movieListing = CinemaOperatorManager.getMovieList();
 	
 	    if (top5Sales) 
 	    	movieListing = getTop5RankingSales();
@@ -129,6 +130,7 @@ public class MovieListingView extends View{
             }
         }
         else {
+        	System.out.print("\n");
             for (Movie movie : movieListing) {  
                 if (movie.getStatus().equals(NO_LONGER_AVAILABLE)) 
                 	continue;
@@ -138,7 +140,7 @@ public class MovieListingView extends View{
         }
 	
         System.out.println(index + 1 + ". Return");
-
+        System.out.print("\n");
         int choice = sc.nextInt();
 
         if (choice == index + 1) 
