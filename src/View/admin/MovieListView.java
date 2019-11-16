@@ -34,15 +34,20 @@ public class MovieListView extends View{
 	}
 
 	private void displayMenu() {
-			System.out.println("(1) Display Movies\n"
+
+		System.out.println("Movie Listing");
+		System.out.println();
+		System.out.println("(1) Display Movies\n"
+
 				+ "(2) Add new Movie\n"
-				+ "(3) Update Movie Listing\n"
+				+ "(3) Edit Movie Listing\n"
 				+ "(4) Remove Movie\n"
 				+ "(5) Initizialize Movies\n"
 				+ "(6) Return\n");
+		System.out.println();
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		if(verifyChoiceNumber(choice, 1, 5)) { 
+		if(verifyChoiceNumber(choice, 1, 6)) { 
 			switch (choice) {
 				case 1:
 					displayMovieList();
@@ -51,7 +56,8 @@ public class MovieListView extends View{
 		        	newMovie();
 		            break;
 		        case 3:
-					System.out.println("Enter the index of the movie you want to update: ");
+					System.out.println("Enter the index of the movie you want to edit: ");
+					displayMovieList();
 					int movie = sc.nextInt();
 					displayMovieEditingMenu(movieList.get(movie));
 		        	break;
@@ -66,6 +72,7 @@ public class MovieListView extends View{
 					} catch (IOException e) {
 						System.out.println(e.getMessage());
 					}
+					displayMenu();
 					break;
 				case 6:
 					end();
@@ -154,20 +161,22 @@ public class MovieListView extends View{
 
 	private void displayMovieList()
 	{
+		movieList = getMovieList();
 		num = 0;
 		if(movieList.isEmpty())
 		{
-			System.out.println("List of movie is currently empty");
+			System.out.println("List of movie is currently empty\n");
 		}
 		else
 		{
+			System.out.println("The list of all movies.\n");
 			for(Movie movie: movieList)
 			{
-				System.out.println(num + " " + movie.getTitle() + "   " + movie.getStatus());
+				System.out.println(num + "\t" + movie.getTitle() + "\n\t" + movie.getRunTime() + "\n\t" + movie.getStatus());
+				System.out.print("\n");
 				num++;
 			}
 		}
-		
 		displayMenu();
 	}
 
@@ -324,7 +333,7 @@ public class MovieListView extends View{
 	private void deleteMovie(Movie movie)
 	{
 		System.out.println("Are You sure you want to delete "+ movie.getTitle() +  " Y/N");
-		String choice = sc.next();
+		char choice = sc.next().charAt(0);
 		if(confirmChoice(choice))
 		{
 			try {

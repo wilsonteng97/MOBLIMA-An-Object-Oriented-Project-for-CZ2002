@@ -31,7 +31,9 @@ public class CusShowtimeView extends View{
         Date dateChosen;
         
         if (movie.getStatus().equals(NO_LONGER_AVAILABLE)) {
-            System.out.println("(1) " + formatTimeDate(today) + " (today)\n"+
+        	System.out.println("Movie Showtime");
+        	System.out.println();
+        	System.out.println("(1) " + formatTimeDate(today) + " (today)\n"+
                     "(2) " + formatTimeDate(tomorrow) + " (tomorrow)\n"+
                     "(3) " + formatTimeDate(afterTomorrow) + " (after tomorrow)\n"+
                     "Please choose a date:");
@@ -49,6 +51,7 @@ public class CusShowtimeView extends View{
             }
         }
         else {
+        	System.out.println();
         	System.out.println("1. " + formatTimeDate(tomorrow)+
                     "\n2. " + formatTimeDate(afterTomorrow)+
                     "\nPlease choose a date:");
@@ -62,9 +65,9 @@ public class CusShowtimeView extends View{
                     break;
             }
         }
-
+        System.out.println();
         System.out.println("Showtime on " + formatTimeDate(dateChosen));
-
+        System.out.println();
         ArrayList<ShowTime> showtimeList = new ArrayList<>();
 
         if (movie.getShowTimes() != null) {
@@ -75,7 +78,7 @@ public class CusShowtimeView extends View{
 
         if (showtimeList.isEmpty()) {
         	System.out.println("No showtime on that day.");
-        	intent(this, new MovieListingView());
+        	end();
             return;
         }
 
@@ -83,7 +86,7 @@ public class CusShowtimeView extends View{
         for (ShowTime s : showtimeList) {
             System.out.println(++index + ": " + s);
         }
-        
+        System.out.println();
         System.out.println("Please choose a showtime:\n");
         int choice = sc.nextInt();        
 
@@ -92,6 +95,7 @@ public class CusShowtimeView extends View{
 	}
 
 	private void displayShowtimeDetail(ShowTime showtime) {
+		System.out.println();
 		System.out.println(showtime.toString());
 		System.out.println("(1) Check seat availability"+
                 "(2) Book seat"+
@@ -112,7 +116,7 @@ public class CusShowtimeView extends View{
                 displayPrice(showtime);
                 break;
             case 4:
-            	intent(this, new MovieListingView());
+            	end();
                 break;
         }
     }

@@ -21,17 +21,20 @@ public class Cinema implements Serializable {
 	private Integer operatorID;
 	private CinemaClass cinemaClass;
 	private CinemaOperator cinemaOperator;
+	private Double basePrice;
+
 	private List<ShowTime> showTimes;
 	private List<Seat> seats;
 	private Integer no_of_rows;
 	private Integer no_of_columns;
 	
-	public Cinema(String cinemaID, String cinemaName, CinemaClass cinemaClass, CinemaOperator cinemaOperator) {
+	public Cinema(String cinemaID, String cinemaName, CinemaClass cinemaClass, CinemaOperator cinemaOperator, Double basePrice) {
 		this.cinemaID = cinemaID;
 		this.cinemaName = cinemaName;
 	//	this.setOperatorID(operatorID);
 		this.cinemaClass = cinemaClass;
 		this.cinemaOperator = cinemaOperator;
+		this.setBasePrice(basePrice);
 		this.showTimes = new ArrayList<ShowTime>();
 		this.seats = new ArrayList<Seat>();
 		this.no_of_rows = 0;
@@ -79,6 +82,14 @@ public class Cinema implements Serializable {
 		this.cinemaOperator = cinemaOperator;
 	}
 
+	public Double getBasePrice() {
+		return basePrice;
+	}
+	
+	public void setBasePrice(Double basePrice) {
+		this.basePrice = basePrice;
+	}
+
 	// showTime
 	public void addShowTime(ShowTime showTime) {
 		showTimes.add(showTime);
@@ -104,6 +115,7 @@ public class Cinema implements Serializable {
 		return showtime_for_specific_input_movie;
 	}
 	
+	// baasePrice
 	public List<Seat> getSeatList() {
 		return seats;
 	}

@@ -19,6 +19,8 @@ import static Model.Enums.CinemaClass.*;
 
 public class CinemaListView extends View
 {
+	Scanner sc = new Scanner(System.in);
+
 	protected void starter()
 	{
 		displayMenu();
@@ -26,6 +28,8 @@ public class CinemaListView extends View
 
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
+		System.out.println("Cinema Listing");
+		System.out.println();
 		System.out.println("(1) Display Cinemas\n"
 				+ "(2) Add Cinema\n"
 				+ "(3) Remove Cinema\n"
@@ -96,7 +100,14 @@ public class CinemaListView extends View
 			+ "NORMAL, PLATINUM");
 			cinemaClass = getValueCinemaClass(cinemaClassIn);
 		}
-		Cinema cinema = new Cinema(cinemaID, cinemaName, cinemaClass, cinemaOperator);
+		
+		Double basePrice = null;
+		while(basePrice == null || basePrice<0)
+		{
+			System.out.println("Enter base price for a movie ticket in this Cinema");
+			basePrice = sc.nextDouble();
+		}
+		Cinema cinema = new Cinema(cinemaID, cinemaName, cinemaClass, cinemaOperator, basePrice);
 		addCinema(cinema);
 
 	}

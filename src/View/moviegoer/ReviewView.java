@@ -15,9 +15,11 @@ public class ReviewView extends View{
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Movie Review");
     	if (movie.getStatus() == COMING_SOON) {
+    		System.out.println();
     		System.out.println("Movie coming soon.");
-            intent(this, new MovieListingView());
+            end();
         }
+    	System.out.println();
     	System.out.println("(1) Write a review\n"+
                 "(2) View all reviews\n"+
                 "(3) Return");
@@ -30,14 +32,17 @@ public class ReviewView extends View{
             	displayReview(movie);
                 break;
             case 3:
-            	intent(this, new MovieListingView());
+            	end();
                 break;
         }
-        intent(this, new MovieListingView());
+        end();
     }	
 	@Override
 	protected void starter() {
     	displayMenu();
+	}
+	protected void end() {
+    	
 	}
   }
 

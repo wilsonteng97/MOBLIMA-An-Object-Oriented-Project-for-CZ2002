@@ -23,8 +23,7 @@ public class CinemaOperatorManager extends DataManager {
     private static HashMap<Movie, ArrayList<Review>> reviewList;
     private static HashMap<CinemaOperator, ArrayList<Cinema>> cinemaList;
     private static ArrayList<Movie> movieList;
-
-
+    
     public static boolean readTheData()
     {
         try {
@@ -144,12 +143,13 @@ public class CinemaOperatorManager extends DataManager {
     }
 
     public static void addMovie(Movie movie) throws IOException {
+    	readMovieList();
     	movieList.add(movie);
         updateMovieListing(movieList);
     }
 
-    public static void removeMovie(Movie movie) throws IOException
-    {
+    public static void removeMovie(Movie movie) throws IOException{
+    	readMovieList();
     	try {
     		movieList.remove(movie);
     	}
@@ -159,12 +159,13 @@ public class CinemaOperatorManager extends DataManager {
     	updateMovieListing(movieList);
     }
 
-    public static ArrayList<Movie> getMovieList()
-    {
+    public static ArrayList<Movie> getMovieList(){
+    	readMovieList();
         return movieList;
     }
     
     public static void updateMovieListing(ArrayList<Movie> movieList) {
+    	readMovieList();
 	    try {
 			writeDataFile(movieList, movieListFile);
 		} catch (IOException e) {

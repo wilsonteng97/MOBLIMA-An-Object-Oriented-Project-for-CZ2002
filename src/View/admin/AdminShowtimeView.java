@@ -50,12 +50,14 @@ public class AdminShowtimeView extends View{
 		
 		Scanner sc = new Scanner(System.in);
 		this.setInputMovie(movieIn);
-		
+		System.out.println("Showtime");
+		System.out.println();
 		System.out.println("(1) Display Showtimes\n"
 							+ "(2) Add Showtime\n"
 							+ "(3) Update Showtime List\n"
 							+ "(4) Remove Showtime\n"
 							+ "(5) Return\n");
+		System.out.println();
 		System.out.println("Enter the number of your choice: ");
 		
 		int choice = sc.nextInt();
