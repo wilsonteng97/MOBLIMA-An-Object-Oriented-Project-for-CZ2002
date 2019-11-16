@@ -138,7 +138,7 @@ public class CinemaListView extends View {
 		{
 			System.out.println(cinemaOperator.getOperatorID() + " " + cinemaOperator.getOperatorName());
 		}
-		int choiceOperator = passChoiceInt("Choice a cinema operator from which remove cinema");
+		int choiceOperator = passChoiceInt("Choic a cinema operator from which remove cinema");
 
 		CinemaOperator cinemaOperator = cinemaOperatorList.get(choiceOperator);
 		System.out.println(cinemaOperator.getOperatorName());
