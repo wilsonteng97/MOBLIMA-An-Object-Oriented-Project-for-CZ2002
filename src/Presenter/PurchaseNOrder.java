@@ -4,7 +4,7 @@ import Model.Seat;
 import Model.Cinema;
 
 public class PurchaseNOrder {
-	boolean confirm = true;
+  boolean confirm = true;
   String seatNum;
   Seat seat = new Seat();
 
