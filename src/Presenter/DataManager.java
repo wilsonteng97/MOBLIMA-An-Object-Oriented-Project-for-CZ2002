@@ -6,10 +6,10 @@ import java.util.HashMap;
 
 import Model.Movie;
 
-public abstract class DataManager {
+public class DataManager {
 
 	public static void writeDataFile(Object lister, String fileName) throws IOException{
-		new FileOutputStream(fileName).close(); //make a clean slate of data file first then add
+		//new FileOutputStream(fileName).close(); //make a clean slate of data file first then add
 		FileOutputStream fileOut = new FileOutputStream(fileName);
 	    ObjectOutputStream out = new ObjectOutputStream(fileOut);
 	

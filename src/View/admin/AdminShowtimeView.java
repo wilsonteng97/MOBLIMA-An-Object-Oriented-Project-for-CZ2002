@@ -47,6 +47,7 @@ public class AdminShowtimeView extends View{
 		Date dateIn = null;
 		Cinema cinemaIn;
 		ShowTime showTimeIn;
+	//	ArrayList<ShowTime> showTimes = getShowTimeList(movieIn);
 		String inputString;
 		
 		Scanner sc = new Scanner(System.in);
@@ -70,9 +71,8 @@ public class AdminShowtimeView extends View{
 		        case 2:
 		        	dateIn = parseStringToDate("Enter showtime in the following format (dd/mm/yyyy hh:mm):");
 		        	cinemaIn = getCinema();
-		        	
 		        	showTimeIn = new ShowTime(cinemaIn, movieIn, dateIn); 
-		        	addShowtime(this.getInputMovie(), showTimeIn); 
+		        	addShowtimeSequence(this.getInputMovie(), showTimeIn); 
 		            break;
 		        case 3:
 		        	break;
@@ -144,9 +144,14 @@ public class AdminShowtimeView extends View{
 		displayMenu();
 	}
 
-	private void addShowtime(Movie movieIn, ShowTime showTimeIn) {
+	private void addShowtimeSequence(Movie movieIn, ShowTime showTimeIn) {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-		addShowtime(movieIn, showTimeIn);
+		try {
+			addShowtime(movieIn, showTimeIn);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Fail to store the showtime");
+		}
 		System.out.println("Added showtime "+ (String)(formatter.format(showTimeIn)) +
 				   " for " + movieIn.getTitle());
 		displayMenu();
