@@ -38,7 +38,7 @@ public class MovieListGenerator extends DataManager {
 				true, m2_cast);
 //		m2.addTotalSales(0);
 		list.add(m2);
-//		addMovie(m2);
+
 		
 		ArrayList<String> m3_cast = new ArrayList<String>();
 		m3_cast.add("Kristen Stewart, Naomi Scott, Ella Balinska, Elizabeth Banks, Djimon Hounsou, Noah Centineo, Sam Claflin, Patrick Stewart");
@@ -55,6 +55,7 @@ public class MovieListGenerator extends DataManager {
 				"02-07-2019", "Jon Watts", "129 minutes",
 				"Peter Parker's relaxing European vacation takes an unexpected turn when Nick Fury shows up in his hotel room to recruit him for a mission. The world is in danger as four massive elemental creatures -- each representing Earth, air, water and fire -- emerge from a hole torn in the universe. Parker soon finds himself donning the Spider-Man suit to help Fury and fellow superhero Mysterio stop the evil entities from wreaking havoc across the continent.",
 				false, m4_cast);
+		m4.addTotalSales(2486);
 		list.add(m4);
 		
 		ArrayList<String> m5_cast = new ArrayList<String>();
@@ -63,6 +64,7 @@ public class MovieListGenerator extends DataManager {
 				"07-11-2019", "Jill Culton", "98 minutes",
 				"Abominable takes audiences on an epic 2,000-mile adventure from the streets of a Chinese city to the breathtaking Himalayan snowscapes. When teenage Yi (Chloe Bennet) encounters a young Yeti on the roof of her apartment building, she and her friends, Jin (Tenzing Norgay Trainor) and Peng (Albert Tsai), name him “Everest” and embark on an epic quest to reunite the magical creature with his family at the highest point on Earth.",
 				false, m5_cast);
+		m5.addTotalSales(1026);
 		list.add(m5);
 		
 		ArrayList<String> m6_cast = new ArrayList<String>();
@@ -72,6 +74,7 @@ public class MovieListGenerator extends DataManager {
 				"Hassan (Hairul Azreen) left his family since he was younger. He became military man to overcome his demon and to get away from the injustice towards his family and community committed by Raja (Dain Iskandar). After his stint in the army Hassan returns to help his family with a debt owed by his sister Zain (Fify Azmi) by fighting in a MMA match. Hassan and Zain had to go against Vee (Ismi Melinda) and Rayyan (Josiah Hogan) who are Raja’s children. Can they go against all odds to win the fight and would Hassan be able to save his family and community?",
 
 				false, m6_cast);
+		m5.addTotalSales(0);
 		list.add(m6);
 		
 		String fileName = "datafiles/movieListFile.txt";
