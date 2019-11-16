@@ -90,7 +90,6 @@ public class PaymentView extends View{
 		try {
 			displayMenu();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 	}

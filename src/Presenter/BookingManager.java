@@ -22,12 +22,6 @@ public class BookingManager {
         else userBookingList = (ArrayList<Booking>) readDataFile_List(userBookingListFile);
     }
 
-    
-    public static void saveBooking(Booking history) throws IOException {
-    	userBookingList.add(history);
-        updateBookingListing();
-    }
-
     public static void updateBookingListing() throws IOException{
         writeDataFile(userBookingList, userBookingListFile);
     }
@@ -45,5 +39,14 @@ public class BookingManager {
             		System.out.println(history);
             }
         }
+    }
+    
+    public static void addBooking(Booking history) {
+    	userBookingList.add(history);
+        try {
+			updateBookingListing();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 }
