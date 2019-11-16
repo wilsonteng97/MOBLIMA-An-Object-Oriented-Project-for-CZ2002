@@ -27,6 +27,7 @@ public class Movie implements Serializable{
 	private String director;
 	private ArrayList<String> cast;
 	private ArrayList<ShowTime> showTimes;
+	private ArrayList<Review> reviewList;
 
 	
 	public Movie(String title, AgeRestriction ageRestriction, MovieType type, ShowingStatus status, 
@@ -44,6 +45,7 @@ public class Movie implements Serializable{
 		this.blockBuster = blockBuster;
 		this.cast = cast;
 		this.totalSales = 0.0;
+		this.reviewList = new ArrayList<Review>();
 	//	this.languageList = new ArrayList<String>();
 	//	this.directorList = new ArrayList<String>();
 	//	this.castList = new ArrayList<String>();
@@ -195,6 +197,20 @@ public class Movie implements Serializable{
 	}
 	public void removeShowTime(ShowTime showTime) {
 		showTimes.remove(showTime);
+	}
+	
+	public ArrayList<Review> getReviewList() {
+		return reviewList;
+	}
+
+	public void addReview(Review review) {
+		this.reviewList.add(review);
+	}
+	
+	public void removeReview(Review review) {
+		if (reviewList.contains(review)) {
+			this.reviewList.remove(review);
+		}
 	}
 	
 	// Other Methods
