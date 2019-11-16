@@ -16,10 +16,12 @@ public class MovieGoerView extends View{
 
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("\nWelcome, please make a selection:\n"
-				+ "(1) Movie Listing\n"
+		System.out.println("Welcome, please make a selection:\n");
+		System.out.println("Menu\n"
+				+ "----\n"
+				+"(1) Movie Listing\n"
 				+ "(2) View Booking History\n"
-				+ "(3) Return");
+				+ "(3) Return\n");
 		System.out.println("Please enter your choice: ");
 		int choice = sc.nextInt();
 
