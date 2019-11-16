@@ -69,4 +69,17 @@ public class Presenter
 		}
 		return null;
 	}
+    
+    public static Date parseStringToDate_ddMMyyyy(String... inputString) {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		String stringDate = passChoiceString(inputString);
+		try {
+			Date showtimeIn = formatter.parse(stringDate);
+			System.out.println(showtimeIn);
+			return showtimeIn;
+		} catch (ParseException e) {
+			System.out.println("You input wrong format!");
+		}
+		return null;
+	}
 }

@@ -1,5 +1,7 @@
 package View;
-    
+
+import java.util.Scanner;
+
 public abstract class View {
     
     public View previousView;  
@@ -14,17 +16,24 @@ public abstract class View {
         }
         else
         {
+        	goBack();
             previousView.starter();
         }
+        
     }
     protected void intent(View currentView, View newView) {
         newView.previousView = currentView;
         newView.starter();
     }
     
+    protected static String goBack() {
+    	System.out.print("Press ENTER to go back");
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine();
+    }
+
     public View getPrevious()
     {
     	return previousView;
     }
-
 }
