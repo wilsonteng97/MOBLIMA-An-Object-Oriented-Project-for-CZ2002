@@ -24,8 +24,7 @@ public class SystemSettingView extends View{
 	
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("System Setting");
-		System.out.println();
+		System.out.println("\nSystem Setting");
 		System.out.println("(1) Configure Holidays\n"
 							+ "(2) Update Admin Account\n"
 							+ "(3) Configure Top 5 Ranking by Rating\n"

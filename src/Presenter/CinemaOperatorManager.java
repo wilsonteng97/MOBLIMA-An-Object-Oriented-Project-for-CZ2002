@@ -210,8 +210,6 @@ public class CinemaOperatorManager extends DataManager {
     }
     
     public static void updateMovieListing() throws IOException {
-//    	LinkedHashSet<Movie> hashSet = new LinkedHashSet<>(movieList);
-//        ArrayList<Movie> listWithoutDuplicates = new ArrayList<>(hashSet);
 		writeDataFile(movieList, movieListFile);
     }
     
