@@ -27,7 +27,8 @@ public class PaymentView extends View{
 	}	
     
     private void displayMenu() {
-    	System.out.println("Payment");
+    	System.out.println("Movie Payment");
+    	System.out.println();
     	System.out.println("Transaction ID: " + TID);
     	System.out.println("Ticket price: " + price);
     	System.out.println("GST: " + GST);
@@ -36,6 +37,7 @@ public class PaymentView extends View{
         	System.out.println("50% off for senior citizen");
         }
 
+        System.out.println();
         System.out.println("1. Confirm payment");
         System.out.println("2. Cancel");
 
@@ -45,7 +47,7 @@ public class PaymentView extends View{
                 saveBooking();
                 break;
             case 2:
-            	intent(this, new MovieListingView());
+            	end();
                 break;
         }
     }
@@ -91,9 +93,11 @@ public class PaymentView extends View{
         Booking record = new Booking(TID, customer, seat);
         addBooking(record);
         updateShowTime();
-        updateMovieListing();
+        updateMovieListing(movie);
+        System.out.println();
         System.out.println("Payment succeed!");
         intent(this, new MovieListingView());
+        end();
     }
 
 	@Override

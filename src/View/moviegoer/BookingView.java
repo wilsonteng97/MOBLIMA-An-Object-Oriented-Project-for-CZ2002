@@ -52,7 +52,9 @@ public class BookingView extends View{
     
     private void displayMenu() {
     	System.out.println("Booking detail");
+    	System.out.println();
         printBookingDetail();
+        System.out.println();
         System.out.println("(1) Proceed\n"+
                 "(2) Return");
         int choice = sc.nextInt();
@@ -61,7 +63,7 @@ public class BookingView extends View{
                 customerInfo();
                 break;
             case 2:            	
-            	intent(this, new MovieListingView());
+            	end();
                 break;
         }
     }  
@@ -70,7 +72,7 @@ public class BookingView extends View{
 		ShowTime showtime = seat.getShowtime();
         Movie movie = showtime.getMovie();
         Cinema cinema = showtime.getCinema();
-
+        System.out.println();
         System.out.println(movie.getTitle() + " (" + movie.getType().equals(MOVIE3D) != null ? "3D" : "Digital" + ")");
         System.out.println(movie.getAgeRestriction());
         System.out.println("Cinema: " + cinema + " (" + cinema.getCinemaOperator() + ")");
@@ -82,7 +84,8 @@ public class BookingView extends View{
     }
 
 	private void customerInfo() {
-        System.out.println("Please enter your name:");
+		System.out.println();
+		System.out.println("Please enter your name:");
         String name = sc.next();
         System.out.println("Please enter your mobile number:");
         String mobile = sc.next();
@@ -104,7 +107,7 @@ public class BookingView extends View{
 	@Override
 	protected void starter() {
 		if (bookingDone) 
-			intent(this, new MovieListingView());
+			end();
 		else
 			displayMenu();
 	}

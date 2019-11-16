@@ -34,13 +34,17 @@ public class MovieListView extends View{
 	}
 
 	private void displayMenu() {
-			System.out.println(
-				  "(1) Display Movies\n"
+
+		System.out.println("Movie Listing");
+		System.out.println();
+		System.out.println("(1) Display Movies\n"
+
 				+ "(2) Add new Movie\n"
 				+ "(3) Edit Movie Listing\n"
 				+ "(4) Remove Movie\n"
 				+ "(5) Initizialize Movies\n"
 				+ "(6) Return\n");
+		System.out.println();
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
 		if(verifyChoiceNumber(choice, 1, 6)) { 
@@ -227,9 +231,7 @@ public class MovieListView extends View{
 
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		while(choice != 11)
-		{
-			if(verifyChoiceNumber(choice, 1, 11)) 
+		if(verifyChoiceNumber(choice, 1, 11)) 
 			{ 
 				switch (choice) 
 				{
@@ -311,7 +313,8 @@ public class MovieListView extends View{
 					//	try
 					//	{
 						//	updateMovieListing();
-							System.out.println("Changes applied!");		
+							System.out.println("Changes applied!");	
+							displayMenu();	
 					//	}
 					//	catch(IOException e)
 					//	{
@@ -324,7 +327,6 @@ public class MovieListView extends View{
 			{
 				updateMovieDetails(movie);
 			}
-		}
 		updateMovieDetails(movie);
 	}
 

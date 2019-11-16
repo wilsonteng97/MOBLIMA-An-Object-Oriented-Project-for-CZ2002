@@ -28,6 +28,8 @@ public class CinemaListView extends View
 
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
+		System.out.println("Cinema Listing");
+		System.out.println();
 		System.out.println("(1) Display Cinemas\n"
 				+ "(2) Add Cinema\n"
 				+ "(3) Remove Cinema\n"
@@ -44,14 +46,14 @@ public class CinemaListView extends View
 		        	newCinema(); 
 		            break;
 				case 3:
-					int removecinema = passChoiceInt("Enter the index of the cinema You want to remove ");
 		        	deleteCinema(); 
 		            break;
 				case 4:
 					setMoviePrice();
 					break;
-		        case 5:
-		            break;
+		    case 5:
+					end();
+		      break;
 			}
 		}
 		else 

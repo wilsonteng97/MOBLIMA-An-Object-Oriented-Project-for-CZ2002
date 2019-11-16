@@ -9,6 +9,7 @@ import View.View;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Model.Movie;
+import Presenter.CinemaOperatorManager;
 
 public class MovieListingView extends View{
 	private boolean top5Sales = false;
@@ -18,12 +19,13 @@ public class MovieListingView extends View{
 	}	
     
     private void displayMenu() {
-    	
+    	System.out.println("Movie Listing\n");
     	System.out.println("(1) List all movies\n" 
     			+ "(2) List the top 5 movies by sales\n"
     			+ "(3) List the top 5 movies by ratings\n"
-    			+ "(4) Search Movie" 
+    			+ "(4) Search Movie\n" 
     			+ "(5) Return");
+    	System.out.println();
     	System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
 		switch (choice) {
@@ -46,10 +48,10 @@ public class MovieListingView extends View{
             	searchMovie(); 
                 break;
             case 5:
-            	intent(this, new MovieListingView());
-                break;
+            	break;
 			}
-		}
+		end();
+	}
 	
 	@Override
 	protected void starter() {
@@ -60,24 +62,29 @@ public class MovieListingView extends View{
 		}
 
 	private void searchMovie() {
+		System.out.println();
 		System.out.println("Enter the movie you choose: ");
 		String movieName = sc.next();
         Movie movieResult = passStringMovie(movieName);
         if (movieResult==null) {
+        	System.out.println();
         	System.out.println("No movie found");
             displayMenu();
         }
         else {
+        	System.out.println();
         	System.out.println(movieResult.getTitle() + " (" + movieResult.getStatus().toString() + ")");
             displayMovieDetail(movieResult);
         }
     }
 	
 	 private void displayMovieDetail(Movie movie) {
+		 System.out.println();
 		 System.out.println(movie.toString());
+		 System.out.println();
 		 System.out.println("1. Display showtime\n"+
 	                "2. Display/write reviews\n"+
-	                "3. Go back");
+	                "3. Return");
 
 		 int choice = sc.nextInt();
 			while (verifyChoiceNumber(choice, 1, 3)) {
@@ -96,7 +103,7 @@ public class MovieListingView extends View{
 	    }
 	
 	private void displayMovieListing() {
-	    ArrayList<Movie> movieListing;
+	    ArrayList<Movie> movieListing = CinemaOperatorManager.getMovieList();
 	
 	    if (top5Sales) 
 	    	movieListing = getTop5RankingSales();
@@ -129,6 +136,7 @@ public class MovieListingView extends View{
             }
         }
         else {
+        	System.out.print("\n");
             for (Movie movie : movieListing) {  
                 if (movie.getStatus().equals(NO_LONGER_AVAILABLE)) 
                 	continue;
@@ -138,7 +146,7 @@ public class MovieListingView extends View{
         }
 	
         System.out.println(index + 1 + ". Return");
-
+        System.out.print("\n");
         int choice = sc.nextInt();
 
         if (choice == index + 1) 

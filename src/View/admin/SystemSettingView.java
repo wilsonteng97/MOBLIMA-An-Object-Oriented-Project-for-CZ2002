@@ -17,12 +17,14 @@ public class SystemSettingView extends View{
 	
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
+  System.out.println("System Setting");
+		System.out.println();
 		System.out.println("(1) Configure Holidays\n"
 							+ "(2) Update Admin Account\n"
 							+ "(3) Configure Top 5 Ranking by Rating\n"
 							+ "(4) Configure Top 5 Ranking by Sales\n"
 							+ "(5) Return\n");
-		
+		System.out.println();
 		System.out.println("Enter the number of your choice: ");
 		// if(cinema.getStatus == PLATINUM)
 		// {
