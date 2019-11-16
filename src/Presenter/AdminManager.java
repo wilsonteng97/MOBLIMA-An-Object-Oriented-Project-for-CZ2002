@@ -181,6 +181,7 @@ public class AdminManager extends DataManager
     public static boolean confirmChoice(String choice)
     {
         if (choice.equals("Y") || choice.equals("y"))
+
         {
             return true;
         }
