@@ -21,6 +21,9 @@ public class CinemaOperatorGenerator extends DataManager {
             CinemaOperator c3 = new CinemaOperator(2, "Cathay");
             list.add(c3);
             addCinemaOperator(c3);
+
+     //       String fileName = "datafiles/cinemaOperatorListFile.txt";
+      //      writeDataFile(list, fileName);
             
         }
     }
