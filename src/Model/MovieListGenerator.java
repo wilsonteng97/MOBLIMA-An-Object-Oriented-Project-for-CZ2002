@@ -27,7 +27,7 @@ public class MovieListGenerator extends DataManager {
 				"03-10-2019", "Todd Phillips", "122 minutes",
 				"A failed stand-up comedian is driven insane and becomes a psychopathic murderer.",
 				true, m1_cast);
-		m1.addTotalSales(1500);
+//		m1.addTotalSales(1500);
 		list.add(m1);
 		
 		ArrayList<String> m2_cast = new ArrayList<String>();
@@ -36,9 +36,9 @@ public class MovieListGenerator extends DataManager {
 				"28-11-2019", "Anthony Chen", "103 minutes",
 				"In the film, a teacher and a student in a Singapore secondary school form a special, self-affirming relationship.",
 				true, m2_cast);
-		m2.addTotalSales(0);
+//		m2.addTotalSales(0);
 		list.add(m2);
-		addMovie(m2);
+//		addMovie(m2);
 		
 		ArrayList<String> m3_cast = new ArrayList<String>();
 		m3_cast.add("Kristen Stewart, Naomi Scott, Ella Balinska, Elizabeth Banks, Djimon Hounsou, Noah Centineo, Sam Claflin, Patrick Stewart");
@@ -46,10 +46,9 @@ public class MovieListGenerator extends DataManager {
 				"14-11-2019", "Elizabeth Banks", "119 minutes",
 				"Director Elizabeth Banks takes the helm as the next generation of fearless Charlie Angels take flight. In Banks, Kristen Stewart, Naomi Scott, and Ella Balinska are working for the mysterious Charles Townsend, whose security and investigative agency has expanded internationally. With the world锟絪 smartest, bravest, and most highly trained women all over the globe, there are now teams of Angels guided by multiple Bosleys taking on the toughest jobs everywhere. The screenplay is by Elizabeth Banks from a story by Evan Spiliotopoulos and David Auburn.",
 				false, m3_cast);
-		m3.addTotalSales(1086);
+//		m3.addTotalSales(1086);
 		list.add(m3);
 		
-
 		ArrayList<String> m4_cast = new ArrayList<String>();
 		m4_cast.add("Tom Holland, Samuel L. Jackson, Jake Gyllenhaal, Marisa Tomei, Jon Favreau, Zendaya , Jacob Batalon, Tony Revolori");
 		Movie m4 = new Movie("Spider-Man: Far From Home", Model.Enums.AgeRestriction.PG13, Model.Enums.MovieType.MOVIE3D, Model.Enums.ShowingStatus.NO_LONGER_AVAILABLE,
@@ -67,7 +66,6 @@ public class MovieListGenerator extends DataManager {
 		list.add(m5);
 		
 		ArrayList<String> m6_cast = new ArrayList<String>();
-
 		m6_cast.add("Hairul Azreen, Fify Azmi, Hilal Azman, Ismi Melinda, Henley Hii, Dain Iskandar Said, Josiah Hogan, Yayan Ruhian");
 		Movie m6 = new Movie("Wira", Model.Enums.AgeRestriction.PG13, Model.Enums.MovieType.DIGITAL, Model.Enums.ShowingStatus.COMING_SOON,
 				"21-11-2019", "Adrian Teh", "109 minutes",
@@ -76,9 +74,9 @@ public class MovieListGenerator extends DataManager {
 				false, m6_cast);
 		list.add(m6);
 		
-    String fileName = "datafiles/movieListFile.txt";
+		String fileName = "datafiles/movieListFile.txt";
 
-//    String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
+//		String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
 
 		writeDataFile(list, fileName);
 	}

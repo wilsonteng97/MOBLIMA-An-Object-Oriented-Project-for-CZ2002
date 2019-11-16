@@ -11,17 +11,17 @@ import Presenter.DataManager;
 
 public class KJ_Test {
     public static void main(String [] arg) throws IOException, ParseException, ClassNotFoundException{
-    	ArrayList<Customer> cust = new ArrayList<Customer>();
-    	cust = Model.UserAccountListGenerator.CustomerList();
+//    	ArrayList<Movie> cust = new ArrayList<Movie>();
     	
 //    	Movie a = new Movie()    	
-    	String fileName = "datafiles/userAccountListFile.txt";
-    	DataManager.writeDataFile(cust, fileName);
-    	ArrayList<Customer> print_movies = new ArrayList<Customer>();
-    	print_movies = (ArrayList<Customer>) DataManager.readDataFile_List(fileName);
+    	String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
+//    	DataManager.readDataFile_List(fileName);
+    	ArrayList<Movie> print_movies = new ArrayList<Movie>();
+    	Model.MovieListGenerator.MovieList();
+    	print_movies = (ArrayList<Movie>) DataManager.readDataFile_List(fileName);
     	
-    	for (Customer m : print_movies) {
-    		System.out.println(m.getName() + " " + m.getEmail());
+    	for (Movie m : print_movies) {
+    		System.out.println(m.getTitle() + " " + m.getDirector());
     	}
     	
     }
