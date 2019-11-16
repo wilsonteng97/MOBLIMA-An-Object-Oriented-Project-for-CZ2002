@@ -14,8 +14,15 @@ public class ShowTime implements Serializable {
 	private Cinema cinema;
 	private Movie movie;
 	private Date time;
-
+	private Seat[][] seats;
+	private int row = 8;
+	private int col = 16;
 	private List<MovieTicket> movieTickets;
+	
+	public ShowTime()
+	{
+		seats = new Seat[8][16];
+	}
 	
 	public ShowTime(Cinema cinema, Movie movie, Date time) {
 		this.showTimeID = -1;
@@ -25,6 +32,7 @@ public class ShowTime implements Serializable {
 		
 		movieTickets = new ArrayList<MovieTicket>();
 	}
+	
 	
 	// showTimeID
 	public int getShowTimeID() {
@@ -58,6 +66,16 @@ public class ShowTime implements Serializable {
  		this.time = time;
  	}
  
+ 	public Seat getSeatAt(int row, int col)
+ 	{
+ 		if(row > 8 || col > 16 || row <1 || col <1)
+ 		{
+ 			return null;
+ 		}
+ 		
+ 		return seats[row-1][col-1];
+ 	}
+ 	
  	// movieTickets
  	public void addMovieTicket(MovieTicket movieTicket) {
  		movieTickets.add(movieTicket);

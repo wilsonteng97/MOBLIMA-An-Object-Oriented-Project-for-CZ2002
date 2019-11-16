@@ -21,5 +21,10 @@ public abstract class View {
         newView.previousView = currentView;
         newView.starter();
     }
+    
+    public View getPrevious()
+    {
+    	return previousView;
+    }
 
 }
