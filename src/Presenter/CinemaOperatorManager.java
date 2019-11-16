@@ -133,7 +133,20 @@ public class CinemaOperatorManager extends DataManager {
 
     public static void updateCinemaList() {
         try {
-			writeDataFile(cinemaList, cinemaListFile);
+            writeDataFile(cinemaList, cinemaListFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+
+    public static void addCinemaOperator(CinemaOperator cinemaOperator) throws IOException
+    {
+        cinemaOperators.add(cinemaOperator);
+
+    }
+    public static void updateCinemaOperators() {
+	    try {
+			writeDataFile(cinemaOperators, cinemaOperatorListFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -167,6 +180,8 @@ public class CinemaOperatorManager extends DataManager {
     	movieList.add(movie);
         updateMovieListing();
     }
+
+    
 
     public static void removeMovie(Movie movie) throws IOException{
     	try {

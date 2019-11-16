@@ -68,6 +68,7 @@ public class AdminView extends View {
 			case 4:
 				try {
 					initialiseAdminAccounts();
+					System.out.println("You initialised admin accounts correctly");
 					} catch (IOException e1) {
 					System.out.println("Fail to load admin accounts");
 					}
@@ -76,6 +77,7 @@ public class AdminView extends View {
 			case 5:
 				try {
 					initialiseCinemaOperators();
+					System.out.println("You initialised cinema operators correctly");
 				} catch (IOException e) {
 					System.out.println("Fail to load cinema operators");
 				}
