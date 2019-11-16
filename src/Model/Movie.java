@@ -225,8 +225,8 @@ public class Movie implements Serializable{
 	public static Comparator<Movie> reviewRatingAvgComparator = new Comparator<Movie>() {
 
 		public int compare(Movie m1, Movie m2) {
-			Double average_rating1 = m1.getReviewRatingAverage(m1.getReviewList());
-			Double average_rating2 = m2.getReviewRatingAverage(m2.getReviewList());
+			Double average_rating1 = m1.getReviewRatingAverage();
+			Double average_rating2 = m2.getReviewRatingAverage();
 		   return average_rating2.compareTo(average_rating1);
 		}};
 	
