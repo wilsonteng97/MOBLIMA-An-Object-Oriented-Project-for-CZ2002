@@ -168,9 +168,9 @@ public class AdminManager extends DataManager
         return showtimeList.get(movie);
     }
 
-    public static boolean confirmChoice(String choice)
+    public static boolean confirmChoice(char choice)
     {
-        if(choice == "y" || choice =="Y")
+        if (choice == 'y' || choice == 'y')
         {
             return true;
         }
