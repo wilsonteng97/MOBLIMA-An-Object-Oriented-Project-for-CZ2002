@@ -76,6 +76,11 @@ public class ShowTime implements Serializable {
  		return seats[row-1][col-1];
  	}
  	
+ 	public Seat[][] getSeats()
+ 	{
+ 		return seats;
+ 	}
+ 	
  	// movieTickets
  	public void addMovieTicket(MovieTicket movieTicket) {
  		movieTickets.add(movieTicket);

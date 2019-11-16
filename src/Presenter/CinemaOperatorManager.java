@@ -164,7 +164,7 @@ public class CinemaOperatorManager extends DataManager {
         return movieList;
     }
     
-    public static void updateMovieListing(ArrayList<Movie> movieList) {
+    public static void updateMovieListing() {
     	readMovieList();
 	    try {
 			writeDataFile(movieList, movieListFile);
