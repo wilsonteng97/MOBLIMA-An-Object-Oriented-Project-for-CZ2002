@@ -29,7 +29,7 @@ public class CinemaListView extends View {
 		System.out.println("Cinema Listing");
 		System.out.println();
 		System.out.println("(1) Display Cinemas\n" + "(2) Add Cinema\n" + "(3) Remove Cinema\n"
-				+ "(4) Change Base Price of cinema\n" + "(5) Initialise cinemas\n" + "(6) Return\n");
+				 + "(4) Change Base Price of cinema\n" + "(5) Initialise cinema operators and cinemas\n" + "(6) Return\n");
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
 		if (verifyChoiceNumber(choice, 1, 6)) {
@@ -40,6 +40,7 @@ public class CinemaListView extends View {
 				break;
 			case 2:
 				newCinema();
+				displayMenu();
 				break;
 			case 3:
 				deleteCinema();
@@ -48,18 +49,18 @@ public class CinemaListView extends View {
 				setMoviePrice();
 				break;
 			case 5:
-					try {
-						initialiseCinemas();
-						System.out.println("You inicialise cinemas correctly");
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						System.out.println("Fail to initialise the seats");
-					}
-					displayMenu();
-					break;
+				try {
+					initialiseCinemas();
+					System.out.println("Initialiser successful\n");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				displayMenu();
+				break;
 		    case 6:
-					end();
-		     		break;
+				end();
+		     	break;
 			}
 		}
 		else 
@@ -73,6 +74,8 @@ public class CinemaListView extends View {
 		System.out.println("Enter Base Price to set for " + cinema.getCinemaName() + ": ");
 		Double basePrice = sc.nextDouble();
 		cinema.setBasePrice(basePrice);
+		System.out.println("You have changed price");
+		displayMenu();
 	}
 
 	protected void displayCinemaOperator()
@@ -170,27 +173,23 @@ public class CinemaListView extends View {
 	private Cinema getCinema() {
 		ArrayList<CinemaOperator> cinemaOperatorList;
 		cinemaOperatorList = getCinemaOperators();
-		int numCinemaOperator = 0;
 		for(CinemaOperator cinemaOperator: cinemaOperatorList)
 		{
-			System.out.println(numCinemaOperator + " " + cinemaOperator.getOperatorID() + cinemaOperator.getOperatorName());
-			numCinemaOperator++;
+			System.out.println(cinemaOperator.getOperatorID() + " " + cinemaOperator.getOperatorName());
 		}
-
 		int choice = passChoiceInt("Choose Cinema Operator: ");
-		ArrayList<CinemaOperator> cinemaOperatorsList = getCinemaOperators();
-		CinemaOperator cinemaOperator = cinemaOperatorsList.get(choice);
+		CinemaOperator cinemaOperator = cinemaOperatorList.get(choice);
 		
 		ArrayList<Cinema> cinemaList = getCinemaList(cinemaOperator);
 		int numCinema =0;
 		for(Cinema cinema: cinemaList)
 		{
 			System.out.println(numCinema + " "+ cinema.getCinemaID() + cinema.getCinemaName());
+			numCinema++;
 		}
 
 		choice = passChoiceInt("Choose Cinema: ");
 		Cinema cinema = cinemaList.get(choice);
-		
 		return cinema;
 	}
 }

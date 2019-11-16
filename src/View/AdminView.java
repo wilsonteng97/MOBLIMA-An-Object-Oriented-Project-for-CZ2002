@@ -20,7 +20,7 @@ public class AdminView extends View {
 
 	@Override
 	protected void starter() {
-		if (loggedIn == false)
+		if (loggedIn == true)
 			adminLogin();
 		else
 			displayMenu();
@@ -52,9 +52,9 @@ public class AdminView extends View {
 		System.out.println("Menu\n" + "----\n" + 
 				"Welcome Staff, please make a selection:\n" + "(1) Modify movie listing\n" + "(2) Modify cinema listing\n"
 						 + "(3) Configure system settings\n" + "(4) Initialize admins\n"
-						+ "(5) Initialize cinema operator \n" + "(6) Logout\n" + "\nPlease enter your choice:");
+						+ "(5) Logout\n" + "\nPlease enter your choice:");
 		int choice = sc.nextInt();
-		if (verifyChoiceNumber(choice, 1, 6)) {
+		if (verifyChoiceNumber(choice, 1, 5)) {
 			switch (choice) {
 			case 1:
 				intent(this, new MovieListView());
@@ -75,15 +75,6 @@ public class AdminView extends View {
 					displayMenu();
 					break;
 			case 5:
-				try {
-					initialiseCinemaOperators();
-					System.out.println("You initialised cinema operators correctly");
-				} catch (IOException e) {
-					System.out.println("Fail to load cinema operators");
-				}
-				displayMenu();
-				break;
-			case 6:
 				loggedIn = false;
 				System.out.println();
 				System.out.println("You have logged out.");

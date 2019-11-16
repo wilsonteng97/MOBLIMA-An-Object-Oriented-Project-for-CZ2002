@@ -30,7 +30,7 @@ public class AdminAccountListGenerator extends DataManager {
 		Admin a6 = new Admin("yiming", "Password-Yiming");
 		admin_list.add(a6);
 		
-		String fileName = "datafiles\\adminAccountListFile.txt";
+		String fileName = "datafiles/adminAccountListFile.txt";
 		writeDataFile(admin_list, fileName);
 	}
 }
