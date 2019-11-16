@@ -196,7 +196,7 @@ public class AdminManager extends DataManager
     public static ArrayList<Movie> getTop5RankingSales()
     {
         ArrayList<Movie> top5sales = new ArrayList<Movie>();
-
+        movieList = CinemaOperatorManager.getMovieList();
         for(Movie movie: movieList){
             top5sales.add(movie);
         }

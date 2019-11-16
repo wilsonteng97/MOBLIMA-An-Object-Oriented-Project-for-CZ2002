@@ -43,7 +43,7 @@ public class Movie implements Serializable{
 		this.synopsis = synopsis;
 		this.blockBuster = blockBuster;
 		this.cast = cast;
-	//	this.totalSales = 0.0;
+		this.totalSales = 0.0;
 	//	this.languageList = new ArrayList<String>();
 	//	this.directorList = new ArrayList<String>();
 	//	this.castList = new ArrayList<String>();
