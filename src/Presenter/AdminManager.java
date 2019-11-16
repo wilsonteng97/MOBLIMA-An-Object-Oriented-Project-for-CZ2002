@@ -241,8 +241,12 @@ public class AdminManager extends DataManager
     {
         ArrayList<Movie> top5sales = new ArrayList<Movie>();
         movieList = CinemaOperatorManager.getMovieList();
+        int counter = 0;
         for(Movie movie: movieList){
             top5sales.add(movie);
+            if (counter == 5) break;
+            counter++;
+            
         }
         Collections.sort(top5sales, Model.Movie.movieSalesComparator);
         
