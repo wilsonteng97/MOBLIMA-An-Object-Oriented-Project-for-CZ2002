@@ -130,32 +130,32 @@ public class AdminManager extends DataManager
         ArrayList<Movie> top5rating = new ArrayList<Movie>();
 
         for(Movie movie: movieList)
-        {
             top5rating.add(movie);
-        }
+        
+        Collections.sort(top5rating, Model.Movie.reviewRatingAvgComparator);
 
-        Collections.sort(top5rating, new Comparator<Movie>()
-        {
-            public int compare(Movie m1, Movie m2)
-            {
-                if(getMovieRating(m1) > getMovieRating(m2))
-                {
-                    return 1;
-                }
-                else if(getMovieRating(m1) < getMovieRating(m2))
-                {
-                    return -1;
-                }
-                else
-                {
-                    return 0;
-                }  
-            }
-        });
-        while(top5rating.size() > 5)
-        {
-            top5rating.remove(5);
-        }
+//        Collections.sort(top5rating, new Comparator<Movie>()
+//        {
+//            public int compare(Movie m1, Movie m2)
+//            {
+//                if(getMovieRating(m1) > getMovieRating(m2))
+//                {
+//                    return 1;
+//                }
+//                else if(getMovieRating(m1) < getMovieRating(m2))
+//                {
+//                    return -1;
+//                }
+//                else
+//                {
+//                    return 0;
+//                }  
+//            }
+//        });
+//        while(top5rating.size() > 5)
+//        {
+//            top5rating.remove(5);
+//        }
 
         return top5rating;
     }
