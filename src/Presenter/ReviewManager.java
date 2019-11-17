@@ -15,7 +15,18 @@ public class ReviewManager {
     public ReviewManager()  {
         
     }    
-    
+    public static void readReviewList()
+    {
+        if(readDataFile_HashMap(reviewListFile) == null)
+        {
+            reviewList = new HashMap<>();
+        }
+        else
+        {
+            reviewList = (HashMap<Movie, ArrayList<Review>>) readDataFile_HashMap(reviewListFile);
+        }
+    }
+
     public static void addNewReview(Movie movie, Review review) throws IOException {
         if(reviewList.get(movie) == null) 
         	reviewList.put(movie, new ArrayList<>());

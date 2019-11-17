@@ -19,20 +19,20 @@ import static Presenter.AdminManager.*;
 import static Presenter.CustomerManager.*;
 import static Presenter.ReviewManager.*;
 public class CinemaOperatorManager extends DataManager {   
-    private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
     private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
     private final static String reviewListFile = "datafiles/reviewListFile.txt";
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
     private final static String movieListFile = "datafiles/movieListFile.txt";
     private final static String holidayListFile = "datafiles/holidayListFile.txt";
     private final static String cinemaOperatorListFile = "datafiles/cinemaOperatorListFile.txt";
+    private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
 
     private static ArrayList<CinemaOperator> cinemaOperators;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<CinemaOperator, ArrayList<Cinema>> cinemaList;
     private static ArrayList<Movie> movieList;
     private static HashMap<String, Holiday> holidayList;
-    
+    private static ArrayList<Admin> adminAccountList;
     public static void readTheData()
     {
             readCinemaList();
@@ -58,6 +58,25 @@ public class CinemaOperatorManager extends DataManager {
 //        }
 //        return true;
 //    }
+public static void readAdminAccount()
+{
+    if(readDataFile_List(adminAccountListFile) == null)
+    {
+        adminAccountList = new ArrayList<Admin>();
+    }
+    else
+    {
+        adminAccountList = (ArrayList<Admin>) readDataFile_List(adminAccountListFile);
+    }
+}
+
+public static void updateAdminAccount(){
+   try {
+        writeDataFile(adminAccountList, adminAccountListFile);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 
     private static void readCinemaOperator()
     {

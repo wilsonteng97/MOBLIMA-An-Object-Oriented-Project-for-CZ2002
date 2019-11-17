@@ -52,25 +52,7 @@ public class AdminManager extends DataManager
 
 
     // =======================Admin Account=======================
-    public static void readAdminAccount()
-    {
-        if(readDataFile_List(adminAccountListFile) == null)
-        {
-            adminAccountList = new ArrayList<Admin>();
-        }
-        else
-        {
-            adminAccountList = (ArrayList<Admin>) readDataFile_List(adminAccountListFile);
-        }
-    }
-
-    public static void updateAdminAccount(){
-       try {
-		    writeDataFile(adminAccountList, adminAccountListFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    }
+    
 
     // =======================System Setting=======================
     
@@ -180,26 +162,7 @@ public class AdminManager extends DataManager
     }
 
     // =========================Review Lists=========================
-	public static void readReviewList()
-    {
-        if(readDataFile_HashMap(reviewListFile) == null)
-        {
-            reviewList = new HashMap<>();
-        }
-        else
-        {
-            reviewList = (HashMap<Movie, ArrayList<Review>>) readDataFile_HashMap(reviewListFile);
-        }
-    }
-
-    public static void updateReviewList() 
-    {
-        try {
-			writeDataFile(reviewList, reviewListFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    }
+	
 
     public static ArrayList<Review> getReviewList(Movie movie){
         return movie.getReviewList();
