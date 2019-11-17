@@ -36,13 +36,13 @@ public class CinemaOperatorManager extends DataManager {
     public static void readTheData()
     {
             readCinemaList();
-            readAdminAccount();
+//            readAdminAccount();
             readMovieList();
             readHolidayList();
             readCinemaOperator();
             readShowtime();
             readCustomerList();
-            readReviewList();
+//            readReviewList();
     }
 //    public static boolean readTheData()
 //    {
