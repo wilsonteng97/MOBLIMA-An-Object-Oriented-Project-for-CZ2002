@@ -18,10 +18,25 @@ public class ShowTime implements Serializable {
 	private int row = 8;
 	private int col = 16;
 	private List<MovieTicket> movieTickets;
-	
+	private Seat[][] cinemaLayout;
+
 	public ShowTime()
 	{
-		seats = new Seat[8][16];
+		cinemaLayout = new Seat[row][col];
+		setupTheSeat();
+	}
+
+	public void setupTheSeat()
+	{
+		int id = 1;
+		for(int i = 1; i<row; i++)
+		{
+			for (int j =1; j<col; j++)
+			{
+				cinemaLayout[i][j] = new Seat(id,i,j, this);
+				id++;
+			}
+		}
 	}
 	
 	public ShowTime(Cinema cinema, Movie movie, Date time) {
@@ -32,7 +47,10 @@ public class ShowTime implements Serializable {
 		this.seats = new Seat[row][col];
 		movieTickets = new ArrayList<MovieTicket>();
 	}
-	
+	public void setSeats()
+	{
+		seats = new Seat[8][16];
+	}
 	
 	// showTimeID
 	public int getShowTimeID() {
