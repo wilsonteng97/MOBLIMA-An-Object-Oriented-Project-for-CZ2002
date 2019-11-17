@@ -27,6 +27,7 @@ public class Booking implements Serializable{
 	private BookingStatus status;
 	/**  The list of movie tickets tied to this particular Booking. */
 	private List<MovieTicket> movieTickets;
+	private Seat seat;
 	
 	/**
 	 * Instantiates a new booking. Default booking ID is -1.
@@ -36,16 +37,16 @@ public class Booking implements Serializable{
 	 * @param date the date the booking was made
 	 * @param transaction the transaction associated with this booking
 	 * @param status the status of the booking {@code BookingStatus}
-	 * @param movieTickets The list of movie tickets tied to this particular Booking
+	 * @param seat The list of movie tickets tied to this particular Booking
 	 */
 	public Booking(Customer customer, Date date, Transaction transaction,
-					BookingStatus status, List<MovieTicket> movieTickets) {
+					BookingStatus status, Seat seat) {
 		this.bookingID = transaction.getTransaction_ID();
 		this.customer=customer;
 		this.date = date;
 		this.status = status;
 		this.transaction = transaction;
-		this.movieTickets = movieTickets;
+		this.seat = seat;
 	}
 
 	/**
@@ -58,24 +59,24 @@ public class Booking implements Serializable{
 		return transaction.getTransaction_ID();
 	}
 		
-//	/**
-//	 * Gets the seat.
-//	 *
-//	 * @return the seat
-//	 */
-//	// seat
-//	public Seat getSeat() {
-//		return seat;
-//	}
-	
-//	/**
-//	 * Sets the seat.
-//	 *
-//	 * @param seat the new seat
-//	 */
-//	public void setSeat(Seat seat) {
-//		this.seat=seat;
-//	}
+////	/**
+////	 * Gets the seat.
+////	 *
+////	 * @return the seat
+////	 */
+////	// seat
+////	public Seat getSeat() {
+////		return seat;
+////	}
+//	
+////	/**
+////	 * Sets the seat.
+////	 *
+////	 * @param seat the new seat
+////	 */
+////	public void setSeat(Seat seat) {
+////		this.seat=seat;
+////	}
 	
 	/**
 	 * Sets the booking ID.
