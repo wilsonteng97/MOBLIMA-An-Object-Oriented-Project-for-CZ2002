@@ -15,23 +15,18 @@ public class Seat implements Serializable {
 	
 	private Integer seatID; // SeatID starts from 1, starts from the row nearest to the cinema.
 	private String cinemaID;
-	private int seatCol = 9;
-	private int seatRow = 18;
+	private int seatCol;
+	private int seatRow;
 	private Integer operatorID;
 	private ShowTime showtime;
 	private Boolean occupied;	
 
-	public Seat(Integer seatID, int seatCol, int seatRow, ShowTime showtime) {
+	public Seat(Integer seatID, int seatRow, int seatCol, ShowTime showtime) {
 		this.seatID = seatID;
 		this.seatCol = seatCol;
 		this.seatRow = seatRow;
 		this.showtime = showtime;
 		this.occupied = false;
-	}
-
-	public void setupTheSeat()
-	{
-
 	}
 	
 	// seatID
@@ -79,16 +74,16 @@ public class Seat implements Serializable {
 	
 	// occupied
 	// return boolean of whether seat is occupied at input showTime
-	public boolean isOccupiedAt() {
+	public boolean isOccupied() {
 		return occupied;
 	}
-	public void setOccupiedAt(boolean value) {
+	public void setOccupied(boolean value) {
 		occupied = value;
 	}
 	
 	// printSeat
-	public void printSeat(ShowTime showTime) {
-		String symbolToPrint = this.isOccupiedAt() ? "X" : " ";
+	public void printSeat() {
+		String symbolToPrint = this.isOccupied() ? "X" : " ";
 		System.out.print("[" + symbolToPrint + "] ");
 	}
 }
