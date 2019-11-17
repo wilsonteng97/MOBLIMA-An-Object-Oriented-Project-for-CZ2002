@@ -29,7 +29,7 @@ public class ShowTime implements Serializable {
 		this.cinema = cinema;
 		this.movie = movie;
 		this.time = time;
-		
+		this.seats = new Seat[row][col];
 		movieTickets = new ArrayList<MovieTicket>();
 	}
 	
