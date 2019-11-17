@@ -114,24 +114,25 @@ public class AdminManager extends DataManager
 //		}
 //    }
 
-    public static void initialiseCinemaOperators() throws IOException
-    {
-        CinemaOperatorGenerator.CinemaOperatorList();
-    }
-    public static void initialiseAdminAccounts() throws IOException
-    {
-        AdminAccountListGenerator.AdminAccounts();
-    }
-//    public static void initialiseUserAccounts() throws ParseException, IOException {
-//    	UserAccountListGenerator.CustomerList();
-//    }
-    public static void initialiseCinemas() throws IOException {
+//     public static void initialiseCinemaOperators() throws IOException
+//     {
+//         CinemaOperatorGenerator.CinemaOperatorList();
+//     }
+/    public static void initialiseAdminAccounts() throws IOException
+     {
+         AdminAccountListGenerator.AdminAccounts();
+     }
+// //    public static void initialiseUserAccounts() throws ParseException, IOException {
+// //    	UserAccountListGenerator.CustomerList();
+// //    }
+    public static void initialiser() throws IOException {
         MovieListGenerator.MovieList();
         CinemaOperatorGenerator.CinemaOperatorList();
         CinemaListGenerator.CinemaList();
         try {
             ShowTimeGenerator.Showtimes();
             UserAccountListGenerator.CustomerList();
+            ReviewListGenerator.ReviewList();
         } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
