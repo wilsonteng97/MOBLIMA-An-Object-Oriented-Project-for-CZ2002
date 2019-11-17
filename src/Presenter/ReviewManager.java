@@ -14,9 +14,7 @@ public class ReviewManager {
 
     public ReviewManager()  {
         
-    }
-
-    
+    }    
     
     public static void addNewReview(Movie movie, Review review) throws IOException {
         if(reviewList.get(movie) == null) 

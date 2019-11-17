@@ -21,11 +21,13 @@ public class BookingHistoryView extends View{
     	if (check_cust != null) {
     		System.out.println("Booking History");  	
     		System.out.println();
-    		getBookingHistory(customerName); 
+    		getBookingHistory(check_cust); 
+    		goBack();
     		end();
     	}
     	else {
     		System.out.println("No such customer exist");
+    		goBack();
     		end();
     	}
     }

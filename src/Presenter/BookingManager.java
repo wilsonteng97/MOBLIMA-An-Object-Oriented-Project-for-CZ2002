@@ -1,49 +1,39 @@
 package Presenter;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import static Presenter.DataManager.*;
 import Model.Booking;
+import Model.Customer;
 
 public class BookingManager {
-    // private final static String userBookingListFile = "datafiles/userBookingFile.txt";
-    // private static ArrayList<Admin> userBookingList;
+    private final static String userBookingListFile = "datafiles/userBookingFile.txt";
+    private static ArrayList<Booking> userBookingList;
 
     public BookingManager(){
         
     }
-
-    public static void addBooking(Booking new_booking){
-        // userBookingList.add(new_booking);
-        // updateBookingListing();
+    
+    public static void addBooking(Booking history) throws IOException {
+    	userBookingList.add(history);
+        updateBookingListing();
     }
 
-    public void removeBooking(){
-        // userBookingList.remove(movie);
-        // updateBookingListing();
+    public static void updateBookingListing() throws IOException{
+        writeDataFile(userBookingList, userBookingListFile);
     }
 
-    public void updateBookingListing(){
-        // writeDataFile(userBookingListFile, userBookingList);
-    }
-
-    public static void getBookingHistory(String customerName){
-    	//Customer customer = passStringCustomer(customerName);
-    	// for (String booking : userBookingList){
-        //     if (booking == customer){
-        //         System.out.println(booking);
-        //     }
-        // }
+    
+    public static void getBookingHistory(Customer customer){
     	
-    	/*
-    	 ArrayList<BookingHistory> bookingHistory = getBookingHistory();
-
-        if (bookingHistory == null || bookingHistory.isEmpty()) {
-            readString("No history to show.",
-                    "Press ENTER to go back.", "");
+    	if (userBookingList == null || userBookingList.isEmpty()) {
+            System.out.println("No history to show.");
         }
         else {
-            for (BookingHistory record : bookingHistory) {
-                System.out.println(record);
+            for (Booking history : userBookingList) {
+            	if (history.getCustomer() == customer)
+            		System.out.println(history);
             }
         }
-    	 */
     }
 }
