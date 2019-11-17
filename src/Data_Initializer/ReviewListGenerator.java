@@ -10,7 +10,18 @@ import Model.Movie;
 import Model.Review;
 import static Presenter.ReviewManager.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ReviewListGenerator implements dummy records of reviews to the system.
+ */
 public class ReviewListGenerator {
+	
+	/**
+	 * Review list to be generated. The object is created based on the attributes in the constructor.
+	 * The reviews are created for use in the system.
+	 * As the review need the customer object, getCustomerFromGenerator() generates the customer object.
+	 * @throws ParseException the parse exception
+	 */
 	public static void ReviewList() throws ParseException {
 		ArrayList<Review> review_list = new ArrayList<Review>();
 
@@ -28,7 +39,6 @@ public class ReviewListGenerator {
 		try {
 			addNewReview( r1);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -41,7 +51,6 @@ public class ReviewListGenerator {
 		try {
 			addNewReview(r2);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -54,9 +63,7 @@ public class ReviewListGenerator {
 		try {
 			addNewReview(r3);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 }

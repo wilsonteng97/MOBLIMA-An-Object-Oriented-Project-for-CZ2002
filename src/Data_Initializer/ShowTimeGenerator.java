@@ -12,7 +12,19 @@ import Model.ShowTime;
 import Model.Enums.CinemaClass;
 import Presenter.CinemaOperatorManager;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ShowTimeGenerator implements dummy records of reviews to the system.
+ */
 public class ShowTimeGenerator {
+	
+	/**
+	 * Showtimes to be generated. The object is created based on the attributes in the constructor.
+	 * The showtimes are created for use in the system.
+	 * As the showtime object require the movie and cinema objects, getMovieFromGenerator() and getCinemaFromGenerator() are called to fulfill the objects.
+	 * @throws ParseException the parse exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void Showtimes() throws ParseException, IOException {
 		ArrayList<ShowTime> showtimeList = new ArrayList<ShowTime>();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");

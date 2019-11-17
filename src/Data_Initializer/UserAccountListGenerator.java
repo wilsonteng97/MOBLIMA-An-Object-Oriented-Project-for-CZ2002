@@ -9,8 +9,23 @@ import static Presenter.CinemaOperatorManager.*;
 import Presenter.DataManager;
 import Model.Customer;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UserAccountListGenerator implements dummy records of customer accounts to the system.
+ */
 public class UserAccountListGenerator {
+	
+	/** The customer list to add the customer object.
+	 *  */
 	private static ArrayList<Customer> cust_list = new ArrayList<Customer>();
+	
+	/**
+	 * The customer accounts to be generated. The object is created based on the attributes in the constructor.
+	 * These accounts will be used for logging into the system.
+	 * Math.random() is used to generate a random number for the customer ID.
+	 * Accounts details are saved into the txt file.
+	 * @throws ParseException the parse exception
+	 */
 	public static void CustomerList() throws ParseException {
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
@@ -63,6 +78,13 @@ public class UserAccountListGenerator {
 		}
 
 	}
+	
+	/**
+	 * Gets the customer from the list of customer created so that other objects can use the customer object created here.
+	 *
+	 * @param n the index of the list which the required objects want.
+	 * @return the customer from the list
+	 */
 	public static Customer getCustomerFromGenerator(int n)
 	{
 		return cust_list.get(n);
