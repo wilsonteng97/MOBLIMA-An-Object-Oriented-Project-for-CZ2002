@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.RandomAccess;
 import java.util.Scanner;
 import Model.Booking;
 import Model.Customer;
@@ -16,8 +15,6 @@ import Model.Seat;
 import Model.Transaction;
 import Model.Enums.BookingStatus;
 import Model.Enums.TransactionMethod;
-
-import java.util.Random;
 
 public class PaymentView extends View{
 	private double price;
@@ -85,7 +82,7 @@ public class PaymentView extends View{
 												  today, TransactionMethod.DEBIT_CREDIT);
 		
         Booking record = new Booking(customer, today, transaction, 
-        							 BookingStatus.ACCEPTED, null);
+        							 BookingStatus.ACCEPTED, seat);
         addBooking(record);
         try {
 			updateShowTime();
