@@ -41,7 +41,7 @@ public class AdminManager extends DataManager
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<Movie, ArrayList<Review>> reviewList;
     private static ArrayList<Movie> movieList;
-    private static HashMap<String, Holiday> holidayList;
+    private static ArrayList<Holiday> holidayList;
 
     // =========================Movie Price=========================
 //    public double setMoviePrice(){
@@ -63,31 +63,41 @@ public class AdminManager extends DataManager
     
  // =======================Holiday=======================
     public static void addHoliday(Holiday holiday) {
-    	String key = holiday.getDate().toString();
-    	holidayList.put(key, holiday);
+        holidayList.add(holiday);
+        updateHolidayList();
     }
     
-    public static void removeHoliday(Date holidayDate) throws IOException{
-    	String key = holidayDate.toString();
-    	holidayList.remove(key);
+    public static void removeHoliday(Holiday holiday) throws IOException{
+        holidayList.remove(holiday);
+        updateHolidayList();
     }
     
-    public static HashMap<String, Holiday> getHolidayList() {
+    public static ArrayList<Holiday> getHolidayList() {
     	return holidayList;
     }
-    
-//    public static void readHolidayList()
-//    {
-//        if(readDataFile_List(adminAccountListFile) == null)
-//        {
-//        	holidayList = new HashMap<String, Holiday>();
-//        }
-//        else
-//        {
-//        	holidayList = (HashMap<String, Holiday>) readDataFile_List(holidayListFile);
-//        }
-//    }
-//
+
+    public static void readHolidayList()
+    {
+       if(readDataFile_List(holidayListFile) == null)
+       {
+       	holidayList = new ArrayList<>();
+       }
+       else
+       {
+       	holidayList = (ArrayList<Holiday>) readDataFile_HashMap(holidayListFile);
+       }
+    }
+
+    public static void updateHolidayList()
+    {
+        try {
+            writeDataFile(holidayList, holidayListFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 //    public static void updateHolidayList(){
 //       try {
 //		writeDataFile(holidayList, holidayListFile);
@@ -199,7 +209,6 @@ public class AdminManager extends DataManager
     public static boolean confirmChoice(String choice)
     {
         if (choice.equals("Y") || choice.equals("y"))
-
         {
             return true;
         }
