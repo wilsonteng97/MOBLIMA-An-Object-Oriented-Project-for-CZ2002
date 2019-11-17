@@ -16,7 +16,7 @@ public class BookingManager {
         
     }
 
-    private static void readBookingListing() throws IOException, ClassNotFoundException {
+    public static void readBookingListing() throws IOException {
         if (readDataFile_List(userBookingListFile) == null) 
         	userBookingList = new ArrayList<>();
         else userBookingList = (ArrayList<Booking>) readDataFile_List(userBookingListFile);
