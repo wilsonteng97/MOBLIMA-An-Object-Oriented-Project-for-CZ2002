@@ -53,7 +53,7 @@ public class ReviewView extends View{
 	    Scanner sc = new Scanner(System.in);
 		System.out.println("Write Review:");
 		System.out.println("Please enter your name:");
-	    String name = sc.next();
+	    String name = sc.nextLine();
 	    Customer customer = passStringCustomer(name);
 	    System.out.println("Please enter your rating: (integer between 1 ~ 5)");
 	    int rating = sc.nextInt();
