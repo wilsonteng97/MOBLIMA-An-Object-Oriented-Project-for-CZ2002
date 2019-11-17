@@ -52,7 +52,7 @@ public class AdminView extends View {
 		System.out.println("Menu\n" + "----\n" + 
 				"Welcome Staff, please make a selection:\n" + "(1) Modify movie listing\n" + "(2) Modify cinema listing\n"
 						 + "(3) Configure system settings\n" + "(4) Initialize admins\n"
-						+ "(5) Display customers details \n" + "(6) Initialize data" + "(7) Logout\n" + "\nPlease enter your choice:");
+						+ "(5) Display customers details \n" + "(6) Initialize data\n" + "(7) Logout\n" + "\nPlease enter your choice:");
 		int choice = sc.nextInt();
 		if (verifyChoiceNumber(choice, 1, 7)) {
 			switch (choice) {
@@ -80,10 +80,9 @@ public class AdminView extends View {
 			case 6:
 				try {
 					initialiser();
-					System.out.println("You inicialise cinemas correctly");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
-					System.out.println("Fail to initialise the seats");
+					e.printStackTrace();
 				}
 				displayMenu();
 				break;
