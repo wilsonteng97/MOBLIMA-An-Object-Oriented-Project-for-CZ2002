@@ -23,7 +23,7 @@ public class LoginManager {
     private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt"; // file that stores the
                                                                                              // login data belonging to
                                                                                              // staff
-    private final static String userAccountListFile = "datafiles/adminAccountListFile.txt"; // file that stores the
+    private final static String userAccountListFile = "datafiles/userAccountListFile.txt"; // file that stores the
                                                                                             // login data belonging to
                                                                                             // customer
     
