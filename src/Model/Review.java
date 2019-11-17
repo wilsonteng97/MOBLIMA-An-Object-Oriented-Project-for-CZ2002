@@ -8,15 +8,19 @@ public class Review implements Serializable {
 	private String comment;
 	private Date date;
 	private Customer customer;
-	
-	public Review (Integer rating, String comment, Date date, Customer customer) {
+	private Movie movie;
+	public Review (Integer rating, String comment, Date date, Customer customer, Movie movie) {
 		this.rating = rating;
 		this.comment = comment;
 		this.date = date;
 		this.customer = customer;
+		this.movie = movie;
 	}
 	
-
+	public Movie getMovie()
+	{
+		return movie;
+	}
 	//Get Methods
 	public Integer getRating() {
 		return this.rating;

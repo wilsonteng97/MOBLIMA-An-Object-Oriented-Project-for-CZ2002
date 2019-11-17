@@ -63,7 +63,7 @@ public class AdminShowtimeView extends View{
 		System.out.println("Enter the number of your choice: ");
 		
 		int choice = sc.nextInt();
-		while (verifyChoiceNumber(choice, 1, 5)) { 
+		if (verifyChoiceNumber(choice, 1, 5)) { 
 			switch (choice) {
 		        case 1:
 		        	displayShowtime(this.getInputMovie()); 
@@ -88,42 +88,58 @@ public class AdminShowtimeView extends View{
 		        case 5:
 		        	break;
 			}
+		
+		}
+		else 
+		{
+			displayMenu();
 		}
 	}
 	
 	@SuppressWarnings({ "null", "unused" })
 	private void displayShowtime(Movie movieIn) {
-		Cinema cinema = getCinema();
+	//	Cinema cinema = getCinema();
 		
 		ArrayList<ShowTime> showTimeList = getShowTimeList(movieIn);
-		Map<Date, String> hashMap_Date_Time = new HashMap<Date, String>();  
-		String date, time;
-		Date now = Calendar.getInstance().getTime();
-		ArrayList<String> dates = null;
+		if(showTimeList.isEmpty())
+		{
+			System.out.println("THIS IS FUCKED UP");
+		}
+		// Map<Date, String> hashMap_Date_Time = new HashMap<Date, String>();  
+		// String date, time;
+		// Date now = Calendar.getInstance().getTime();
+		// ArrayList<String> dates = null;
 		
-		for (ShowTime st : showTimeList) {
-			if(st.getTime().after(now) && st.getCinema()==cinema) {
-				date = st.getShowTimeString("yyyy/mm/dd"); 
-				time = st.getShowTimeString("hh:mm");
-				dates.add(date);
-				hashMap_Date_Time.put(st.getTime(), time);
+		// for (ShowTime st : showTimeList) {
+		// 	if(st.getTime().after(now) && st.getCinema()==cinema) {
+		// 		date = st.getShowTimeString("yyyy/mm/dd"); 
+		// 		time = st.getShowTimeString("hh:mm");
+		// 		dates.add(date);
+		// 		hashMap_Date_Time.put(st.getTime(), time);
+		// 	}
+		// }
+		
+			for(ShowTime st: showTimeList)
+			{
+				System.out.println(st.getCinema().getCinemaName());
+				System.out.println(st.getMovie().getTitle());
+				System.out.println(st.getTime());
 			}
-		}
+
+		// if (dates==null) {
+		// 	return;
+		// }
 		
-		if (dates==null) {
-			return;
-		}
-		
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/mm/dd");
-		for (String d : dates) {
-			System.out.println("---[" + d + "]---");
-			for (Map.Entry<Date, String> entry : hashMap_Date_Time.entrySet()) {
-				if (formatter.format(entry.getKey()) == d) {
-					System.out.print(entry.getValue() + "\t");
-				}
-			}
-			System.out.println("\n");
-		}
+		// SimpleDateFormat formatter = new SimpleDateFormat("yyyy/mm/dd");
+		// for (String d : dates) {
+		// 	System.out.println("---[" + d + "]---");
+		// 	for (Map.Entry<Date, String> entry : hashMap_Date_Time.entrySet()) {
+		// 		if (formatter.format(entry.getKey()) == d) {
+		// 			System.out.print(entry.getValue() + "\t");
+		// 		}
+		// 	}
+		// 	System.out.println("\n");
+		// }
 	}
 	
 	private void removeShowtime(Movie movieIn, ShowTime showTimeIn) {
@@ -147,7 +163,7 @@ public class AdminShowtimeView extends View{
 	private void addShowtimeSequence(Movie movieIn, ShowTime showTimeIn) {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 		try {
-			addShowtime(movieIn, showTimeIn);
+			addShowtime(showTimeIn);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Fail to store the showtime");

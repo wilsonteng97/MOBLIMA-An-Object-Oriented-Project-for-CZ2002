@@ -2,6 +2,8 @@ package View.moviegoer;
 
 import static Presenter.Presenter.*;
 import static Model.Enums.ShowingStatus.*;
+import static Presenter.CinemaOperatorManager.*;
+import static Presenter.Presenter.*;
 import View.View;
 import java.util.Scanner;
 import static Model.Enums.MovieType.*;
@@ -22,8 +24,7 @@ public class CusShowtimeView extends View{
 	}
 	
 	private void displayMenu() {
-        ArrayList<ShowTime> showtimeList = new ArrayList<>();
-		
+        ArrayList<ShowTime> showtimeList = getShowTimeList(movie);	
 		Date today = new Date();
         Date tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
         Date afterTomorrow = new Date(new Date().getTime() + 2* 24 * 60 * 60 * 1000);
@@ -69,11 +70,15 @@ public class CusShowtimeView extends View{
         System.out.println();
         System.out.println("Showtime on " + formatTimeDate(dateSelected));
         System.out.println();
-
+        int index = 1;
+        for (ShowTime s : showtimeList) {
+            System.out.println( index + ": " + s.getTime());
+            index++;
+        }
 
         if (movie.getShowTimes() != null) {
             for (ShowTime s : movie.getShowTimes()) {
-                if (s.getTime() == dateSelected) showtimeList.add(s);
+                if (s.getTime().equals(dateSelected)) showtimeList.add(s);
             }
         }
 

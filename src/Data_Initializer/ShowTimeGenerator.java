@@ -25,19 +25,19 @@ public class ShowTimeGenerator {
 		java.util.Date s1_time_final = formatter.parse(s1_time);
 		ShowTime s1 = new ShowTime(c1, m1, s1_time_final);
 		showtimeList.add(s1);
-		CinemaOperatorManager.addShowtime(m1, s1);
+		CinemaOperatorManager.addShowtime(s1);
 		
 		String s2_time = "19/11/2019 12:00";
 		java.util.Date s2_time_final = formatter.parse(s2_time);
 		ShowTime s2 = new ShowTime(c1, m1, s2_time_final);
 		showtimeList.add(s2);
-		CinemaOperatorManager.addShowtime(m1, s2);
+		CinemaOperatorManager.addShowtime(s2);
 		
 		String s3_time = "19/11/2019 16:00";
 		java.util.Date s3_time_final = formatter.parse(s3_time);
 		ShowTime s3 = new ShowTime(c1, m1, s3_time_final);
 		showtimeList.add(s3);
-		CinemaOperatorManager.addShowtime(m1, s3);
+		CinemaOperatorManager.addShowtime(s3);
 		
 		Movie m2 = MovieListGenerator.getMovieFromGenerator(1);
 		Cinema c2 = CinemaListGenerator.getCinemaFromGenerator(1);
@@ -45,7 +45,7 @@ public class ShowTimeGenerator {
 		java.util.Date s4_time_final = formatter.parse(s4_time);
 		ShowTime s4 = new ShowTime(c2, m2, s4_time_final);
 		showtimeList.add(s4);
-		CinemaOperatorManager.addShowtime(m2, s4);
+		CinemaOperatorManager.addShowtime(s4);
 		
 	}
 }

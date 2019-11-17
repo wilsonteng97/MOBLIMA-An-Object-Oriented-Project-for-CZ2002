@@ -23,10 +23,10 @@ public class ReviewListGenerator {
 		Customer cust1 = UserAccountListGenerator.getCustomerFromGenerator(0);
 		Review r1 = new Review(4,
 				"Joker is brutal, dark and a compelling origin story of a man's painful journey to self destruction.",
-				date_c1, cust1);
+				date_c1, cust1, movie);
 		review_list.add(r1);
 		try {
-			addNewReview(movie, r1);
+			addNewReview( r1);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -36,10 +36,10 @@ public class ReviewListGenerator {
 		Date date_c2 = formatter.parse(c2_date);
 		Customer cust2 = UserAccountListGenerator.getCustomerFromGenerator(1);
 		Review r2 = new Review(3, "Interesting movie with lots of twists and turns. Recommend all to watch!",
-				date_c2, cust2);
+				date_c2, cust2, movie);
 		review_list.add(r2);
 		try {
-			addNewReview(movie, r1);
+			addNewReview(r2);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,10 +49,10 @@ public class ReviewListGenerator {
 		Date date_c3 = formatter.parse(c3_date);
 		Customer cust3 = UserAccountListGenerator.getCustomerFromGenerator(2);
 		Review r3 = new Review(2, "Joker is a scary film, not advisable if you fear violence.",
-				date_c3, cust3);
+				date_c3, cust3, movie);
 		review_list.add(r3);
 		try {
-			addNewReview(movie, r1);
+			addNewReview(r3);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
