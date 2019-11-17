@@ -9,13 +9,30 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import Model.Movie;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MovieListingView to show the list of movies.
+ */
 public class MovieListingView extends View{
+	
+	/** check the top 5 sales. */
 	private boolean top5Sales = false;
+	
+	/** check the top 5 rating. */
 	private boolean top5Rating = false;
+	
+	/** The sc. */
 	Scanner sc = new Scanner(System.in);
+    
+    /**
+     * Instantiates a new movie listing view.
+     */
     public MovieListingView() {
 	}	
     
+    /**
+     * Display menu.
+     */
     private void displayMenu() {
     	System.out.println();
     	System.out.println("Movie Listing");
@@ -52,14 +69,26 @@ public class MovieListingView extends View{
 		end();
 	}
 	
+	/**
+	 * Starter.
+	 */
 	@Override
 	protected void starter() {
       displayMenu();
 	}
+	
+	/**
+	 * Starter.
+	 *
+	 * @param movie the movie
+	 */
 	protected void starter(Movie movie) {
 		displayMovieDetail(movie);
 		}
 
+	/**
+	 * Search movie.
+	 */
 	private void searchMovie() {
 		System.out.println();
 		System.out.println("Enter the movie you choose: ");
@@ -78,7 +107,12 @@ public class MovieListingView extends View{
         }
     }
 	
-	 private void displayMovieDetail(Movie movie) {
+	 /**
+ 	 * Display movie detail.
+ 	 *
+ 	 * @param movie the movie
+ 	 */
+ 	private void displayMovieDetail(Movie movie) {
 		 System.out.println();
 		 System.out.println("The movies");
 		 System.out.println(movie.toString());
@@ -101,6 +135,9 @@ public class MovieListingView extends View{
 	     displayMovieListing();	     
 	}
 	
+	/**
+	 * Display movie listing.
+	 */
 	private void displayMovieListing() {
 	    ArrayList<Movie> movieListing;
 	

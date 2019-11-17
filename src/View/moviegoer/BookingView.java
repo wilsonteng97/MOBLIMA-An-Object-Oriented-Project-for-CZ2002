@@ -139,7 +139,7 @@ public class BookingView extends View{
     }
 
 	/**
-	 * Customer info.
+	 * check Customer info.
 	 */
 	private void customerInfo() {
 		System.out.println();
@@ -165,7 +165,7 @@ public class BookingView extends View{
     }
 	
 	/**
-	 * Starter.
+	 * To check the menu interface.
 	 */
 	@Override
 	protected void starter() {
@@ -176,7 +176,7 @@ public class BookingView extends View{
 	}
 	
 	/**
-	 * End.
+	 * to return to movie listing menu.
 	 */
 	protected void end() {
 		intent(this, new MovieListingView());
