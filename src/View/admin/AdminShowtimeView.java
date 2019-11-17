@@ -32,6 +32,7 @@ public class AdminShowtimeView extends View{
 	public AdminShowtimeView(Movie movieIn)
 	{
 		this.setInputMovie(movieIn);
+		showTimeList = getShowTimeList(movieIn);
 	}
 	
 	public AdminShowtimeView()
@@ -90,7 +91,7 @@ public class AdminShowtimeView extends View{
 	@SuppressWarnings({ "null", "unused" })
 	private void displayShowtime(Movie movieIn) {
 	//	Cinema cinema = getCinema();
-		showTimeList = getShowTimeList(movieIn);
+		
 		if(showTimeList.isEmpty())
 		{
 			System.out.println("The movie " + movieIn.getTitle() + " does not have showtimes currently");
