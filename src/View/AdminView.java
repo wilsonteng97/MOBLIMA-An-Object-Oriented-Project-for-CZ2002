@@ -84,11 +84,15 @@ public class AdminView extends View {
 				if(customerList.isEmpty())
 				{
 					System.out.println("There are no customers");
-					return;
+					displayMenu();
+					//return;
 				}
+				System.out.println("The customers name and email address.");
+				int a = 1;
 				for(Customer customer: customerList)
 				{
-					System.out.println(customer.getName() + " " + customer.getEmail() + " " + customer.getPassword());
+					System.out.println(a + ".\t" + customer.getName() + "\n\t" + customer.getEmail() + "\n");
+					a++;
 				}
 				displayMenu();
 				break;
