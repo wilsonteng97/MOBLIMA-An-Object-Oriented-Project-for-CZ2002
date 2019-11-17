@@ -28,7 +28,7 @@ import java.util.HashMap;
 public class AdminManager extends DataManager
 {
     Scanner sc = new Scanner(System.in);
-    double ticket_price;
+    protected double ticket_price;
     private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
     private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
     private final static String reviewListFile = "datafiles/reviewListFile.txt";
