@@ -2,7 +2,9 @@ package Presenter;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 import static Presenter.DataManager.*;
+import static Presenter.Query.*;
 import Model.Booking;
 import Model.Customer;
 
@@ -13,10 +15,11 @@ public class BookingManager {
     public BookingManager(){
         
     }
-    
-    public static void addBooking(Booking history) throws IOException {
-    	userBookingList.add(history);
-        updateBookingListing();
+
+    private static void readBookingListing() throws IOException, ClassNotFoundException {
+        if (readDataFile_List(userBookingListFile) == null) 
+        	userBookingList = new ArrayList<>();
+        else userBookingList = (ArrayList<Booking>) readDataFile_List(userBookingListFile);
     }
 
     public static void updateBookingListing() throws IOException{
@@ -24,8 +27,9 @@ public class BookingManager {
     }
 
     
-    public static void getBookingHistory(Customer customer){
+    public static void getBookingHistory(String customerName){
     	
+    	Customer customer = passStringCustomer(customerName);
     	if (userBookingList == null || userBookingList.isEmpty()) {
             System.out.println("No history to show.");
         }
@@ -35,5 +39,14 @@ public class BookingManager {
             		System.out.println(history);
             }
         }
+    }
+    
+    public static void addBooking(Booking history) {
+    	userBookingList.add(history);
+        try {
+			updateBookingListing();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 }
