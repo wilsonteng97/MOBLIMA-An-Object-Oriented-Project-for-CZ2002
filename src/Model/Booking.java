@@ -26,7 +26,7 @@ public class Booking implements Serializable{
 	/** The status. */
 	private BookingStatus status;
 	/**  The list of movie tickets tied to this particular Booking. */
-	private List<MovieTicket> movieTickets;
+	private Seat seat;;
 	
 	/**
 	 * Instantiates a new booking. Default booking ID is -1.
@@ -39,13 +39,13 @@ public class Booking implements Serializable{
 	 * @param movieTickets The list of movie tickets tied to this particular Booking
 	 */
 	public Booking(Customer customer, Date date, Transaction transaction,
-					BookingStatus status, List<MovieTicket> movieTickets) {
+					BookingStatus status, Seat seat) {
 		this.bookingID = transaction.getTransaction_ID();
 		this.customer=customer;
 		this.date = date;
 		this.status = status;
 		this.transaction = transaction;
-		this.movieTickets = movieTickets;
+		this.seat = seat;
 	}
 
 	/**
@@ -58,24 +58,24 @@ public class Booking implements Serializable{
 		return transaction.getTransaction_ID();
 	}
 		
-//	/**
-//	 * Gets the seat.
-//	 *
-//	 * @return the seat
-//	 */
-//	// seat
-//	public Seat getSeat() {
-//		return seat;
-//	}
+	/**
+	 * Gets the seat.
+	 *
+	 * @return the seat
+	 */
+	// seat
+	public Seat getSeat() {
+		return seat;
+	}
 	
-//	/**
-//	 * Sets the seat.
-//	 *
-//	 * @param seat the new seat
-//	 */
-//	public void setSeat(Seat seat) {
-//		this.seat=seat;
-//	}
+	/**
+	 * Sets the seat.
+	 *
+	 * @param seat the new seat
+	 */
+	public void setSeat(Seat seat) {
+		this.seat=seat;
+	}
 	
 	/**
 	 * Sets the booking ID.
@@ -172,32 +172,32 @@ public class Booking implements Serializable{
 		this.status = status;
 	}
 
-	/**
-	 * Gets the movie tickets.
-	 *
-	 * @return the movie tickets
-	 */
-	// movieTickets
-	public List<MovieTicket> getMovieTickets() {
-		return movieTickets;
-	}
-	
-	/**
-	 * Adds the movie ticket.
-	 *
-	 * @param ticket the ticket
-	 */
-	public void addMovieTicket(MovieTicket ticket) {
-		movieTickets.add(ticket);
-	}
-	
-	/**
-	 * Removes the movie ticket.
-	 *
-	 * @param ticket the ticket
-	 */
-	public void removeMovieTicket(MovieTicket ticket) {
-		movieTickets.remove(ticket);
-	}
+//	/**
+//	 * Gets the movie tickets.
+//	 *
+//	 * @return the movie tickets
+//	 */
+//	// movieTickets
+//	public List<MovieTicket> getMovieTickets() {
+//		return movieTickets;
+//	}
+//	
+//	/**
+//	 * Adds the movie ticket.
+//	 *
+//	 * @param ticket the ticket
+//	 */
+//	public void addMovieTicket(MovieTicket ticket) {
+//		movieTickets.add(ticket);
+//	}
+//	
+//	/**
+//	 * Removes the movie ticket.
+//	 *
+//	 * @param ticket the ticket
+//	 */
+//	public void removeMovieTicket(MovieTicket ticket) {
+//		movieTickets.remove(ticket);
+//	}
 
 }
