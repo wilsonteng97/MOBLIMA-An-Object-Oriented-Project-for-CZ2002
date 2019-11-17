@@ -37,15 +37,22 @@ public class BookingView extends View{
         price = seat.getShowtime().getCinema().getBasePrice();
         bookingDone = false;
         System.out.println("Are you a Senior Citizen? (Y or N). ID will be checked when you enter the cinema");
-        String input = null;
-        while (input!="Y" || input!="y" || input!="N" || input!="n") {
-            input = sc.next();
-            input = input.toUpperCase();
-            System.out.println("test");
+        String input = passChoiceString();
+        if(input.equals("Y") || input.equals("y"))
+        {
+            computePrice(true);
         }
-        Boolean isSeniorCitizen = input.equals("Y") ? true : false;
-        computePrice(isSeniorCitizen);
-        displayMenu();
+        else 
+        {
+            computePrice(false);
+        }
+        // while (!input.equals("Y") || !input.equals("y") || !input.equals("N") || !input.equals("n")) {
+        //     input = passChoiceString();
+        //     input = input.toUpperCase();
+        //     System.out.println(input);
+        // }
+    //    Boolean isSeniorCitizen = input.equals("Y") ? true : false;
+        
     }	
 
     private void computePrice(Boolean isSeniorCitizen) {
@@ -66,6 +73,7 @@ public class BookingView extends View{
             SENIOR_CITIZEN_RATE = 0.5;
         }
         TOTAL_RATE *= HOLIDAY_RATE * WEEKEND_RATE * SENIOR_CITIZEN_RATE;
+        displayMenu();
     }
     
     private void displayMenu() {
