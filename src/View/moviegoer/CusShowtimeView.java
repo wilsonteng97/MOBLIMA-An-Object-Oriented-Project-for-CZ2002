@@ -22,13 +22,16 @@ public class CusShowtimeView extends View{
 	}
 	
 	private void displayMenu() {
+        ArrayList<ShowTime> showtimeList = new ArrayList<>();
 		
 		Date today = new Date();
         Date tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
         Date afterTomorrow = new Date(new Date().getTime() + 2* 24 * 60 * 60 * 1000);
         Date dateSelected;
         
+
         if (movie.getStatus().equals(NOW_SHOWING)) {
+            
         	System.out.println("Movie Showtime");
         	System.out.println();
         	System.out.println("(1) " + formatTimeDate(today) + " (today)\n"+
@@ -66,7 +69,7 @@ public class CusShowtimeView extends View{
         System.out.println();
         System.out.println("Showtime on " + formatTimeDate(dateSelected));
         System.out.println();
-        ArrayList<ShowTime> showtimeList = new ArrayList<>();
+
 
         if (movie.getShowTimes() != null) {
             for (ShowTime s : movie.getShowTimes()) {
@@ -87,6 +90,7 @@ public class CusShowtimeView extends View{
         }
         System.out.println();
         System.out.println("Please choose a showtime:\n");
+        
         int choice = sc.nextInt();        
 
         ShowTime showtime = showtimeList.get(choice - 1);
