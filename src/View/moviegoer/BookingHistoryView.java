@@ -16,20 +16,20 @@ public class BookingHistoryView extends View{
     private void displayMenu() {
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Please Enter your Name");
-    	String customerName = sc.next();
+		String customerName = sc.nextLine();
     	
 		Customer check_cust = passStringCustomer(customerName);
     	if (check_cust != null) {
     		System.out.println("Booking History");  	
     		System.out.println();
     		getBookingHistory(check_cust); 
-    	//	goBack();
-    	//	end();
+    		goBack();
+    		end();
     	}
     	else {
     		System.out.println("No such customer exist");
-    		//goBack();
-    		//end();
+    		goBack();
+    		end();
     	}
     }
 	@Override

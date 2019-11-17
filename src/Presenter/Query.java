@@ -76,7 +76,7 @@ public class Query {
     public static Customer passStringCustomer (String customer_name) {
         for (Customer customer : customerList){
             if (customer.getName().equals(customer_name)) 
-            {
+            {            
                 return customer;
             }
         }
