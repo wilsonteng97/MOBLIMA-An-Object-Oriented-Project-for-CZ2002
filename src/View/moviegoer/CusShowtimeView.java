@@ -174,11 +174,11 @@ public class CusShowtimeView extends View{
         System.out.println("Enter the column (1 - 16) of the seat:");
         int col = sc.nextInt();
 
-        if (showtime.getSeatAt(row-1, col-1) == null) {
+        if (showtime.getSeatAt(row, col) == null) {
             System.out.println("Error. Please choose another seat.");
             bookSeatMenu(showtime);
         }
-        else if (showtime.getSeatAt(row-1, col-1).isOccupied()) {
+        else if (showtime.getSeatAt(row, col).isOccupied()) {
             System.out.println("The seat has been booked. Please choose another seat.");
             bookSeatMenu(showtime);
         }
@@ -187,7 +187,7 @@ public class CusShowtimeView extends View{
 
 
 
-            intent(this, new BookingView(showtime.getSeatAt(row-1, col-1), showtime));
+            intent(this, new BookingView(showtime.getSeatAt(row, col), showtime));
         }
     }
 
