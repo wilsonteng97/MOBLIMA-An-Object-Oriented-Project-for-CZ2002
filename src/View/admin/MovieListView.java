@@ -41,12 +41,11 @@ public class MovieListView extends View{
 				+ "(2) Add new Movie\n"
 				+ "(3) Edit Movie Listing\n"
 				+ "(4) Remove Movie\n"
-				+ "(5) Initizialize Movies\n"
-				+ "(6) Return\n");
+				+ "(5) Return\n");
 		System.out.println();
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		if(verifyChoiceNumber(choice, 1, 6)) { 
+		if(verifyChoiceNumber(choice, 1, 5)) { 
 			switch (choice) {
 				case 1:
 					displayMovieList();
@@ -65,14 +64,6 @@ public class MovieListView extends View{
 					deleteMovie(movieList.get(deletemovie));
 		        	break;
 				case 5:
-					try {
-						initialiseMovies();
-					} catch (IOException e) {
-						System.out.println(e.getMessage());
-					}
-					displayMenu();
-					break;
-				case 6:
 					end();
 					break;
 			}

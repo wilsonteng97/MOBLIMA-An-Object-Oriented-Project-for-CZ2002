@@ -191,9 +191,9 @@ public class Movie implements Serializable{
 	public void setShowTimes(ArrayList<ShowTime> showTimes) {
 		this.showTimes = showTimes;
 	}
-	public void addShowTime(ShowTime showTime) {
-		showTimes.add(showTime);
-	}
+	// public void addShowTime(ShowTime showTime) {
+	// 	showTimes.add(showTime);
+	// }
 	public void removeShowTime(ShowTime showTime) {
 		showTimes.remove(showTime);
 	}
