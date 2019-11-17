@@ -40,7 +40,7 @@ public class CinemaOperatorManager extends DataManager {
             readMovieList();
             readHolidayList();
             readCinemaOperator();
-
+            readShowtime
     }
 //    public static boolean readTheData()
 //    {
