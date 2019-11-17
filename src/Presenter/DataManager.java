@@ -6,10 +6,20 @@ import java.util.HashMap;
 
 import Model.Movie;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DataManager is used to perform read and write operations in handling the txt files.
+ */
 public class DataManager {
 
+	/**
+	 * Write data file by reading the arraylist and the filename to store the data.
+	 *
+	 * @param lister the lister
+	 * @param fileName the file name
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void writeDataFile(Object lister, String fileName) throws IOException{
-		//new FileOutputStream(fileName).close(); //make a clean slate of data file first then add
 		FileOutputStream fileOut = new FileOutputStream(fileName);
 	    ObjectOutputStream out = new ObjectOutputStream(fileOut);
 	
@@ -18,6 +28,12 @@ public class DataManager {
 		out.close();
 	}
 
+	/**
+	 * Read data file and return the arraylist.
+	 *
+	 * @param fileName the file name
+	 * @return the object
+	 */
 	public static Object readDataFile_List(String fileName){
 		try {
 			FileInputStream fwStream = new FileInputStream(fileName);
@@ -29,16 +45,20 @@ public class DataManager {
 		}
 		catch (IOException e) {
 			System.out.println(fileName + " initially empty");
-		//	e.printStackTrace();
 			return null;
 	    }
 		catch (ClassNotFoundException e) {
 			System.out.println(fileName + "initially empty");
-		//	e.printStackTrace();
 	        return null;
 	    }
 	}
 		
+		/**
+		 * Read data file and return the hash map.
+		 *
+		 * @param fileName the file name
+		 * @return the object
+		 */
 		public static Object readDataFile_HashMap(String fileName){
 			try {
 				FileInputStream fwStream = new FileInputStream(fileName);
@@ -50,36 +70,11 @@ public class DataManager {
 			}
 			catch (IOException e) {
 				System.out.println(fileName + " initially empty");
-			//	e.printStackTrace();
 				return null;
 		    }
 			catch (ClassNotFoundException e) {
 				System.out.println(fileName + " initially empt");
-			//	e.printStackTrace();
 		        return null;
 		    }
 		}
-		
-		
-
-  // public static List<String> readFileInList(String fileName) { 
-  
-  //   List<String> lines = Collections.emptyList(); 
-    
-  //   try    { 
-  //     lines = Files.readAllLines(Paths.get(fileName), StandardCharsets.UTF_8); 
-  //   } 
-  
-  //   catch (IOException e) { // do something 
-  //     e.printStackTrace(); 
-  //   } 
-  //       return lines; 
-  // } 
-
-  // public static void writeDataFile(String filename, Object data)    {
-  //     FileOutputStream adminAccountListFile = new FileInputStream(filename);
-  //     ObjectOutputStream objectOutputStream = new ObjectOutputStream(adminAccountListFile);
-  //     objectOutputStream.writeObject(data);
-  //     objectOutputStream.close();
-  // }
 }
