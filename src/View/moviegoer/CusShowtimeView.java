@@ -17,18 +17,39 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CusShowtimeView for the moviegoer.
+ */
 public class CusShowtimeView extends View{
+	
+	/** The movie object. */
 	private Movie movie;
+    
+    /** The weekend rate. */
     private double WEEKEND_RATE = 1.2;
+    
+    /** The senior citizen rate. */
     private double SENIOR_CITIZEN_RATE = 0.5;
+    
+    /** The holiday rate. */
     private double HOLIDAY_RATE;
 
+	/** The sc. */
 	Scanner sc = new Scanner(System.in);
 	
+	/**
+	 * Instantiates a new cus showtime view.
+	 *
+	 * @param movieInput the movie input
+	 */
 	public CusShowtimeView(Movie movieInput) {
 		movie=movieInput;
 	}
 
+	/**
+	 * Display menu.
+	 */
 	private void displayMenu() {
         ArrayList<ShowTime> showtimeList = getShowTimeList(movie);
 		Date today = new Date();
@@ -95,10 +116,6 @@ public class CusShowtimeView extends View{
             return;
         }
 
-//        int i = 0;
-//        for (ShowTime s : showtimeList) {
-//            System.out.println(++i + ": " + s);
-//        }
         System.out.println();
         System.out.println("Please choose a showtime:\n");
         
@@ -108,6 +125,11 @@ public class CusShowtimeView extends View{
         displayShowtimeDetail(showtime);
 	}
 
+	/**
+	 * Display show time detail.
+	 *
+	 * @param showtime the showtime
+	 */
 	private void displayShowtimeDetail(ShowTime showtime) {
 		System.out.println();
 		System.out.println("Details for " + showtime.getTime());
@@ -136,6 +158,11 @@ public class CusShowtimeView extends View{
         }
     }
 	
+	/**
+	 * Display price.
+	 *
+	 * @param showtime the showtime
+	 */
 	private void displayPrice(ShowTime showtime) {
         double basePrice = showtime.getCinema().getBasePrice();
         Movie movie = showtime.getMovie();
@@ -151,6 +178,11 @@ public class CusShowtimeView extends View{
         displayShowtimeDetail(showtime);
     }
 	
+	/**
+	 * Display seats.
+	 *
+	 * @param seats the seats
+	 */
 	private void displaySeat(Seat[][] seats) {
         
         System.out.println("                    -------Screen------");
@@ -160,14 +192,17 @@ public class CusShowtimeView extends View{
             System.out.print(row + "   ");
             for (int col = 1; col <= 16; col++) {
                 seats[row-1][col-1].printSeat();
-                // if (seats[row][col].isOccupiedAt()) System.out.print("[X]");
-                // else System.out.print("[ ]");
             }
             System.out.println();
         }
         System.out.println();
     }
 	
+	/**
+	 * Booking seat menu.
+	 *
+	 * @param showtime the showtime
+	 */
 	private void bookSeatMenu(ShowTime showtime) {
         System.out.println("Enter the row (1 - 8) of the seat:");
         int row = sc.nextInt();
@@ -187,14 +222,18 @@ public class CusShowtimeView extends View{
         }
     }
 
+	/**
+	 * Starter.
+	 */
 	@Override
 	protected void starter() {
 		displayMenu();		
 	}
+	
+	/**
+	 * End.
+	 */
 	protected void end() {
     	((MovieListingView)(getPrevious())).starter(movie);
 	}
 }
-
-
-

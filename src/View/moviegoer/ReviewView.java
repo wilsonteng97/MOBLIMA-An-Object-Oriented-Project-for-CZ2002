@@ -15,13 +15,29 @@ import Model.Customer;
 import Model.Movie;
 import Model.Review;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ReviewView for the moviegoer to review the movie.
+ */
 public class ReviewView extends View{
+	
+	/** The movie. */
 	private Movie movie;
 	
+	/**
+	 * Instantiates a new review view.
+	 *
+	 * @param movie the movie
+	 */
 	public ReviewView(Movie movie) {
     	this.movie=movie;
 	}	    
 	
+    /**
+     * Display menu.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private void displayMenu() throws IOException {
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Movie Review");
@@ -49,6 +65,9 @@ public class ReviewView extends View{
         end();
     }	
     
+    /**
+     * Adds the review.
+     */
     private void addReview(){
 	    Scanner sc = new Scanner(System.in);
 		System.out.println("Write Review:");
@@ -74,6 +93,9 @@ public class ReviewView extends View{
 	    }
     }
     
+    /**
+     * Display review.
+     */
     private void displayReview(){
 	    System.out.println("Reviews for " + movie.getTitle());
 	    ArrayList<Review> reviewList = getReviewList(movie);
@@ -94,6 +116,9 @@ public class ReviewView extends View{
 	    starter();
     }
         
+    /**
+     * Starter.
+     */
     @Override
 	protected void starter() {
     	try {
@@ -103,6 +128,10 @@ public class ReviewView extends View{
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * End.
+	 */
 	protected void end() {
     	((MovieListingView)(getPrevious())).starter(movie);
 	}

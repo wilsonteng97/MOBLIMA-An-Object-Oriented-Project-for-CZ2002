@@ -16,13 +16,25 @@ import java.util.Scanner;
 
 import Model.Customer;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AdminView is the main menu interface of the admin staff.
+ */
 public class AdminView extends View {
+	
+	/** The logged in is the boolean expression to open the admin staff logging system. */
 	private boolean loggedIn;
 
+	/**
+	 * Instantiates a new admin view.
+	 */
 	public AdminView() {
 		loggedIn = true;
 	}
 
+	/**
+	 * Starter view of the menu interface.
+	 */
 	@Override
 	protected void starter() {
 		if (loggedIn == false)
@@ -31,6 +43,9 @@ public class AdminView extends View {
 			displayMenu();
 	}
 
+	/**
+	 * Admin login operation.
+	 */
 	private void adminLogin() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please login to access staff system");
@@ -51,6 +66,9 @@ public class AdminView extends View {
 
 	}
 
+	/**
+	 * Display menu are the list of operations that the admin staff can perform in the system.
+	 */
 	private void displayMenu() {
 		ArrayList<Customer> customerList = getCustomerList();
 		Scanner sc = new Scanner(System.in);
@@ -85,7 +103,6 @@ public class AdminView extends View {
 				{
 					System.out.println("There are no customers");
 					displayMenu();
-					//return;
 				}
 				System.out.println("The customers name and email address.");
 				int a = 1;
@@ -100,7 +117,6 @@ public class AdminView extends View {
 				try {
 					initialiser();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				displayMenu();

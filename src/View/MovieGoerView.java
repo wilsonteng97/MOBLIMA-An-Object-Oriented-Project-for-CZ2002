@@ -8,18 +8,23 @@ import java.text.ParseException;
 import java.util.Scanner;
 import static Presenter.AdminManager.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MovieGoerView is the main menu interface for the moviegoer.
+ */
 public class MovieGoerView extends View{
+	
+	/**
+	 * Instantiates a new movie goer view.
+	 */
 	public MovieGoerView() {
 	}
 
+	/**
+	 * Starter view of the menu interface. These are the list of operations that the moviegoer can perform.
+	 */
 	@Override
 	protected void starter(){
-//		try {
-//			initialiseUserAccounts();
-//		} catch (ParseException | IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\n"
 				+ "Menu\n" + "----");

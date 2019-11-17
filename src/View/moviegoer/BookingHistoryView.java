@@ -8,11 +8,22 @@ import static Presenter.BookingManager.*;
 import static Presenter.Query.*;
 import View.View;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BookingHistoryView is for the moviegoer to see his booking history.
+ */
 public class BookingHistoryView extends View{
 	
+    /**
+     * Instantiates a new booking history view.
+     */
     public BookingHistoryView() {
     	
 	}	
+    
+    /**
+     * Display menu to check the user's booking history.
+     */
     private void displayMenu() {
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Please Enter your Name");
@@ -32,13 +43,13 @@ public class BookingHistoryView extends View{
     		end();
     	}
     }
+	
+	/**
+	 * Starter for menu interface.
+	 */
 	@Override
 	protected void starter() {
 		displayMenu();
 		
 	}
 }
-
-
-
-

@@ -21,16 +21,43 @@ import Model.Enums.TransactionMethod;
 import static Presenter.Presenter.*;
 import static Model.Enums.TransactionMethod.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PaymentView for moviegoer to process payment.
+ */
 public class PaymentView extends View{
+	
+	/** The price. */
 	private double price;
+    
+    /** The seat. */
     private Seat seat;
+    
+    /** The customer. */
     private Customer customer;
+    
+    /** The id. */
     private String id;
+    
+    /** The gst. */
     private double GST;
+    
+    /** The total price. */
     private double totalPrice;
     	
+	/** The sc. */
 	Scanner sc = new Scanner(System.in);
+	
+	/** The transaction method. */
 	TransactionMethod transactionMethod = null;
+    
+    /**
+     * Instantiates a new payment view.
+     *
+     * @param customer the customer
+     * @param seat the seat
+     * @param price the price
+     */
     public PaymentView(Customer customer, Seat seat, double price) {
     	this.customer = customer;
         this.seat = seat;
@@ -38,6 +65,11 @@ public class PaymentView extends View{
     	setTransactionID();
 	}	
     
+    /**
+     * Display menu.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private void displayMenu() throws IOException {
 		
     	System.out.println("Movie Payment\n");
@@ -64,6 +96,9 @@ public class PaymentView extends View{
         }
 	}
 	
+	/**
+	 * Sets the transaction method.
+	 */
 	private void setTransactionMethod()
 	{
 		while(transactionMethod == null)
@@ -74,6 +109,11 @@ public class PaymentView extends View{
 		}
 	}
    
+    /**
+     * Sets the transaction ID.
+     *
+     * @return the string
+     */
     private String setTransactionID() {
 		StringBuilder sb = new StringBuilder();
 		double a = (Math.random()*((9999-1000)+1))+1000;
@@ -88,14 +128,11 @@ public class PaymentView extends View{
 		return id;
     }
     
-    // private Double computeTotalPrice() {
-    //     if (customer.getIsSenior()) 
-    //     	price /= 2;
-    //     GST = Math.round(price * 7)/100;
-    //     totalPrice = Math.round((price+GST)*100)/100;
-    //     return totalPrice;
-    // }
-    
+    /**
+     * Save booking.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private void saveBooking() throws IOException {
         seat.setOccupied(true);
 		Movie movie = seat.getShowtime().getMovie();
@@ -115,6 +152,9 @@ public class PaymentView extends View{
         intent(this, new MovieListingView());
     }
 
+	/**
+	 * Starter.
+	 */
 	@Override
 	protected void starter() {
 		try {
@@ -124,26 +164,3 @@ public class PaymentView extends View{
 		}		
 	}
 }
-
-
-
-/*private void displayMenu() {
-	Scanner sc = new Scanner(System.in);
-	System.out.println("Transaction ID: " + TID);
-	System.out.println("Ticket price: " + price);
-	System.out.println("GST: " + Math.round(price * 0.07*100)/100);
-	System.out.println("Grand total: " + (price+Math.round(price * 0.07*100)/100));
-	System.out.println("Ticket price: " + price);		
-	System.out.println("(1) Confirm Payment\n"
-			+ "(2) Cancel Payment");
-	int choice = sc.nextInt();
-	while (verifyChoiceNumber(choice, 1, 2)) { 
-		switch(choice) {
-		case 1:
-			saveBooking(); //[presenter: save the booking to booking history]
-			break;
-		case 2:
-			break;
-		}
-	}
-}*/
