@@ -1,52 +1,49 @@
 package Presenter;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import static Presenter.DataManager.*;
-import static Presenter.Query.*;
 import Model.Booking;
-import Model.Customer;
 
 public class BookingManager {
-    private final static String userBookingListFile = "datafiles/userBookingFile.txt";
-    private static ArrayList<Booking> userBookingList;
+    // private final static String userBookingListFile = "datafiles/userBookingFile.txt";
+    // private static ArrayList<Admin> userBookingList;
 
     public BookingManager(){
         
     }
 
-    private static void readBookingListing() throws IOException, ClassNotFoundException {
-        if (readDataFile_List(userBookingListFile) == null) 
-        	userBookingList = new ArrayList<>();
-        else userBookingList = (ArrayList<Booking>) readDataFile_List(userBookingListFile);
+    public static void addBooking(Booking new_booking){
+        // userBookingList.add(new_booking);
+        // updateBookingListing();
     }
 
-    public static void updateBookingListing() throws IOException{
-        writeDataFile(userBookingList, userBookingListFile);
+    public void removeBooking(){
+        // userBookingList.remove(movie);
+        // updateBookingListing();
     }
 
-    
+    public void updateBookingListing(){
+        // writeDataFile(userBookingListFile, userBookingList);
+    }
+
     public static void getBookingHistory(String customerName){
+    	//Customer customer = passStringCustomer(customerName);
+    	// for (String booking : userBookingList){
+        //     if (booking == customer){
+        //         System.out.println(booking);
+        //     }
+        // }
     	
-    	Customer customer = passStringCustomer(customerName);
-    	if (userBookingList == null || userBookingList.isEmpty()) {
-            System.out.println("No history to show.");
+    	/*
+    	 ArrayList<BookingHistory> bookingHistory = getBookingHistory();
+
+        if (bookingHistory == null || bookingHistory.isEmpty()) {
+            readString("No history to show.",
+                    "Press ENTER to go back.", "");
         }
         else {
-            for (Booking history : userBookingList) {
-            	if (history.getCustomer() == customer)
-            		System.out.println(history);
+            for (BookingHistory record : bookingHistory) {
+                System.out.println(record);
             }
         }
-    }
-    
-    public static void addBooking(Booking history) {
-    	userBookingList.add(history);
-        try {
-			updateBookingListing();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+    	 */
     }
 }

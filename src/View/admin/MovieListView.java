@@ -22,7 +22,7 @@ import java.util.Scanner;
 
 public class MovieListView extends View{
 
-	private ArrayList<Movie> movieList = getMovieList();
+	private ArrayList<Movie> movieList;
 	private int num =0;
 	private Scanner sc = new Scanner(System.in);
 	
@@ -151,16 +151,15 @@ public class MovieListView extends View{
 		Movie movie = new Movie(title, ageRestriction, type, status, opening, director, runtime, synopsis, blockBuster, cast);
 		try {
 			addMovie(movie);
-			displayMenu();
 		} catch (IOException e) {
 			System.out.println("Failed to add the movie");
-			displayMenu();
 		}
-		
+		displayMenu();
 	}
 
 	private void displayMovieList()
 	{
+		movieList = getMovieList();
 		num = 0;
 		if(movieList.isEmpty())
 		{
@@ -336,7 +335,7 @@ public class MovieListView extends View{
 		{
 			try {
 				removeMovie(movie);
-				//removeAllShowtimes(movie);
+				removeAllShowtimes(movie);
 				System.out.println("The movie has been removed");
 			} catch (IOException e) {
 				System.out.println("Failed to remove listing");

@@ -44,8 +44,7 @@ public class SystemSettingView extends View{
 		        case 3:
 		        	getTop5RankingSales();
 		        	break;
-				case 4:
-					end();
+				case 4:				
 		        	break;
 			}
 		}

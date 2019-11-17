@@ -95,7 +95,7 @@ public class AdminShowtimeView extends View{
 	private void displayShowtime(Movie movieIn) {
 		Cinema cinema = getCinema();
 		
-		ArrayList<ShowTime> showTimeList = getShowTimeList(movieIn);
+		ArrayList<ShowTime> showTimeList = movieIn.getShowTimes();
 		Map<Date, String> hashMap_Date_Time = new HashMap<Date, String>();  
 		String date, time;
 		Date now = Calendar.getInstance().getTime();

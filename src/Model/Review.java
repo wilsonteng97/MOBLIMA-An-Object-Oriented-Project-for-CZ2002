@@ -15,9 +15,6 @@ public class Review {
 		this.customer = customer;
 	}
 	
-	public Review(int rating2, String comment2, String name) {
-		// TODO Auto-generated constructor stub
-	}
 
 	//Get Methods
 	public Integer getRating() {

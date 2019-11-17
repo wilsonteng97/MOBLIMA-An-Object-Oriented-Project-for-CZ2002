@@ -1,18 +1,25 @@
 package View.moviegoer;
+import static Presenter.Presenter.formatTimeDate;
+import static Presenter.Query.passStringCustomer;
 import static Presenter.ReviewManager.*;
 import View.View;
 import static Model.Enums.ShowingStatus.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import Model.Customer;
 import Model.Movie;
+import Model.Review;
 
 public class ReviewView extends View{
 	private Movie movie;
+	
 	public ReviewView(Movie movie) {
     	this.movie=movie;
 	}	    
+	
     private void displayMenu() throws IOException {
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Movie Review");
@@ -28,10 +35,10 @@ public class ReviewView extends View{
         int choice = sc.nextInt();
         switch (choice) {
             case 1:
-                addNewReview(movie);
+                addReview();
                 break;
             case 2:
-            	displayReview(movie);
+            	displayReview();
                 break;
             case 3:
             	end();
@@ -39,7 +46,52 @@ public class ReviewView extends View{
         }
         end();
     }	
-	@Override
+    
+    private void addReview(){
+	    Scanner sc = new Scanner(System.in);
+		System.out.println("Write Review:");
+		System.out.println("Please enter your name:");
+	    String name = sc.next();
+	    Customer customer = passStringCustomer(name);
+	    System.out.println("Please enter your rating: (integer between 1 ~ 5)");
+	    int rating = sc.nextInt();
+	    System.out.println("Please enter your comments:");
+	    String comment = sc.next();
+	    Review review = new Review(rating, comment, null, customer);
+	    
+	    try {
+	        addNewReview(movie, review);
+	        System.out.println("Successfully added review for " + movie.getTitle());
+	    }
+	    catch (IOException ex) {
+	        System.out.println("Failed to add review for " + movie.getTitle());
+	    }
+	    finally {
+	        starter();
+	    }
+    }
+    
+    private void displayReview(){
+	    System.out.println("Reviews for " + movie.getTitle());
+	    ArrayList<Review> reviewList = getReviewList(movie);
+	    if (reviewList != null){
+	        int i = 0;
+	        for (Review r : reviewList) {
+	            System.out.println(++i + "Customer:     " + r.getCustomer());
+	            System.out.println("  Date:     " + formatTimeDate(r.getDate()));
+	            System.out.println("  Rating:   " + r.getRating());
+	            System.out.println("  Comments: " + r.getComment());
+	            System.out.println();
+	        }
+	    }
+	    else{
+	        System.out.println("No review.");
+	    }
+	    goBack();
+	    starter();
+    }
+        
+    @Override
 	protected void starter() {
     	try {
 			displayMenu();
@@ -52,31 +104,3 @@ public class ReviewView extends View{
     	((MovieListingView)(getPrevious())).starter(movie);
 	}
   }
-
-
-
-/*System.out.println("(1) Write a review\n"
-+ "(2) View all reviews\n"
-+ "(3) Give a Rating\n"
-+ "(4) View Average Rating\n"
-+ "(5) Return\n");
-System.out.println("Enter the number of your choice: ");
-int choice = sc.nextInt();
-while (verifyChoiceNumber(choice, 1, 5)) { 
-switch(choice) {
-case 1:
-addReview(movieIn); 
-break;
-case 2:
-displayReview(movieIn); 
-break;
-case 3:
-giveRating(movieIn); 
-break;
-case 4:
-getMovieRating(movieIn); 
-break;
-case 5:
-break;
-}
-}*/

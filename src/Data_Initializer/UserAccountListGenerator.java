@@ -8,11 +8,8 @@ import java.util.Date;
 import Model.Customer;
 
 public class UserAccountListGenerator {
-	
-	static ArrayList<Customer> cust_list = new ArrayList<Customer>();
-	
 	public static ArrayList<Customer> CustomerList() throws ParseException {
-		
+		ArrayList<Customer> cust_list = new ArrayList<Customer>();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
 		
 //		Customer(int customerID, String name, String mobile, String email, Date DOB, String password, boolean isSenior)
@@ -48,9 +45,5 @@ public class UserAccountListGenerator {
 		cust_list.add(c6);
 		
 		return cust_list;
-	}
-	
-	public static Customer getCustomerFromGenerator(int n) {
-		return cust_list.get(n);
 	}
 }

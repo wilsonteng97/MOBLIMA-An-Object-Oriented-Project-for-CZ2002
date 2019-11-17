@@ -5,19 +5,12 @@ import View.View;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.RandomAccess;
 import java.util.Scanner;
 import Model.Booking;
 import Model.Customer;
 import Model.Movie;
 import Model.Seat;
-import Model.Transaction;
-import Model.Enums.BookingStatus;
-import Model.Enums.TransactionMethod;
-
-import java.util.Random;
 
 public class PaymentView extends View{
 	private double price;
@@ -26,8 +19,9 @@ public class PaymentView extends View{
     private String TID;
     private double GST;
     private double totalPrice;
-    	
+    
     Scanner sc = new Scanner(System.in);
+    
     public PaymentView(Customer customer, Seat seat, double price) {
     	this.customer = customer;
         this.seat = seat;
@@ -62,30 +56,24 @@ public class PaymentView extends View{
         }
     }
    
-    private String generateTID() {
+    private void generateTID() {
     	TID = seat.getShowtime().getCinema().getCinemaID() +
-                new SimpleDateFormat("YYYYMMddhhmm").format(new Date().getTime());
-    	return TID;
+                new SimpleDateFormat("YYYYMMddhhmm").format(new Date().getTime())
+        ;
     }
     
-    private Double computeTotalPrice() {
+    private void computeTotalPrice() {
         if (customer.getIsSenior()) 
         	price /= 2;
         GST = Math.round(price * 7)/100;
         totalPrice = Math.round((price+GST)*100)/100;
-        return totalPrice;
     }
     
     private void saveBooking() throws IOException {
         seat.setOccupiedAt(seat.getShowtime(), true);
         Movie movie = seat.getShowtime().getMovie();
         getMovieList().get(getMovieList().indexOf(movie)).addTotalSales(1);
-		Date today = Calendar.getInstance().getTime();
-		Transaction transaction = new Transaction(generateTID(), computeTotalPrice(), 
-												  today, TransactionMethod.DEBIT_CREDIT);
-		
-        Booking record = new Booking(customer, today, transaction, 
-        							 BookingStatus.ACCEPTED, null);
+        Booking record = new Booking(TID, customer, seat);
         addBooking(record);
         try {
 			updateShowTime();
@@ -104,6 +92,7 @@ public class PaymentView extends View{
 		try {
 			displayMenu();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 	}
