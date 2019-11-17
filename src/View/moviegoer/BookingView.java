@@ -68,6 +68,7 @@ public class BookingView extends View{
         if (showTime.getTime().getDay()==6 || showTime.getTime().getDay()==7) {
             WEEKEND_RATE = 1.2;
         }
+        
         TOTAL_RATE *= HOLIDAY_RATE * WEEKEND_RATE;
         displayMenu();
     }
@@ -103,7 +104,7 @@ public class BookingView extends View{
         System.out.println("Showing on " + formatTimeDate(showtime.getTime()));
         System.out.println("Seat: Row " + (seat.getRow()+1) + " Col " + ((seat.getCol() > 8) ? seat.getCol() : (seat.getCol()+1)));
         System.out.println();
-        System.out.println("Ticket type: " + ticketType);
+        // System.out.println("Ticket type: " + ticketType);
         System.out.println("Ticket price: " + Math.round(price*TOTAL_RATE*100)/100 + " SGD (Excl. GST)");
     }
 
