@@ -113,11 +113,11 @@ public class CusShowtimeView extends View{
 		int choice = sc.nextInt();
         switch (choice) {
             case 1:
-                displaySeat(showtime.getSeats(), showtime);
+                displaySeat(showtime.getSeats());
                 displayShowtimeDetail(showtime);
                 break;
             case 2:
-                displaySeat(showtime.getSeats(), showtime);
+                displaySeat(showtime.getSeats());
                 bookSeatMenu(showtime);
                 break;
             case 3:
@@ -141,13 +141,14 @@ public class CusShowtimeView extends View{
         displayShowtimeDetail(showtime);
     }
 	
-	private void displaySeat(Seat[][] seats, ShowTime showtime) {
+	private void displaySeat(Seat[][] seats) {
+        
         System.out.println("                    -------Screen------");
         System.out.println("     1  2  3  4  5  6  7  8     9 10 11 12 13 14 15 16");
         for (int row = 0; row < 8; row++) {
             System.out.print(row + 1 + "   ");
             for (int col = 0; col < 16; col++) {
-                if (seats[row][col].isOccupiedAt(showtime)) System.out.print("[X]");
+                if (seats[row][col].isOccupiedAt()) System.out.print("[X]");
                 else System.out.print("[ ]");
 
             }
