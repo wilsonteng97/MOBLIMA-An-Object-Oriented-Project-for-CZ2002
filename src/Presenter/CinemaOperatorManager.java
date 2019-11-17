@@ -121,8 +121,8 @@ public static void updateAdminAccount(){
         updateShowTime();
     }
 
-    public static void removeShowtime(Movie movie, ShowTime showTime) throws IOException {
-        showtimeList.get(movie).remove(showTime);
+    public static void removeShowtime(ShowTime showTime) throws IOException {
+        showtimeList.get(showTime.getMovie()).remove(showTime);
         updateShowTime();
     }
 
