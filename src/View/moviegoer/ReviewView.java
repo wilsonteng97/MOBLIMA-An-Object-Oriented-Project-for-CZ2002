@@ -7,6 +7,8 @@ import static Model.Enums.ShowingStatus.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 import Model.Customer;
@@ -57,10 +59,11 @@ public class ReviewView extends View{
 	    int rating = sc.nextInt();
 	    System.out.println("Please enter your comments:");
 	    String comment = sc.next();
-	    Review review = new Review(rating, comment, null, customer);
+	    Date today = Calendar.getInstance().getTime();
+	    Review review = new Review(rating, comment, today, customer, movie);
 	    
 	    try {
-	        addNewReview(movie, review);
+	        addNewReview(review);
 	        System.out.println("Successfully added review for " + movie.getTitle());
 	    }
 	    catch (IOException ex) {
