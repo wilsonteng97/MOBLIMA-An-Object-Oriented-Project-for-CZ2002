@@ -167,7 +167,7 @@ public class CusShowtimeView extends View{
             System.out.println("Error. Please choose another seat.");
             bookSeatMenu(showtime);
         }
-        else if (showtime.getSeatAt(row, col).isOccupiedAt(showtime)) {
+        else if (showtime.getSeatAt(row, col).isOccupiedAt()) {
             System.out.println("The seat has been booked. Please choose another seat.");
             bookSeatMenu(showtime);
         }
