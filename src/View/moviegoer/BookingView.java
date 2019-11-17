@@ -4,6 +4,8 @@ import static Model.Enums.MovieType.MOVIE3D;
 import static Presenter.Presenter.*;
 import static Presenter.PurchaseNOrder.*;
 import View.View;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
@@ -13,45 +15,62 @@ import Model.Holiday;
 import Model.Movie;
 import Model.Seat;
 import Model.ShowTime;
+import static Presenter.AdminManager.*;
 
 public class BookingView extends View{
 	private Seat seat;
     private String ticketType;
     private double price;
     private boolean bookingDone;
+    private ShowTime showTime;
+
+    private double HOLIDAY_RATE = 1;
+    private double WEEKEND_RATE = 1; 
+    private double SENIOR_CITIZEN_RATE = 1;
+    private double TOTAL_RATE = 1;
     
     Scanner sc = new Scanner(System.in);
     
-    public BookingView(Seat seat) {
-    	this.seat = seat;
-        price = seat.getShowtime().getMovieTickets().get(0).getPrice();
+    public BookingView(Seat seat, ShowTime showTime) {
+        this.seat = seat;
+        this.showTime=showTime;
+        price = seat.getShowtime().getCinema().getBasePrice();
         bookingDone = false;
-        computePrice();
+        System.out.println("Are you a Senior Citizen? (Y or N). ID will be checked when you enter the cinema");
+        String input = null;
+        while (input!="Y" || input!="y" || input!="N" || input!="n") {
+            input = sc.next();
+            input = input.toUpperCase();
+            System.out.println("test");
+        }
+        Boolean isSeniorCitizen = input.equals("Y") ? true : false;
+        computePrice(isSeniorCitizen);
+        displayMenu();
     }	
 
-    private void computePrice() {
-    	Date movieDate = seat.getShowtime().getTime();
-    	Calendar c1 = Calendar.getInstance();
-        c1.setTime(movieDate);
-    	Holiday holiday = getHoliday(movieDate);
-        if (holiday != null) {
-            double rate = holiday.getRate();
-            price = rate * price;
-            ticketType = holiday.getName();
-        }
-        else {
-            if (c1.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || 
-            		c1.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-                price = price * 1.2;
-                ticketType = "Weekend";
-            }
-            else {
-                ticketType = "Weekday";
+    private void computePrice(Boolean isSeniorCitizen) {
+        ArrayList<Holiday> holidayList = getHolidayList();
+        if (!holidayList.isEmpty()) {
+            for (Holiday h : holidayList) {
+                if (h.getDate().getMonth()==showTime.getTime().getMonth() &&
+                    h.getDate().getDay()== showTime.getTime().getDay()) {
+                        HOLIDAY_RATE = h.getRate();
+                    }
             }
         }
+        if (showTime.getTime().getDay()==6 || showTime.getTime().getDay()==7) {
+            WEEKEND_RATE = 1.2;
+        }
+
+        if (isSeniorCitizen) {
+            SENIOR_CITIZEN_RATE = 0.5;
+        }
+        TOTAL_RATE *= HOLIDAY_RATE * WEEKEND_RATE * SENIOR_CITIZEN_RATE;
     }
     
     private void displayMenu() {
+        double totalprice = price * TOTAL_RATE;
+        System.out.println("Total Ticket price will be $" + totalprice);
     	System.out.println("Booking detail");
     	System.out.println();
         displayBookingDetail();

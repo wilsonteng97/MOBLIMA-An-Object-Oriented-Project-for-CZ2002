@@ -187,7 +187,7 @@ public class CusShowtimeView extends View{
 
 
 
-            intent(this, new BookingView(showtime.getSeatAt(row-1, col-1)));
+            intent(this, new BookingView(showtime.getSeatAt(row-1, col-1), showtime));
         }
     }
 

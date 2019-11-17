@@ -10,7 +10,6 @@ import java.text.ParseException;
 import javax.lang.model.util.ElementScanner6;
 
 import Data_Initializer.*;
-import KJ_FileIO_Test.Customer;
 import Model.Admin;
 import Model.Cinema;
 import Model.CinemaOperator;

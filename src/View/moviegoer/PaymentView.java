@@ -74,7 +74,7 @@ public class PaymentView extends View{
     }
     
     private void saveBooking() throws IOException {
-        seat.setOccupiedAt(true);
+        seat.setOccupied(true);
         Movie movie = seat.getShowtime().getMovie();
         getMovieList().get(getMovieList().indexOf(movie)).addTotalSales(1);
 		Date today = Calendar.getInstance().getTime();
