@@ -76,6 +76,12 @@ public class CusShowtimeView extends View{
             index++;
         }
 
+        if (movie.getShowTimes() != null) {
+            for (ShowTime s : movie.getShowTimes()) {
+                if (s.getTime().equals(dateSelected)) showtimeList.add(s);
+            }
+        }
+
         if (showtimeList.isEmpty()) {
         	System.out.println("No showtime on that day.");
         	goBack();
@@ -83,6 +89,11 @@ public class CusShowtimeView extends View{
             return;
         }
 
+//        int i = 0;
+//        for (ShowTime s : showtimeList) {
+//            System.out.println(++i + ": " + s);
+//        }
+        System.out.println();
         System.out.println("Please choose a showtime:\n");
         
         int choice = sc.nextInt();        
@@ -93,7 +104,7 @@ public class CusShowtimeView extends View{
 
 	private void displayShowtimeDetail(ShowTime showtime) {
 		System.out.println();
-		System.out.println(showtime.toString());
+		System.out.println("Details for " + showtime.getTime());
 		System.out.println("(1) Check seat availability"+
                 "(2) Book seat"+
                 "(3) Check price"+
@@ -102,11 +113,11 @@ public class CusShowtimeView extends View{
 		int choice = sc.nextInt();
         switch (choice) {
             case 1:
-                displaySeat(showtime.getSeats());
+                displaySeat(showtime.getSeats(), showtime);
                 displayShowtimeDetail(showtime);
                 break;
             case 2:
-                displaySeat(showtime.getSeats());
+                displaySeat(showtime.getSeats(), showtime);
                 bookSeatMenu(showtime);
                 break;
             case 3:
@@ -130,14 +141,14 @@ public class CusShowtimeView extends View{
         displayShowtimeDetail(showtime);
     }
 	
-	private void displaySeat(Seat[][] seats) {
+	private void displaySeat(Seat[][] seats, ShowTime showtime) {
         System.out.println("                    -------Screen------");
         System.out.println("     1  2  3  4  5  6  7  8     9 10 11 12 13 14 15 16");
         for (int row = 0; row < 8; row++) {
             System.out.print(row + 1 + "   ");
             for (int col = 0; col < 16; col++) {
-                if (seats[row][col] == null) System.out.print("[ ]");
-                else System.out.print("["+seats[row][col]+"]");
+                if (seats[row][col].isOccupiedAt(showtime)) System.out.print("[X]");
+                else System.out.print("[ ]");
 
             }
             System.out.println();
