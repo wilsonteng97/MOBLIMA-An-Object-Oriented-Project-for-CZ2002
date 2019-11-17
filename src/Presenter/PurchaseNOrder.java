@@ -1,37 +1,18 @@
 package Presenter;
 
-import Model.Seat;
-import Model.Cinema;
+import java.util.Date;
+import java.util.HashMap;
+import static Presenter.Presenter.*;
+import Model.Holiday;
 
 public class PurchaseNOrder {
-  boolean confirm = true;
-  String seatNum;
-
+  private static HashMap<String, Holiday> holidayList;
+  
   public PurchaseNOrder(){
   }
-  
-  public void passAge(int userID){
-
-  }
-
-  public String readSeat(Seat seat){
-    
-		return seatNum;
-  }
-
-
-  public static void selectSeat(int seatrowIn, int seatnoIn){
-
-    
-    
-  }
-
-  public void readTheatre(){
-
+  public static Holiday getHoliday(Date time) {
+      return holidayList.get(formatTimeDate(time));
   }
   
-  public boolean confirmOrder(){
-        
-		return confirm ;
-  }
-  }
+
+}

@@ -14,16 +14,19 @@ import java.util.Date;
 
 public class CusShowtimeView extends View{
 	private Movie movie;
+	
 	Scanner sc = new Scanner(System.in);
+	
 	public CusShowtimeView(Movie movieInput) {
 		movie=movieInput;
-	}	
+	}
+	
 	private void displayMenu() {
 		
 		Date today = new Date();
         Date tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
         Date afterTomorrow = new Date(new Date().getTime() + 2* 24 * 60 * 60 * 1000);
-        Date dateChosen;
+        Date dateSelected;
         
         if (movie.getStatus().equals(NOW_SHOWING)) {
         	System.out.println("Movie Showtime");
@@ -35,13 +38,13 @@ public class CusShowtimeView extends View{
             int choice = sc.nextInt();
     		switch (choice) {
                 case 1:
-                    dateChosen = today;
+                	dateSelected = today;
                     break;
                 case 2:
-                    dateChosen = tomorrow;
+                	dateSelected = tomorrow;
                     break;
                 default:
-                    dateChosen = afterTomorrow;
+                	dateSelected = afterTomorrow;
                     break;
             }
         }
@@ -53,33 +56,34 @@ public class CusShowtimeView extends View{
         	int choice = sc.nextInt();
     		switch (choice) {
                 case 1:
-                    dateChosen = tomorrow;
+                	dateSelected = tomorrow;
                     break;
                 default:
-                    dateChosen = afterTomorrow;
+                	dateSelected = afterTomorrow;
                     break;
             }
         }
         System.out.println();
-        System.out.println("Showtime on " + formatTimeDate(dateChosen));
+        System.out.println("Showtime on " + formatTimeDate(dateSelected));
         System.out.println();
         ArrayList<ShowTime> showtimeList = new ArrayList<>();
 
         if (movie.getShowTimes() != null) {
             for (ShowTime s : movie.getShowTimes()) {
-                if (s.getTime() == dateChosen) showtimeList.add(s);
+                if (s.getTime() == dateSelected) showtimeList.add(s);
             }
         }
 
         if (showtimeList.isEmpty()) {
         	System.out.println("No showtime on that day.");
+        	goBack();
         	end();
             return;
         }
 
-        int index = 0;
+        int i = 0;
         for (ShowTime s : showtimeList) {
-            System.out.println(++index + ": " + s);
+            System.out.println(++i + ": " + s);
         }
         System.out.println();
         System.out.println("Please choose a showtime:\n");
@@ -121,18 +125,19 @@ public class CusShowtimeView extends View{
         Movie movie = showtime.getMovie();
         System.out.println("Ticket price for " + movie.getTitle() + " (" + movie.getType().equals(MOVIE3D) != null ? "3D" : "Digital" + ")");
         System.out.printf("                    " + "Weekdays" + "        " + "Weekends\n" +
-                "Regular Citizens    %-8.2f        %-8.2f\n" +
+                "Adults              %-8.2f        %-8.2f\n" +
                 "Senior Citizens     %-8.2f        %-8.2f\n\n", basePrice, basePrice * 1.2, basePrice * 0.5, basePrice * 0.5 * 1.2);
         System.out.println("Discount on holidays\n");
+        goBack();
         displayShowtimeDetail(showtime);
     }
 	
 	private void displaySeat(Seat[][] seats) {
         System.out.println("                    -------Screen------");
         System.out.println("     1  2  3  4  5  6  7  8     9 10 11 12 13 14 15 16");
-        for (int row = 0; row <= 8; row++) {
+        for (int row = 0; row < 8; row++) {
             System.out.print(row + 1 + "   ");
-            for (int col = 0; col <= 16; col++) {
+            for (int col = 0; col < 16; col++) {
                 if (seats[row][col] == null) System.out.print("[ ]");
                 else System.out.print("["+seats[row][col]+"]");
 
@@ -143,7 +148,7 @@ public class CusShowtimeView extends View{
     }
 	
 	private void bookSeatMenu(ShowTime showtime) {
-        System.out.println("Enter the row (1 - 9) of the seat:");
+        System.out.println("Enter the row (1 - 8) of the seat:");
         int row = sc.nextInt();
         System.out.println("Enter the column (1 - 16) of the seat:");
         int col = sc.nextInt();

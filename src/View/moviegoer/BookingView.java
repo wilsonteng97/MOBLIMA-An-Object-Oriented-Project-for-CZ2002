@@ -2,8 +2,7 @@ package View.moviegoer;
 
 import static Model.Enums.MovieType.MOVIE3D;
 import static Presenter.Presenter.*;
-import Presenter.Query;
-import Presenter.PurchaseNOrder;
+import static Presenter.PurchaseNOrder.*;
 import View.View;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,12 +15,13 @@ import Model.Seat;
 import Model.ShowTime;
 
 public class BookingView extends View{
-
 	private Seat seat;
     private String ticketType;
     private double price;
     private boolean bookingDone;
+    
     Scanner sc = new Scanner(System.in);
+    
     public BookingView(Seat seat) {
     	this.seat = seat;
         price = seat.getShowtime().getMovieTickets().get(0).getPrice();
@@ -33,7 +33,7 @@ public class BookingView extends View{
     	Date movieDate = seat.getShowtime().getTime();
     	Calendar c1 = Calendar.getInstance();
         c1.setTime(movieDate);
-    	Holiday holiday = getHoliday(seat.getShowtime().getTime());
+    	Holiday holiday = getHoliday(movieDate);
         if (holiday != null) {
             double rate = holiday.getRate();
             price = rate * price;
@@ -54,7 +54,7 @@ public class BookingView extends View{
     private void displayMenu() {
     	System.out.println("Booking detail");
     	System.out.println();
-        printBookingDetail();
+        displayBookingDetail();
         System.out.println();
         System.out.println("(1) Proceed\n"+
                 "(2) Return");
@@ -69,7 +69,7 @@ public class BookingView extends View{
         }
     }  
     	
-	private void printBookingDetail() {
+	private void displayBookingDetail() {
 		ShowTime showtime = seat.getShowtime();
         Movie movie = showtime.getMovie();
         Cinema cinema = showtime.getCinema();
@@ -92,13 +92,13 @@ public class BookingView extends View{
         String mobile = sc.next();
         System.out.println("Please enter your Email address:");
         String email = sc.next();
-        System.out.println("Enter Y if you are senior citizen:");
+        System.out.println("Enter Y if you are senior citizen:\n"
+        		+ "(Validation upon entering)");
         String seniorIn = sc.next();
         boolean isSenior = false;
         if (seniorIn=="Y") {
         	isSenior = true;
         }
-        //boolean isSeniorCitizen = askConfirm("Are you a senior citizen?","Enter Y if yes (validation will be done upon entering):");
 
         Customer customer = new Customer(name, mobile, email, isSenior);
         bookingDone = true;
@@ -118,69 +118,3 @@ public class BookingView extends View{
 }
 
 
-/*private void displayMenu() {
-/*boolean[] arrayBoo = new boolean[4];
-int choice;
-
-System.out.println("(1) Please Enter your Name\n"
-		+ "(2) Please Enter your Mobile Number\n"
-		+ "(3) Please Enter your Email\n"
-		+ "(4) Please Enter your Age\n"
-		+ "(5) Print Booking Details\n"
-		+ "(6) Make Payment\n"
-		+ "(7) Return\n");
-System.out.println("Enter the number of your choice: ");
-choice = sc.nextInt();
-
-while (verifyChoiceNumber(choice, 1, 7)) { 
-
-	switch(choice) {
-	
-	case 1:
-		String nameIn = sc.next();
-		recordName(nameIn);
-
-		arrayBoo[0]=true;
-
-		break;
-	case 2:
-		String mobileIn = sc.next();
-		recordMobileNo(mobileIn);
-
-		arrayBoo[1]=true;
-
-		break;
-	case 3:
-		String emailIn = sc.next();
-		recordEmail(emailIn);
-
-		arrayBoo[2]=true;
-		break;
-	case 4:
-		int ageIn = sc.nextInt();
-		arrayBoo[3]=true;
-
-		break;
-	case 5:
-		printBookingDetail();
-	case 6:
-
-		for (int i=0;i<4;i++) {
-			if (arrayBoo[i] == false)
-				System.out.println("please fill in ("+(i+1)+")");
-			else {
-				
-				price = computePrice(movieName, showtime, ageIn);
-				//computePrice(String movieName, ShowTime showtime, int ageIn)
-				//[presenter: computePrice() according to holiday, age, movie type, cinema class]
-				intent(this, new PaymentView(price));
-			}
-		}
-		
-
-		break;
-	case 7:
-		break;
-	  }
-  }
-}*/
