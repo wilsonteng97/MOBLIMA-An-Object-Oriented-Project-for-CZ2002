@@ -37,7 +37,6 @@ public class MovieListView extends View{
 		System.out.println("Movie Listing");
 		System.out.println();
 		System.out.println("(1) Display Movies\n"
-
 				+ "(2) Add new Movie\n"
 				+ "(3) Edit Movie Listing\n"
 				+ "(4) Remove Movie\n"

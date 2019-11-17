@@ -9,6 +9,7 @@ import Model.Holiday;
 import Model.Movie;
 import Model.Review;
 import Model.ShowTime;
+import Model.Enums.ShowingStatus;
 import Presenter.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,6 +45,7 @@ public class CinemaOperatorManager extends DataManager {
             readCustomerList();
             readReviewList();
             readShowtime();
+            readHolidayList();
     }
 //    public static boolean readTheData()
 //    {
@@ -71,7 +73,8 @@ public static void readAdminAccount()
     }
 }
 
-public static void updateAdminAccount(){
+public static void updateAdminAccount()
+{
    try {
         writeDataFile(adminAccountList, adminAccountListFile);
     } catch (IOException e) {
@@ -222,13 +225,7 @@ public static void updateAdminAccount(){
     }
 
     public static void removeMovie(Movie movie) throws IOException{
-    	readMovieList();
-    	try {
-    		movieList.remove(movie);
-    	}
-    	catch (Exception e) {
-    		System.out.println(e.getMessage());
-    	}
+    	movie.setStatus(ShowingStatus.NO_LONGER_AVAILABLE);
     	updateMovieListing();
     }
 
@@ -240,16 +237,4 @@ public static void updateAdminAccount(){
 		writeDataFile(movieList, movieListFile);
     }
     
-    // ========================Holiday========================
-    private static void readHolidayList() {
-        if(readDataFile_HashMap(holidayListFile) == null)
-        	holidayList = new HashMap<>();
-        else
-        	holidayList = (HashMap<String, Holiday>) readDataFile_HashMap(holidayListFile);
-    }
-    
-    public static void updateHolidayList() throws IOException {
- 		writeDataFile(holidayList, holidayListFile);
-     }
-
 }
