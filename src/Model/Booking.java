@@ -10,7 +10,7 @@ import Model.Enums.*;
 /**
  * The Class Booking.
  * This class the information of a particular Booking.
- *  
+ * @version 1.0
  */
 @SuppressWarnings("serial")
 public class Booking implements Serializable{
@@ -50,7 +50,7 @@ public class Booking implements Serializable{
 	}
 
 	/**
-	 * Gets the tid.
+	 * This method gets the transaction id.
 	 *
 	 * @return the tid
 	 */
@@ -79,7 +79,7 @@ public class Booking implements Serializable{
 ////	}
 	
 	/**
-	 * Sets the booking ID.
+	 * This method sets the booking ID.
 	 *
 	 * @param bookingID the new booking ID
 	 */
@@ -89,7 +89,7 @@ public class Booking implements Serializable{
 	}
 	
 	/**
-	 * Gets the booking ID.
+	 * This method gets the booking ID.
 	 *
 	 * @return the booking ID
 	 */
@@ -98,7 +98,7 @@ public class Booking implements Serializable{
 	}
 	
 	/**
-	 * Gets the customer.
+	 * This method gets the customer object.
 	 *
 	 * @return the customer
 	 */
@@ -108,7 +108,7 @@ public class Booking implements Serializable{
 	}
 	
 	/**
-	 * Sets the customer.
+	 * This method sets the customer.
 	 *
 	 * @param customer the new customer
 	 */
@@ -117,7 +117,7 @@ public class Booking implements Serializable{
 	}
 	
 	/**
-	 * Gets the date.
+	 * This method gets the date.
 	 *
 	 * @return the date
 	 */
@@ -127,7 +127,7 @@ public class Booking implements Serializable{
 	}
 	
 	/**
-	 * Sets the date.
+	 * This method sets the date.
 	 *
 	 * @param date the new date
 	 */
@@ -136,7 +136,7 @@ public class Booking implements Serializable{
 	}
 	
 	/**
-	 * Gets the transaction.
+	 * This method gets the transaction object.
 	 *
 	 * @return the transaction
 	 */
@@ -146,7 +146,7 @@ public class Booking implements Serializable{
 	}
 	
 	/**
-	 * Sets the transaction.
+	 * This method sets the transaction.
 	 *
 	 * @param transaction the new transaction
 	 */
@@ -155,7 +155,7 @@ public class Booking implements Serializable{
 	}
 	
 	/**
-	 * Gets the status.
+	 * This method gets the enum booking status.
 	 *
 	 * @return the status
 	 */
@@ -165,7 +165,7 @@ public class Booking implements Serializable{
 	}
 	
 	/**
-	 * Sets the status.
+	 * This method sets the status.
 	 *
 	 * @param status the new status
 	 */
@@ -174,7 +174,7 @@ public class Booking implements Serializable{
 	}
 
 	/**
-	 * Gets the movie tickets.
+	 * This method gets the movie tickets.
 	 *
 	 * @return the movie tickets
 	 */
@@ -184,7 +184,7 @@ public class Booking implements Serializable{
 	}
 	
 	/**
-	 * Adds the movie ticket.
+	 * This method adds the movie ticket object.
 	 *
 	 * @param ticket the ticket
 	 */
@@ -193,7 +193,7 @@ public class Booking implements Serializable{
 	}
 	
 	/**
-	 * Removes the movie ticket.
+	 * This method removes the movie ticket.
 	 *
 	 * @param ticket the ticket
 	 */

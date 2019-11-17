@@ -1,11 +1,6 @@
 
 package Model;
 
-/**
- * @author wilso
- *
- */
-
 import java.io.Serializable;
 
 /**
