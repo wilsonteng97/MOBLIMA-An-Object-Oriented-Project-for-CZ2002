@@ -23,7 +23,7 @@ public class CustomerManager {
 
     }
 
-    public static void readCustomerList(){
+    public static void readCustomerList() throws IOException{
     	
     	if(readDataFile_List(customerListFile) == null)
     		customerList = new ArrayList<>();

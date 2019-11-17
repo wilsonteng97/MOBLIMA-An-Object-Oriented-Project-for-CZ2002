@@ -27,7 +27,7 @@ public class Customer implements Serializable{
 	/** The date of birth. */
 	private Date DOB; // Date of Birth
 	/** The password. */
-	String password;
+	private String password;
 	/** The age. */
 	private Integer age;
 	/** The boolean expression of whether the individual is a senior citizen. */
@@ -35,7 +35,7 @@ public class Customer implements Serializable{
 
 /** The bookings. */
 //	private boolean ismember;
-	List<Booking> bookings;
+	protected List<Booking> bookings;
 
 	/**
 	 * Instantiates a new customer.

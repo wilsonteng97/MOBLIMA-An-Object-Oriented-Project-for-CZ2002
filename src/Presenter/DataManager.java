@@ -28,13 +28,13 @@ public class DataManager {
 			return lister;
 		}
 		catch (IOException e) {
-			System.out.println("Error occured: " + e.getMessage());
-			e.printStackTrace();
+			System.out.println(fileName + " initially empty");
+		//	e.printStackTrace();
 			return null;
 	    }
 		catch (ClassNotFoundException e) {
-			System.out.println("Error occured: " + e.getMessage());
-			e.printStackTrace();
+			System.out.println(fileName + "initially empty");
+		//	e.printStackTrace();
 	        return null;
 	    }
 	}
@@ -49,13 +49,13 @@ public class DataManager {
 				return hashmap;
 			}
 			catch (IOException e) {
-				System.out.println("Error occured: " + e.getMessage());
-				e.printStackTrace();
+				System.out.println(fileName + " initially empty");
+			//	e.printStackTrace();
 				return null;
 		    }
 			catch (ClassNotFoundException e) {
-				System.out.println("Error occured: " + e.getMessage());
-				e.printStackTrace();
+				System.out.println(fileName + " initially empt");
+			//	e.printStackTrace();
 		        return null;
 		    }
 		}
