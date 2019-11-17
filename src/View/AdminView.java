@@ -1,4 +1,5 @@
 package View;
+
 import View.admin.MovieListView;
 import View.admin.CinemaListView;
 import View.admin.AdminShowtimeView;
@@ -7,9 +8,13 @@ import View.admin.SystemSettingView;
 import static Presenter.AdminManager.*;
 import static Presenter.Presenter.*;
 import static Presenter.LoginManager.*;
+import static Presenter.CustomerManager.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import Model.Customer;
 
 public class AdminView extends View {
 	private boolean loggedIn;
@@ -47,13 +52,14 @@ public class AdminView extends View {
 	}
 
 	private void displayMenu() {
+		ArrayList<Customer> customerList = getCustomerList();
 		Scanner sc = new Scanner(System.in);
 		System.out.println();
 		System.out.println("Menu\n" + "----\n" + 
 				"Welcome Staff, please make a selection:\n" + "(1) Modify movie listing\n" + "(2) Modify cinema listing\n"
 						 + "(3) Configure system settings\n" + "(4) Initialize admins\n"
-						+ "(5) Display customers details \n" + "(6) Initialize data\n" + "(7) Logout\n" + "\nPlease enter your choice:");
-		int choice = sc.nextInt();
+						+ "(5) Display customers details \n" + "(6) Initialize data\n" + "(7) Logout\n");
+		int choice = passChoiceInt("Please enter your choice:");
 		if (verifyChoiceNumber(choice, 1, 7)) {
 			switch (choice) {
 			case 1:
@@ -75,6 +81,15 @@ public class AdminView extends View {
 					displayMenu();
 					break;
 			case 5:
+				if(customerList.isEmpty())
+				{
+					System.out.println("There are no customers");
+					return;
+				}
+				for(Customer customer: customerList)
+				{
+					System.out.println(customer.getName() + " " + customer.getEmail() + " " + customer.getPassword());
+				}
 				displayMenu();
 				break;
 			case 6:

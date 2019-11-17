@@ -11,11 +11,11 @@ public class StarterView extends View
 	@Override
 	public void starter()
 	{
+		readTheData();
 		System.out.println("============================\n"
 				+ "|          MOBLIMA         |\n"
 				+ "|   BY CZ2002 SS8 Group5   |\n"
 				+ "============================");
-		readTheData();
 		displayMenu();
 
 	}
