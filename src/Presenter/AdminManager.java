@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.ParseException;
 
 import javax.lang.model.util.ElementScanner6;
 
@@ -119,7 +120,9 @@ public class AdminManager extends DataManager
     {
         AdminAccountListGenerator.AdminAccounts();
     }
-
+//    public static void initialiseUserAccounts() throws ParseException, IOException {
+//    	UserAccountListGenerator.CustomerList();
+//    }
     public static void initialiseCinemas() throws IOException
     {
         CinemaListGenerator.CinemaList();
@@ -203,7 +206,7 @@ public class AdminManager extends DataManager
 //            rating = sum / reviewList.size();
 //            return rating;
 //        }
-    	return movie.getReviewRatingAverage(reviewList);
+    	return movie.getReviewRatingAverage();
     }
 
     // =========================Movie Sales=========================

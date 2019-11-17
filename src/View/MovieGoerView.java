@@ -2,7 +2,11 @@ package View;
 
 import View.moviegoer.BookingHistoryView;
 import View.moviegoer.MovieListingView;
+
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Scanner;
+import static Presenter.AdminManager.*;
 
 public class MovieGoerView extends View{
 	public MovieGoerView() {
@@ -10,6 +14,12 @@ public class MovieGoerView extends View{
 
 	@Override
 	protected void starter(){
+//		try {
+//			initialiseUserAccounts();
+//		} catch (ParseException | IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\n"
 				+ "Menu\n" + "----");

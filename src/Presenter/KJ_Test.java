@@ -5,10 +5,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import static Presenter.CustomerManager.*;
+
+import Data_Initializer.UserAccountListGenerator;
 import Model.*;
 import Model.Enums.*;
 import Presenter.DataManager;
-import Data_Initializer.*;
+import static Data_Initializer.UserAccountListGenerator.*;
 
 
 public class KJ_Test {
@@ -16,14 +19,16 @@ public class KJ_Test {
 //    	ArrayList<Movie> cust = new ArrayList<Movie>();
     	
 //    	Movie a = new Movie()    	
-    	String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
-    	DataManager.readDataFile_List(fileName);
-    	ArrayList<Movie> print_movies = new ArrayList<Movie>();
+//    	String fileName = "datafiles/userAccountListFile.txt";
+    	ArrayList<Customer> print = getCustomerList();
+//    	DataManager.writeDataFile(print, fileName);
+//    	DataManager.readDataFile_List(fileName);
+//    	ArrayList<Customer> print_movies = new ArrayList<Customer>();
 //    	CinemaOperatorManager.updateMovieListing();
 //    	print_movies = (ArrayList<Movie>) DataManager.readDataFile_List(fileName);
     	
-    	for (Movie m : print_movies) {
-    		System.out.println(m.getTitle() + " " + m.getDirector());
+    	for (Customer m : print) {
+    		System.out.println(m.getName() + " " + m.getEmail());
     	}
     	
     }
