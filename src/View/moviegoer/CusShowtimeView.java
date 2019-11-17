@@ -76,12 +76,6 @@ public class CusShowtimeView extends View{
             index++;
         }
 
-        if (movie.getShowTimes() != null) {
-            for (ShowTime s : movie.getShowTimes()) {
-                if (s.getTime().equals(dateSelected)) showtimeList.add(s);
-            }
-        }
-
         if (showtimeList.isEmpty()) {
         	System.out.println("No showtime on that day.");
         	goBack();
@@ -89,11 +83,6 @@ public class CusShowtimeView extends View{
             return;
         }
 
-        int i = 0;
-        for (ShowTime s : showtimeList) {
-            System.out.println(++i + ": " + s);
-        }
-        System.out.println();
         System.out.println("Please choose a showtime:\n");
         
         int choice = sc.nextInt();        
