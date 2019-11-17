@@ -169,7 +169,6 @@ public class Customer implements Serializable{
 	 *
 	 * @param password the new password
 	 */
-	// password
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -186,7 +185,6 @@ public class Customer implements Serializable{
 	/**
 	 * Compute the age of the customer with date of birth and current date.
 	 */
-	// private method to compute Age
 	private void computeAge() {
 		Calendar dob = Calendar.getInstance();  
 		dob.setTime(DOB);  
@@ -210,7 +208,6 @@ public class Customer implements Serializable{
 	 *
 	 * @return the age
 	 */
-	// age
 	public int getAge() {
 		computeAge();
 		return this.age;
@@ -221,7 +218,6 @@ public class Customer implements Serializable{
 	 *
 	 * @param isSenior the new checks if is senior
 	 */
-	// senior
 	public void setIsSenior(boolean isSenior) {
 		this.isSenior = isSenior;
 	}
