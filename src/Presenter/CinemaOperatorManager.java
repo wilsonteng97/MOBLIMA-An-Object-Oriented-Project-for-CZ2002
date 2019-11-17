@@ -15,7 +15,8 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Map.Entry;
-
+import static Presenter.AdminManager.*;
+import static Presenter.CustomerManager.*;
 public class CinemaOperatorManager extends DataManager {   
     private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
     private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
@@ -26,9 +27,7 @@ public class CinemaOperatorManager extends DataManager {
     private final static String cinemaOperatorListFile = "datafiles/cinemaOperatorListFile.txt";
 
     private static ArrayList<CinemaOperator> cinemaOperators;
-    private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
-    private static HashMap<Movie, ArrayList<Review>> reviewList;
     private static HashMap<CinemaOperator, ArrayList<Cinema>> cinemaList;
     private static ArrayList<Movie> movieList;
     private static HashMap<String, Holiday> holidayList;
@@ -41,6 +40,7 @@ public class CinemaOperatorManager extends DataManager {
             readHolidayList();
             readCinemaOperator();
             readShowtime();
+            readCustomerList();
     }
 //    public static boolean readTheData()
 //    {
@@ -79,18 +79,6 @@ public class CinemaOperatorManager extends DataManager {
     {
 		writeDataFile(cinemaOperators, cinemaOperatorListFile);
     } 
-
-    private static void readAdminAccount()
-    {
-        if(readDataFile_List(adminAccountListFile) == null)
-        {
-            adminAccountList = new ArrayList<>();
-        }
-        else 
-        {
-            adminAccountList = (ArrayList<Admin>) readDataFile_List(adminAccountListFile);
-        }
-    }
 
     // =======================Showtime=======================
     private static void readShowtime(){

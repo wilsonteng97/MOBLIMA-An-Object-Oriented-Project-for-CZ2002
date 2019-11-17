@@ -4,17 +4,18 @@ import Model.Customer;
 import Model.Movie;
 import Model.Cinema;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import static Presenter.AdminManager.*;
 
 
 public class CustomerManager {
-    ArrayList<Cinema> cinemaList;
-    ArrayList<Movie> movieList;
-    static ArrayList<Customer> customerList;
-
+    private static ArrayList<Cinema> cinemaList;
+    private static ArrayList<Movie> movieList;
+    private static ArrayList<Customer> customerList;
     private final static String customerListFile = "datafiles/userAccountListFile.txt";
-    
+
+
     String cinema, movieName;
     double averageRating;
 
@@ -22,9 +23,32 @@ public class CustomerManager {
 
     }
 
-    public ArrayList<Cinema> getCinemaList()
+    public static void readCustomerList(){
+    	
+    	if(readDataFile_List(customerListFile) == null)
+    		customerList = new ArrayList<>();
+        else 
+        	customerList = (ArrayList<Customer>) readDataFile_List(customerListFile);
+    }
+
+    public static void updateCustomerList()
+    {
+        try {
+            writeDataFile(customerList, customerListFile);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public static ArrayList<Cinema> getCinemaList()
     {
         return cinemaList;
+    }
+
+    public static ArrayList<Customer> getCustomerList()
+    {
+        return customerList;
     }
 
     public String getCinemaByID(String id) 
@@ -44,16 +68,9 @@ public class CustomerManager {
         return getTop5RankingRating();
     }
 
-    public int getMovieRating(String movieName){
-        return averageRating;
+    public double getMovieRating(Movie movie){
+        return movie.getReviewRatingAverage();
     }
 
-    public static ArrayList<Customer> getCustomerList(){
-    	
-    	if(readDataFile_List(customerListFile) == null)
-    		customerList = new ArrayList<>();
-        else 
-        	customerList = (ArrayList<Customer>) readDataFile_List(customerListFile);
-    	return customerList;
-    }
+    
 }
