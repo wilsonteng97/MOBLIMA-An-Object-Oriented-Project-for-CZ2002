@@ -19,6 +19,7 @@ import java.util.Map.Entry;
 import static Presenter.AdminManager.*;
 import static Presenter.CustomerManager.*;
 import static Presenter.ReviewManager.*;
+import static Presenter.BookingManager.*;
 public class CinemaOperatorManager extends DataManager {   
     private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
     private final static String reviewListFile = "datafiles/reviewListFile.txt";
@@ -47,6 +48,7 @@ public class CinemaOperatorManager extends DataManager {
             readReviewList();
             readShowtime();
             readHolidayList();
+            readBookingListing();
         }
         catch (IOException e)
         {

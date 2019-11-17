@@ -44,7 +44,7 @@ public class PaymentView extends View{
 		System.out.println("Transaction ID: " + id);
     	System.out.println("Ticket price: " + price);
     	System.out.println("GST: " + GST);
-    	System.out.println("Grand total: " + totalPrice);
+    	System.out.println("Grand total: " + price);
         if (customer.getIsSenior()) {
         	System.out.println("50% off for senior citizen");
         }
