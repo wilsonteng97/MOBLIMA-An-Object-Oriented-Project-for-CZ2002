@@ -80,7 +80,7 @@ public class ReviewView extends View{
 	    if (reviewList != null){
 	        int i = 0;
 	        for (Review r : reviewList) {
-	            System.out.println(++i + "Customer:     " + r.getCustomer());
+	            System.out.println(++i + " Customer:     " + r.getCustomer().getName());
 	            System.out.println("  Date:     " + formatTimeDate(r.getDate()));
 	            System.out.println("  Rating:   " + r.getRating());
 	            System.out.println("  Comments: " + r.getComment());
