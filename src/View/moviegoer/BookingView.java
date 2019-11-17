@@ -77,7 +77,6 @@ public class BookingView extends View{
         double totalprice = price * TOTAL_RATE;
         System.out.println("Total Ticket price will be $" + totalprice);
     	System.out.println("Booking detail");
-    	System.out.println();
         displayBookingDetail();
         System.out.println();
         System.out.println("(1) Proceed\n"+
@@ -97,7 +96,6 @@ public class BookingView extends View{
 		ShowTime showtime = seat.getShowtime();
         Movie movie = showtime.getMovie();
         Cinema cinema = showtime.getCinema();
-        System.out.println();
         System.out.println(movie.getTitle() + " (" + movie.getType().equals(MOVIE3D) != null ? "3D" : "Digital" + ")");
         System.out.println(movie.getAgeRestriction());
         System.out.println("Cinema: " + cinema.getCinemaName() + " (" + cinema.getCinemaOperator().getOperatorName() + ")");
