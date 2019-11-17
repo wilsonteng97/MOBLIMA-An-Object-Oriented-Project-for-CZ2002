@@ -10,8 +10,9 @@ import Presenter.DataManager;
 import Model.Customer;
 
 public class UserAccountListGenerator {
+	private static ArrayList<Customer> cust_list = new ArrayList<Customer>();
 	public static void CustomerList() throws ParseException {
-		ArrayList<Customer> cust_list = new ArrayList<Customer>();
+		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
 
 		// Customer(int customerID, String name, String mobile, String email, Date DOB,
@@ -61,5 +62,9 @@ public class UserAccountListGenerator {
 			System.out.println("Could not write customer list");
 		}
 
+	}
+	public static Customer getCustomerFromGenerator(int n)
+	{
+		return cust_list.get(n);
 	}
 }

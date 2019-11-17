@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import static Presenter.AdminManager.*;
 import static Presenter.CustomerManager.*;
+import static Presenter.ReviewManager.*;
 public class CinemaOperatorManager extends DataManager {   
     private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
     private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
@@ -41,6 +42,7 @@ public class CinemaOperatorManager extends DataManager {
             readCinemaOperator();
             readShowtime();
             readCustomerList();
+            readReviewList();
     }
 //    public static boolean readTheData()
 //    {

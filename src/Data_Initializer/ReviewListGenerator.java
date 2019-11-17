@@ -4,12 +4,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 import Model.Customer;
 import Model.Review;
+import static Presenter.ReviewManager.*;
 
 public class ReviewListGenerator {
-	public void ReviewList() throws ParseException {
+	public static void ReviewList() throws ParseException {
 		ArrayList<Review> review_list = new ArrayList<Review>();
 		
 //		Review (Integer rating, String comment, Date date, Customer customer)
@@ -21,7 +21,7 @@ public class ReviewListGenerator {
 		Review r1 = new Review(4, "Joker is brutal, dark and a compelling origin story of a man's painful journey to self destruction.",
 				date_c1, cust1);
 		review_list.add(r1);
-		
+
 		String c2_date = "11-11-2019";
 		Date date_c2 = formatter.parse(c2_date);
 		Customer cust2 = UserAccountListGenerator.getCustomerFromGenerator(1);

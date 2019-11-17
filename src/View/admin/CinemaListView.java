@@ -29,10 +29,10 @@ public class CinemaListView extends View {
 		System.out.println("Cinema Listing");
 		System.out.println();
 		System.out.println("(1) Display Cinemas\n" + "(2) Add Cinema\n" + "(3) Remove Cinema\n"
-				+ "(4) Change Base Price of cinema\n" + "(5) Initialise cinemas\n" + "(6) Return\n");
+				+ "(4) Change Base Price of cinema\n" + "(5) Return\n");
 		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
-		if (verifyChoiceNumber(choice, 1, 6)) {
+		if (verifyChoiceNumber(choice, 1, 5)) {
 			switch (choice) {
 			case 1:
 				displayCinemaOperator(); // [presenter: displayCinema()] actual method is getCinemaList instead of
@@ -47,17 +47,7 @@ public class CinemaListView extends View {
 			case 4:
 				setMoviePrice();
 				break;
-			case 5:
-					try {
-						initialiseCinemas();
-						System.out.println("You inicialise cinemas correctly");
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						System.out.println("Fail to initialise the seats");
-					}
-					displayMenu();
-					break;
-		    case 6:
+		    case 5:
 					end();
 		     		break;
 			}
