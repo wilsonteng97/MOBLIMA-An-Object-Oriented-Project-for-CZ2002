@@ -11,10 +11,21 @@ import java.util.ArrayList;
 import static Presenter.CinemaOperatorManager.*;
 import Presenter.DataManager;
 
-
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CinemaListGenerator implements dummy records of cinemas to the system.
+ */
 public class CinemaListGenerator extends DataManager {
+	
+	/** The cinema list to add the cinema object. */
 	static ArrayList<Cinema> cinema_list = new ArrayList<Cinema>();
 	
+    /**
+     * Cinema list to be generated. The object is created based on the attributes in the constructor.
+     * These cinemas are created for use in the system.
+     * The cinema will require the cineplex details, hence getCinemaOperatorFromGenerator() is used to generate the cinema operator object.
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public static void CinemaList() throws IOException 
     {
         CinemaOperator co1 = CinemaOperatorGenerator.getCinemaOperatorFromGenerator(0);
@@ -61,6 +72,12 @@ public class CinemaListGenerator extends DataManager {
 
     }
     
+    /**
+     * Generates the cinema from the list of cinemas created so that other objects can use the cinema object created here.
+     *
+     * @param n the index of the list which the required objects want.
+     * @return the cinema from the list
+     */
     public static Cinema getCinemaFromGenerator(int n) {
 		return cinema_list.get(n);
 	}

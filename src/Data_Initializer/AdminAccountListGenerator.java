@@ -6,8 +6,18 @@ import java.util.ArrayList;
 import static Presenter.CinemaOperatorManager.*;
 import Presenter.DataManager;
 
-
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AdminAccountListGenerator implements dummy records of admin accounts to the system.
+ */
 public class AdminAccountListGenerator extends DataManager {
+	
+	/**
+	 * Admin accounts to be generated. The object is created based on the attributes in the constructor.
+	 * These accounts will be used for logging into the system.
+	 * Accounts details are saved into the txt file.
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void AdminAccounts() throws IOException {
 		ArrayList<Admin> admin_list = new ArrayList<Admin>();
 		

@@ -15,10 +15,20 @@ import Model.Enums.ShowingStatus;
 import static Presenter.CinemaOperatorManager.*;
 import static Presenter.DataManager.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MovieListGenerator implements dummy records of movies to the system.
+ */
 public class MovieListGenerator extends DataManager {
 	
+	/** The movies list to add the movie object. */
 	static ArrayList<Movie> list = new ArrayList<Movie>();
 	
+	/**
+	 * Movie list to be generated. The object is created based on the attributes in the constructor.
+	 * The movies are created for use in the system.
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void MovieList() throws IOException {
 		
 //		Movie(String title, AgeRestriction ageRestriction, MovieType type, ShowingStatus status, 
@@ -86,12 +96,16 @@ public class MovieListGenerator extends DataManager {
 		addMovie(m6);
 
    // String fileName = "datafiles\\movieListFile.txt";
-
-   // String fileName = "C:\\Users\\tkjie\\Documents\\GitHub\\MOBLIMA-An-Object-Oriented-Project-for-CZ2002\\datafiles\\movieListFile.txt";
 		
 	//	writeDataFile(list, fileName);
 	}
 	
+	/**
+	 * Generates the movie from the list of movies created so that other objects can use the movie object created here.
+	 *
+	 * @param n the index of the list which the required objects want.
+	 * @return the movie from the list
+	 */
 	public static Movie getMovieFromGenerator(int n) {
 		return list.get(n);
 	}
