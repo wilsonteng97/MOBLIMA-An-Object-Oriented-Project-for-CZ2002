@@ -183,10 +183,6 @@ public class CusShowtimeView extends View{
             bookSeatMenu(showtime);
         }
         else {
-            System.out.println(showtime.getMovie().getTotalSales());
-
-
-
             intent(this, new BookingView(showtime.getSeatAt(row, col), showtime));
         }
     }

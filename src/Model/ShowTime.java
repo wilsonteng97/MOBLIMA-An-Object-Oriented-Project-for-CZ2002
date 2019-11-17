@@ -54,7 +54,6 @@ public class ShowTime implements Serializable {
 			{
 				cinemaLayout[i-1][j-1] = new Seat(id,i,j, this);
 				id++;
-				System.out.println(cinemaLayout[i-1][j-1].getSeatID());
 			}
 		}
 	}
