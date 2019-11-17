@@ -20,19 +20,34 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MovieListView shows the list of movies.
+ */
 public class MovieListView extends View{
 
+	/** The movie list. */
 	private ArrayList<Movie> movieList;
+	
+	/** initialise the num. */
 	private int num =0;
+	
+	/** The scanner object. */
 	private Scanner sc = new Scanner(System.in);
 	
 
+	/**
+	 * Starter to display main menu.
+	 */
 	@Override
 	protected void starter()
 	{
 		displayMenu();
 	}
 
+	/**
+	 * Display menu.
+	 */
 	private void displayMenu() {
 		System.out.println("Movie Listing");
 		System.out.println();
@@ -71,10 +86,12 @@ public class MovieListView extends View{
 		{
 			displayMenu();
 		}
-
 	}
 
 
+	/**
+	 * Add a new movie.
+	 */
 	private void newMovie()
 	{
 		String title;
@@ -147,6 +164,9 @@ public class MovieListView extends View{
 		displayMenu();
 	}
 
+	/**
+	 * Display movie list.
+	 */
 	private void displayMovieList()
 	{
 		movieList = getMovieList();
@@ -168,6 +188,11 @@ public class MovieListView extends View{
 		displayMenu();
 	}
 
+	/**
+	 * Display movie editing menu.
+	 *
+	 * @param movie the movie
+	 */
 	private void displayMovieEditingMenu(Movie movie)
 	{
 		System.out.println("Movie editor");
@@ -202,6 +227,11 @@ public class MovieListView extends View{
 		}
 	}
 
+	/**
+	 * Update movie details.
+	 *
+	 * @param movie the movie
+	 */
 	private void updateMovieDetails(Movie movie)
 	{
 		System.out.println("UpdateMovieDetails");
@@ -298,16 +328,6 @@ public class MovieListView extends View{
 						movie.setCast(cast);
 						break;
 					case 11:
-					//	try
-					//	{
-						//	updateMovieListing();
-							System.out.println("Changes applied!");	
-							displayMenu();	
-					//	}
-					//	catch(IOException e)
-					//	{
-					//		System.out.println("Fail to applied changes, try again");
-					//	}
 						break;
 				}
 			}
@@ -318,6 +338,11 @@ public class MovieListView extends View{
 		updateMovieDetails(movie);
 	}
 
+	/**
+	 * Delete movie from the list.
+	 *
+	 * @param movie the movie
+	 */
 	private void deleteMovie(Movie movie)
 	{
 		String choice = passChoiceString("Are You sure you want to delete "+ movie.getTitle() +  " Y/N");

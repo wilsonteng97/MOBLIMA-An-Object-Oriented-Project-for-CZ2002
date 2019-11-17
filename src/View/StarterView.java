@@ -3,11 +3,22 @@ package View;
 import java.util.Scanner;
 import static Presenter.CinemaOperatorManager.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class StarterView is the first interface of the system.
+ */
 public class StarterView extends View
 {
+	
+	/**
+	 * Instantiates a new starter view.
+	 */
 	public StarterView() {
 	} 
 
+	/**
+	 * Starter prints the first interface view.
+	 */
 	@Override
 	public void starter()
 	{
@@ -20,6 +31,10 @@ public class StarterView extends View
 
 	}
 
+	/**
+	 * Display menu is at the first inerface, prompting the user to select staff or moviegoer.
+	 * If it is a staff, it will lead to AdminView() and if it is moviegoer, MovieGoerView().
+	 */
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println();

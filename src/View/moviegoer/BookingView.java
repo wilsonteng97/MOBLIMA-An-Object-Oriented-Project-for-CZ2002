@@ -17,20 +17,48 @@ import Model.Seat;
 import Model.ShowTime;
 import static Presenter.AdminManager.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BookingView.
+ */
 public class BookingView extends View{
+	
+	/** The seat. */
 	private Seat seat;
+    
+    /** The ticket type. */
     private String ticketType;
+    
+    /** The price. */
     private double price;
+    
+    /** To check for whether the booking is done. */
     private boolean bookingDone;
+    
+    /** The show time. */
     private ShowTime showTime;
 
+    /** The holiday rate. */
     private double HOLIDAY_RATE = 1;
+    
+    /** The weekend rate. */
     private double WEEKEND_RATE = 1; 
+    
+    /** The senior citizen rate. */
     private double SENIOR_CITIZEN_RATE = 1;
+    
+    /** The total rate. */
     private double TOTAL_RATE = 1;
     
+    /** The scanner object. */
     Scanner sc = new Scanner(System.in);
     
+    /**
+     * Instantiates a new booking view.
+     *
+     * @param seat the seat
+     * @param showTime the show time
+     */
     public BookingView(Seat seat, ShowTime showTime) {
         this.seat = seat;
         this.showTime=showTime;
@@ -46,15 +74,14 @@ public class BookingView extends View{
         {
             computePrice(false);
         }
-        // while (!input.equals("Y") || !input.equals("y") || !input.equals("N") || !input.equals("n")) {
-        //     input = passChoiceString();
-        //     input = input.toUpperCase();
-        //     System.out.println(input);
-        // }
-    //    Boolean isSeniorCitizen = input.equals("Y") ? true : false;
         
     }	
 
+    /**
+     * Compute price for senior citizen.
+     *
+     * @param isSeniorCitizen the is senior citizen
+     */
     private void computePrice(Boolean isSeniorCitizen) {
         ArrayList<Holiday> holidayList = getHolidayList();
         if (!holidayList.isEmpty()) {
@@ -73,6 +100,9 @@ public class BookingView extends View{
         displayMenu();
     }
     
+    /**
+     * Display menu.
+     */
     private void displayMenu() {
         double totalprice = price * TOTAL_RATE;
         System.out.println("Total Ticket price will be $" + totalprice);
@@ -92,6 +122,9 @@ public class BookingView extends View{
         }
     }  
     	
+	/**
+	 * Display booking detail.
+	 */
 	private void displayBookingDetail() {
 		ShowTime showtime = seat.getShowtime();
         Movie movie = showtime.getMovie();
@@ -102,10 +135,12 @@ public class BookingView extends View{
         System.out.println("Showing on " + formatTimeDate(showtime.getTime()));
         System.out.println("Seat: Row " + (seat.getRow()+1) + " Col " + ((seat.getCol() > 8) ? seat.getCol() : (seat.getCol()+1)));
         System.out.println();
-        // System.out.println("Ticket type: " + ticketType);
         System.out.println("Ticket price: " + Math.round(price*TOTAL_RATE*100)/100 + " SGD (Excl. GST)");
     }
 
+	/**
+	 * Customer info.
+	 */
 	private void customerInfo() {
 		System.out.println();
 		System.out.println("Please enter your name:");
@@ -129,6 +164,9 @@ public class BookingView extends View{
         intent(this, new PaymentView(customer, seat, price*TOTAL_RATE));
     }
 	
+	/**
+	 * Starter.
+	 */
 	@Override
 	protected void starter() {
 		if (bookingDone) 
@@ -136,6 +174,10 @@ public class BookingView extends View{
 		else
 			displayMenu();
 	}
+	
+	/**
+	 * End.
+	 */
 	protected void end() {
 		intent(this, new MovieListingView());
 	}

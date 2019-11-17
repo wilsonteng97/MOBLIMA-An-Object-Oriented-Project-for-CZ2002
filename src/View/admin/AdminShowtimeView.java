@@ -23,32 +23,54 @@ import Model.ShowTime;
 
 import View.admin.CinemaListView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AdminShowtimeView is for the admin to staff to adjust the show times.
+ */
 public class AdminShowtimeView extends View{
 
+	/** The movie object. */
 	private Movie movieIn;
+	
+	/** The show time list. */
 	private ArrayList<ShowTime> showTimeList;
+	
+	/** The scanner object. */
 	private Scanner sc = new Scanner(System.in);
 
+	/**
+	 * Instantiates a new admin show time view.
+	 *
+	 * @param movieIn the movie in
+	 */
 	public AdminShowtimeView(Movie movieIn)
 	{
 		this.setInputMovie(movieIn);
 		showTimeList = getShowTimeList(movieIn);
 	}
 	
+	/**
+	 * Instantiates a new admin show time view.
+	 */
 	public AdminShowtimeView()
 	{
 	}
 
+	/**
+	 * Starter to allow the menu to be displayed.
+	 */
 	protected void starter()
 	{
 		displayMenu();
 	}
 
+	/**
+	 * Display menu for changing the show times.
+	 */
 	private void displayMenu() {
 		Date dateIn = null;
 		Cinema cinemaIn;
 		ShowTime showTimeIn;
-	//	ArrayList<ShowTime> showTimes = getShowTimeList(movieIn);
 		Scanner sc = new Scanner(System.in);
 		this.setInputMovie(movieIn);
 		System.out.println("Showtime");
@@ -88,10 +110,13 @@ public class AdminShowtimeView extends View{
 		}
 	}
 	
+	/**
+	 * Display showtime.
+	 *
+	 * @param movieIn the movie in
+	 */
 	@SuppressWarnings({ "null", "unused" })
-	private void displayShowtime(Movie movieIn) {
-	//	Cinema cinema = getCinema();
-		
+	private void displayShowtime(Movie movieIn) {		
 		if(showTimeList.isEmpty())
 		{
 			System.out.println("The movie " + movieIn.getTitle() + " does not have showtimes currently");
@@ -103,6 +128,12 @@ public class AdminShowtimeView extends View{
 		displayMenu();
 	}
 	
+	/**
+	 * Delete show time based on movie and the show time associated with the movie.
+	 *
+	 * @param movieIn the movie in
+	 * @param showTimeIn the show time in
+	 */
 	private void deleteShowtime(Movie movieIn, ShowTime showTimeIn) 
 	{
 		System.out.println("Are You sure you want to remove showtime "+ showTimeIn.getTime() +
@@ -126,11 +157,16 @@ public class AdminShowtimeView extends View{
 		displayMenu();
 	}
 
+	/**
+	 * Adds the show time sequence.
+	 *
+	 * @param movieIn the movie in
+	 * @param showTimeIn the show time in
+	 */
 	private void addShowtimeSequence(Movie movieIn, ShowTime showTimeIn) {
 		try {
 			addShowtime(showTimeIn);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			System.out.println("Fail to store the showtime");
 		}
 		System.out.println("Added showtime "+ showTimeIn.getTime() +
@@ -138,14 +174,29 @@ public class AdminShowtimeView extends View{
 		displayMenu();
 	}
 
+	/**
+	 * Gets the input movie.
+	 *
+	 * @return the input movie
+	 */
 	private Movie getInputMovie() {
 		return this.movieIn;
 	}
 
+	/**
+	 * Sets the input movie.
+	 *
+	 * @param movieIn the new input movie
+	 */
 	private void setInputMovie(Movie movieIn) {
 		this.movieIn = movieIn;
 	}
 	
+	/**
+	 * Gets the cinema from the list of cinema operators.
+	 *
+	 * @return the cinema
+	 */
 	private Cinema getCinema() {
 		ArrayList<CinemaOperator> cinemaOperatorList;
 		cinemaOperatorList = getCinemaOperators();
@@ -157,7 +208,6 @@ public class AdminShowtimeView extends View{
 		}
 
 		int choice = passChoiceInt("Choose Cinema Operator: ");
-	//	ArrayList<CinemaOperator> cinemaOperatorsList = getCinemaOperators();
 		CinemaOperator cinemaOperator = cinemaOperatorList.get(choice);
 		
 		ArrayList<Cinema> cinemaList = getCinemaList(cinemaOperator);

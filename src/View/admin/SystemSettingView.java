@@ -14,16 +14,29 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SystemSettingView.
+ */
 public class SystemSettingView extends View{
 	
+	/** The scanner object. */
 	Scanner sc = new Scanner(System.in);
+	
+	/** The holiday list. */
 	private ArrayList<Holiday> holidayList;
 
+	/**
+	 * Starter for menu interface.
+	 */
 	protected void starter()
 	{
 		displayMenu();
 	}
 	
+	/**
+	 * Display menu.
+	 */
 	private void displayMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nSystem Setting");
@@ -53,6 +66,9 @@ public class SystemSettingView extends View{
 		}
 	}
 
+	/**
+	 * Configure holiday setting.
+	 */
 	public void configureHoliday() {
 		displayHolidayList();
 		System.out.print("(1) Add a holiday\n" + 
@@ -77,6 +93,9 @@ public class SystemSettingView extends View{
 		}
 	}
 
+	/**
+	 * Display list of holidays.
+	 */
 	private void displayHolidayList() {
 		holidayList = getHolidayList();
 		if(holidayList.isEmpty())
@@ -95,6 +114,9 @@ public class SystemSettingView extends View{
         System.out.println();
 	}
 
+	/**
+	 * Adds the holiday.
+	 */
 	private void addHolidaySequence() {
 		String name;
 		Date date;
@@ -109,6 +131,9 @@ public class SystemSettingView extends View{
     	addHoliday(holiday);        
 	}
 	
+	/**
+	 * Removes the holiday.
+	 */
 	private void removeHolidaySequence() {
 		String choice;
 		int index = passChoiceInt("Input Holiday index You want to delete");    	
@@ -137,6 +162,3 @@ public class SystemSettingView extends View{
     	
 	}
 }
-
-
-

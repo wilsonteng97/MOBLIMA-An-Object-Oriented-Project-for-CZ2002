@@ -18,13 +18,25 @@ import Model.Cinema;
 import Model.CinemaOperator;
 import static Model.Enums.CinemaClass.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CinemaListView shows the list of cinemas.
+ */
 public class CinemaListView extends View {
+	
+	/** The sc. */
 	Scanner sc = new Scanner(System.in);
 
+	/**
+	 * Starter to display the menu.
+	 */
 	protected void starter() {
 		displayMenu();
 	}
 
+	/**
+	 * Display menu interface for the changing the list of cinemas.
+	 */
 	private void displayMenu() {
 		System.out.println("Cinema Listing");
 		System.out.println();
@@ -35,8 +47,7 @@ public class CinemaListView extends View {
 		if (verifyChoiceNumber(choice, 1, 5)) {
 			switch (choice) {
 			case 1:
-				displayCinemaOperator(); // [presenter: displayCinema()] actual method is getCinemaList instead of
-											// displayCinema, done by KJ
+				displayCinemaOperator();
 				break;
 			case 2:
 				newCinema();
@@ -58,6 +69,9 @@ public class CinemaListView extends View {
 		}
 	}
 
+	/**
+	 * Sets the movie price.
+	 */
 	private void setMoviePrice() {
 		Cinema cinema = getCinema();
 		System.out.println("Enter Base Price to set for " + cinema.getCinemaName() + ": ");
@@ -66,6 +80,9 @@ public class CinemaListView extends View {
 		displayMenu();
 	}
 
+	/**
+	 * Display cinema operators.
+	 */
 	protected void displayCinemaOperator()
 	{
 		ArrayList<CinemaOperator> cinemaOperatorList;
@@ -79,6 +96,11 @@ public class CinemaListView extends View {
 		displayCinemaList(cinemaOperatorList.get(choice));
 	}
 
+	/**
+	 * Display cinema list based on the cinema operator.
+	 *
+	 * @param cinemaOperator the cinema operator
+	 */
 	protected void displayCinemaList(CinemaOperator cinemaOperator)
 	{
 		ArrayList<Cinema> cinemaList = getCinemaList(cinemaOperator);
@@ -89,6 +111,9 @@ public class CinemaListView extends View {
 		displayMenu();
 	}
 
+	/**
+	 * New cinema.
+	 */
 	protected void newCinema()
 	{
 		System.out.println("New Cinema");
@@ -121,6 +146,9 @@ public class CinemaListView extends View {
 		displayMenu();
 	}
 
+	/**
+	 * Delete cinema.
+	 */
 	private void deleteCinema()
 	{
 		System.out.println("Remove Cinema");
@@ -158,6 +186,11 @@ public class CinemaListView extends View {
 		displayMenu();
 	}
 	
+	/**
+	 * Gets the cinema.
+	 *
+	 * @return the cinema
+	 */
 	private Cinema getCinema() {
 		ArrayList<CinemaOperator> cinemaOperatorList;
 		cinemaOperatorList = getCinemaOperators();
