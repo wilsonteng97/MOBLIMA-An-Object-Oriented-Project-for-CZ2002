@@ -74,38 +74,38 @@ public class CinemaOperator implements Serializable{
 		}
 	}
 
-	// public void addCinema(CinemaClass cinemaClass, Double basePrice) {		
-	// 	String cinemaID, cinemaName;
-	// 	switch(cinemaClass) {
-	// 	case NORMAL:
-	// 		this.numOfNormalCinemas++;
-	// 		cinemaID = this.numOfNormalCinemas + "N";
-	// 		cinemaName = this.getOperatorName() + numOfNormalCinemas;
-	// 		cinemas.add(new Cinema(cinemaID, cinemaName, CinemaClass.NORMAL, this, basePrice));
-	// 		break;
-	// 	case PLATINUM:
-	// 		this.numOfPlatinumCinemas++;
-	// 		cinemaID = this.numOfPlatinumCinemas + "P";
-	// 		cinemaName = this.getOperatorName() + numOfPlatinumCinemas;
-	// 		cinemas.add(new Cinema(cinemaID, cinemaName, CinemaClass.PLATINUM, this, basePrice));
-	// 		break;
-	// 	default:
-	// 		break; // TO-DO throw exception
-	// 	}
-	// }
-	// public void removeCinema(Cinema cinema) {
-	// 	switch(cinema.getCinemaClass()) {
-	// 	case NORMAL:
-	// 		this.numOfNormalCinemas--;
-	// 		break;
-	// 	case PLATINUM:
-	// 		this.numOfPlatinumCinemas--;
-	// 		break;
-	// 	default:
-	// 		break; // TO-DO throw exception
-	// 	}
-	// 	cinemas.remove(cinema);
-	// }
+	public void addCinema(CinemaClass cinemaClass, Double basePrice) {		
+		String cinemaID, cinemaName;
+		switch(cinemaClass) {
+		case NORMAL:
+			this.numOfNormalCinemas++;
+			cinemaID = this.numOfNormalCinemas + "N";
+			cinemaName = this.getOperatorName() + numOfNormalCinemas;
+			cinemas.add(new Cinema(cinemaID, cinemaName, CinemaClass.NORMAL, this, basePrice));
+			break;
+		case PLATINUM:
+			this.numOfPlatinumCinemas++;
+			cinemaID = this.numOfPlatinumCinemas + "P";
+			cinemaName = this.getOperatorName() + numOfPlatinumCinemas;
+			cinemas.add(new Cinema(cinemaID, cinemaName, CinemaClass.PLATINUM, this, basePrice));
+			break;
+		default:
+			break; // TO-DO throw exception
+		}
+	}
+	public void removeCinema(Cinema cinema) {
+		switch(cinema.getCinemaClass()) {
+		case NORMAL:
+			this.numOfNormalCinemas--;
+			break;
+		case PLATINUM:
+			this.numOfPlatinumCinemas--;
+			break;
+		default:
+			break; // TO-DO throw exception
+		}
+		cinemas.remove(cinema);
+	}
 	
 	// cinema
 	public Cinema getCinema(String cinemaID) {
@@ -133,22 +133,22 @@ public class CinemaOperator implements Serializable{
 	}
 	
 	// initializeCinemasList
-		// public void initializeCinemasList(Integer numOfNormalCinemas, Integer numOfPlatinumCinemas) {
-		// 	if ((numOfNormalCinemas<0) || (numOfPlatinumCinemas<0)) {
-		// 		return; // TO-DO -> Throw Exception
-		// 	}
+		public void initializeCinemasList(Integer numOfNormalCinemas, Integer numOfPlatinumCinemas) {
+			if ((numOfNormalCinemas<0) || (numOfPlatinumCinemas<0)) {
+				return; // TO-DO -> Throw Exception
+			}
 			
-		// 	this.setNumOfNormalCinemas(numOfNormalCinemas); this.setNumOfPlatinumCinemas(numOfPlatinumCinemas);
-		// 	this.cinemas = new ArrayList<Cinema>(this.getNumOfCinemas());
-		// 	// initialize Normal Cinemas
-		// 	for (int normalCinema=1; normalCinema<=this.getNumOfCinemas(CinemaClass.NORMAL); normalCinema++) {
-		// 		this.addCinema(CinemaClass.NORMAL, DEFAULT_BASEPRICE);
-		// 	}
-		// 	// initialize Platinum Cinemas
-		// 	for (int platinumCinema=1; platinumCinema<=this.getNumOfCinemas(CinemaClass.PLATINUM); platinumCinema++) {
-		// 		this.addCinema(CinemaClass.PLATINUM, DEFAULT_BASEPRICE*DEFAULT_PLATINUM_MODIFIER);
-		// 	}
-		// }
+			this.setNumOfNormalCinemas(numOfNormalCinemas); this.setNumOfPlatinumCinemas(numOfPlatinumCinemas);
+			this.cinemas = new ArrayList<Cinema>(this.getNumOfCinemas());
+			// initialize Normal Cinemas
+			for (int normalCinema=1; normalCinema<=this.getNumOfCinemas(CinemaClass.NORMAL); normalCinema++) {
+				this.addCinema(CinemaClass.NORMAL, DEFAULT_BASEPRICE);
+			}
+			// initialize Platinum Cinemas
+			for (int platinumCinema=1; platinumCinema<=this.getNumOfCinemas(CinemaClass.PLATINUM); platinumCinema++) {
+				this.addCinema(CinemaClass.PLATINUM, DEFAULT_BASEPRICE*DEFAULT_PLATINUM_MODIFIER);
+			}
+		}
 
 	// returns all the movies showing for this particular operator
 	public List<Movie> getMovies() {

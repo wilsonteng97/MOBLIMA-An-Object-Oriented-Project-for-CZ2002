@@ -44,17 +44,12 @@ public class CustomerManager {
         return getTop5RankingRating();
     }
 
-    public Double getMovieRating(String movieName){
-    	Double averageRating=0.0;
-    	for (Movie m : movieList) {
-    		if (m.getTitle().toUpperCase()==movieName.toUpperCase()) {
-    			averageRating = m.getReviewRatingAverage();
-    		}
-    	}
+    public int getMovieRating(String movieName){
         return averageRating;
     }
 
     public static ArrayList<Customer> getCustomerList(){
+    	
     	if(readDataFile_List(customerListFile) == null)
     		customerList = new ArrayList<>();
         else 
