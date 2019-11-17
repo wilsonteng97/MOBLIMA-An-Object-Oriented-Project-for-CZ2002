@@ -3,15 +3,17 @@ package Data_Initializer;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import Model.Cinema;
 import Model.CinemaOperator;
 import Presenter.DataManager;
 import static Presenter.CinemaOperatorManager.*;
 
 public class CinemaOperatorGenerator extends DataManager {
+	
+	static ArrayList<CinemaOperator> list = new ArrayList<CinemaOperator>();
     
         public static void CinemaOperatorList() throws IOException
         {
-            ArrayList<CinemaOperator> list = new ArrayList<CinemaOperator>();
             CinemaOperator c1 = new CinemaOperator(0, "Golden Village");
             list.add(c1);
             addCinemaOperator(c1);
@@ -28,4 +30,8 @@ public class CinemaOperatorGenerator extends DataManager {
       //      writeDataFile(list, fileName);
             
         }
+        
+        public static CinemaOperator getCinemaOperatorFromGenerator(int n) {
+    		return list.get(n);
+    	}
     }
