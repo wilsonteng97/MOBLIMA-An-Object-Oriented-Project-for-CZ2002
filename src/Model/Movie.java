@@ -214,7 +214,7 @@ public class Movie implements Serializable{
 
 	public double getReviewRatingAverage() {
 		double count = 0;
-    int i=0;
+		int i=0;
 		for (Review r : reviewList) {
 
 			count+=r.getRating();
