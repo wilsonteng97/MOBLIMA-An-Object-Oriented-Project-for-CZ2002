@@ -42,7 +42,7 @@ public class CinemaOperatorManager extends DataManager {
             readCinemaOperator();
             readShowtime();
             readCustomerList();
-//            readReviewList();
+            readReviewList();
     }
 //    public static boolean readTheData()
 //    {
@@ -117,7 +117,9 @@ public static void updateAdminAccount(){
             showtimeList.put(movie, new ArrayList<>());
         }
         showtimeList.get(movie).add(showTime);
+        movie.addShowTimeToMovie(showTime);
         updateShowTime();
+        updateMovieListing();
     }
 
     public static void removeShowtime(Movie movie, ShowTime showTime) throws IOException {
