@@ -143,10 +143,10 @@ public class CusShowtimeView extends View{
 	
 	private void displaySeat(Seat[][] seats, ShowTime showtime) {
         System.out.println("                    -------Screen------");
-        System.out.println("     1  2  3  4  5  6  7  8     9 10 11 12 13 14 15 16");
-        for (int row = 0; row < 8; row++) {
+        System.out.println("     1  2  3  4  5  6  7  8  9     10 11 12 13 14 15 16 17 18");
+        for (int row = 0; row < 9; row++) {
             System.out.print(row + 1 + "   ");
-            for (int col = 0; col < 16; col++) {
+            for (int col = 0; col < 18; col++) {
                 if (seats[row][col].isOccupiedAt(showtime)) System.out.print("[X]");
                 else System.out.print("[ ]");
 
