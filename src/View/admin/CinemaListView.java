@@ -63,6 +63,7 @@ public class CinemaListView extends View {
 		System.out.println("Enter Base Price to set for " + cinema.getCinemaName() + ": ");
 		Double basePrice = sc.nextDouble();
 		cinema.setBasePrice(basePrice);
+		displayMenu();
 	}
 
 	protected void displayCinemaOperator()
@@ -163,7 +164,7 @@ public class CinemaListView extends View {
 		int numCinemaOperator = 0;
 		for(CinemaOperator cinemaOperator: cinemaOperatorList)
 		{
-			System.out.println(numCinemaOperator + " " + cinemaOperator.getOperatorID() + cinemaOperator.getOperatorName());
+			System.out.println(numCinemaOperator + " " + cinemaOperator.getOperatorName());
 			numCinemaOperator++;
 		}
 
@@ -175,7 +176,8 @@ public class CinemaListView extends View {
 		int numCinema =0;
 		for(Cinema cinema: cinemaList)
 		{
-			System.out.println(numCinema + " "+ cinema.getCinemaID() + cinema.getCinemaName());
+			System.out.println(numCinema + " "+ cinema.getCinemaName());
+			numCinema++;
 		}
 
 		choice = passChoiceInt("Choose Cinema: ");

@@ -24,7 +24,6 @@ public class CinemaOperatorManager extends DataManager {
     private final static String reviewListFile = "datafiles/reviewListFile.txt";
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
     private final static String movieListFile = "datafiles/movieListFile.txt";
-    private final static String holidayListFile = "datafiles/holidayListFile.txt";
     private final static String cinemaOperatorListFile = "datafiles/cinemaOperatorListFile.txt";
     private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
 
@@ -32,12 +31,14 @@ public class CinemaOperatorManager extends DataManager {
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<CinemaOperator, ArrayList<Cinema>> cinemaList;
     private static ArrayList<Movie> movieList;
-    private static HashMap<String, Holiday> holidayList;
     private static ArrayList<Admin> adminAccountList;
+
     public static void readTheData()
     {
+        try 
+        {
             readCinemaList();
-//            readAdminAccount();
+            readAdminAccount();
             readMovieList();
             readHolidayList();
             readCinemaOperator();
@@ -46,6 +47,11 @@ public class CinemaOperatorManager extends DataManager {
             readReviewList();
             readShowtime();
             readHolidayList();
+        }
+        catch (IOException e)
+        {
+            System.out.println("Data are not initialised");
+        }
     }
 //    public static boolean readTheData()
 //    {
@@ -61,7 +67,7 @@ public class CinemaOperatorManager extends DataManager {
 //        }
 //        return true;
 //    }
-public static void readAdminAccount()
+public static void readAdminAccount() throws IOException
 {
     if(readDataFile_List(adminAccountListFile) == null)
     {
@@ -82,7 +88,7 @@ public static void updateAdminAccount()
     }
 }
 
-    private static void readCinemaOperator()
+    private static void readCinemaOperator() throws IOException
     {
         if(readDataFile_List(cinemaOperatorListFile) == null)
         {
@@ -106,7 +112,8 @@ public static void updateAdminAccount()
     } 
 
     // =======================Showtime=======================
-    private static void readShowtime(){
+    private static void readShowtime() throws IOException
+    {
         if(readDataFile_HashMap(showtimeListFile) == null)
             showtimeList = new HashMap<>();
         else
@@ -141,7 +148,7 @@ public static void updateAdminAccount()
     }
     
     // ========================Cinema========================
-    private static void readCinemaList() {
+    private static void readCinemaList() throws IOException {
         // for (String cinema : cinemaList){
         //     System.out.println(cinema);
         // }
@@ -207,7 +214,7 @@ public static void updateAdminAccount()
     }
 
     // ========================Movie========================
-    public static void readMovieList()
+    public static void readMovieList() throws IOException
     {
         if(readDataFile_List(movieListFile) == null)
         {

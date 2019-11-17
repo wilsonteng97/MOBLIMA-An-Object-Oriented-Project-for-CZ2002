@@ -48,7 +48,6 @@ public class AdminShowtimeView extends View{
 		Cinema cinemaIn;
 		ShowTime showTimeIn;
 	//	ArrayList<ShowTime> showTimes = getShowTimeList(movieIn);
-		showTimeList = getShowTimeList(movieIn);
 		Scanner sc = new Scanner(System.in);
 		this.setInputMovie(movieIn);
 		System.out.println("Showtime");
@@ -91,15 +90,16 @@ public class AdminShowtimeView extends View{
 	@SuppressWarnings({ "null", "unused" })
 	private void displayShowtime(Movie movieIn) {
 	//	Cinema cinema = getCinema();
+		showTimeList = getShowTimeList(movieIn);
 		if(showTimeList.isEmpty())
 		{
-			System.out.println("The movie " + movieIn.getTitle() + "does not have showtimes currently");
+			System.out.println("The movie " + movieIn.getTitle() + " does not have showtimes currently");
 		}
 		for(ShowTime st: showTimeList)
 			{
 				System.out.println(st.getCinema().getCinemaName() + " " + st.getTime());
 			}
-			displayMenu();
+		displayMenu();
 	}
 	
 	private void deleteShowtime(Movie movieIn, ShowTime showTimeIn) 

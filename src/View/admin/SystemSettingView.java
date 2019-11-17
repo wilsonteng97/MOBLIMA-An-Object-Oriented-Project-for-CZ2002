@@ -88,7 +88,7 @@ public class SystemSettingView extends View{
 		{
 			System.out.print("Holiday list\n");
         	for (Holiday h: holidayList) {
-			System.out.println(h.getDate() + h.getName() + h.getRate());
+			System.out.println(h.getDate() + " " + h.getName() + " " + h.getRate());
         }
 		}  
 		
@@ -103,7 +103,7 @@ public class SystemSettingView extends View{
 		displayHolidayList();
 		name = passChoiceString("Input Holiday Name: ");
     	date = parseStringToDate_ddMMyyyy("Input Holiday Date (dd/mm/yyyy): ");
-    	System.out.print("Input Holiday Rate (float): ");
+    	System.out.print("Input Holiday Rate: ");
     	rate = sc.nextDouble();
     	Holiday holiday = new Holiday(name, date, rate);
     	addHoliday(holiday);        

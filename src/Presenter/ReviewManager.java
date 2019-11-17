@@ -15,7 +15,7 @@ public class ReviewManager {
     public ReviewManager()  {
         
     }    
-    public static void readReviewList()
+    public static void readReviewList() throws IOException
     {
         if(readDataFile_HashMap(reviewListFile) == null)
         {
