@@ -64,7 +64,7 @@ public class AdminManager extends DataManager
 
     public static void updateAdminAccount(){
        try {
-		writeDataFile(adminAccountList, adminAccountListFile);
+		    writeDataFile(adminAccountList, adminAccountListFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -123,9 +123,16 @@ public class AdminManager extends DataManager
 //    public static void initialiseUserAccounts() throws ParseException, IOException {
 //    	UserAccountListGenerator.CustomerList();
 //    }
-    public static void initialiseCinemas() throws IOException
-    {
+    public static void initialiseCinemas() throws IOException {
+        MovieListGenerator.MovieList();
+        CinemaOperatorGenerator.CinemaOperatorList();
         CinemaListGenerator.CinemaList();
+        try {
+            ShowTimeGenerator.Showtimes();
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     // =========================Top 5 Movies=========================

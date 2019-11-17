@@ -92,15 +92,15 @@ public class Cinema implements Serializable {
 	}
 
 	// showTime
-	public void addShowTime(ShowTime showTime) {
-		showTimes.add(showTime);
-	}
-	public void removeShowTime(ShowTime showTime) {
-		showTimes.remove(showTime);
-	}
-	public void setShowTimes(List<ShowTime> showTimes) {
-		this.showTimes = showTimes;
-	}
+	// public void addShowTime(ShowTime showTime) {
+	// 	showTimes.add(showTime);
+	// }
+	// public void removeShowTime(ShowTime showTime) {
+	// 	showTimes.remove(showTime);
+	// }
+	// public void setShowTimes(List<ShowTime> showTimes) {
+	// 	this.showTimes = showTimes;
+	// }
 	public List<ShowTime> getShowTimes() {
 		return showTimes;
 	}
