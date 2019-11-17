@@ -20,38 +20,30 @@ import Model.Customer;
 import Model.Movie;
 import Model.ShowTime;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Query.
+ */
 public class Query {
-//    private final static String movieListFile = "datafiles/movieListFile.txt";
+	
+	/** The movie list which is generated from the dummy records of movies prepared. */
 	static ArrayList<Movie> movieList = CinemaOperatorManager.getMovieList();
 
+    /** The Constant cinemaListFile is the txt file. */
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
-//    Path path_Cinema = Paths.get(cinemaListFile);
-//    List<String> cinemaList = Files.readAllLines(path_Cinema, StandardCharsets.UTF_8);
 
+    /** The Constant showtimeListFile is the txt file. */
     private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
-//    Path path_Showtime = Paths.get(showtimeListFile);
-//    List<String> showtimeList = Files.readAllLines(path_Showtime, StandardCharsets.UTF_8);
     
+   /** The customer list which is generated from the dummy records of customer list prepared. */
    public static ArrayList<Customer> customerList = getCustomerList();
-//    Path path_customer = Paths.get(customerListFile);
-//    List<String> customerList = Files.readAllLines(path_customer, StandardCharsets.UTF_8);
 
-//    public Date passSearchMovieTime(String string)
-//    {
-//        SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-//        try
-//        {
-//            String input = passChoiceString(string);
-//            Date date = sim.parse(input);
-//            return date;
-//        }
-//        catch(ParseException e)
-//        {
-//            System.out.println("Error, incorrect format");
-//            return passSearchMovieTime(string);
-//        }
-//    }
-
+    /**
+     * Pass string movie is used to convert the name of the movie to the movie object.
+     *
+     * @param name_of_movie the name of movie
+     * @return the movie
+     */
     public static Movie passStringMovie(String name_of_movie){
         for (Movie movie : movieList){
             if (movie.getTitle().equalsIgnoreCase(name_of_movie)) return movie;
@@ -59,20 +51,12 @@ public class Query {
 		return null;
     }
 
-//    public static Cinema passStringCinema(String cinema_ID){
-//        for (String cinema : cinemaList){
-//            if (cinema == cinema_ID) return cinema;
-//        }
-//        System.out.println("Sorry, the cinema that you are looking for does not exist.");
-//    }
-
-//    public static ShowTime passDoubleShowtime(double showtimeIn){
-//        for (String showtime : showtimeList){
-//            if (showtime == showtimeIn) return showtime;
-//        }
-//        System.out.println("Sorry, the Showtime that you are looking for does not exist.");
-//    }
-
+    /**
+     * Pass string customer is used to convert the name of the customer to the customer object.
+     *
+     * @param customer_name the customer name
+     * @return the customer
+     */
     public static Customer passStringCustomer (String customer_name) {
         for (Customer customer : customerList){
             if (customer.getName().equals(customer_name)) 
@@ -82,20 +66,4 @@ public class Query {
         }
 		return null;
     }
-
-//    public static ShowTime displayShowtime(String movie_name){
-//    	Movie movieIn = passStringMovie(movie_name);
-//    	for (String showtime : showtimeList){
-//            if (movie == movieIn) return showtime;
-//        }
-//        System.out.println("Sorry, the Showtime that you are looking for does not exist.");
-//    }
-
-
-//    public static void searchMovie(String movie_name) {
-//        Movie searched_movie = new Movie();
-//        searched_movie = passStringMovie(movie_name);
-//
-//        // then proceed to print out the details
-//    }
 }

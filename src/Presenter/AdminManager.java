@@ -24,57 +24,95 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.HashMap;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AdminManager is used by the admin staff to perform operations specific to staff only.
+ */
 public class AdminManager extends DataManager
 {
+    
+    /** The sc. */
     Scanner sc = new Scanner(System.in);
-    protected double ticket_price;
+
+    /** The Constant adminAccountListFile is the txt file. */
     private final static String adminAccountListFile = "datafiles/adminAccountListFile.txt";
+    
+    /** The Constant showtimeListFile is the txt file. */
     private final static String showtimeListFile = "datafiles/showtimeListFile.txt";
+    
+    /** The Constant reviewListFile is the txt file. */
     private final static String reviewListFile = "datafiles/reviewListFile.txt";
+    
+    /** The Constant cinemaListFile is the txt file. */
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
+    
+    /** The Constant movieListFile is the txt file. */
     private final static String movieListFile = "datafiles/movieListFile.txt";
+    
+    /** The Constant holidayListFile is the txt file. */
     private final static String holidayListFile = "datafiles/holidayListFile.txt";
 
-
+    /** The admin account list. */
     private static ArrayList<Admin> adminAccountList;
-    private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
-    private static HashMap<Movie, ArrayList<Review>> reviewList;
-    private static ArrayList<Movie> movieList;
-    private static ArrayList<Holiday> holidayList;
-
-    // =========================Movie Price=========================
-//    public double setMoviePrice(){
-//        System.out.println("How much do you want to charge?");
-//        return ticket_price = sc.nextDouble();
-//    }
-
-
-
-    // =======================Admin Account=======================
     
+    /** The showtime list. */
+    private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
+    
+    /** The review list. */
+    private static HashMap<Movie, ArrayList<Review>> reviewList;
+    
+    /** The movie list. */
+    private static ArrayList<Movie> movieList;
+    
+    /** The holiday list. */
+    private static ArrayList<Holiday> holidayList;
 
     // =======================System Setting=======================
     
+    /**
+     * Initialise movies objects for the system.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public static void initialiseMovies() throws IOException {
     	MovieListGenerator.MovieList();
     }
 
     
+ /**
+  * Adds the holiday into the system for charging of price due to the holiday.
+  *
+  * @param holiday the holiday
+  */
  // =======================Holiday=======================
     public static void addHoliday(Holiday holiday) {
         holidayList.add(holiday);
         updateHolidayList();
     }
     
+    /**
+     * Removes the holiday.
+     *
+     * @param holiday the holiday
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public static void removeHoliday(Holiday holiday) throws IOException{
         holidayList.remove(holiday);
         updateHolidayList();
     }
     
+    /**
+     * Gets the holiday list.
+     *
+     * @return the holiday list
+     */
     public static ArrayList<Holiday> getHolidayList() {
     	return holidayList;
     }
 
+    /**
+     * Read the holiday list from the txt file.
+     */
     public static void readHolidayList()
     {
        if(readDataFile_List(holidayListFile) == null)
@@ -87,6 +125,9 @@ public class AdminManager extends DataManager
        }
     }
 
+    /**
+     * Update holiday list.
+     */
     public static void updateHolidayList()
     {
         try {
@@ -96,26 +137,22 @@ public class AdminManager extends DataManager
         }
     }
 
+/**
+ * Initialise admin accounts into the system.
+ *
+ * @throws IOException Signals that an I/O exception has occurred.
+ */
 
-//    public static void updateHolidayList(){
-//       try {
-//		writeDataFile(holidayList, holidayListFile);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//    }
-
-//     public static void initialiseCinemaOperators() throws IOException
-//     {
-//         CinemaOperatorGenerator.CinemaOperatorList();
-//     }
     public static void initialiseAdminAccounts() throws IOException
      {
          AdminAccountListGenerator.AdminAccounts();
      }
-// //    public static void initialiseUserAccounts() throws ParseException, IOException {
-// //    	UserAccountListGenerator.CustomerList();
-// //    }
+
+/**
+ * Initialiser the dummy accounts created in Data_Initializer.
+ *
+ * @throws IOException Signals that an I/O exception has occurred.
+ */
     public static void initialiser() throws IOException {
         MovieListGenerator.MovieList();
         CinemaOperatorGenerator.CinemaOperatorList();
@@ -130,6 +167,11 @@ public class AdminManager extends DataManager
         }
     }
 
+    /**
+     * Gets the top 5 ranking based on rating.
+     *
+     * @return the top 5 ranking rating
+     */
     // =========================Top 5 Movies=========================
     public static ArrayList<Movie> getTop5RankingRating(){
         ArrayList<Movie> top5rating = new ArrayList<Movie>();
@@ -139,28 +181,6 @@ public class AdminManager extends DataManager
         
         Collections.sort(top5rating, Model.Movie.reviewRatingAvgComparator);
 
-//        Collections.sort(top5rating, new Comparator<Movie>()
-//        {
-//            public int compare(Movie m1, Movie m2)
-//            {
-//                if(getMovieRating(m1) > getMovieRating(m2))
-//                {
-//                    return 1;
-//                }
-//                else if(getMovieRating(m1) < getMovieRating(m2))
-//                {
-//                    return -1;
-//                }
-//                else
-//                {
-//                    return 0;
-//                }  
-//            }
-//        });
-//        while(top5rating.size() > 5)
-//        {
-//            top5rating.remove(5);
-//        }
         ArrayList<Movie> final_list = new ArrayList<Movie>();
         for (Movie a: top5rating) {
         	final_list.add(a);
@@ -169,56 +189,12 @@ public class AdminManager extends DataManager
         }
         return final_list;
     }
-
-    // =========================Review Lists=========================
-	
-
-    public static ArrayList<Review> getReviewList(Movie movie){
-        return movie.getReviewList();
-    }
-    public static double getMovieRating(Movie movie){
-        ArrayList<Review> reviewList = getReviewList(movie);
-//        double sum = 0;
-//        double rating = 0;
-//        if(reviewList == null)
-//            return 0;
-//        else {
-//            for(Review review: reviewList){
-//                sum = sum + review.getRating();
-//            }
-//            rating = sum / reviewList.size();
-//            return rating;
-//        }
-    	return movie.getReviewRatingAverage();
-    }
-
-    // =========================Movie Sales=========================
-    public Double getMovieSales(Movie movie)
-    {
-        return movie.getTotalSales();
-    }
-
     
-    // ====================Get Lists of Entitites====================  
-    public static ArrayList<ShowTime> getShowtimeList(Movie movie)
-    {
-        return showtimeList.get(movie);
-    }
-
-    public static boolean confirmChoice(String choice)
-    {
-        if (choice.equals("Y") || choice.equals("y"))
-        {
-            return true;
-        }
-        else 
-        {
-            return false;
-        }
-    }
-
-    
-
+    /**
+     * Gets the top 5 ranking based on sales.
+     *
+     * @return the top 5 ranking sales
+     */
     public static ArrayList<Movie> getTop5RankingSales()
     {
         ArrayList<Movie> top5sales = new ArrayList<Movie>();
@@ -229,27 +205,6 @@ public class AdminManager extends DataManager
         }
         Collections.sort(top5sales, Model.Movie.movieSalesComparator);
         
-//        Collections.sort(top5sales, new Comparator<Movie>(){
-//            public int compare(Movie m1, Movie m2)
-//            {
-//                if(m1.getTotalSales() > m2.getTotalSales())
-//                {
-//                    return 1;
-//                }
-//                else if(m1.getTotalSales() < m2.getTotalSales())
-//                {
-//                    return -1;
-//                }
-//                else
-//                {
-//                    return 0;
-//                }  
-//            }
-//        });
-//        while(top5sales.size() > 5)
-//        {
-//            top5sales.remove(5);
-//        }
         ArrayList<Movie> final_list = new ArrayList<Movie>();
 
         int counter = 0;
@@ -259,5 +214,71 @@ public class AdminManager extends DataManager
             counter++;
         }
         return final_list;
+    }
+
+    // =========================Review Lists=========================
+	
+    /**
+     * Gets the review list.
+     *
+     * @param movie the movie
+     * @return the review list
+     */
+    public static ArrayList<Review> getReviewList(Movie movie){
+        return movie.getReviewList();
+    }
+    
+    /**
+     * Gets the movie rating.
+     *
+     * @param movie the movie
+     * @return the movie rating
+     */
+    public static double getMovieRating(Movie movie){
+        ArrayList<Review> reviewList = getReviewList(movie);
+    	return movie.getReviewRatingAverage();
+    }
+
+    /**
+     * Gets the movie sales.
+     *
+     * @param movie the movie
+     * @return the movie sales
+     */
+    // =========================Movie Sales=========================
+    public Double getMovieSales(Movie movie)
+    {
+        return movie.getTotalSales();
+    }
+
+    
+    /**
+     * Gets the showtime list.
+     *
+     * @param movie the movie
+     * @return the showtime list
+     */
+    // ====================Get Lists of Entitites====================  
+    public static ArrayList<ShowTime> getShowtimeList(Movie movie)
+    {
+        return showtimeList.get(movie);
+    }
+
+    /**
+     * Confirm choice by the user for boolean inputs.
+     *
+     * @param choice the choice
+     * @return true, if successful
+     */
+    public static boolean confirmChoice(String choice)
+    {
+        if (choice.equals("Y") || choice.equals("y"))
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
     }
 }

@@ -5,14 +5,26 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Presenter is used to perform menu related operations and converting string inputs to date.
+ */
 public class Presenter
 {
+    
+    /**
+     * Verify choice number.
+     *
+     * @param choice the choice
+     * @param min the min
+     * @param max the max
+     * @return true, if successful
+     */
     public static boolean verifyChoiceNumber(int choice, int min, int max)
     {
         if(choice < min || choice > max)
         {
             System.out.println("Incorrect input, please try again\n");
-            //verifyChoiceNumber(choice, min, max);
             return false;
         }
         else
@@ -20,6 +32,13 @@ public class Presenter
             return true;
         }
     }
+    
+    /**
+     * Pass choice string.
+     *
+     * @param string the string
+     * @return the string
+     */
     public static String passChoiceString(String... string)
     {
         for(String s: string)
@@ -31,6 +50,12 @@ public class Presenter
         return choice;
     }
 
+    /**
+     * Pass choice int.
+     *
+     * @param string the string
+     * @return the int
+     */
     public static int passChoiceInt(String... string)
     {
         for(String s: string)
@@ -42,6 +67,11 @@ public class Presenter
         return choice;
     }
 
+    /**
+     * Prints the current menu.
+     *
+     * @param menu the menu
+     */
     public static void printCurrentMenu(String... menu)
     {
         for(String m: menu)
@@ -51,12 +81,24 @@ public class Presenter
         }
     }
 
+    /**
+     * Format time date.
+     *
+     * @param date the date
+     * @return the string
+     */
     public static String formatTimeDate(Date date)
     {
         SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd");
         return sim.format(date);
     }
 
+    /**
+     * Parses the string to date.
+     *
+     * @param inputString the input string
+     * @return the date
+     */
     public static Date parseStringToDate(String... inputString) {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		String stringDate = passChoiceString(inputString);
@@ -70,6 +112,12 @@ public class Presenter
 		return null;
 	}
     
+    /**
+     * Parses the string to date DDMMYYYY format.
+     *
+     * @param inputString the input string
+     * @return the date
+     */
     public static Date parseStringToDate_ddMMyyyy(String... inputString) {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		String stringDate = passChoiceString(inputString);
