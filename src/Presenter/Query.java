@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.lang.model.util.ElementScanner6;
-
+import static Presenter.CustomerManager.*;
 import Model.Enums.AgeRestriction;
 import Model.Enums.CinemaClass;
 import Model.Enums.MovieType;
@@ -32,7 +32,7 @@ public class Query {
 //    Path path_Showtime = Paths.get(showtimeListFile);
 //    List<String> showtimeList = Files.readAllLines(path_Showtime, StandardCharsets.UTF_8);
     
-    static ArrayList<Customer> customerList = CustomerManager.getCustomerList();
+   public static ArrayList<Customer> customerList = getCustomerList();
 //    Path path_customer = Paths.get(customerListFile);
 //    List<String> customerList = Files.readAllLines(path_customer, StandardCharsets.UTF_8);
 
@@ -75,7 +75,10 @@ public class Query {
 
     public static Customer passStringCustomer (String customer_name) {
         for (Customer customer : customerList){
-            if (customer.getName().equalsIgnoreCase(customer_name)) return customer;
+            if (customer.getName().equals(customer_name)) 
+            {
+                return customer;
+            }
         }
 		return null;
     }

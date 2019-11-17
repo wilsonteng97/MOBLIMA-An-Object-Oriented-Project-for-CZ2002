@@ -10,6 +10,7 @@ import java.text.ParseException;
 import javax.lang.model.util.ElementScanner6;
 
 import Data_Initializer.*;
+import KJ_FileIO_Test.Customer;
 import Model.Admin;
 import Model.Cinema;
 import Model.CinemaOperator;
@@ -34,7 +35,8 @@ public class AdminManager extends DataManager
     private final static String cinemaListFile = "datafiles/cinemaListFile.txt";
     private final static String movieListFile = "datafiles/movieListFile.txt";
     private final static String holidayListFile = "datafiles/holidayListFile.txt";
-    
+
+
     private static ArrayList<Admin> adminAccountList;
     private static HashMap<Movie, ArrayList<ShowTime>> showtimeList;
     private static HashMap<Movie, ArrayList<Review>> reviewList;
@@ -129,6 +131,7 @@ public class AdminManager extends DataManager
         CinemaListGenerator.CinemaList();
         try {
             ShowTimeGenerator.Showtimes();
+            UserAccountListGenerator.CustomerList();
         } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -242,6 +245,7 @@ public class AdminManager extends DataManager
         }
     }
 
+    
 
     public static ArrayList<Movie> getTop5RankingSales()
     {
