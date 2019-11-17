@@ -24,16 +24,16 @@ public class Seat implements Serializable {
 	/** The cinema ID. */
 	private String cinemaID;
 	/** The number of seats in a column. */
-	private int seatCol = 9;
+	private int seatCol;
 	/** The number of seats in a row. */
-	private int seatRow = 18;
+	private int seatRow;
 	/** The cinema operator ID. */
 	private Integer operatorID;
 	/** The particular movie's show time. */
 	private ShowTime showtime;
-	
 	/** The boolean expression to check if the seat is occupied. */
 	private Boolean occupied;	
+
 
 	/**
 	 * Instantiates a new seat.
@@ -43,20 +43,12 @@ public class Seat implements Serializable {
 	 * @param seatRow the number of seats in a row
 	 * @param showtime the show time
 	 */
-	public Seat(Integer seatID, int seatCol, int seatRow, ShowTime showtime) {
+	public Seat(Integer seatID, int seatRow, int seatCol, ShowTime showtime) {
 		this.seatID = seatID;
 		this.seatCol = seatCol;
 		this.seatRow = seatRow;
 		this.showtime = showtime;
 		this.occupied = false;
-	}
-
-	/**
-	 * Setting up the seat.
-	 */
-	public void setupTheSeat()
-	{
-
 	}
 	
 	/**
@@ -178,16 +170,16 @@ public class Seat implements Serializable {
 	 * @return true, if is occupied at
 	 */
 	// return boolean of whether seat is occupied at input showTime
-	public boolean isOccupiedAt() {
+	public boolean isOccupied() {
 		return occupied;
 	}
-	
+
 	/**
 	 * Sets whether the seat is occupied.
 	 *
-	 * @param value the new occupied at
+	 * @param value the new occupied value
 	 */
-	public void setOccupiedAt(boolean value) {
+	public void setOccupied(boolean value) {
 		occupied = value;
 	}
 	
@@ -197,8 +189,8 @@ public class Seat implements Serializable {
 	 * @param showTime the show time
 	 */
 	// printSeat
-	public void printSeat(ShowTime showTime) {
-		String symbolToPrint = this.isOccupiedAt() ? "X" : " ";
+	public void printSeat() {
+		String symbolToPrint = this.isOccupied() ? "X" : " ";
 		System.out.print("[" + symbolToPrint + "] ");
 	}
 }

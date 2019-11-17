@@ -24,8 +24,6 @@ public class ShowTime implements Serializable {
 	private Movie movie;
 	/** The time of the show time object. */
 	private Date time;
-	/** The allocated seats associated with the show time. */
-	private Seat[][] seats;
 	/** The number of seats in a row. */
 	private int row = 8;
 	/** The number of seats in a column. */
@@ -50,12 +48,13 @@ public class ShowTime implements Serializable {
 	public void setupTheSeat()
 	{
 		int id = 1;
-		for(int i = 1; i<row; i++)
+		for(int i = 1; i<=row; i++)
 		{
-			for (int j =1; j<col; j++)
+			for (int j =1; j<=col; j++)
 			{
-				cinemaLayout[i][j] = new Seat(id,i,j, this);
+				cinemaLayout[i-1][j-1] = new Seat(id,i,j, this);
 				id++;
+				System.out.println(cinemaLayout[i-1][j-1].getSeatID());
 			}
 		}
 	}
@@ -72,8 +71,9 @@ public class ShowTime implements Serializable {
 		this.cinema = cinema;
 		this.movie = movie;
 		this.time = time;
-		this.seats = new Seat[row][col];
+		this.cinemaLayout = new Seat[row][col];
 		movieTickets = new ArrayList<MovieTicket>();
+		setupTheSeat();
 	}
 	
 	/**
@@ -81,7 +81,7 @@ public class ShowTime implements Serializable {
 	 */
 	public void setSeats()
 	{
-		seats = new Seat[8][16];
+		cinemaLayout = new Seat[8][16];
 	}
 	
 	/**
@@ -173,7 +173,8 @@ public class ShowTime implements Serializable {
  		{
  			return null;
  		}
- 		return seats[row-1][col-1];
+ 		
+ 		return cinemaLayout[row-1][col-1];
  	}
  	
  	/**
@@ -183,7 +184,8 @@ public class ShowTime implements Serializable {
 	  */
 	 public Seat[][] getSeats()
  	{
- 		return seats;
+		// if (cinemaLayout==null) setupTheSeat();
+ 		return cinemaLayout;
  	}
  	
  	/**

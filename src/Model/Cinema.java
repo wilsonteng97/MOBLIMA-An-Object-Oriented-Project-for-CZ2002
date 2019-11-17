@@ -357,7 +357,7 @@ public class Cinema implements Serializable {
 				System.out.print((char)letter + "\t");
 				letter++;
 			}
-			s.printSeat(st);
+			s.printSeat();
 			if ((s.getSeatID()%this.getNoOfSeatColumn())==0 && 
 				(s.getSeatID()!=this.getTotalNoOfSeats())) {
 				System.out.println();
