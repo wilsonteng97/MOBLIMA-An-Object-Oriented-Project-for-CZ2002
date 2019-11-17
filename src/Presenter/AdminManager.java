@@ -118,7 +118,7 @@ public class AdminManager extends DataManager
 //     {
 //         CinemaOperatorGenerator.CinemaOperatorList();
 //     }
-/    public static void initialiseAdminAccounts() throws IOException
+    public static void initialiseAdminAccounts() throws IOException
      {
          AdminAccountListGenerator.AdminAccounts();
      }

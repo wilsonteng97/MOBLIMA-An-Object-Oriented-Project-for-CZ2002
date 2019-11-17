@@ -27,15 +27,14 @@ public class BookingManager {
     }
 
     
-    public static void getBookingHistory(String customerName){
+    public static void getBookingHistory(Customer customerName){
     	
-    	Customer customer = passStringCustomer(customerName);
     	if (userBookingList == null || userBookingList.isEmpty()) {
             System.out.println("No history to show.");
         }
         else {
             for (Booking history : userBookingList) {
-            	if (history.getCustomer() == customer)
+            	if (history.getCustomer() == customerName)
             		System.out.println(history);
             }
         }
