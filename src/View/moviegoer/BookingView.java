@@ -68,11 +68,7 @@ public class BookingView extends View{
         if (showTime.getTime().getDay()==6 || showTime.getTime().getDay()==7) {
             WEEKEND_RATE = 1.2;
         }
-
-        if (isSeniorCitizen) {
-            SENIOR_CITIZEN_RATE = 0.5;
-        }
-        TOTAL_RATE *= HOLIDAY_RATE * WEEKEND_RATE * SENIOR_CITIZEN_RATE;
+        TOTAL_RATE *= HOLIDAY_RATE * WEEKEND_RATE;
         displayMenu();
     }
     
@@ -103,12 +99,12 @@ public class BookingView extends View{
         System.out.println();
         System.out.println(movie.getTitle() + " (" + movie.getType().equals(MOVIE3D) != null ? "3D" : "Digital" + ")");
         System.out.println(movie.getAgeRestriction());
-        System.out.println("Cinema: " + cinema + " (" + cinema.getCinemaOperator() + ")");
+        System.out.println("Cinema: " + cinema.getCinemaName() + " (" + cinema.getCinemaOperator().getOperatorName() + ")");
         System.out.println("Showing on " + formatTimeDate(showtime.getTime()));
         System.out.println("Seat: Row " + (seat.getRow()+1) + " Col " + ((seat.getCol() > 8) ? seat.getCol() : (seat.getCol()+1)));
         System.out.println();
         System.out.println("Ticket type: " + ticketType);
-        System.out.println("Ticket price: " + Math.round(price*100)/100 + " SGD (Excl. GST)");
+        System.out.println("Ticket price: " + Math.round(price*TOTAL_RATE*100)/100 + " SGD (Excl. GST)");
     }
 
 	private void customerInfo() {
@@ -124,12 +120,14 @@ public class BookingView extends View{
         String seniorIn = sc.next();
         boolean isSenior = false;
         if (seniorIn=="Y") {
-        	isSenior = true;
+            isSenior = true;
+            SENIOR_CITIZEN_RATE = 0.5;
         }
 
         Customer customer = new Customer(name, mobile, email, isSenior);
         bookingDone = true;
-        intent(this, new PaymentView(customer, seat, price));
+        TOTAL_RATE *= SENIOR_CITIZEN_RATE;
+        intent(this, new PaymentView(customer, seat, price*TOTAL_RATE));
     }
 	
 	@Override
