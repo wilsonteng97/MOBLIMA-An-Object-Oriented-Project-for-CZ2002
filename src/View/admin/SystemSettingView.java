@@ -8,6 +8,7 @@ import static Presenter.Presenter.*;
 import Model.Holiday;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +17,7 @@ import java.util.Scanner;
 public class SystemSettingView extends View{
 	
 	Scanner sc = new Scanner(System.in);
+	private ArrayList<Holiday> holidayList;
 
 	protected void starter()
 	{
@@ -52,12 +54,11 @@ public class SystemSettingView extends View{
 	}
 
 	public void configureHoliday() {
-		System.out.print("(1) Add a holiday" + 
-						 "(2) Remove a holiday" + 
-						 "(3) Go back");
-		System.out.println();
-		System.out.println("Enter the number of your choice: ");
 		displayHolidayList();
+		System.out.print("(1) Add a holiday\n" + 
+						 "(2) Remove a holiday\n" + 
+						 "(3) Go back\n");
+		System.out.println("Enter the number of your choice: ");
 		int choice = sc.nextInt();
 		while (verifyChoiceNumber(choice, 1, 3)) { 
 			switch (choice) {
@@ -77,37 +78,31 @@ public class SystemSettingView extends View{
 	}
 
 	private void displayHolidayList() {
-        Map<String, Holiday> map = getHolidayList();
-        int count = 0;
-        String nameOfHoliday;
-        
-        if (map.size() == 0) {
-        	System.out.println("There are no Holidays to display.");
+		holidayList = getHolidayList();
+		if(holidayList.isEmpty())
+		{
+			System.out.println("There are no Holidays to display.");
         	return;
+		}
+		else 
+		{
+			System.out.print("Holiday list\n");
+        	for (Holiday h: holidayList) {
+			System.out.println(h.getDate() + h.getName() + h.getRate());
         }
-        
-		System.out.print("Holiday list");
-        for (Map.Entry<String, Holiday> entry : map.entrySet()) {
-            String key = entry.getKey();
-            Holiday value = entry.getValue();
-            nameOfHoliday = value.getName();
-            System.out.print("(" + count + ")");
-            System.out.println(nameOfHoliday + "\t" + key);
-        }
+		}  
+		
         System.out.println();
 	}
 
 	private void addHolidaySequence() {
-		String name, dateString;
+		String name;
 		Date date;
 		Double rate;
 		
 		displayHolidayList();
-    	System.out.print("Input Holiday Name: ");
-    	name = sc.nextLine();
-    	System.out.print("Input Holiday Date (dd/mm/yyyy): ");
-    	dateString = sc.nextLine();
-    	date = parseStringToDate_ddMMyyyy(dateString);
+		name = passChoiceString("Input Holiday Name: ");
+    	date = parseStringToDate_ddMMyyyy("Input Holiday Date (dd/mm/yyyy): ");
     	System.out.print("Input Holiday Rate (float): ");
     	rate = sc.nextDouble();
     	Holiday holiday = new Holiday(name, date, rate);
@@ -115,28 +110,25 @@ public class SystemSettingView extends View{
 	}
 	
 	private void removeHolidaySequence() {
-		String name, dateString, choice;
-		Date date;
-		
-		System.out.print("Input Holiday Date (dd/mm/yyyy): ");
-    	dateString = sc.nextLine();
-    	date = parseStringToDate_ddMMyyyy(dateString);
-    	
-    	HashMap<String, Holiday> holidayList = getHolidayList();
-    	if (holidayList.get(date)==null) {
+		String choice;
+		int index = passChoiceInt("Input Holiday index You want to delete");    	
+    	if (holidayList.get(index)==null) {
     		System.out.println("Holiday not found");
     		return;
-    	} else {
-    		name  =holidayList.get(date).getName();
+		} 
+		else 
+		{
     		choice = passChoiceString("Are you sure you want to remove the Holiday: " + 
-									  name + " (Y or N)");
+									  holidayList.get(index).getName() + " (Y or N)");
     	}
-    	
+		
     	if (confirmChoice(choice)) {
     		try {
-				removeHoliday(date);
+				removeHoliday(holidayList.get(index));
+				configureHoliday();
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.out.println("Fail to remove holiday");
+				configureHoliday();
 			}
     	}
     	else {
