@@ -27,10 +27,10 @@ public class ReviewManager {
         }
     }
 
-    public static void addNewReview(Movie movie, Review review) throws IOException {
-        if(reviewList.get(movie) == null) 
-        	reviewList.put(movie, new ArrayList<>());
-        reviewList.get(movie).add(review);
+    public static void addNewReview(Review review) throws IOException {
+        if(reviewList.get(review.getMovie()) == null) 
+        	reviewList.put(review.getMovie(), new ArrayList<>());
+        reviewList.get(review.getMovie()).add(review);
         updateReviewList();
     }             
 

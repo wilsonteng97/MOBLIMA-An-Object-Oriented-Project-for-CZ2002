@@ -43,6 +43,7 @@ public class CinemaOperatorManager extends DataManager {
             readShowtime();
             readCustomerList();
             readReviewList();
+            readShowtime();
     }
 //    public static boolean readTheData()
 //    {
@@ -110,16 +111,14 @@ public static void updateAdminAccount(){
     }
 
 
-    public static void addShowtime(Movie movie, ShowTime showTime) throws IOException
+    public static void addShowtime(ShowTime showTime) throws IOException
     {
-        if (showtimeList.get(movie) == null) 
+        if (showtimeList.get(showTime.getMovie()) == null) 
         {
-            showtimeList.put(movie, new ArrayList<>());
+            showtimeList.put(showTime.getMovie(), new ArrayList<>());
         }
-        showtimeList.get(movie).add(showTime);
-        movie.addShowTimeToMovie(showTime);
+        showtimeList.get(showTime.getMovie()).add(showTime);
         updateShowTime();
-        updateMovieListing();
     }
 
     public static void removeShowtime(Movie movie, ShowTime showTime) throws IOException {
@@ -191,7 +190,7 @@ public static void updateAdminAccount(){
     	Map<Movie, ArrayList<ShowTime>> map = (Map<Movie, ArrayList<ShowTime>>) showtimeList; // new HashMap<CinemaOperator, ArrayList<Cinema>>();
         for (Entry<Movie, ArrayList<ShowTime>> entry : map.entrySet()) {
         	Movie key = entry.getKey();
-        	if (key.getTitle()==movie.getTitle()) {
+        	if (key.getTitle().equals(movie.getTitle())) {
                ArrayList<ShowTime> value = entry.getValue();
                return value;
            }
@@ -199,6 +198,11 @@ public static void updateAdminAccount(){
 		return null;
     }
     
+    public static ArrayList<ShowTime> getShows(Movie movie)
+    {
+        return showtimeList.get(movie);
+    }
+
     // ========================Movie========================
     public static void readMovieList()
     {
